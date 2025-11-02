@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucronie e Tesori v2.0 | PARTE 3: Materiali Direttore</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0a0e27; --accent-blue: #3498db; --accent-gold: #f39c12;
+            --accent-red: #e74c3c; --accent-purple: #9b59b6; --text: #ecf0f1; --bg: #1a1f2e;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: Georgia, serif; line-height: 1.6; color: var(--text);
+            background: linear-gradient(135deg, var(--primary), var(--bg));
+            background-attachment: fixed; padding: 0 1rem; max-width: 1200px; margin: 0 auto;
+        }
+        .header {
+            background: var(--primary); border-bottom: 3px solid var(--accent-gold);
+            padding: 2rem; text-align: center; margin: 2rem 0; border-radius: 12px;
+        }
+        .header h1 { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 0.5rem; }
+        .tagline { color: var(--accent-blue); font-style: italic; }
+        .nav { 
+            position: sticky; top: 0; background: var(--primary); 
+            padding: 1rem; border-bottom: 2px solid var(--accent-blue);
+            margin-bottom: 2rem; z-index: 100; border-radius: 8px;
+        }
+        .nav a {
+            color: var(--accent-blue); text-decoration: none;
+            margin: 0 0.5rem; font-size: 0.9rem;
+        }
+        .nav a:hover { color: var(--accent-gold); }
+        .section {
+            background: var(--bg); margin-bottom: 2rem; padding: 2rem;
+            border-radius: 12px; border-left: 4px solid var(--accent-blue);
+        }
+        h2 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem; 
+             border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; }
+        h3 { color: var(--accent-blue); font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+        h4 { color: var(--text); font-size: 1.2rem; margin: 1rem 0 0.5rem; }
+        h5 { color: var(--text); font-size: 1rem; margin: 0.8rem 0 0.4rem; font-weight: bold; }
+        p, li { margin-bottom: 0.5rem; }
+        ul, ol { margin-left: 1.5rem; }
+        .box {
+            padding: 1rem; margin: 1rem 0; border-radius: 6px;
+            border-left: 4px solid var(--accent-blue);
+            background: rgba(52, 152, 219, 0.1);
+        }
+        .warning { border-left-color: #f1c40f; background: rgba(241, 196, 15, 0.1); }
+        .danger { border-left-color: var(--accent-red); background: rgba(231, 76, 60, 0.1); }
+        .success { border-left-color: #2ecc71; background: rgba(46, 204, 113, 0.1); }
+        table {
+            width: 100%; border-collapse: collapse; margin: 1rem 0;
+            background: var(--primary);
+        }
+        th { background: var(--accent-blue); color: white; padding: 0.8rem; text-align: left; }
+        td { padding: 0.8rem; border-bottom: 1px solid var(--bg); }
+        tr:hover { background: rgba(52, 152, 219, 0.1); }
+        .badge {
+            display: inline-block; padding: 0.2rem 0.6rem;
+            border-radius: 12px; font-size: 0.85rem; font-weight: bold;
+        }
+        .badge-danger { background: var(--accent-red); color: white; }
+        .badge-warning { background: #f1c40f; color: black; }
+        .badge-info { background: var(--accent-blue); color: white; }
+        .badge-success { background: #2ecc71; color: white; }
+        pre {
+            background: var(--primary); padding: 1rem; border-radius: 6px;
+            overflow-x: auto; margin: 1rem 0; font-size: 0.9rem;
+        }
+        code { color: var(--accent-blue); }
+        .scroll-top {
+            position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+            background: var(--accent-gold); border: none; border-radius: 50%;
+            cursor: pointer; display: none; font-size: 1.5rem; color: var(--primary);
+        }
+        .scroll-top.show { display: block; }
+        .footer {
+            text-align: center; padding: 2rem; margin-top: 2rem;
+            border-top: 2px solid var(--accent-gold);
+        }
+        .generator {
+            background: var(--primary); padding: 1.5rem; border-radius: 8px;
+            margin: 1rem 0; border: 2px solid var(--accent-blue);
+        }
+        .generator button {
+            background: var(--accent-blue); color: white; border: none;
+            padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer;
+            font-size: 1rem; font-weight: bold; margin: 0.5rem;
+        }
+        .generator button:hover { background: var(--accent-gold); color: var(--primary); }
+        .result {
+            background: rgba(52, 152, 219, 0.2); padding: 1rem;
+            border-radius: 6px; margin-top: 1rem; min-height: 60px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .section { padding: 1rem; }
+            h2 { font-size: 1.5rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>⏳ UCRONIE E TESORI ⏳</h1>
+    <p class="tagline">"Breaking Bad meets OSR meets Looper"</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.0 REFINED | PARTE 3: Materiali Direttore</p>
+</header>
+
+<nav class="nav">
+    <a href="#direttore">Guida Direttore</a>
+    <a href="#tabelle">Tabelle Random</a>
+    <a href="#campagna">Gestione Campagna</a>
+    <a href="#faq">FAQ</a>
+    <a href="#crediti">Crediti</a>
+</nav>
+
+<div class="container">
+
+<!-- PARTE XII: GUIDA PER IL DIRETTORE -->
+<section id="direttore" class="section">
+    <h2>PARTE XII: GUIDA PER IL DIRETTORE</h2>
+    
+    <div class="box success">
+        <h3>Benvenuto, Direttore</h3>
+        <p style="font-size: 1.1rem;">Se stai leggendo questa sezione, stai per dirigere Ucronie e Tesori. Grazie per aver scelto questo gioco. La tua preparazione e facilitazione faranno la differenza tra sessione memorabile e sessione dimenticabile.</p>
+        <p style="margin-top: 1rem;"><strong>Questa sezione contiene:</strong> Principi direttivi, consigli pratici, trappole comuni, e strumenti per gestire pressione morale/economica centrale al gioco.</p>
+    </div>
+    
+    <h3>I 7 Principi del Direttore OSR</h3>
+    
+    <div class="box">
+        <h4>1. Il Mondo È Neutrale, Non Giusto</h4>
+        <p><strong>Non bilanci incontri per livello PG.</strong> Zona Rossa è pericolosa. Se PG livello 1 incontrano Eco potente, è pericoloso. Dovrebbero fuggire O essere furbi.</p>
+        <p><strong>Non "salvi" PG da scelte stupide.</strong> Se decidono correre attraverso zona collassante per avidità, conseguenze sono loro. Morte è possibile. È parte gioco.</p>
+        <p><strong>Ricompense proporzionali a rischio.</strong> Tesori grandi in posti pericolosi. Soldi facili hanno costi nascosti (corruzione, debiti, ricatti).</p>
+    </div>
+    
+    <div class="box">
+        <h4>2. Telegrafati Il Pericolo, Poi Lascia Scegliere</h4>
+        <p><strong>Sempre dai segnali prima pericolo mortale:</strong></p>
+        <ul>
+            <li><em>"Sentite scricchiolio sotto piedi. Pavimento sembra fragile."</em> (trappola caduta)</li>
+            <li><em>"Eco si materializza angolo. Vedi attraverso. Occhi bui vuoti. Avanza lento."</em> (nemico potente)</li>
+            <li><em>"Zhou sorride. Ma sorriso non arriva occhi. 'Affare fatto, caro. Ricorda... debiti vanno sempre ripagati.'"</em> (conseguenze future)</li>
+        </ul>
+        <p><strong>Dopo warning, scelta è loro.</strong> Se ignorano e muoiono = loro scelta, non tua crudeltà.</p>
+    </div>
+    
+    <div class="box">
+        <h4>3. Ruling Over Rules</h4>
+        <p><strong>Non cercare regola nel manuale per 10 minuti.</strong> Fai ruling veloce (30 secondi max), segna su carta, rivedi dopo sessione se necessario.</p>
+        <p><strong>Formula generica per qualsiasi situazione:</strong></p>
+        <pre><code>PG vuole fare X
+→ Ha senso? (plausibile nel mondo?)
+→ Sì: Check Attributo rilevante, difficoltà basata su quanto improbabile
+→ No: "Non puoi fare questo perché [ragione fisica/logica]"</code></pre>
+        <p><strong>Esempi:</strong></p>
+        <ul>
+            <li><em>"Voglio convincere Zhou suicidarsi."</em> → Non plausibile (è pragmatica, non depressa). "Non funzionerebbe - lei ride e va via."</li>
+            <li><em>"Voglio hackerare computer anni '50 con laptop 2045."</em> → Plausibile ma difficile (tecnologie incompatibili). "Check INT -4. Devi improvvisare adattatori."</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h4>4. Informazioni > Combattimento</h4>
+        <p><strong>Premia PG che investigano, parlano, osservano.</strong> Combattimento dovrebbe essere evitabile 70% volte se PG intelligenti.</p>
+        <p><strong>Dai info gratis con Percezione buona:</strong></p>
+        <ul>
+            <li><em>"SAG 15? Noti Eco muove pattern prevedibile - gira sinistra ogni 30 secondi. Potresti timing per passare."</em></li>
+            <li><em>"INT 14? Riconosci simboli porta - sigillo Zhou. Probabile trappola se apri direttamente."</em></li>
+        </ul>
+        <p><strong>Info rende PG potenti senza alzare stats.</strong> Conoscenza = potere in OSR.</p>
+    </div>
+    
+    <div class="box">
+        <h4>5. Economia È Pressione, Non Contabilità</h4>
+        <p><strong>Non tracciare ogni singolo dollaro maniacalmente.</strong> Approssima. <em>"Ok, settimana passata, paghi $900 spese. Hai $450. Deficit -$450. Come paghi?"</em></p>
+        <p><strong>USA deficit come hook narrativo:</strong></p>
+        <ul>
+            <li>PG ha -$800 debiti? Zhou "coincidentalmente" chiama con offerta $1.000 per favore semplice.</li>
+            <li>Affitto scade? Landlord bussa porta con sfratto notice + 2 gang enforcers.</li>
+            <li>Medicine finite? Doc Rivera dice <em>"Posso darti gratis... se fai piccolo favore. Ho paziente gang member ferito. No domande, no report Divisione."</em></li>
+        </ul>
+        <p><strong>Economia è motore dilemmi, non foglio Excel.</strong></p>
+    </div>
+    
+    <div class="box">
+        <h4>6. Scelte Grigie Sempre</h4>
+        <p><strong>Evita scelte bianche/nere ("salva innocente" vs "uccidi innocente").</strong> Invece:</p>
+        <ul>
+            <li><em>"Salva innocente ma riveli posizione Zhou (lei vendica dopo)"</em> vs <em>"Ignora innocente, completi missione veloce"</em></li>
+            <li><em>"Arresta criminale (Lealtà +1) ma era fonte info preziosa (perdi contatto)"</em> vs <em>"Lasci andare (info future) ma tradisci Divisione (Lealtà -1)"</em></li>
+        </ul>
+        <p><strong>Ogni scelta ha costo.</strong> Nessuna è "giusta". Sono tutte valide. Sono tutte dolorose.</p>
+    </div>
+    
+    <div class="box">
+        <h4>7. Conseguenze Permanenti Memorabili</h4>
+        <p><strong>Traccia TUTTO.</strong> PG vendono info Zhou? Lei ricorda. Per sempre. Tra 5 sessioni, chiama favore.</p>
+        <p><strong>Mondo reagisce a PG:</strong></p>
+        <ul>
+            <li>Corruzione 7+ → Criminali li riconoscono strada, fanno cenno rispetto (O paura)</li>
+            <li>Lealtà 1 → Agenti Divisione evitano parlare con loro, rumors "traditore potenziale"</li>
+            <li>4 Quirk → Civili sussurrano, indicano, tengono distanza (stigma visibile)</li>
+        </ul>
+        <p><strong>Azioni hanno peso.</strong> Mondo tiene memoria. Questo rende scelte significative.</p>
+    </div>
+    
+    <h3>Gestire Pressione Morale</h3>
+    
+    <div class="box warning">
+        <h4>Il Ruolo del Direttore: Tentatore Neutrale</h4>
+        <p><strong>Non sei antagonista di PG. Sei mondo.</strong> Il mondo offre scelte. Alcune facili ma costose moralmente. Alcune difficili ma pulite.</p>
+        <p><strong>Il tuo lavoro:</strong> Presentare opzioni, mostrare costi, lasciare decidere. Poi applicare conseguenze neutralmente.</p>
+    </div>
+    
+    <h4>Tecniche Pratiche:</h4>
+    
+    <h5>1. Offerte Immediate vs Conseguenze Ritardate</h5>
+    <div class="box">
+        <p><strong>Corruzione funziona perché ricompensa è ORA, costo è DOPO.</strong></p>
+        <p><strong>Esempio:</strong> Zhou offre $5.000 (20 CD) per informazioni confidenziali Divisione.</p>
+        <ul>
+            <li><strong>Ricompensa immediata:</strong> Soldi istantanei. Debiti pagati. Affitto sicuro 3 mesi. Respiro.</li>
+            <li><strong>Costo ritardato:</strong> +4 Corruzione (adesso solo numero). Ma tra 5 sessioni, Zhou chiama favore pericoloso. E se rifiuti, lei ricatta con prove tradimento (recording conversazione). Adesso PG intrappolati.</li>
+        </ul>
+        <p><strong>Umani scontano futuro naturalmente.</strong> Usa questo. Rendi tentazione reale, dolce. Poi fai pagare prezzo lentamente.</p>
+    </div>
+    
+    <h5>2. NPC Umani, Non Cartoni</h5>
+    <div class="box">
+        <p><strong>Zhou non è "cattiva malvagia".</strong> È businesswoman pragmatica. Rispetta chi rispetta lei. Può essere cortese, persino generosa.</p>
+        <p><strong>Hayes non è "brava eroina".</strong> È burocrate stanca che ha visto troppo. Cinismo protettivo. Vuole solo pensione.</p>
+        <p><strong>Questo rende scelte difficili.</strong> Facile tradire villain stereotipato. Difficile tradire persona complessa che ha mostrato umanità.</p>
+        <p><strong>Esempio Dialogo Zhou (dopo PG lavora per lei 3 volte):</strong></p>
+        <p><em>"Sai, mi piaci davvero. Non molti hanno... integrità che hai. Sì, lavori per me, ma onesto su limiti. Rispetto questo. Mondo ha bisogno persone come te - gente sopravvive senza perdere completamente sé. *pausa* Mio figlio aveva tua età quando morì. Evento Oculus. Ogni volta ti vedo... ricordo lui. *sorriso triste* Comunque. Business. Ho lavoro, se interessato."</em></p>
+        <p>Adesso PG hanno RELAZIONE con Zhou. Non è solo "boss criminale" - è persona. Tradirla dopo questo momento? Difficile. Doloroso. <strong>Perfetto.</strong></p>
+    </div>
+    
+    <h5>3. Countdown Visibili</h5>
+    <div class="box">
+        <p><strong>Rendi conseguenze tangibili PRIMA che accadano:</strong></p>
+        <ul>
+            <li><strong>Settimana 1 affitto ritardo:</strong> <em>"Landlord bussa. 'Affitto è ritardo. Ho famiglia, capisci? Paghi settimana prossima O devo azione.'"</em></li>
+            <li><strong>Settimana 2:</strong> <em>"Nessuno bussa. Ma noti avviso sfratto scivolato sotto porta. 7 giorni."</em></li>
+            <li><strong>Giorno 7:</strong> <em>"Sceriffo + 2 deputy. 'Ho mandato. Raccoglie oggetti personali. 2 ore.'"</em></li>
+        </ul>
+        <p>PG vedono treno arrivare. Possono agire. O no. Ma sanno.</p>
+    </div>
+    
+    <h5>4. Specchio Morale (PG vs PG)</h5>
+    <div class="box">
+        <p><strong>Se gruppo ha membri con Lealtà/Corruzione diverse, sfrutta.</strong></p>
+        <p><strong>Esempio:</strong> PG-A (Lealtà 8, Corruzione 1) e PG-B (Lealtà 3, Corruzione 7) trovano Frammento.</p>
+        <ul>
+            <li><strong>PG-A:</strong> <em>"Dobbiamo consegnarlo Hayes. È lavoro nostro."</em></li>
+            <li><strong>PG-B:</strong> <em>"Hayes paga $3.000. Zhou paga $20.000. Siamo IDIOTI se consegniamo."</em></li>
+        </ul>
+        <p><strong>Ora hanno conflitto INTERNO gruppo.</strong> Devono negoziare, compromettere, O dividere (rottura team possibile).</p>
+        <p><strong>Questo è GOLD narrativo.</strong> Giocatori ricorderanno dibattito per anni.</p>
+    </div>
+    
+    <h3>Gestire Sessioni</h3>
+    
+    <h4>Struttura Sessione Tipo (3-4 ore)</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 120px;">Fase</th>
+                <th style="width: 100px;">Tempo</th>
+                <th>Contenuto</th>
+                <th>Obiettivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Recap</strong></td>
+                <td>5-10 min</td>
+                <td>Riassunto sessione precedente, update tracciatori (Lealtà, Corruzione, economia)</td>
+                <td>Refresh memoria, stabilire continuità</td>
+            </tr>
+            <tr>
+                <td><strong>Downtime</strong></td>
+                <td>15-30 min</td>
+                <td>PG gestiscono vita quotidiana: pagano spese, comprano equipaggiamento, interazioni sociali, side quests personali</td>
+                <td>Mostrare conseguenze economiche, build world, character development</td>
+            </tr>
+            <tr>
+                <td><strong>Briefing</strong></td>
+                <td>5-10 min</td>
+                <td>Hayes (o altro) presenta missione, obiettivi, limite tempo</td>
+                <td>Setup aspettative, goal chiari</td>
+            </tr>
+            <tr>
+                <td><strong>Missione</strong></td>
+                <td>90-150 min</td>
+                <td>Esplorazione zona temporale, combat, puzzle, incontri</td>
+                <td>Core gameplay, tensione, rischio</td>
+            </tr>
+            <tr>
+                <td><strong>Debriefing</strong></td>
+                <td>10-15 min</td>
+                <td>Hayes commenta risultati, distribuisce ricompense, update reputazione</td>
+                <td>Closure missione, conseguenze immediate</td>
+            </tr>
+            <tr>
+                <td><strong>Cliffhanger</strong></td>
+                <td>5 min</td>
+                <td>Hook prossima sessione (Zhou chiama, threat nuovo, info criptica)</td>
+                <td>Anticipation, voglia tornare</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Pacing Tensione</h4>
+    
+    <div class="box">
+        <p><strong>Sessioni OSR sono DRAIN emotivo/mentale.</strong> Morte possibile, scelte pesanti, pressione costante. Devi gestire ritmo.</p>
+        
+        <h5>Pattern Ottimale:</h5>
+        <pre><code>TENSIONE ALTA (30-45 min)
+  ↓
+Respiro (10-15 min) - roleplay leggero, esplorazione safe
+  ↓
+TENSIONE ALTA (30-45 min)
+  ↓
+Respiro
+  ↓
+CLIMAX (20-30 min) - boss fight, scelta critica, collasso zona
+  ↓
+Resoluzione calma (10-15 min)</code></pre>
+        
+        <p><strong>Non sostenibile 3 ore tensione costante.</strong> Giocatori bruciano. Dai breather moments.</p>
+    </div>
+    
+    <h3>Improvvisazione e Prep</h3>
+    
+    <div class="box success">
+        <h4>Quanto Preparare?</h4>
+        <p><strong>OSR è LOW PREP per design.</strong> Non scrivi copione. Scrivi situazioni, PG decidono.</p>
+        
+        <h5>Prep Minimo Sessione (30-45 min):</h5>
+        <ul>
+            <li><strong>5 bullet points obiettivo missione</strong> (es: "Recupera Frammento", "4 civili intrappolati piano 7", "Eco guardiano penthouse", "Doppelganger interferisce", "Collasso dopo 4h")</li>
+            <li><strong>Mappa rough</strong> (sketch carta - non serve bella, serve funzionale)</li>
+            <li><strong>3-5 incontri possibili</strong> (nemici, PNG, trappole - non tutti usati, dipende scelte PG)</li>
+            <li><strong>1 dilemma centrale</strong> ("Salva civili O prendi Frammento veloce?")</li>
+            <li><strong>1 twist</strong> (Doppelganger, traditore, verità nascosta)</li>
+        </ul>
+        
+        <p style="margin-top: 1rem;"><strong>Questo basta.</strong> Resto improvvisi basato su scelte PG. Segui loro lead.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Quando Improvvisi (100% Tempo)</h4>
+        
+        <h5>Tecniche Rapide:</h5>
+        
+        <p><strong>1. "Sì, E..."</strong></p>
+        <p>PG propone idea creativa? Default è SÌ (se plausibile), poi aggiungi complicazione.</p>
+        <ul>
+            <li><em>"Posso usare corda per calarmi finestra invece scala?"</em> → <em>"Sì. Check DES. Successo... ma vetro rompe rumoroso. Tutti building sanno sei qui."</em></li>
+        </ul>
+        
+        <p><strong>2. Rubare da PG</strong></p>
+        <p>PG dice dettaglio mondo che non avevi pensato? Adotta come canone.</p>
+        <ul>
+            <li><em>PG: "Mio fratello lavorava Divisione prima morire."</em> → Tu (Direttore): <em>"Interessante. Come morì?"</em> → PG: <em>"Zona Rossa, mai trovato corpo."</em> → Tu (mentalmente): <em>"Ok, Eco più avanti campagna è fratello. Plot twist."</em></li>
+        </ul>
+        
+        <p><strong>3. Tabelle Random (vedi sotto)</strong></p>
+        <p>Quando non sai cosa fare, tira d6/d12 su tabella. Risultato suggerisce direzione.</p>
+    </div>
+</section>
+
+<!-- PARTE XIII: TABELLE RANDOM -->
+<section id="tabelle" class="section">
+    <h2>PARTE XIII: TABELLE RANDOM E GENERATORI</h2>
+    
+    <div class="box">
+        <h3>Perché Tabelle Random?</h3>
+        <p><strong>Improvvisazione supportata.</strong> Quando non sai cosa succede, tiri dado. Risultato ti da direzione. Poi elabori narrativamente.</p>
+        <p><strong>Sorpresa per Direttore.</strong> Anche tu non sai cosa esce. Questo rende gioco fresco, imprevedibile, eccitante per tutti.</p>
+    </div>
+    
+    <h3>Tabelle Missioni</h3>
+    
+    <h4>Generatore Missione Veloce</h4>
+    
+    <div class="generator">
+        <h5>Generatore Missione Automatico</h5>
+        <button onclick="generateMission()">🎲 Genera Missione</button>
+        <div id="missionResult" class="result"></div>
+    </div>
+    
+    <h4>Tabella Obiettivo Primario (d10)</h4>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d10</th>
+                <th>Obiettivo</th>
+                <th>Valore CD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Recupera Frammento Oculus (piccolo)</td><td>10-12 CD</td></tr>
+            <tr><td>2</td><td>Recupera Frammento Oculus (grande)</td><td>20-25 CD</td></tr>
+            <tr><td>3</td><td>Recupera artefatto storico specifico (gioiello, documento, arma)</td><td>5-8 CD</td></tr>
+            <tr><td>4</td><td>Elimina/cattura Eco pericoloso (minaccia zona verde)</td><td>3-5 CD bonus</td></tr>
+            <tr><td>5</td><td>Salva agente Divisione intrappolato/ferito zona rossa</td><td>Lealtà +2</td></tr>
+            <tr><td>6</td><td>Distruggi dispositivo temporale instabile (bomba entropica)</td><td>4-6 CD</td></tr>
+            <tr><td>7</td><td>Estrai informazioni da Eco cosciente (interrogatorio impossibile)</td><td>2-4 CD + info</td></tr>
+            <tr><td>8</td><td>Recupera tecnologia futuristica funzionante</td><td>15-20 CD</td></tr>
+            <tr><td>9</td><td>Chiudi loop temporale (zona intrappolata ripete evento)</td><td>8-12 CD</td></tr>
+            <tr><td>10</td><td>Installa beacon stabilizzazione (trasforma zona rossa → arancione)</td><td>6-8 CD + Lealtà +1</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>Tabella Complicazione (d8)</h4>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d8</th>
+                <th>Complicazione</th>
+                <th>Effetto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Civili intrappolati (1d6 persone)</td><td>Obiettivo secondario: salva (bonus) O ignora (veloce ma immorale)</td></tr>
+            <tr><td>2</td><td>Gang Zhou già in zona (cerca stesso tesoro)</td><td>Competizione, possibile combat O negoziazione</td></tr>
+            <tr><td>3</td><td>Zona collassa rapido (2h invece 4h)</td><td>Pressione tempo doppia</td></tr>
+            <tr><td>4</td><td>Doppelganger PG appare (futuro O passato)</td><td>Aiuta, ostacola, O confonde - tira d6 determinare</td></tr>
+            <tr><td>5</td><td>Loop temporale attivo (eventi ripetono ogni 30 min)</td><td>PG possono sfruttare (conoscono futuro) ma disorientante</td></tr>
+            <tr><td>6</td><td>Tradimento interno: uno "alleato" lavora per Zhou</td><td>PNG O (con permesso giocatore) PG ha ordini segreti</td></tr>
+            <tr><td>7</td><td>Fauna/Flora mutata temporalmente (animali anacronistici)</td><td>Incontri random più pericolosi (+2 frequenza)</td></tr>
+            <tr><td>8</td><td>Comunicazioni rotte (radio non funziona)</td><td>Nessun backup Divisione, team isolato</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>Tabella Twist Finale (d6)</h4>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d6</th>
+                <th>Twist</th>
+                <th>Rivelazione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Obiettivo è trappola</td><td>Frammento è esca - vero obiettivo Zhou era mappare zona per raid futuro</td></tr>
+            <tr><td>2</td><td>Civile è Eco</td><td>Uno "civili" salvati è Eco mimetico - segue PG fuori, minaccia zona verde</td></tr>
+            <tr><td>3</td><td>Hayes mentiva</td><td>Missione vera non era recupero - era test lealtà PG (osservati tutto tempo)</td></tr>
+            <tr><td>4</td><td>Artefatto è maledetto</td><td>Frammento causa Quirk automatico a chi tocca (no TS)</td></tr>
+            <tr><td>5</td><td>Zona contiene segreto Divisione</td><td>PG trovano evidenza: Divisione causò Evento Oculus deliberatamente (cover-up governativo)</td></tr>
+            <tr><td>6</td><td>Paradosso temporale</td><td>Completare missione CREA evento che PG cercavano prevenire (loop causale)</td></tr>
+        </tbody>
+    </table>
+    
+    <h3>Tabelle Incontri</h3>
+    
+    <h4>Incontri Casuali Zone Rosse (d12)</h4>
+    <p><strong>Tira ogni ora esplorazione. Con 1-2 su d6, evento accade. Poi tira d12:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d12</th>
+                <th>Incontro</th>
+                <th>Pericolo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td><strong>Eco Solitario</strong> (1 entità, confusa)</td><td>Medio - attacca se provocato</td></tr>
+            <tr><td>2</td><td><strong>Pack Ratti Temporali</strong> (2d6 ratti mutati)</td><td>Basso - molti ma deboli</td></tr>
+            <tr><td>3</td><td><strong>Glitch Temporale</strong> (oggetto/persona epoca diversa appare 1d6 turni)</td><td>Zero - opportunità (info O tesoro)</td></tr>
+            <tr><td>4</td><td><strong>Trappola Ambientale</strong> (pavimento cede, gravità inverte, soffitto crolla)</td><td>Alto - 2d6 danni se fallisci DES</td></tr>
+            <tr><td>5</td><td><strong>Scavenger Umano</strong> (criminale cerca tesori, armato)</td><td>Variabile - negoziazione possibile</td></tr>
+            <tr><td>6</td><td><strong>Doppelganger</strong> (versione alternativa PG casuale)</td><td>Alto - stats identici, comportamento imprevedibile</td></tr>
+            <tr><td>7</td><td><strong>Loop Locale</strong> (prossimi 10 min ripetono - PG vivono 2 volte)</td><td>Zero - tattico (vantaggio)</td></tr>
+            <tr><td>8</td><td><strong>Agente Divisione Perduto</strong> (collega disperso, ferito O pazzo)</td><td>Medio - può aiutare O ostacolare</td></tr>
+            <tr><td>9</td><td><strong>Tesoro Esposto</strong> (1d4 CD valore, facile accesso)</td><td>Sospetto - forse trappola?</td></tr>
+            <tr><td>10</td><td><strong>Gang Zhou (3-5 membri)</strong></td><td>Alto - vogliono tesoro, ostili</td></tr>
+            <tr><td>11</td><td><strong>Eco Branco</strong> (2d4 entità, coordinate)</td><td>Molto Alto - fuga consigliata</td></tr>
+            <tr><td>12</td><td><strong>Anomalia Temporale Maggiore</strong> (portale altra epoca, singolarità, O Eco-7)</td><td>Estremo O Zero (dipende)</td></tr>
+        </tbody>
+    </table>
+    
+    <h3>Generatori NPC</h3>
+    
+    <h4>NPC Casuale Veloce</h4>
+    
+    <div class="generator">
+        <h5>Generatore NPC</h5>
+        <button onclick="generateNPC()">🎲 Genera NPC</button>
+        <div id="npcResult" class="result"></div>
+    </div>
+    
+    <h4>Tabella Professione/Background NPC (d20)</h4>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d20</th>
+                <th>Professione</th>
+                <th>Motivazione Tipica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Agente Divisione (collega)</td><td>Sopravvivenza, lealtà, O corruzione</td></tr>
+            <tr><td>2</td><td>Criminale mercato nero</td><td>Profitto, vendetta, O fuga</td></tr>
+            <tr><td>3</td><td>Medico/Scienziato</td><td>Cura, conoscenza, O esperimenti</td></tr>
+            <tr><td>4</td><td>Giornalista investigativo</td><td>Verità, Pulitzer, O ricatto</td></tr>
+            <tr><td>5</td><td>Ex-militare veterano</td><td>PTSD, redenzione, O vendetta</td></tr>
+            <tr><td>6</td><td>Gang member (Zhou O rivali)</td><td>Rispetto, denaro, O protezione famiglia</td></tr>
+            <tr><td>7</td><td>Rifugiato (perso tutto Oculus)</td><td>Sopravvivenza base, famiglia, O vendetta Divisione</td></tr>
+            <tr><td>8</td><td>Hacker/Tech specialist</td><td>Info, libertà digitale, O soldi</td></tr>
+            <tr><td>9</td><td>Truffatore/Con artist</td><td>Esca facile, debiti gioco, O ego</td></tr>
+            <tr><td>10</td><td>Polizia locale corrotto</td><td>Mazzette, pensione, O famiglia ricattata</td></tr>
+            <tr><td>11</td><td>Proprietario business legit</td><td>Profitto, comunità, O front criminale</td></tr>
+            <tr><td>12</td><td>Cultista temporale (crede Oculus = dio)</td><td>Ascensione, conversione, O apocalisse</td></tr>
+            <tr><td>13</td><td>Artista/Performer</td><td>Espressione, fama Strip, O droghe</td></tr>
+            <tr><td>14</td><td>Mercenario freelance</td><td>Contratto attuale, nessuna lealtà</td></tr>
+            <tr><td>15</td><td>Informatore doppio agente</td><td>Highest bidder, sopravvivenza</td></tr>
+            <tr><td>16</td><td>Genitore disperato (figlio malato)</td><td>Medicina $$$, tutto per famiglia</td></tr>
+            <tr><td>17</td><td>Scavenger zona rossa</td><td>Tesori, adrenalina, morte wish</td></tr>
+            <tr><td>18</td><td>Burocrate Divisione</td><td>Pensione, evita problemi, paperwork</td></tr>
+            <tr><td>19</td><td>Collezionista ricco</td><td>Artefatti rari, status, obsessione</td></tr>
+            <tr><td>20</td><td>Eco parzialmente cosciente</td><td>Ricordare chi era, vendetta, O pace</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>Tabella Quirk/Tratto NPC (d12)</h4>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d12</th>
+                <th>Tratto Distintivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Sempre mente (compulsivo - anche quando verità più facile)</td></tr>
+            <tr><td>2</td><td>Parla terza persona ("Marco pensa che tu sbagli")</td></tr>
+            <tr><td>3</td><td>Odio irrazionale verso [oggetto comune] (es: orologi - "tempo è nemico")</td></tr>
+            <tr><td>4</td><td>Cicatrici temporali visibili (invecchiamento parziale, quirk minore)</td></tr>
+            <tr><td>5</td><td>Ossessione particolare (colleziona spoons anni '50, conta everything)</td></tr>
+            <tr><td>6</td><td>Tic nervoso (batte dita ritmo 3/4, sbatte palpebre doppio)</td></tr>
+            <tr><td>7</td><td>Voce inusuale (sussurro costante, doppia sovrapposta, echo)</td></tr>
+            <tr><td>8</td><td>Lealtà fanatica a [fazione] (morirebbe per causa)</td></tr>
+            <tr><td>9</td><td>Umorismo dark inappropriato (ride morti, jokes pessimi timing)</td></tr>
+            <tr><td>10</td><td>Superstizione estrema (non cammina sotto scale, sale mai 13 volte, ecc)</td></tr>
+            <tr><td>11</td><td>Memoria perfetta (ricorda OGNI dettaglio incontri precedenti - unnerving)</td></tr>
+            <tr><td>12</td><td>Profezie cryptiche (dice cose sembrano nonsense poi vere - o coincidenza?)</td></tr>
+        </tbody>
+    </table>
+    
+    <h3>Tesori Random</h3>
+    
+    <h4>Generatore Tesoro</h4>
+    
+    <div class="generator">
+        <h5>Generatore Tesoro Veloce</h5>
+        <button onclick="generateTreasure()">🎲 Genera Tesoro</button>
+        <div id="treasureResult" class="result"></div>
+    </div>
+    
+    <h4>Tabella Tesori Zona Rossa (d20)</h4>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d20</th>
+                <th>Tesoro</th>
+                <th>Valore</th>
+                <th>Descrizione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1-5</td><td>Monete/Metalli Antichi</td><td>0.5-1 CD</td><td>Oro romano, dollari argento 1800s, corone britanniche</td></tr>
+            <tr><td>6-9</td><td>Gioielli Storici</td><td>1-3 CD</td><td>Anello vittoriano, collana art deco, spilla famiglia nobile</td></tr>
+            <tr><td>10-12</td><td>Arte/Manufatti Minori</td><td>2-5 CD</td><td>Quadro firmato minore, scultura bronzo, manoscritto illuminato</td></tr>
+            <tr><td>13-15</td><td>Armi Storiche</td><td>3-8 CD</td><td>Spada samurai, revolver Wild West, fucile Civil War funzionante</td></tr>
+            <tr><td>16-17</td><td>Tecnologia Anacronistica</td><td>8-15 CD</td><td>Laptop 2080 (parziale), drone AI, dispositivo medico futuro</td></tr>
+            <tr><td>18</td><td>Arte Importante</td><td>10-20 CD</td><td>Quadro artista famoso (non Da Vinci ma riconoscibile), scultura marmo</td></tr>
+            <tr><td>19</td><td>Frammento Oculus Piccolo</td><td>10-15 CD</td><td>Cristallo blu-viola, dimensione pugno, pulsa luce debole</td></tr>
+            <tr><td>20</td><td>Frammento Oculus Grande</td><td>20-30 CD</td><td>Cristallo grande football, energia visibile, pericoloso toccare</td></tr>
+        </tbody>
+    </table>
+    
+    <h4>Tabella Proprietà Speciali Tesoro (d10 - Opzionale)</h4>
+    <p><strong>Tira solo per tesori 5+ CD. Con 1-2 su d6, tesoro ha proprietà:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d10</th>
+                <th>Proprietà</th>
+                <th>Effetto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Maledetto</td><td>+1 Quirk automatico a chi possiede 1+ settimane (no TS)</td></tr>
+            <tr><td>2</td><td>Ricercato</td><td>Zhou O Divisione lo vogliono specificamente - agenti ti cacciano</td></tr>
+            <tr><td>3</td><td>Instabile</td><td>Glitcha epoche - diventa oggetto diverso ogni 1d6 ore (sempre valore simile)</td></tr>
+            <tr><td>4</td><td>Senziente</td><td>Oggetto ha coscienza parziale - sussurra, mostra visioni, influenza emozioni</td></tr>
+            <tr><td>5</td><td>Chiave</td><td>Sblocca location nascosta (vault Divisione, bunker Zhou, zona rossa segreta)</td></tr>
+            <tr><td>6</td><td>Informazioni</td><td>Contiene dati critici (memoria digitale, diario codificato, mappa tesoro maggiore)</td></tr>
+            <tr><td>7</td><td>Benedetto</td><td>+2 Tiri Salvezza mentre portato (protezione temporale debole)</td></tr>
+            <tr><td>8</td><td>Replica</td><td>Sembra autentico ma falso - valore reale 10% (truffa O test)</td></tr>
+            <tr><td>9</td><td>Insieme</td><td>Parte set 3-5 pezzi - valore triplo se collezione completa</td></tr>
+            <tr><td>10</td><td>Profetico</td><td>Mostra visione futuro chi tocca (1 volta) - utile O terrificante (d6: 1-3 utile, 4-6 traumatica)</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- CONTINUA NEL PROSSIMO MESSAGGIO... -->
+
+<script>
+// Generatore Missione
+function generateMission() {
+    const obiettivi = [
+        "Recupera Frammento Oculus piccolo (10-12 CD)",
+        "Recupera Frammento Oculus grande (20-25 CD)",
+        "Recupera artefatto storico specifico (5-8 CD)",
+        "Elimina Eco pericoloso (3-5 CD bonus)",
+        "Salva agente Divisione intrappolato (Lealtà +2)",
+        "Distruggi dispositivo temporale instabile (4-6 CD)",
+        "Estrai informazioni da Eco cosciente (2-4 CD + info)",
+        "Recupera tecnologia futuristica (15-20 CD)",
+        "Chiudi loop temporale (8-12 CD)",
+        "Installa beacon stabilizzazione (6-8 CD + Lealtà +1)"
+    ];
+    
+    const complicazioni = [
+        "Civili intrappolati (1d6 persone) - salva O ignora",
+        "Gang Zhou già in zona - competizione per tesoro",
+        "Zona collassa rapido (2h invece 4h)",
+        "Doppelganger PG appare (futuro/passato)",
+        "Loop temporale attivo (eventi ripetono ogni 30 min)",
+        "Tradimento interno - alleato lavora per Zhou",
+        "Fauna/Flora mutata - incontri più frequenti",
+        "Comunicazioni rotte - team isolato"
+    ];
+    
+    const twist = [
+        "Obiettivo è trappola - esca per Zhou",
+        "Civile è Eco mimetico - segue PG fuori",
+        "Hayes mentiva - test lealtà sotto osservazione",
+        "Artefatto maledetto - Quirk automatico chi tocca",
+        "Zona contiene segreto Divisione - cover-up governativo",
+        "Paradosso temporale - missione CREA evento che cercavi prevenire"
+    ];
+    
+    const obiettivo = obiettivi[Math.floor(Math.random() * obiettivi.length)];
+    const complicazione = complicazioni[Math.floor(Math.random() * complicazioni.length)];
+    const twistFinale = twist[Math.floor(Math.random() * twist.length)];
+    
+    const result = `
+        <h4 style="color: var(--accent-gold); margin-bottom: 1rem;">📋 Missione Generata</h4>
+        <p><strong>🎯 Obiettivo Primario:</strong><br>${obiettivo}</p>
+        <p style="margin-top: 0.8rem;"><strong⚠️ Complicazione:</strong><br>${complicazione}</p>
+        <p style="margin-top: 0.8rem;"><strong>🌀 Twist Finale:</strong><br>${twistFinale}</p>
+        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-blue);">Tempo Limite: 4 ore | Zona: Rossa (check Contaminazione ogni 4h)</p>
+    `;
+    
+    document.getElementById('missionResult').innerHTML = result;
+}
+
+// Generatore NPC
+function generateNPC() {
+    const nomi = ["Marco", "Elena", "Vincent", "Sofia", "Diego", "Maria", "Frank", "Isabella", "Rico", "Anna"];
+    const cognomi = ["Rossi", "Chen", "Martinez", "Volkov", "Kim", "O'Brien", "Castellano", "Wong", "Silva", "Müller"];
+    
+    const professioni = [
+        "Agente Divisione", "Criminale mercato nero", "Medico/Scienziato", 
+        "Giornalista investigativo", "Ex-militare", "Gang member Zhou",
+        "Rifugiato", "Hacker", "Truffatore", "Polizia corrotto"
+    ];
+    
+    const tratti = [
+        "Sempre mente compulsivamente", "Parla in terza persona",
+        "Cicatrici temporali visibili", "Ossessione particolare",
+        "Tic nervoso evidente", "Voce inusuale (echo)",
+        "Lealtà fanatica a fazione", "Umorismo dark inappropriato",
+        "Memoria perfetta (ricorda tutto)", "Profezie cryptiche"
+    ];
+    
+    const motivazioni = [
+        "Sopravvivenza famiglia", "Vendetta personale", "Profitto facile",
+        "Redenzione passato", "Proteggere segreto", "Fuga da debiti",
+        "Ricerca verità", "Lealtà cieca", "Disperazione economica", "Niente da perdere"
+    ];
+    
+    const nome = nomi[Math.floor(Math.random() * nomi.length)];
+    const cognome = cognomi[Math.floor(Math.random() * cognomi.length)];
+    const professione = professioni[Math.floor(Math.random() * professioni.length)];
+    const tratto = tratti[Math.floor(Math.random() * tratti.length)];
+    const motivazione = motivazioni[Math.floor(Math.random() * motivazioni.length)];
+    const eta = 25 + Math.floor(Math.random() * 35);
+    
+    const result = `
+        <h4 style="color: var(--accent-gold); margin-bottom: 1rem;">👤 ${nome} ${cognome}</h4>
+        <p><strong>Età:</strong> ${eta} anni</p>
+        <p><strong>Professione:</strong> ${professione}</p>
+        <p><strong>Tratto Distintivo:</strong> ${tratto}</p>
+        <p><strong>Motivazione:</strong> ${motivazione}</p>
+        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-blue);">
+            Elabora dettagli basato su questi elementi base. Aggiungi backstory, connessioni PG, segreti.
+        </p>
+    `;
+    
+    document.getElementById('npcResult').innerHTML = result;
+}
+
+// Generatore Tesoro
+function generateTreasure() {
+    const tesori = [
+        { nome: "Monete Oro Romano", valore: "0.5-1 CD", desc: "Aureus imperatore Traiano, 98 DC" },
+        { nome: "Dollari Argento 1889", valore: "0.8 CD", desc: "Morgan Silver Dollar, mint condition" },
+        { nome: "Anello Vittoriano", valore: "2 CD", desc: "Oro 18k, rubino centrale, incisione interna" },
+        { nome: "Collana Art Deco", valore: "3 CD", desc: "Platino + diamanti, stile Cartier 1925" },
+        { nome: "Quadro Firmato", valore: "4 CD", desc: "Paesaggio olio, artista minore riconoscibile" },
+        { nome: "Scultura Bronzo", valore: "5 CD", desc: "Figura umana, stile Rodin, patina autentica" },
+        { nome: "Revolver Colt .45", valore: "6 CD", desc: "Peacemaker 1873, funzionante, inciso" },
+        { nome: "Spada Katana", valore: "8 CD", desc: "Periodo Edo, firma smith, affilata" },
+        { nome: "Laptop 2080", valore: "12 CD", desc: "Interfaccia neurale parziale, 60% funzionante" },
+        { nome: "Frammento Oculus", valore: "15 CD", desc: "Cristallo blu-viola dimensione pugno" }
+    ];
+    
+    const proprieta = [
+        { nome: "Nessuna", effetto: "Oggetto normale" },
+        { nome: "Maledetto", effetto: "+1 Quirk automatico dopo 1 settimana possesso" },
+        { nome: "Ricercato", effetto: "Zhou/Divisione lo vogliono - agenti ti cacciano" },
+        { nome: "Instabile", effetto: "Cambia forma ogni 1d6 ore (valore simile)" },
+        { nome: "Senziente", effetto: "Sussurra, mostra visioni, influenza emozioni" },
+        { nome: "Informazioni", effetto: "Contiene dati critici (codice, mappa, segreto)" },
+        { nome: "Benedetto", effetto: "+2 Tiri Salvezza mentre portato" },
+        { nome: "Profetico", effetto: "Mostra visione futuro 1 volta (utile O traumatica)" }
+    ];
+    
+    const tesoro = tesori[Math.floor(Math.random() * tesori.length)];
+    const haProprietà = Math.random() < 0.3; // 30% chance proprietà speciale
+    const prop = haProprietà ? proprieta[1 + Math.floor(Math.random() * (proprieta.length-1))] : proprieta[0];
+    
+    const result = `
+        <h4 style="color: var(--accent-gold); margin-bottom: 1rem;">💎 ${tesoro.nome}</h4>
+        <p><strong>Valore:</strong> ${tesoro.valore}</p>
+        <p><strong>Descrizione:</strong> ${tesoro.desc}</p>
+        ${haProprietà ? `<p style="margin-top: 0.8rem;"><strong>⚡ Proprietà Speciale:</strong> ${prop.nome}<br><em>${prop.effetto}</em></p>` : ''}
+        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-blue);">
+            Trovato in: ${["Cassaforte nascosta", "Cadavere scheletrico", "Altare temporale", "Debris edificio", "Stanza segreta"][Math.floor(Math.random() * 5)]}
+        </p>
+    `;
+    
+    document.getElementById('treasureResult').innerHTML = result;
+}
+</script>
+<!-- PARTE XIV: GESTIONE CAMPAGNA -->
+<section id="campagna" class="section">
+    <h2>PARTE XIV: GESTIONE CAMPAGNA LONG-TERM</h2>
+    
+    <div class="box">
+        <h3>Archi Narrativi e Struttura</h3>
+        <p><strong>Ucronie e Tesori funziona meglio in "mini-campagne" 6-12 sessioni.</strong> Abbastanza per vedere conseguenze accumularsi, non così lungo che Quirk consumano tutti PG.</p>
+    </div>
+    
+    <h3>Struttura Campagna Tipo (10 Sessioni)</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 100px;">Sessioni</th>
+                <th>Fase</th>
+                <th>Focus</th>
+                <th>Evoluzione PG</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: rgba(46, 204, 113, 0.2);">
+                <td><strong>1-2</strong></td>
+                <td><strong>INTRODUZIONE</strong></td>
+                <td>• Imparare meccaniche<br>• Stabilire tono grigio<br>• Prima missione (Loop Chicago)<br>• Incontro Hayes, Doc, Zhou</td>
+                <td>Liv 1 → 2<br>Lealtà 5<br>Corruzione 0-2<br>0 Quirk</td>
+            </tr>
+            <tr style="background: rgba(52, 152, 219, 0.2);">
+                <td><strong>3-5</strong></td>
+                <td><strong>ESCALATION</strong></td>
+                <td>• Missioni più complesse<br>• Dilemmi morali crescenti<br>• Zhou inizia fare offerte<br>• Deficit economico critico<br>• Primo Quirk tipicamente qui</td>
+                <td>Liv 2 → 3<br>Lealtà 4-7 (diverge)<br>Corruzione 2-5<br>1-2 Quirk</td>
+            </tr>
+            <tr style="background: rgba(241, 196, 15, 0.2);">
+                <td><strong>6-8</strong></td>
+                <td><strong>CONSEGUENZE</strong></td>
+                <td>• Scelte passate tornano<br>• Zhou O Hayes chiedono resa conti<br>• Tradimenti possibili<br>• Conflitti interni gruppo<br>• Quirk accumula (2-3 tipico)</td>
+                <td>Liv 3 → 4<br>Lealtà 2-9 (estremi)<br>Corruzione 4-8<br>2-3 Quirk</td>
+            </tr>
+            <tr style="background: rgba(231, 76, 60, 0.3);">
+                <td><strong>9-10</strong></td>
+                <td><strong>CLIMAX</strong></td>
+                <td>• Scelta finale maggiore<br>• Tradire Zhou O Divisione<br>• Conseguenze permanenti<br>• Morti possibili<br>• Risoluzione archi personali</td>
+                <td>Liv 4 (alcuni 5)<br>Lealtà 0-10 (polarizzato)<br>Corruzione 6-10<br>3-4 Quirk<br>Alcuni PG ritirati/morti</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Archi Narrativi Maggiori</h3>
+    
+    <h4>Arco 1: "La Verità su Oculus"</h4>
+    <div class="box">
+        <p><strong>Tema:</strong> Cospirazione governativa. Divisione sa più di quanto dice.</p>
+        
+        <h5>Sviluppo:</h5>
+        <ul>
+            <li><strong>Sessione 2-3:</strong> PG trovano documento classificato in zona rossa. Suggerisce Evento Oculus non fu accidente.</li>
+            <li><strong>Sessione 5:</strong> Doc Rivera ubriaco accenna: <em>"Sai cosa assurdo? Divisione esisteva PRIMA Evento. Come sapevano preparare?"</em></li>
+            <li><strong>Sessione 7:</strong> Eco-7 rivela: <em>"Divisione attivò Oculus deliberatamente. Esperimento controllo temporale. Andò male. Cover-up."</em></li>
+            <li><strong>Sessione 9-10:</strong> PG devono scegliere: Esporre verità (distruggere Divisione ma caos) O mantenere segreto (ordine ma ingiustizia).</li>
+        </ul>
+        
+        <p><strong>Finale Possibile:</strong> PG testimoniano pubblicamente. Divisione collassa. Zhou prende controllo città. <em>"Hai vinto battaglia morale ma perso guerra pratica. Ora Las Vegas è mia."</em></p>
+    </div>
+    
+    <h4>Arco 2: "Il Prezzo di Zhou"</h4>
+    <div class="box">
+        <p><strong>Tema:</strong> Corruzione progressiva. Diventi cosa giuri combattere.</p>
+        
+        <h5>Sviluppo:</h5>
+        <ul>
+            <li><strong>Sessione 1:</strong> Zhou è antagonista lontano. Nome su briefing.</li>
+            <li><strong>Sessione 3:</strong> Zhou salva PG da gang rivale. <em>"Nemico di nemico mio è... opportunità."</em> Offre info gratis.</li>
+            <li><strong>Sessione 5:</strong> PG lavorano per Zhou "una volta". Soldi ottimi. Corruzione +3 ma nessuna conseguenza immediata.</li>
+            <li><strong>Sessione 7:</strong> Zhou chiama favore. <em>"Ricordi quando ti salvai? Tempo ripagare."</em> Favore pericoloso/immorale.</li>
+            <li><strong>Sessione 9:</strong> PG scoprono: Zhou manipolò eventi fin sessione 1. Tutto pianificato. <em>"Scusa cara. Business. Ma ammetto... mi sei affezionato. Quasi dispiaciuta."</em></li>
+        </ul>
+        
+        <p><strong>Finale Possibile:</strong> PG devono scegliere: Tradire Zhou (lei vendica brutalmente) O accettare proprietà (ricchi ma schiavi).</li>
+    </div>
+    
+    <h4>Arco 3: "Il Costo Personale"</h4>
+    <div class="box">
+        <p><strong>Tema:</strong> Quirk consumano umanità. Horror body esistenziale.</p>
+        
+        <h5>Sviluppo:</h5>
+        <ul>
+            <li><strong>Sessione 1-2:</strong> 0 Quirk. PG "normali".</li>
+            <li><strong>Sessione 4:</strong> Primo Quirk (es: Glossolalia). Fastidioso ma gestibile. Joke source.</li>
+            <li><strong>Sessione 6:</strong> Secondo Quirk (es: Invecchiamento). Visibile. Civili iniziano evitare. Partner romantico PG dice <em>"Non ti riconosco più."</em></li>
+            <li><strong>Sessione 8:</strong> Terzo Quirk (es: Cicatrici Inverse). Dolore costante. Doc: <em>"Corpo sta rifiutando esistenza. Hai... 6 mesi? Anno? Non so."</em></li>
+            <li><strong>Sessione 10:</strong> Quarto Quirk. Scelta: Ritiro (vivere poco che resta vita) O continuare (5° Quirk vicino, poi Eco).</li>
+        </ul>
+        
+        <p><strong>Finale Possibile:</strong> PG con 4 Quirk sceglie sacrificio eroico. Entra epicentro collasso, salva città, diventa Eco. Ultimo dialogo: <em>"Valevate pena. Tutto questo... valeva pena. Ricordatemi... come ero."</em></p>
+    </div>
+    
+    <h3>Gestire Morte e Ritiro PG</h3>
+    
+    <div class="box danger">
+        <h4>Quando PG Muore O Ritira</h4>
+        
+        <h5>Opzione 1: Nuovo PG (OSR Classico)</h5>
+        <ul>
+            <li>Giocatore crea nuovo agente livello 1</li>
+            <li>Può ereditare 1 contatto O 1 oggetto da PG precedente (connessione narrativa)</li>
+            <li>Entra squadra come "sostituzione" (Hayes: <em>"Abbiamo perso Rodriguez. Tu sei rimpiazzo. Non deludermi."</em>)</li>
+            <li><strong>Pro:</strong> Veloce, mantiene rischio morte reale</li>
+            <li><strong>Contro:</strong> Disparità livello se campagna avanzata</li>
+        </ul>
+        
+        <h5>Opzione 2: PG Backup (Preparato in Anticipo)</h5>
+        <ul>
+            <li>Giocatore ha 2° personaggio già fatto (gioca raramente come PNG)</li>
+            <li>Quando PG primario muore, 2° diventa main</li>
+            <li><strong>Pro:</strong> Zero downtime, continuità emotiva</li>
+            <li><strong>Contro:</strong> Richiede prep extra</li>
+        </ul>
+        
+        <h5>Opzione 3: Accelerated Catch-Up</h5>
+        <ul>
+            <li>Nuovo PG inizia livello = media gruppo -1</li>
+            <li><strong>Es:</strong> Gruppo è liv 4, nuovo PG inizia liv 3</li>
+            <li><strong>Pro:</strong> Bilancia potere, mantiene sfida</li>
+            <li><strong>Contro:</strong> Meno OSR "puro" (morti non tutte uguali)</li>
+        </ul>
+        
+        <p style="margin-top: 1rem;"><strong>Raccomandazione:</strong> Opzione 1 per campagne 1-6 sessioni. Opzione 3 per 7+ sessioni (evita frustrazione disparità estrema).</p>
+    </div>
+    
+    <h3>Calendari e Timeline</h3>
+    
+    <div class="box">
+        <h4>Tracciare Tempo In-Game</h4>
+        <p><strong>Mantenere senso tempo passare è cruciale per pressione economica.</strong></p>
+        
+        <h5>Metodo Semplice:</h5>
+        <pre><code>SESSIONE 1: Settimana 1 (es: 6-12 Gennaio 2045)
+Missione: 1 giorno (6 Gen)
+Downtime: 6 giorni
+Spese: -$900
+Stipendio: +$800
+Netto: -$100
+
+SESSIONE 2: Settimana 2 (13-19 Gennaio)
+[ripeti...]</code></pre>
+        
+        <p><strong>Non serve precisione minuto-per-minuto.</strong> Approssimazione settimanale basta. Focus: accumulo deficit, countdown eventi.</p>
+    </div>
+    
+    <h3>Evolvere PNG</h3>
+    
+    <div class="box success">
+        <h4>PNG Devono Cambiare Basato su Azioni PG</h4>
+        
+        <h5>Esempio: Hayes</h5>
+        <ul>
+            <li><strong>Se PG sempre leali (Lealtà 8+):</strong> Hayes si apre. Rivela suo Quirk (Sindrome Testimone). Chiede aiuto personale. Diventa alleata vera, non solo boss.</li>
+            <li><strong>Se PG mediocri (Lealtà 4-6):</strong> Hayes professionale ma distante. Fa lavoro. Zero legame emotivo.</li>
+            <li><strong>Se PG corrotti (Lealtà 1-3):</strong> Hayes ostile. Assegna missioni suicide. Cerca evidenza per arresto. Possibile antagonista finale.</li>
+        </ul>
+        
+        <h5>Esempio: Zhou</h5>
+        <ul>
+            <li><strong>Se PG lavorano con lei (Corruzione 7+):</strong> Zhou protettiva. <em>"Sei asset prezioso. Nessuno ti tocca."</em> Ma proprietà implicita.</li>
+            <li><strong>Se PG neutrali:</strong> Zhou cortese ma calcolatrice. Offerte business. Niente personale.</li>
+            <li><strong>Se PG ostacolano (arrestano suoi membri, rovinano operazioni):</strong> Zhou fredda. <em>"Mi hai costato $50k. Debito registrato. Ripagherai. Prima O poi."</em> Minaccia long-term.</li>
+        </ul>
+        
+        <p><strong>PNG statici = mondo morto.</strong> PNG reattivi = mondo vivo.</p>
+    </div>
+    
+    <h3>Hook per Campagne Future</h3>
+    
+    <div class="box">
+        <p><strong>Se gruppo vuole continuare dopo 10 sessioni:</strong></p>
+        
+        <h4>Opzione A: Nuova Generazione</h4>
+        <p>Salta 5 anni avanti. PG originali sono ritirati/morti/Echi. Nuovi PG sono reclute che sentono leggende veterani. Mondo cambiato (Zhou più potente? Divisione riformata? Nuova minaccia?).</p>
+        
+        <h4>Opzione B: Escalation Geografica</h4>
+        <p>Las Vegas stabilizzata. Divisione manda PG a NUOVO epicentro Oculus (Chicago? Tokyo? Londra?). Stesse meccaniche, ambientazione diversa.</p>
+        
+        <h4>Opzione C: Endgame Conspiracy</h4>
+        <p>PG scoprono: Oculus non era unico. Ci sono 12 nel mondo. Divisione/Zhou/Nuova fazione combattono per controllo tutti. Scala globale, stakes apocalittiche.</p>
+    </div>
+</section>
+
+<!-- PARTE XV: FAQ -->
+<section id="faq" class="section">
+    <h2>PARTE XV: DOMANDE FREQUENTI (FAQ)</h2>
+    
+    <div class="box">
+        <h4>Q: Il gioco è troppo deprimente/grigio?</h4>
+        <p><strong>A:</strong> Dipende da tavolo. Tono è morally gray, non grimdark. Ci sono momenti allegria, umorismo, speranza. Ma sì, è game su scelte difficili e conseguenze pesanti. Se gruppo preferisce heroic power fantasy, questo non è gioco giusto. Se gruppo gusta drama morale stile The Wire/Breaking Bad, questo è perfetto.</p>
+        <p><strong>Consiglio:</strong> Sessione Zero discuti tono. Usa X-Card. Permetti momenti levità (Doc ubriaco racconta barzellette, PG fanno serata off-duty).</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Cosa faccio se PG ignorano completamente economia?</h4>
+        <p><strong>A:</strong> Forza conseguenze naturali:</p>
+        <ul>
+            <li>Settimana 1 no paga affitto → Warning landlord</li>
+            <li>Settimana 2 → Sfratto notice</li>
+            <li>Settimana 3 → Sceriffo + deputy, roba in strada</li>
+            <li>Settimana 4+ → Homeless (dormi auto/strada, -2 COS, equipaggiamento rubato)</li>
+        </ul>
+        <p><strong>Non "punisci" - applica fisica mondo.</strong> Affitto non pagato = sfratto. Medicina non comprata = Quirk. Causa-effetto neutrale.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: PG vendono TUTTO a Zhou, ignorano Divisione. Rovina gioco?</h4>
+        <p><strong>A:</strong> No - è scelta valida! Ma applica conseguenze:</p>
+        <ul>
+            <li>Lealtà crolla (0 eventually)</li>
+            <li>Hayes scopre (investigazione interna)</li>
+            <li>Arresto tentato (PG vs squadre Sigma)</li>
+            <li>Campagna diventa: fuga + lavorare 100% per Zhou (che ora li POSSIEDE)</li>
+        </ul>
+        <p>Questo è outcome legittimo. Non "fallimento" - è storia diversa. <em>"Da agenti corrotti a criminali full-time."</em> Abbraccia.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: PG hanno 4 Quirk, rifiutano entrare zone rosse. Stallo?</h4>
+        <p><strong>A:</strong> Offri alternative:</p>
+        <ul>
+            <li><strong>Missioni zona gialla/arancione</strong> (meno pagano ma meno contaminazione)</li>
+            <li><strong>Lavori "staff"</strong> (addestrare reclute, analizzare dati - stipendio solo)</li>
+            <li><strong>Ritiro onorevole</strong> (pensione parziale se Lealtà 7+)</li>
+            <li><strong>Rimozione Quirk</strong> (rischiosa ma opzione)</li>
+        </ul>
+        <p>O suggerisci giocatore crei PG nuovo, questo ritira. <strong>4 Quirk = fine naturale carriera.</strong></p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Come bilancio combattimenti se sistema è letale?</h4>
+        <p><strong>A:</strong> Non bilanci. OSR non è balanced encounters. Ma:</p>
+        <ul>
+            <li><strong>Telegrafati pericolo:</strong> <em>"Eco è enorme, 3m alto, occhi vuoti. Probabilmente fortissimo."</em></li>
+            <li><strong>Offri escape:</strong> Sempre via fuga (porta, finestra, nascondiglio)</li>
+            <li><strong>Morale nemici:</strong> Nemici fuggono se perdono 50%+ alleati. Non combattono morte.</li>
+            <li><strong>Informazioni pre-combat:</strong> PG intelligenti evitano combat con prep (imboscata, veleno, trappola)</li>
+        </ul>
+        <p><strong>Se PG muoiono a combattimento "ingiusto":</strong> Era loro scelta ingaggiare. Morte è conseguenza, non errore tuo.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Posso usare sistema con ambientazione diversa?</h4>
+        <p><strong>A:</strong> Assolutamente! Meccaniche core (roll-under, Lealtà/Corruzione, Quirk, economia) funzionano con qualsiasi setting morally gray. Esempi:</p>
+        <ul>
+            <li><strong>Cyberpunk:</strong> Runners corporativi, cyberware invece Quirk, Corruzione = debiti corpo</li>
+            <li><strong>Western:</strong> Banditi/sceriffi confine, Quirk = ferite permanenti, Corruzione = wanted level</li>
+            <li><strong>Medieval Dark Fantasy:</strong> Mercenari, Quirk = mutazioni magiche, Corruzione = maledizioni</li>
+            <li><strong>Modern Spy:</strong> Agenti CIA, Quirk = traumi psicologici, Corruzione = kompromat</li>
+        </ul>
+        <p><strong>Core è pressione morale/economica + conseguenze permanenti.</strong> Resto è cosmetico.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Sessione Zero - cosa coprire?</h4>
+        <p><strong>A:</strong> Lista essenziale:</p>
+        <ol>
+            <li><strong>Tono gioco:</strong> Grigio, conseguenze pesanti, morte possibile. Ok per tutti?</li>
+            <li><strong>Safety tools:</strong> X-Card, Lines/Veils. Cosa è off-limits?</li>
+            <li><strong>Morte permanente:</strong> Sì O "3 TS" opzione? Decidere insieme.</li>
+            <li><strong>Aspettative frequenza:</strong> Settimanale? Mensile? One-shot O campagna?</li>
+            <li><strong>PvP:</strong> Permesso? (es: PG tradisce PG per Zhou) O no?</li>
+            <li><strong>Stile gioco:</strong> Tactical? Roleplay-heavy? Bilanciato?</li>
+            <li><strong>Contenuti sensibili:</strong> Qualcuno ha trigger? (violenza grafica, droghe, debiti, temi economici stressanti?)</li>
+        </ol>
+        <p><strong>30-60 min sessione zero previene 90% problemi futuri.</strong></p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Giocatore si lamenta "Personaggio corrotto contro volontà mia"</h4>
+        <p><strong>A:</strong> Chiarisci: Corruzione non è "malvagità" - è <strong>compromesso economico/sociale</strong>. Puoi avere Corruzione 7 e essere persona morale che fa scelte disperate. Corruzione misura quanto mercato nero ti conosce/possiede.</p>
+        <p>Se giocatore davvero disagio, offri missione "pulita slate": testimoniare contro Zhou (rischio morte ma -5 Corruzione). O ritiro PG, nuovo personaggio.</p>
+        <p><strong>Ma ricorda:</strong> Sistema è progettato SPINGERE verso corruzione. Se rimuovi pressione, rimuovi punto centrale gioco.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Ho solo 2 giocatori. Funziona?</h4>
+        <p><strong>A:</strong> Sì ma modifica:</p>
+        <ul>
+            <li><strong>Dai 2 PG ciascuno:</strong> Ogni giocatore controlla 2 personaggi (totale 4 PG squad)</li>
+            <li><strong>PNG companion:</strong> Assegna PNG Divisione fidato (controllato giocatori turno-per-turno)</li>
+            <li><strong>Riduci difficoltà combat:</strong> -20% nemici O -2 PF nemici</li>
+        </ul>
+        <p>Gioco funziona 2-5 giocatori. Sweet spot è 3-4.</p>
+    </div>
+    
+    <div class="box">
+        <h4>Q: Quanto devo conoscere D&D per dirigere questo?</h4>
+        <p><strong>A:</strong> Zero. Sistema è self-contained. Se sai tirare d20 e sottrarre, sai tutto necessario.</p>
+        <p><strong>Se conosci D&D:</strong> Alcuni termini familiari (THAC0, TS, PF) ma usati modo semplificato. Dimentica skill checks complessi D&D - qui è solo "tira d20 sotto attributo".</p>
+        <p><strong>Se nuovo a RPG:</strong> Leggi Parte III (Sistema), gioca Loop Chicago (tutorial naturale), sei pronto.</p>
+    </div>
+</section>
+
+<!-- PARTE XVI: CREDITI E LICENZA -->
+<section id="crediti" class="section">
+    <h2>PARTE XVI: CREDITI E LICENZA</h2>
+    
+    <div class="box success">
+        <h3>🎲 Ucronie e Tesori v2.0</h3>
+        <p style="font-size: 1.2rem;"><strong>Design, Scrittura, Sviluppo:</strong> Riccardo Sgaringi</p>
+        <p><strong>Pubblicazione:</strong> ilgiocointavolo.it</p>
+        <p><strong>Anno:</strong> 2024</p>
+        <p><strong>Versione:</strong> 2.0 REFINED (Ottobre 2024)</p>
+    </div>
+    
+    <h3>Ringraziamenti</h3>
+    
+    <div class="box">
+        <h4>Playtesting</h4>
+        <p>Grazie a tutti i playtest groups che hanno testato versioni alpha/beta e fornito feedback prezioso. Le vostre morti orribili hanno migliorato gioco per tutti.</p>
+        
+        <h4>Influenze e Ispirazioni</h4>
+        <ul>
+            <li><strong>Breaking Bad</strong> (Vince Gilligan) - Progressione morale grigia, pressione economica come motore narrativo</li>
+            <li><strong>Looper</strong> (Rian Johnson) - Paradossi temporali, confronto con sé stesso futuro</li>
+            <li><strong>The Wire</strong> (David Simon) - Sistema corrotto, nessun eroe puro, conseguenze istituzionali</li>
+            <li><strong>Disco Elysium</strong> (ZA/UM) - Skill checks come character revelation, mondo indifferente</li>
+            <li><strong>Old School Essentials</strong> (Gavin Norman) - Sistema OSR baseline, THAC0, TS</li>
+            <li><strong>Troika!</strong> (Melsonian Arts Council) - Backgrounds creativi, sistema semplice</li>
+            <li><strong>Mothership RPG</strong> (Tuesday Knight Games) - Stress/trauma mechanics, death saves</li>
+            <li><strong>Into The Odd</strong> (Chris McDowall) - Semplicità radicale, ruling over rules</li>
+            <li><strong>Blades in the Dark</strong> (John Harper) - Fazioni, heat/wanted, downtime economy</li>
+        </ul>
+        
+        <h4>Community OSR</h4>
+        <p>Gratitudine immensa alla community OSR italiana e internazionale per aver tenuto vivo design philosophy "player skill over character build" e "world is neutral, not fair".</p>
+    </div>
+    
+    <h3>Licenza</h3>
+    
+    <div class="box">
+        <h4>Creative Commons Attribution 4.0 International (CC BY 4.0)</h4>
+        
+        <p><strong>Sei libero di:</strong></p>
+        <ul>
+            <li><strong>Condividere:</strong> Copiare e redistribuire materiale in qualsiasi mezzo O formato</li>
+            <li><strong>Adattare:</strong> Remixare, trasformare, costruire su materiale per qualsiasi scopo, anche commerciale</li>
+        </ul>
+        
+        <p style="margin-top: 1rem;"><strong>Alle seguenti condizioni:</strong></p>
+        <ul>
+            <li><strong>Attribuzione:</strong> Devi dare credito appropriato, fornire link alla licenza, e indicare se modifiche sono state fatte. Puoi farlo in qualsiasi modo ragionevole, ma non in modo suggerisca licensor endorsi te O tuo uso.</li>
+        </ul>
+        
+        <p style="margin-top: 1rem;"><strong>Nessuna restrizione aggiuntiva:</strong> Non puoi applicare termini legali O misure tecnologiche che legalmente restringano altri dal fare qualsiasi cosa licenza permette.</p>
+        
+        <p style="margin-top: 1rem;"><strong>Testo completo licenza:</strong> <a href="https://creativecommons.org/licenses/by/4.0/" style="color: var(--accent-blue);">https://creativecommons.org/licenses/by/4.0/</a></p>
+    </div>
+    
+    <div class="box warning">
+        <h4>Attribuzione Suggerita</h4>
+        <p>Se usi/adatti questo gioco, per favore includi:</p>
+        <pre style="font-size: 0.95rem;"><code>"Basato su Ucronie e Tesori di Riccardo Sgaringi
+(ilgiocointavolo.it), licensed under CC BY 4.0"</code></pre>
+    </div>
+    
+    <h3>Cosa Puoi Fare Con Questo Gioco</h3>
+    
+    <div class="box success">
+        <h4>✅ Permesso Esplicito Per:</h4>
+        <ul>
+            <li>Pubblicare hack/varianti (es: "Ucronie e Tesori Cyberpunk Edition")</li>
+            <li>Creare avventure/moduli aggiuntivi</li>
+            <li>Tradurre in altre lingue</li>
+            <li>Usare in contesto commerciale (vendere PDF, print-on-demand, Kickstarter)</li>
+            <li>Streaming/podcast/actual play (YouTube, Twitch, podcast)</li>
+            <li>Insegnare in workshop/convention</li>
+            <li>Includere in bundle/anthology</li>
+        </ul>
+        <p><strong>Unica richiesta: Dai credito (vedi attribuzione sopra).</strong></p>
+    </div>
+    
+    <h3>Contatti e Feedback</h3>
+    
+    <div class="box">
+        <p><strong>Sito Web:</strong> <a href="https://ilgiocointavolo.it" style="color: var(--accent-blue);">ilgiocointavolo.it</a></p>
+        <p><strong>Email:</strong> [inserisci email se vuoi feedback diretto]</p>
+        <p><strong>Itch.io:</strong> [se pubblichi lì, link]</p>
+        <p><strong>DriveThruRPG:</strong> [se pubblichi lì, link]</p>
+        
+        <p style="margin-top: 1rem;"><strong>Feedback benvenuto!</strong> Se giochi questo gioco, per favore mandami feedback:</p>
+        <ul>
+            <li>Cosa ha funzionato al tuo tavolo?</li>
+            <li>Cosa è stato confuso?</li>
+            <li>Quali house rules hai usato?</li>
+            <li>Storie memorabili/morti eroiche/tradimenti epici?</li>
+        </ul>
+        <p>Le tue esperienze aiutano migliorare gioco per versioni future.</p>
+    </div>
+    
+    <h3>Versioning</h3>
+    
+    <div class="box">
+        <h4>Storia Versioni</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 120px;">Versione</th>
+                    <th style="width: 120px;">Data</th>
+                    <th>Modifiche Principali</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>v1.0 Alpha</strong></td>
+                    <td>Giu 2024</td>
+                    <td>Concept iniziale, meccaniche base, Loop Chicago prima draft</td>
+                </tr>
+                <tr>
+                    <td><strong>v1.5 Beta</strong></td>
+                    <td>Ago 2024</td>
+                    <td>Playtest feedback integrato, sistema economia refinato, Quirk espanso a 12</td>
+                </tr>
+                <tr>
+                    <td><strong>v2.0 REFINED</strong></td>
+                    <td>Ott 2024</td>
+                    <td>Release pubblica. Manuale completo HTML, generatori integrati, 3 files, tutorial Loop Chicago completo, materiali Direttore espansi</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p style="margin-top: 1rem;"><strong>Prossime versioni (possibili):</strong></p>
+        <ul>
+            <li>v2.1: Avventure aggiuntive (3-4 moduli)</li>
+            <li>v2.5: Espansione Zone (Chicago, Tokyo, London as settings)</li>
+            <li>v3.0: Companion PDF con generatori offline, schede stampabili, NPC cards</li>
+        </ul>
+    </div>
+    
+    <h3>Note Finali dall'Autore</h3>
+    
+    <div class="box">
+        <p style="font-size: 1.1rem; font-style: italic;">Grazie per aver letto fino a qui. Ucronie e Tesori è nato da domanda semplice: <strong>"Cosa succede quando Walter White incontra D&D OSR?"</strong></p>
+        
+        <p style="margin-top: 1rem;">Ho voluto creare gioco dove scelte morali contano davvero, dove economia non è solo "contare monete d'oro" ma pressione narrativa, dove conseguenze sono permanenti e pesanti.</p>
+        
+        <p style="margin-top: 1rem;">Se questo gioco fa sedere gruppo e dopo 3 ore sono ESAUSTI emotivamente, se parlano per giorni di quella scelta difficile, se ricordano morti PG per anni... allora ha funzionato.</p>
+        
+        <p style="margin-top: 1rem;">Questo non è gioco per tutti. È gioco per tavoli che vogliono drammi grigi, conseguenze reali, e storie che fanno male ma sono memorabili.</p>
+        
+        <p style="margin-top: 1rem; font-size: 1.2rem;"><strong>Buon gioco. Fate scelte difficili. Sopravvivete se potete.</strong></p>
+        
+        <p style="text-align: right; margin-top: 2rem; font-size: 1.1rem;">— Riccardo Sgaringi<br>Ottobre 2024</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p style="font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 1rem;">⏳ UCRONIE E TESORI v2.0 ⏳</p>
+    <p><strong>© 2024 Riccardo Sgaringi</strong> | ilgiocointavolo.it</p>
+    <p style="margin-top: 1rem;">Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" style="color: var(--accent-blue);">Creative Commons BY 4.0</a></p>
+    <p style="margin-top: 1rem; font-style: italic;">"Breaking Bad meets OSR meets Looper"</p>
+    
+    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--accent-gold);">
+        <p><strong>Manuale Completo HTML</strong> - Tutti i Files:</p>
+        <p style="margin-top: 0.5rem;">
+            📄 <strong>FILE 1:</strong> Sistema Base (Pilastri, Creazione PG, Meccaniche, Esplorazione, Contaminazione)<br>
+            📄 <strong>FILE 2:</strong> Contenuto Centrale (Quirk, Economia, Lealtà, Progressione, Mondo, Loop Chicago)<br>
+            📄 <strong>FILE 3:</strong> Materiali Direttore (Guida, Tabelle Random, Gestione Campagna, FAQ, Crediti)
+        </p>
+    </div>
+    
+    <p style="margin-top: 2rem; font-size: 1.3rem; font-weight: bold; color: var(--accent-gold);">
+        Il tempo ti guarda. Fai scelte che contano.
+    </p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+// Scroll to top button
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTop');
+    btn.className = window.pageYOffset > 300 ? 'scroll-top show' : 'scroll-top';
+});
+
+// Già definiti sopra: generateMission(), generateNPC(), generateTreasure()
+</script>
+
+</body>
+</html>

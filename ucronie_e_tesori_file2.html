@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucronie e Tesori v2.0 | PARTE 2: Contenuto Centrale</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0a0e27; --accent-blue: #3498db; --accent-gold: #f39c12;
+            --accent-red: #e74c3c; --accent-purple: #9b59b6; --text: #ecf0f1; --bg: #1a1f2e;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: Georgia, serif; line-height: 1.6; color: var(--text);
+            background: linear-gradient(135deg, var(--primary), var(--bg));
+            background-attachment: fixed; padding: 0 1rem; max-width: 1200px; margin: 0 auto;
+        }
+        .header {
+            background: var(--primary); border-bottom: 3px solid var(--accent-gold);
+            padding: 2rem; text-align: center; margin: 2rem 0; border-radius: 12px;
+        }
+        .header h1 { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 0.5rem; }
+        .tagline { color: var(--accent-blue); font-style: italic; }
+        .nav { 
+            position: sticky; top: 0; background: var(--primary); 
+            padding: 1rem; border-bottom: 2px solid var(--accent-blue);
+            margin-bottom: 2rem; z-index: 100; border-radius: 8px;
+        }
+        .nav a {
+            color: var(--accent-blue); text-decoration: none;
+            margin: 0 0.5rem; font-size: 0.9rem;
+        }
+        .nav a:hover { color: var(--accent-gold); }
+        .section {
+            background: var(--bg); margin-bottom: 2rem; padding: 2rem;
+            border-radius: 12px; border-left: 4px solid var(--accent-blue);
+        }
+        h2 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem; 
+             border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; }
+        h3 { color: var(--accent-blue); font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+        h4 { color: var(--text); font-size: 1.2rem; margin: 1rem 0 0.5rem; }
+        h5 { color: var(--text); font-size: 1rem; margin: 0.8rem 0 0.4rem; font-weight: bold; }
+        p, li { margin-bottom: 0.5rem; }
+        ul, ol { margin-left: 1.5rem; }
+        .box {
+            padding: 1rem; margin: 1rem 0; border-radius: 6px;
+            border-left: 4px solid var(--accent-blue);
+            background: rgba(52, 152, 219, 0.1);
+        }
+        .warning { border-left-color: #f1c40f; background: rgba(241, 196, 15, 0.1); }
+        .danger { border-left-color: var(--accent-red); background: rgba(231, 76, 60, 0.1); }
+        .success { border-left-color: #2ecc71; background: rgba(46, 204, 113, 0.1); }
+        table {
+            width: 100%; border-collapse: collapse; margin: 1rem 0;
+            background: var(--primary);
+        }
+        th { background: var(--accent-blue); color: white; padding: 0.8rem; text-align: left; }
+        td { padding: 0.8rem; border-bottom: 1px solid var(--bg); }
+        tr:hover { background: rgba(52, 152, 219, 0.1); }
+        .badge {
+            display: inline-block; padding: 0.2rem 0.6rem;
+            border-radius: 12px; font-size: 0.85rem; font-weight: bold;
+        }
+        .badge-danger { background: var(--accent-red); color: white; }
+        .badge-warning { background: #f1c40f; color: black; }
+        .badge-info { background: var(--accent-blue); color: white; }
+        .badge-success { background: #2ecc71; color: white; }
+        pre {
+            background: var(--primary); padding: 1rem; border-radius: 6px;
+            overflow-x: auto; margin: 1rem 0; font-size: 0.9rem;
+        }
+        code { color: var(--accent-blue); }
+        .scroll-top {
+            position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+            background: var(--accent-gold); border: none; border-radius: 50%;
+            cursor: pointer; display: none; font-size: 1.5rem; color: var(--primary);
+        }
+        .scroll-top.show { display: block; }
+        .footer {
+            text-align: center; padding: 2rem; margin-top: 2rem;
+            border-top: 2px solid var(--accent-gold);
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .section { padding: 1rem; }
+            h2 { font-size: 1.5rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>⏳ UCRONIE E TESORI ⏳</h1>
+    <p class="tagline">"Breaking Bad meets OSR meets Looper"</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.0 REFINED | PARTE 2: Contenuto Centrale</p>
+</header>
+
+<nav class="nav">
+    <a href="#quirk">Quirk</a>
+    <a href="#economia">Economia</a>
+    <a href="#lealta">Lealtà</a>
+    <a href="#progressione">Progressione</a>
+    <a href="#mondo">Il Mondo</a>
+    <a href="#loop">Loop Chicago</a>
+</nav>
+
+<div class="container">
+
+<!-- PARTE VI: SISTEMA QUIRK -->
+<section id="quirk" class="section">
+    <h2>PARTE VI: SISTEMA QUIRK</h2>
+    
+    <div class="box danger">
+        <h3>Cosa Sono i Quirk</h3>
+        <p><strong>Quirk sono mutazioni permanenti</strong> causate da esposizione temporale prolungata. Non sono "maledizioni fantasy" o "poteri cool". Sono il <strong>prezzo biologico dell'impossibile</strong> - cosa succede quando corpo umano normale cerca esistere in spazio dove tempo è rotto.</p>
+        <p style="font-size: 1.1rem; margin-top: 1rem;"><strong>Ogni Quirk è cicatrice permanente che racconta: "Sono andato troppo lontano e sono tornato... cambiato."</strong></p>
+    </div>
+    
+    <h3>Regole Base Quirk</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Aspetto</th>
+                <th>Regola</th>
+                <th>Perché Importante</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Acquisizione</strong></td>
+                <td>Fallendo TS vs Contaminazione (ogni 4h in zona temporale)</td>
+                <td>Non puoi evitare completamente - solo ritardare</td>
+            </tr>
+            <tr>
+                <td><strong>Permanenza</strong></td>
+                <td>Quirk sono <strong>permanenti</strong> (rimozione possibile ma rischiosa)</td>
+                <td>Ogni scelta ha peso. Non esiste reset.</td>
+            </tr>
+            <tr>
+                <td><strong>Limite</strong></td>
+                <td>Massimo 5 Quirk per personaggio</td>
+                <td>Countdown verso fine. Crea tensione crescente.</td>
+            </tr>
+            <tr>
+                <td><strong style="color: var(--accent-red);">Al 6° Quirk</strong></td>
+                <td><strong style="color: var(--accent-red);">Diventi Eco Temporale (PNG, perso per sempre)</strong></td>
+                <td>Hard limit narrativo. Corpo/mente non reggono.</td>
+            </tr>
+            <tr>
+                <td><strong>Progressione</strong></td>
+                <td>Ogni Quirk peggiora lentamente (1 stadio ogni 30 giorni in-game)</td>
+                <td>Anche se non prendi nuovi Quirk, quelli vecchi evolvono</td>
+            </tr>
+            <tr>
+                <td><strong>Visibilità</strong></td>
+                <td>Maggioranza Quirk sono visibili (altri vedono sei "contaminato")</td>
+                <td>Stigma sociale. CAR penalità. Paura civili.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Tabella Quirk Completa (d12)</h3>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">1</span> SANGUINAMENTO MNEMONICO</h4>
+        <p><strong>Sintomo Visibile:</strong> Occhi si muovono frenetici guardando cose che non ci sono. Parli a persone invisibili. Episodi 2-3 volte/giorno, durata 1d6 minuti.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>-2 Iniziativa (sempre sorpreso primo round, mente altrove)</li>
+            <li>Primo round ogni combattimento: sei disoriented (puoi solo difendere O muovere, non attaccare)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Ricordi vite che non hai mai vissuto irrompono coscienza senza preavviso. Vedi morte tua moglie (non hai moglie). Ricordi guerra in cui non hai combattuto. Flashback paralizzanti.</p>
+        <p><strong>Progressione (30 giorni):</strong> Flashback durano 1d6 ore. -4 Iniziativa. Difficile distinguere memoria vera da falsa.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">2</span> GLOSSOLALIA TEMPORALE</h4>
+        <p><strong>Sintomo Visibile:</strong> Cambi lingua mid-frase. Parli inglese, poi improvvisamente latino, poi mandarino, poi lingua mai sentita. Non te ne accorgi finché altri non ti fermano.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>-2 tutti check sociali (Persuasione, Inganno, Intimidire) con chi non conosce Quirk</li>
+            <li>Comunicazione complessa richiede check INT (difficoltà -2) per "tenere" lingua corretta</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Lingua è ancoraggio temporale - definisce "quando" sei. Quando ancoraggio rompe, scorri lingue epoche diverse inconsciamente.</p>
+        <p><strong>Bonus Nascosto:</strong> Capisci tutte lingue umane (passato e futuro) quando le senti - INT check per tradurre.</p>
+        <p><strong>Progressione:</strong> Non parli più lingue coerenti - solo frammenti mischiati. Comunicazione verbale quasi impossibile (-4 sociale).</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">3</span> ENTROPIA ACCELERATA</h4>
+        <p><strong>Sintomo Visibile:</strong> <strong>Invecchi 1d10 anni istantaneamente.</strong> Capelli bianchi/cadono. Rughe profonde. Pelle floscia. Denti allentati/cadono. Vista peggiora.</p>
+        <p><strong>Effetto Meccanico Immediato:</strong></p>
+        <ul>
+            <li>Se età risultante 50-60: -1 FOR, -1 DES (corpo meno reattivo)</li>
+            <li>Se età risultante 60-70: -2 FOR, -2 DES, -1 COS</li>
+            <li>Se età 70+: -3 FOR, -3 DES, -2 COS (anziano, fragile)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Tempo accelera solo per te. Altri vedono succedere in 10 secondi - capelli che diventano grigi mentre guardano, pelle che si corruga in tempo reale. Orrore body horror puro.</p>
+        <p><strong>Progressione:</strong> Ogni 30 giorni, invecchi altri 1d6 anni. Eventualmente: morte per vecchiaia.</p>
+        <p><strong>Nota Sociale:</strong> Aspetto drasticamente diverso. Amici/famiglia potrebbero non riconoscerti. CAR -2 con chi ti conosceva "prima".</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">4</span> RIGETTO TECNOLOGICO</h4>
+        <p><strong>Sintomo Visibile:</strong> Tecnologia moderna (post-1980) fallisce in tua presenza. Telefoni si spengono. Computer crashano. Auto hanno problemi motore. Luci LED flickerano.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>Ogni volta usi dispositivo elettronico moderno: INT check (difficoltà -2)</li>
+            <li>Fallimento = dispositivo si spegne/rompe/malfunziona</li>
+            <li>Criticamente: toccare plastica/elettronica causa ustioni minori (1 danno, doloroso)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Sei "accordato" su frequenza temporale sbagliata. Tecnologia moderna esiste in futuro rispetto tua biologia. Corpo la rigetta come sistema immunitario rigetta organo trapiantato.</p>
+        <p><strong>Implicazioni:</strong> No telefono. No computer. No auto moderne. Devi usare tecnologia analogica (anni '70 o prima). Pistola va bene (meccanica semplice). Radio digitale no.</p>
+        <p><strong>Progressione:</strong> Anche tecnologia anni '50-'70 inizia fallire. Solo strumenti pre-industriali funzionano affidabili.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">5</span> NOSTALGIA PARASSITA</h4>
+        <p><strong>Sintomo Visibile:</strong> Vesti abiti epoca passata (1920-1960). Parli usando slang vecchio. Confuso da tecnologia/eventi moderni. "Cosa vuol dire 'smartphone'?"</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>+2 INT quando riguarda Storia/Archeologia (ricordi come se vissuto lì)</li>
+            <li>-2 SAG Percezione per eventi/oggetti moderni (mente li "filtra" come non importanti)</li>
+            <li>Difficoltà interagire presente - vivi mentalmente in epoca passata</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Coscienza scivola indietro temporale. Ricordi epoca come se fossi vissuto lì. Sai prezzi benzina 1952. Ricordi proibizionismo. Ma oggi? Oggi è sfocato, irreale, temporaneo.</p>
+        <p><strong>Roleplaying:</strong> Ottimo per momenti tragicomici. "Vado chiamare mia moglie." "Non hai moglie." "Certo che ho. Betty. Si sposa con me nel '58."</p>
+        <p><strong>Progressione:</strong> Smetti completamente interagire presente. Vivi solo memorie passate. Non riconosci alleati attuali.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">6</span> SINDROME DEL TESTIMONE</h4>
+        <p><strong>Sintomo Visibile:</strong> Fissi vuoto costantemente. Indichi cose che non ci sono. Parli di "loro" che ti guardano. Sussurri avvertimenti su eventi non accaduti (ancora).</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>Vedi entità temporali invisibili ad altri (Echi, fantasmi loop, versioni alternative persone)</li>
+            <li>-1 Morale (costante sensazione essere osservato)</li>
+            <li>+2 SAG per notare imboscate/pericoli (entità ti avvertono)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Percezione si espande oltre "ora". Vedi fili temporali intorno persone - versioni loro che erano/saranno. Vedi morti che non sono ancora morti. Ti parlano. Ti avvertono. O mentono.</p>
+        <p><strong>Ambiguità:</strong> Direttore può usare questo per dare vere info (entità vedono futuro) O false info (entità mentono/confuse). Giocatore non sa mai quale.</p>
+        <p><strong>Progressione:</strong> Entità diventano più insistenti. Parli più con loro che con persone reali. Alleati pensano sei pazzo (forse lo sei).</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">7</span> CICATRICI INVERSE</h4>
+        <p><strong>Sintomo Visibile:</strong> Ferite appaiono PRIMA di essere inflitte. Sanguini da taglio che riceverai domani. Lividi da colpo che subirai settimana prossima.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>Guarigione funziona AL CONTRARIO: Riposo RIMUOVE PF invece di aggiungere</li>
+            <li>Riposo breve: -1 PF</li>
+            <li>Riposo lungo: -1d6 PF</li>
+            <li>Kit medico/magie: funzionano normale (causali, non temporali)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Causalità invertita. Effetto precede causa per tuo corpo. Sanguini dal futuro. Invecchiamento ferite va al contrario - peggiorano invece migliorare.</p>
+        <p><strong>Implicazione Terrificante:</strong> Quando hai ferita grave, sai che in FUTURO qualcosa ti ferirà. È premonizione biologica. E non puoi evitarla - è già successa dal punto vista causa-effetto.</p>
+        <p><strong>Progressione:</strong> Ferite appaiono sempre più in anticipo. Mesi prima trauma. Vivi in stato costante ferite non spiegate.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">8</span> LOOP MENTALE</h4>
+        <p><strong>Sintomo Visibile:</strong> Rivivi stesso momento traumatico periodicamente. Urli "NO!" guardando vuoto. Ripeti stessa frase 10 volte. Amici devono scuoterti per "svegliarti".</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>In combattimento/stress: TS vs Incantesimi ogni round</li>
+            <li>Fallimento = paralisi 1 round (rivivi loop, non puoi agire)</li>
+            <li>Alleati possono schiaffeggiarti/scuoterti = nuovo TS con +4</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Momento traumatico passato (morte amico, tradimento, errore fatale) si replica mente continuamente. Per te accade DI NUOVO, in tempo reale, mentre altri vedono te bloccato staring into space.</p>
+        <p><strong>Definisci Trauma:</strong> Giocatore sceglie quale momento è (con Direttore). Esempi: "Morte fratello", "Prima volta ucciso qualcuno", "Momento persi tutto". Dovrebbe essere personalmente significativo.</p>
+        <p><strong>Progressione:</strong> Loop durano più a lungo (1d6 round). Accadono anche fuori combattimento. Confini realtà/loop sfumano.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">9</span> MAGNETISMO ENTROPICO</h4>
+        <p><strong>Sintomo Visibile:</strong> Metalli entro 3 metri corrodono accelerato. Orologi si fermano. Monete diventano verdi. Armi si arrugginiscono. Gioielli si opacizzano.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>Oggetti metallici che porti: INT check settimanale o si rompono/degradano</li>
+            <li>Armi metalliche: -1 danno (corrose)</li>
+            <li>Armature metalliche: -1 CA (deteriorate)</li>
+            <li>Elettronica con componenti metallici: malfunziona spesso</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Emani campo entropico - acceleri deterioramento materia inorganica. Sei come "isola" dove tempo scorre più veloce solo per oggetti senza vita.</p>
+        <p><strong>Implicazione Pratica:</strong> Devi sostituire equipaggiamento frequentemente. Costoso. Alleati evitano prestarti oggetti metallici preziosi.</p>
+        <p><strong>Bonus Nascosto:</strong> Puoi VOLONTARIAMENTE accelerare corrosione toccando metallo (check INT) - utile per rompere lucchetti, serrature, catene.</p>
+        <p><strong>Progressione:</strong> Raggio aumenta a 10m. Anche oggetti organici iniziano deteriorare (legno marcisce, tessuti si sfaldano).</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">10</span> PRESCIENZA MALEDETTA</h4>
+        <p><strong>Sintomo Visibile:</strong> Dici morte persone prima accadano. "Morirai giovedì, cadendo scale." Senza emozione. Come leggi lista. Persone ti evitano (unnerving).</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>+1 TUTTI Tiri Salvezza (vedi pericoli istante prima)</li>
+            <li>CAR diventa 3 (minimo possibile - sei TERRIFICANTE socialmente)</li>
+            <li>-4 tutti check sociali tranne Intimidire (quello +2)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Vedi linee temporali convergere su morti. Quando guardi persona, vedi come/quando morirà. Non puoi non dirlo - esce bocca automaticamente, senza filtri sociali.</p>
+        <p><strong>Il Peso Conoscere:</strong> Dici verità. Sai davvero come moriranno. A volte puoi prevenire (se avverti). Spesso no (destino inevitabile). Devono decidere: crederti o ignorarti?</p>
+        <p><strong>Progressione:</strong> Vedi morti più distanti futuro. Vedi anche morti alternative (multiverso). Non sai più quale timeline è "vera".</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">11</span> DERIVA CRONOLOGICA</h4>
+        <p><strong>Sintomo Visibile:</strong> Età apparente cambia giornalmente. Sveglia 25 anni, pranzo sembri 60, sera 12 anni. Specchi mostrano età diverse contemporaneamente.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>Ogni giorno: tira 1d20-10 = cambio età apparente</li>
+            <li>1-5 = -9 a -5 anni (bambino/adolescente)</li>
+            <li>6-15 = -4 a +5 anni (vicino età vera)</li>
+            <li>16-20 = +6 a +10 anni (anziano)</li>
+            <li>Stats NON cambiano - solo aspetto</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Età biologica e età percepita sono desinconizzate. Per osservatore esterno, sei persona diversa ogni giorno. Amici non ti riconoscono. ID non funzionano.</p>
+        <p><strong>Implicazione Sociale:</strong> Relazioni difficili. "Chi sei?" "Sono io, Marco!" "Marco ha 30 anni. Tu ne sembri 70." Alienazione totale.</p>
+        <p><strong>Vantaggio Tattico:</strong> Infiltrazione facile (aspetto cambia). Ma coordinare con team è caos ("Come ti riconosco domani?").</p>
+        <p><strong>Progressione:</strong> Cambi età più volte al giorno. A volte sei multipli età simultaneamente (testa vecchia, corpo giovane). Orrore body horror.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4><span class="badge badge-danger">12</span> FRAMMENTAZIONE PARZIALE</h4>
+        <p><strong>Sintomo Visibile:</strong> Parti corpo sono traslucide, semi-esistenti. Mano sinistra vedi attraverso. A volte passa attraverso oggetti solidi involontariamente.</p>
+        <p><strong>Effetto Meccanico:</strong></p>
+        <ul>
+            <li>1d4 parti corpo (mano, piede, braccio, gamba) sono "sfasate"</li>
+            <li>Parte sfasata: INT check (difficoltà 0) per attraversare solidi (muri, porte)</li>
+            <li>Ma: contatto fisico con parte sfasata è doloroso (1 danno/round se tocchi/afferrato)</li>
+            <li>Non puoi usare parte sfasata per attacchi normali (-2 combattimento se braccio dominante)</li>
+        </ul>
+        <p><strong>Narrativa:</strong> Stai parzialmente esistendo in momento temporale diverso. Parte corpo è "qui", parte è "altrove". Quark entanglement su scala macro.</p>
+        <p><strong>Body Horror:</strong> Guardi mano, vedi scheletro attraverso carne semi-trasparente. Alleati vedono tuo braccio "glitchare" in/out esistenza.</p>
+        <p><strong>Progressione:</strong> Più parti diventano sfasate. Eventualmente: intero corpo. A quel punto sei Eco Temporale - esisti e non esisti simultaneamente.</p>
+    </div>
+    
+    <h3>Rimozione Quirk</h3>
+    
+    <div class="box warning">
+        <p><strong>I Quirk sono permanenti per design.</strong> MA esiste procedura medica sperimentale Divisione per rimozione. È rischiosa, costosa, e non garantita.</p>
+    </div>
+    
+    <h4>Procedura Rimozione</h4>
+    
+    <h5>Requisiti:</h5>
+    <ul>
+        <li><strong>Costo:</strong> 10 CD base + 1 CD per ogni mese dall'acquisizione Quirk
+            <ul>
+                <li><em>Es: Quirk preso 3 mesi fa = 10+3 = 13 CD (≈$13.000)</em></li>
+            </ul>
+        </li>
+        <li><strong>Tempo:</strong> 1 settimana completa in facility medica Divisione (nessuna missione, downtime forzato)</li>
+        <li><strong>Lealtà:</strong> Almeno 3 (sotto 3, Divisione rifiuta - sei troppo corrotto)</li>
+    </ul>
+    
+    <h5>Procedura Rischio:</h5>
+    <ol>
+        <li>Paghi costo (CD spesi anche se fallisce)</li>
+        <li>Settimana trattamento (descrivi orrore medico - chirurgia temporale, droghe, radiazioni, dolore)</li>
+        <li>Fine settimana: <strong>TS vs Morte</strong>
+            <ul>
+                <li>Successo: Tira d100 su Tabella Conseguenze</li>
+                <li>Fallimento: <strong>Morto</strong> (trattamento troppo shock)</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h5>Tabella Conseguenze Rimozione (d100):</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>d100</th>
+                <th>Risultato</th>
+                <th>Effetto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01-25</td>
+                <td><strong>Successo Pulito</strong></td>
+                <td>Quirk rimosso completamente. Nessun effetto residuo. Raro ma possibile.</td>
+            </tr>
+            <tr>
+                <td>26-60</td>
+                <td><strong>Successo con Cicatrice</strong></td>
+                <td>Quirk rimosso MA: -1 permanente a 1 Attributo casuale (d6: FOR/DES/COS/INT/SAG/CAR). Corpo pagato prezzo.</td>
+            </tr>
+            <tr>
+                <td>61-85</td>
+                <td><strong>Trasformazione</strong></td>
+                <td>Quirk non rimosso - <strong>trasformato</strong> in Quirk diverso (tira nuovo d12). "Peggio rimedio che malattia."</td>
+            </tr>
+            <tr>
+                <td>86-95</td>
+                <td><strong>Peggioramento</strong></td>
+                <td>Quirk NON rimosso e ora stadio avanzato (come se fossero passati 30 giorni). Procedura ha aggravato.</td>
+            </tr>
+            <tr>
+                <td>96-00</td>
+                <td><strong>Rigetto Totale</strong></td>
+                <td>Quirk permanente, impossibile rimuovere mai più. Corpo ha "accettato" mutazione come parte sé.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Modificatori Probabilità</h4>
+    <ul>
+        <li><strong>Ogni CD extra speso:</strong> +10% al d100 (shift verso successo pulito)
+            <ul>
+                <li><em>Es: Spendi 15 CD invece 13 = +20 al tiro, 01-45 diventa successo pulito</em></li>
+            </ul>
+        </li>
+        <li><strong>Per ogni Quirk oltre il primo:</strong> -10% (shift verso fallimento)
+            <ul>
+                <li><em>Es: Rimuovi 3° Quirk = -20 al tiro, solo 01-05 successo pulito</em></li>
+            </ul>
+        </li>
+        <li><strong>COS 15+:</strong> +5 al tiro</li>
+        <li><strong>COS 6-:</strong> -5 al tiro</li>
+    </ul>
+    
+    <div class="box">
+        <h4>Filosofia Design Rimozione</h4>
+        <p><strong>Rimozione è possibile ma scoraggiata.</strong> Quirk dovrebbero essere <em>accettati</em>, non "fixati". Sono cicatrici che raccontano storia personaggio.</p>
+        <p>Ma opzione esiste per momenti drammatici: giocatore con 4 Quirk, disperato, spende tutto per rimuoverne uno prima 5°. Rischia morte. Forse funziona. Forse peggiora. Tensione narrativa alta.</p>
+        <p><strong>Se gruppo rimuove Quirk troppo facilmente,</strong> aumenta costi O riduci successi. Se nessuno mai rimuove, riduci costi. Calibra su gusto tavolo.</p>
+    </div>
+</section>
+
+<!-- PARTE VII: ECONOMIA -->
+<section id="economia" class="section">
+    <h2>PARTE VII: ECONOMIA DELLA DISPERAZIONE</h2>
+    
+    <div class="box danger">
+        <h3>Il Cuore Morale del Gioco</h3>
+        <p style="font-size: 1.1rem;">Sistema economico NON è "contabilità noiosa". È <strong>motore centrale pressione morale</strong>.</p>
+        <p style="font-size: 1.2rem; margin-top: 1rem;">La domanda non è "Posso permettermi affitto?" ma <strong>"Fino dove mi spingo per pagare affitto?"</strong></p>
+    </div>
+    
+    <h3>Sistema Monetario Duale</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Valuta</th>
+                <th>Dove Usi</th>
+                <th>Cosa Compri</th>
+                <th>Tracciabilità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Dollari ($)</strong></td>
+                <td>Economia legale tracciabile</td>
+                <td>Affitto, cibo, bollette, negozi normali, banca</td>
+                <td><strong>ALTA</strong> - IRS sa tutto, Divisione monitora</td>
+            </tr>
+            <tr>
+                <td><strong>Crediti Divisione (CD)</strong></td>
+                <td>Mercato nero, sottobanco</td>
+                <td>Armi illegali, favori, informazioni, tesori, equipaggiamento speciale</td>
+                <td><strong>ZERO</strong> - Untraceable, off-books</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Conversione (Non Ufficiale):</h4>
+    <ul>
+        <li><strong>1 CD ≈ $1.000</strong> (mercato nero rate)</li>
+        <li><strong>Divisione ufficialmente:</strong> "CD non sono valuta convertibile" (mentono)</li>
+        <li><strong>Realtà:</strong> CD sono valuta parallela tra agenti, criminali, mercato nero Las Vegas</li>
+    </ul>
+    
+    <h3>Spese Obbligatorie (Settimanali)</h3>
+    
+    <p><strong>Ogni settimana in-game, DEVI pagare queste spese in Dollari ($):</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Costo/Settimana</th>
+                <th>Cosa Copre</th>
+                <th>Conseguenza Non Pagamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Affitto</strong></td>
+                <td>$500</td>
+                <td>Monolocale Paradise (zona grigia), basic utilities</td>
+                <td>Dopo 2 settimane no paga: <strong>Sfratto</strong>. Senza casa = -2 COS (stress, sonno povero), equipaggiamento rubato (d6: 1-2 perdi 1d3 oggetti)</td>
+            </tr>
+            <tr>
+                <td><strong>Cibo & Necessità Base</strong></td>
+                <td>$150</td>
+                <td>Cibo, acqua, igiene, vestiti basic</td>
+                <td>Dopo 1 settimana: -1 COS (fame/stanchezza)<br>Dopo 2 settimane: -2 COS cumulativo<br>Dopo 4 settimane: -3 COS, malattie possibili</td>
+            </tr>
+            <tr>
+                <td><strong>Medicine Anti-Rigetto</strong></td>
+                <td>$250</td>
+                <td>Farmaci per rallentare effetti contaminazione temporale</td>
+                <td>Dopo 1 settimana: <strong>+1 Quirk automatico</strong> (tira d12, no TS)<br>Poi ogni settimana: altro Quirk automatico<br>(Corpo rifiuta esistenza post-Oculus senza supporto chimico)</td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong style="font-size: 1.2rem;">TOTALE SETTIMANALE</strong></td>
+                <td colspan="2"><strong style="font-size: 1.3rem; color: var(--accent-red);">$900</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Entrate</h3>
+    
+    <h4>Stipendio Divisione (Settimanale)</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Lealtà</th>
+                <th>Stipendio</th>
+                <th>Netto (dopo spese)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0-3 (Sospetto)</td>
+                <td>$600</td>
+                <td><strong style="color: var(--accent-red);">-$300</strong> (deficit critico)</td>
+            </tr>
+            <tr>
+                <td>4-7 (Standard)</td>
+                <td>$800</td>
+                <td><strong style="color: var(--accent-red);">-$100</strong> (deficit garantito)</td>
+            </tr>
+            <tr>
+                <td>8-10 (Oro)</td>
+                <td>$1.000</td>
+                <td><strong style="color: var(--success);">+$100</strong> (unico livello sostenibile)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box danger">
+        <h3>La Matematica Non Torna (Per Design)</h3>
+        <pre><code>SCENARIO STANDARD:
+Stipendio (Lealtà 5): $800/settimana
+Spese obbligatorie: -$900/settimana
+─────────────────────────────────
+DEFICIT GARANTITO: -$100/settimana
+
+DOPO 10 SETTIMANE (2-3 mesi gioco):
+Deficit accumulato: -$1.000
+─────────────────────────────────
+Sfratto imminente
+Medicine finite (Quirk automatico)
+Fame costante (-2 COS)</code></pre>
+        
+        <p style="font-size: 1.2rem; margin-top: 1rem;"><strong>Questo è INTENZIONALE.</strong></p>
+        <p>La Divisione paga poco perché <strong>vuole</strong> agenti compromessi. Persone disperate fanno scelte disperate. Scelte disperate = corruzione. Corruzione = controllo.</p>
+        <p style="font-size: 1.1rem; margin-top: 1rem; font-style: italic;">"Se pagassimo bene, agenti potrebbero permettersi principi morali. Non vogliamo agenti con principi - vogliamo agenti che obbediscono."</p>
+        <p style="text-align: right; font-size: 0.9rem;">— Hayes (off-record)</p>
+    </div>
+    
+    <h3>Entrate Alternative (Come Sopravvivi Davvero)</h3>
+    
+    <h4>1. Vendere Tesori (La Vera Economia)</h4>
+    
+    <p><strong>Ogni missione in zona temporale, trovi oggetti epoca diversa:</strong></p>
+    <ul>
+        <li>Monete antiche (oro romano, dollari argento 1800s)</li>
+        <li>Gioielli storici (anelli vittoriani, collane art deco)</li>
+        <li>Arte (quadri minori, sculture, manoscritti)</li>
+        <li>Armi rare (spade samurai, fucili civil war)</li>
+        <li>Tecnologia anacronistica (computer 2080, device futuri)</li>
+        <li><strong>Frammenti Oculus</strong> (pezzi cristallini artefatto temporale originale - MOLTO preziosi)</li>
+    </ul>
+    
+    <h5>Valori Base Tesori:</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Categoria Tesoro</th>
+                <th>Valore Mercato Nero</th>
+                <th>Rarità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monete/metalli antichi comuni</td>
+                <td>0.5-1 CD</td>
+                <td>Comune (ogni missione)</td>
+            </tr>
+            <tr>
+                <td>Gioielli storici standard</td>
+                <td>1-3 CD</td>
+                <td>Comune</td>
+            </tr>
+            <tr>
+                <td>Arte/manufatti minori</td>
+                <td>2-5 CD</td>
+                <td>Non comune</td>
+            </tr>
+            <tr>
+                <td>Arte/manufatti importanti</td>
+                <td>5-10 CD</td>
+                <td>Raro</td>
+            </tr>
+            <tr>
+                <td>Armi storiche rare/funzionanti</td>
+                <td>3-10 CD</td>
+                <td>Raro</td>
+            </tr>
+            <tr>
+                <td>Tecnologia anacronistica funzionale</td>
+                <td>8-20 CD</td>
+                <td>Molto raro</td>
+            </tr>
+            <tr>
+                <td><strong>Frammento Oculus (piccolo)</strong></td>
+                <td><strong>10-15 CD</strong></td>
+                <td><strong>Molto raro</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Frammento Oculus (grande)</strong></td>
+                <td><strong>20-30 CD</strong></td>
+                <td><strong>Estremamente raro</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h5>Procedura Vendita Tesori (5 Passi):</h5>
+    
+    <div class="box">
+        <h4>PASSO 1: Estrai Tesoro da Zona</h4>
+        <p>Ovvio ma critico: devi portare fisicamente tesoro fuori zona temporale.</p>
+        <ul>
+            <li>Peso conta (statua marmo 50kg? Difficile trasportare mentre scappi)</li>
+            <li>Fragilità conta (quadro antico si rovina se piegato)</li>
+            <li>Tempo conta (collasso zona tra 1h, decidi: tesoro O vita?)</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h4>PASSO 2: Scegli Canale Vendita</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Canale</th>
+                    <th>Tempo</th>
+                    <th>Prezzo (% valore)</th>
+                    <th>Rischio</th>
+                    <th>Corruzione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Banco Pegni</strong></td>
+                    <td>1 ora</td>
+                    <td>20%</td>
+                    <td>Basso (legale ma domande)</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>Mercato Nero (Madame Zhou)</strong></td>
+                    <td>1 giorno</td>
+                    <td>40-50%</td>
+                    <td>Medio (contatto criminale)</td>
+                    <td>+2</td>
+                </tr>
+                <tr>
+                    <td><strong>Contatto Fidato Personale</strong></td>
+                    <td>2-3 giorni</td>
+                    <td>60%</td>
+                    <td>Basso (se davvero fidato)</td>
+                    <td>+1</td>
+                </tr>
+                <tr>
+                    <td><strong>Asta Criminale Underground</strong></td>
+                    <td>1 settimana</td>
+                    <td>80-90%</td>
+                    <td>Alto (FBI watch, gang)</td>
+                    <td>+3</td>
+                </tr>
+                <tr>
+                    <td><strong>Divisione (Ufficiale)</strong></td>
+                    <td>Immediato</td>
+                    <td>30%</td>
+                    <td>Zero (legale, protetto)</td>
+                    <td>-1 (leale!)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="box">
+        <h4>PASSO 3: Negoziazione (Opzionale)</h4>
+        <p>Se vendi a persona (non istituzione), puoi negoziare:</p>
+        <ul>
+            <li>Check CAR (Persuasione O Contatti)</li>
+            <li>Successo: +10% prezzo</li>
+            <li>Fallimento: -10% prezzo O compratore sospettoso (complicazioni future)</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h4>PASSO 4: Transazione</h4>
+        <p>Scambio tesoro ↔ CD (o $).</p>
+        <p><strong>Rischi possibili (Direttore tira d6, con 1):</strong></p>
+        <ul>
+            <li>Compratore cerca fregarti (paga meno O ruba tesoro)</li>
+            <li>Polizia/FBI raid durante transazione</li>
+            <li>Gang rivale cerca rubare tesoro</li>
+            <li>Divisione scopre transazione illegale (se vendevi a mercato nero)</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h4>PASSO 5: Conseguenze</h4>
+        <p>Aggiungi Corruzione se vendita era illegale. Direttore nota chi sa ora che hai soldi (Zhou ricorda, gang ricorda, FBI ti ha su radar).</p>
+    </div>
+    
+    <h4>Esempio Completo Vendita:</h4>
+    <pre><code>TESORO: Frammento Oculus (piccolo) - Valore 12 CD
+
+OPZIONI:
+1. Divisione: 12 × 30% = 3.6 CD, immediato, -1 Corruzione, legale
+2. Zhou: 12 × 45% = 5.4 CD, 1 giorno, +2 Corruzione, rischio medio
+3. Asta: 12 × 85% = 10.2 CD, 1 sett, +3 Corruzione, rischio alto
+
+GIOCATORE SCEGLIE: Madame Zhou (vuole soldi decenti ma veloce)
+
+TRANSAZIONE:
+- Giocatore va Golden Nugget, downtown
+- Incontra Zhou, negozia (check CAR)
+- Tiro: 14 (successo!) → +10% = 50% invece 45%
+- Prezzo finale: 12 × 50% = 6 CD
+- Zhou sorride: "Affare fatto, caro. Torna presto."
+- Giocatore segna: +6 CD, +2 Corruzione
+- Direttore nota: Zhou ora sa giocatore vende tesori - chiamerà future offerte</code></pre>
+    
+    <h4>2. Mazzette e Favori</h4>
+    <p>Criminali, corporazioni, individui ricchi offrono denaro per favori:</p>
+    <ul>
+        <li><strong>"Perdi" evidenza critica:</strong> 2-5 CD, +3 Corruzione</li>
+        <li><strong>Dai informazioni confidenziali Divisione:</strong> 3-8 CD, +5 Corruzione, -2 Lealtà se scoperti</li>
+        <li><strong>Scorta privata (bodyguard missione personale):</strong> 1-3 CD, +1 Corruzione</li>
+        <li><strong>Recupera oggetto specifico (non reporti a Divisione):</strong> 5-10 CD, +4 Corruzione</li>
+    </ul>
+    
+    <h4>3. Missioni Secondarie</h4>
+    <p>Divisione occasionalmente offre bonus pay per obiettivi extra:</p>
+    <ul>
+        <li>Bonus completamento perfetto: +$200</li>
+        <li>Bonus recupero asset critico: +$500 O +2 CD</li>
+        <li>Bonus zero morti civili: +$300, +1 Lealtà</li>
+    </ul>
+    
+    <h3>Spese Opzionali (Miglioramenti)</h3>
+    
+    <h4>Equipaggiamento Migliore:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Costo</th>
+                <th>Beneficio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Giubbotto antiproiettile (kevlar)</td>
+                <td>3 CD</td>
+                <td>CA -2 (meglio), peso 5kg</td>
+            </tr>
+            <tr>
+                <td>Fucile d'assalto (M4)</td>
+                <td>4 CD</td>
+                <td>1d8 danno, raffica 3 colpi</td>
+            </tr>
+            <tr>
+                <td>Granate (×3)</td>
+                <td>2 CD</td>
+                <td>3d6 danno area 10m</td>
+            </tr>
+            <tr>
+                <td>Kit medico avanzato (10 usi)</td>
+                <td>2 CD</td>
+                <td>Guarisce 2d6 PF</td>
+            </tr>
+            <tr>
+                <td>Laptop hacking professionale</td>
+                <td>3 CD</td>
+                <td>+4 check Hacking</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Miglioramenti Stile Vita:</h4>
+    <ul>
+        <li><strong>Appartamento migliore (zona verde):</strong> +$300/sett ma +1 COS (sonno migliore, sicurezza)</li>
+        <li><strong>Auto personale:</strong> $5.000 (una volta) + $100/sett manutenzione</li>
+        <li><strong>Abbonamento palestra:</strong> +$50/sett, +1 FOR O COS dopo 8 settimane</li>
+    </ul>
+    
+    <h3>Tracking Economia (Per Direttore)</h3>
+    
+    <div class="box success">
+        <h4>Consiglio Gestione</h4>
+        <p><strong>All'inizio ogni sessione, chiedi:</strong> "Quante settimane sono passate da ultima sessione?"</p>
+        <p>Per ogni settimana:</p>
+        <ol>
+            <li>Giocatori ricevono stipendio ($ base per Lealtà)</li>
+            <li>Pagano spese obbligatorie ($900)</li>
+            <li>Calcola netto, segna su scheda</li>
+            <li>Se deficit: descrivi conseguenze iniziano accumularsi</li>
+        </ol>
+        <p><strong>Usa economia come pressione narrativa.</strong> Quando giocatore ha -$800 debito, 2 settimane da sfratto, introduci NPC che offre "$1.000 per piccolo favore..."</p>
+    </div>
+</section>
+
+<!-- CONTINUA NEL PROSSIMO MESSAGGIO... -->
+<!-- PARTE VIII: LEALTÀ E CORRUZIONE -->
+<section id="lealta" class="section">
+    <h2>PARTE VIII: LEALTÀ E CORRUZIONE</h2>
+    
+    <div class="box">
+        <h3>Il Doppio Binario Morale</h3>
+        <p style="font-size: 1.1rem;">Due tracciatori. Due padroni. Due destini.</p>
+        <pre style="font-size: 1.05rem;"><code><strong>LEALTÀ (0-10):</strong> Quanto la Divisione si fida di te
+<strong>CORRUZIONE (0-10):</strong> Quanto il mercato nero ti possiede
+
+Inizi con: Lealtà 5, Corruzione 0
+Finirai con... dipende dalle tue scelte.</code></pre>
+    </div>
+    
+    <h3>Sistema Lealtà</h3>
+    
+    <h4>Cosa Rappresenta</h4>
+    <p>Lealtà non è "quanto sei bravo ragazzo". È <strong>quanto la Divisione si fida che obbedirai</strong>. Puoi essere persona terribile ma Lealtà 10 se obbedisci sempre ordini. Puoi essere santo ma Lealtà 0 se hai tradito una volta.</p>
+    
+    <h4>Modificatori Lealtà</h4>
+    
+    <h5>⬆️ Aumenta Quando:</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Azione</th>
+                <th>Lealtà</th>
+                <th>Frequenza</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Completi missione senza problemi</td>
+                <td>+1</td>
+                <td>Fine ogni missione</td>
+            </tr>
+            <tr>
+                <td>Completi missione PERFETTA (zero morti civili, obiettivi bonus, veloce)</td>
+                <td>+2</td>
+                <td>Raro</td>
+            </tr>
+            <tr>
+                <td>Consegni Frammento Oculus alla Divisione</td>
+                <td>+2</td>
+                <td>Ogni volta</td>
+            </tr>
+            <tr>
+                <td>Salvi altri agenti Divisione da morte certa</td>
+                <td>+1</td>
+                <td>Situazionale</td>
+            </tr>
+            <tr>
+                <td>Arresti/uccidi criminale maggiore (Zhou, capo gang)</td>
+                <td>+3</td>
+                <td>Molto raro</td>
+            </tr>
+            <tr>
+                <td>Rifiuti corruzione quando hai opportunità facile</td>
+                <td>+1</td>
+                <td>Ogni volta (se Hayes scopre)</td>
+            </tr>
+            <tr>
+                <td>Testimoni contro mercato nero (rischio morte)</td>
+                <td>+5</td>
+                <td>Estremamente raro</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h5>⬇️ Diminuisce Quando:</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Azione</th>
+                <th>Lealtà</th>
+                <th>Gravità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vendi tesori mercato nero (scoperto da Divisione)</td>
+                <td>-1</td>
+                <td>Lieve</td>
+            </tr>
+            <tr>
+                <td>Fallisci missione per incompetenza/negligenza</td>
+                <td>-1</td>
+                <td>Lieve</td>
+            </tr>
+            <tr>
+                <td>Uccidi civili innocenti (non collaterale - deliberato)</td>
+                <td>-2</td>
+                <td>Medio</td>
+            </tr>
+            <tr>
+                <td>Ignori ordini diretti Hayes</td>
+                <td>-2</td>
+                <td>Medio</td>
+            </tr>
+            <tr>
+                <td>Uccidi agenti Divisione (anche "accidentalmente")</td>
+                <td>-3 per agente</td>
+                <td>Grave</td>
+            </tr>
+            <tr>
+                <td>Vendi informazioni confidenziali Divisione</td>
+                <td>-4</td>
+                <td>Molto grave</td>
+            </tr>
+            <tr>
+                <td>Tradisci team durante missione</td>
+                <td>-5</td>
+                <td>Imperdonabile</td>
+            </tr>
+            <tr>
+                <td>Diserta dalla Divisione</td>
+                <td>-10 (→0)</td>
+                <td>Finale</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Livelli Lealtà e Conseguenze</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Range</th>
+                <th>Status</th>
+                <th>Stipendio</th>
+                <th>Accesso</th>
+                <th>Sorveglianza</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: rgba(46, 204, 113, 0.2);">
+                <td><strong>9-10</strong></td>
+                <td><span class="badge badge-success">ORO</span><br>Agente Modello</td>
+                <td>$1.000/sett<br>(+$200)</td>
+                <td>Badge Oro, accessi top secret, armeria completa, supporto aereo</td>
+                <td>Zero - Hayes ti fida completamente</td>
+            </tr>
+            <tr style="background: rgba(52, 152, 219, 0.2);">
+                <td><strong>7-8</strong></td>
+                <td><span class="badge badge-info">AFFIDABILE</span></td>
+                <td>$900/sett<br>(+$100)</td>
+                <td>Badge standard+, richieste equipaggiamento approvate veloce</td>
+                <td>Bassa - check routine mensili</td>
+            </tr>
+            <tr>
+                <td><strong>4-6</strong></td>
+                <td><span class="badge badge-info">STANDARD</span></td>
+                <td>$800/sett<br>(base)</td>
+                <td>Badge standard, equipaggiamento base only</td>
+                <td>Standard - report regolari</td>
+            </tr>
+            <tr style="background: rgba(241, 196, 15, 0.2);">
+                <td><strong>2-3</strong></td>
+                <td><span class="badge badge-warning">SOSPETTO</span></td>
+                <td>$600/sett<br>(-$200)</td>
+                <td>Badge limitato, no armi speciali, no informazioni sensibili</td>
+                <td>Alta - sorveglianza 24/7, telefono tracciato, partner "supervisore"</td>
+            </tr>
+            <tr style="background: rgba(231, 76, 60, 0.3);">
+                <td><strong>1</strong></td>
+                <td><span class="badge badge-danger">PROBATION</span></td>
+                <td>$400/sett<br>(-$400)</td>
+                <td>Badge revocato temporaneo, solo missioni supervisionate</td>
+                <td>Totale - ogni mossa monitorata, "one strike left"</td>
+            </tr>
+            <tr style="background: rgba(231, 76, 60, 0.5);">
+                <td><strong>0</strong></td>
+                <td><span class="badge badge-danger">RICERCATO</span></td>
+                <td>$0<br>(Nessuno)</td>
+                <td>Badge annullato, porte Divisione chiuse</td>
+                <td>CACCIATO - squadre Sigma inviate terminarti</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box danger">
+        <h4>⚠️ Cosa Succede a Lealtà 0</h4>
+        <p><strong>Sei nemico pubblico Divisione.</strong></p>
+        <ul>
+            <li>Badge annullato (arresto se usato)</li>
+            <li>Conti bancari congelati</li>
+            <li>Appartamento perquisito</li>
+            <li>Mandato arresto emesso</li>
+            <li>Squadre Sigma-tier (agenti élite liv 6+) cacciano te</li>
+            <li>Taglia: 20 CD (altri agenti corrotti tentati tradire te)</li>
+        </ul>
+        <p><strong>Campagna diventa:</strong> Fuga. Sopravvivenza. Trovare modo uscire città O distruggere Divisione.</p>
+    </div>
+    
+    <h3>Sistema Corruzione</h3>
+    
+    <h4>Cosa Rappresenta</h4>
+    <p>Corruzione misura <strong>quanto sei compromesso con mercato nero</strong>. Non è "malvagità" morale - è dipendenza economica/sociale da economia criminale.</p>
+    <p>Corruzione 0 = pulito (mercato nero non ti conosce, non hai favori)<br>
+    Corruzione 10 = proprietà (Zhou ti possiede, debiti immensi, non puoi uscire)</p>
+    
+    <h4>Modificatori Corruzione</h4>
+    
+    <h5>⬆️ Aumenta Quando:</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Azione</th>
+                <th>Corruzione</th>
+                <th>Irreversibilità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vendi tesori illegalmente (mercato nero)</td>
+                <td>+2</td>
+                <td>Prima volta grande step</td>
+            </tr>
+            <tr>
+                <td>Accetti mazzetta da criminale</td>
+                <td>+3</td>
+                <td>Ora sanno puoi essere comprato</td>
+            </tr>
+            <tr>
+                <td>Uccidi per denaro (assassinio pagato)</td>
+                <td>+5</td>
+                <td>Linea rossa attraversata</td>
+            </tr>
+            <tr>
+                <td>Lavori direttamente per Madame Zhou</td>
+                <td>+1 per job</td>
+                <td>Relazione continuativa</td>
+            </tr>
+            <tr>
+                <td>Proteggi criminali da Divisione</td>
+                <td>+2</td>
+                <td>Tradimento attivo</td>
+            </tr>
+            <tr>
+                <td>Prendi prestito da strozzino</td>
+                <td>+4</td>
+                <td>Debito = schiavitù</td>
+            </tr>
+            <tr>
+                <td>Uccidi agente Divisione per mercato nero</td>
+                <td>+8</td>
+                <td>Punto non ritorno</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h5>⬇️ Diminuisce Quando (Raro!):</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Azione</th>
+                <th>Corruzione</th>
+                <th>Rischio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rifiuti offerta corruzione lucrativa</td>
+                <td>-1</td>
+                <td>Basso (ma perdi soldi)</td>
+            </tr>
+            <tr>
+                <td>Ripaghi completamente debiti criminali</td>
+                <td>-2</td>
+                <td>Medio (costoso)</td>
+            </tr>
+            <tr>
+                <td>Testimoni contro mercato nero (trial pubblico)</td>
+                <td>-3</td>
+                <td>ALTISSIMO (morte probabile)</td>
+            </tr>
+            <tr>
+                <td>Uccidi Madame Zhou (rompi rete)</td>
+                <td>-5</td>
+                <td>Mortale + conseguenze</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box warning">
+        <h4>⚠️ Perché Diminuire Corruzione È Difficile</h4>
+        <p><strong>Corruzione è unidirezionale per design.</strong> Facile scivolare, difficilissimo risalire.</p>
+        <p>Quando mercato nero ti conosce, ti ricorda. Quando hai preso loro soldi, aspettano favori. Quando hai fatto lavori sporchi, hanno prove.</p>
+        <p><strong>Diminuire Corruzione richiede scelte estreme:</strong> Tradire persone potenti (rischio morte), pagare somme enormi (bancarotta), testimoniare (protezione testimoni, nuova identità).</p>
+    </div>
+    
+    <h4>Livelli Corruzione e Conseguenze</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Range</th>
+                <th>Status</th>
+                <th>Mercato Nero</th>
+                <th>Zhou</th>
+                <th>Rischio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>0-1</strong></td>
+                <td><span class="badge badge-success">PULITO</span></td>
+                <td>Non ti conoscono. Prezzi normali (nessun sconto). Difficile ottenere favori.</td>
+                <td>Non sa chi sei</td>
+                <td>Zero - sei "invisibile"</td>
+            </tr>
+            <tr>
+                <td><strong>2-4</strong></td>
+                <td><span class="badge badge-info">CLIENTE</span></td>
+                <td>Ti conoscono. -10% prezzi (rispetto). Accesso mercato, informazioni base.</td>
+                <td>Sa nome, ha visto faccia</td>
+                <td>Basso - ancora anonimo</td>
+            </tr>
+            <tr style="background: rgba(241, 196, 15, 0.2);">
+                <td><strong>5-6</strong></td>
+                <td><span class="badge badge-warning">GRIGIO</span></td>
+                <td>Ti rispettano. -15% prezzi. Accesso info riservate, contatti importanti.</td>
+                <td>Ti "conosce". Offre lavori direttamente.</td>
+                <td>Medio - Divisione sospetta se investigano</td>
+            </tr>
+            <tr style="background: rgba(231, 76, 60, 0.2);">
+                <td><strong>7-8</strong></td>
+                <td><span class="badge badge-danger">CORROTTO</span></td>
+                <td>Sei "insider". -20% prezzi. Debiti, favori, compromessi multipli.</td>
+                <td>Ti considera "asset". Chiama favori. Ricatta se necessario.</td>
+                <td>Alto - FBI + Divisione ti monitorano</td>
+            </tr>
+            <tr style="background: rgba(231, 76, 60, 0.4);">
+                <td><strong>9-10</strong></td>
+                <td><span class="badge badge-danger">PROPRIETÀ</span></td>
+                <td>-30% prezzi (ma non importa). Sei troppo dentro. Non puoi uscire.</td>
+                <td><strong>Zhou ti POSSIEDE.</strong> Debiti immensi. Informazioni compromettenti. Morte se tradisci.</td>
+                <td>Critico - vita costante pericolo</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Interazione Lealtà ↔ Corruzione</h3>
+    
+    <div class="box">
+        <h4>Quattro Archetipi Giocatori</h4>
+        
+        <h5>1. IL FEDELE (Lealtà Alta, Corruzione Bassa)</h5>
+        <p><strong>Esempio:</strong> Lealtà 8, Corruzione 2</p>
+        <ul>
+            <li><strong>Vita:</strong> Stipendio buono ($900), accessi privilegiati, Hayes si fida</li>
+            <li><strong>Problema:</strong> Ancora deficit (-$0 se attento), tentazioni costanti, moralità intatta ma testata</li>
+            <li><strong>Fine probabile:</strong> Promozione O disincanto sistema ("Sono strumento regime corrotto")</li>
+        </ul>
+        
+        <h5>2. IL CORROTTO (Lealtà Bassa, Corruzione Alta)</h5>
+        <p><strong>Esempio:</strong> Lealtà 2, Corruzione 8</p>
+        <ul>
+            <li><strong>Vita:</strong> Ricco (CD accumulati) ma sorvegliato 24/7, Zhou chiama favori, Divisione aspetta un errore per arrestare</li>
+            <li><strong>Problema:</strong> Intrappolato tra due padroni. Zhou vuole tradisci Divisione. Divisione vuole tradisci Zhou. Non puoi compiacere entrambi.</li>
+            <li><strong>Fine probabile:</strong> Morte violenta O fuga disperata</li>
+        </ul>
+        
+        <h5>3. IL DOPPIO AGENTE (Lealtà Alta, Corruzione Alta)</h5>
+        <p><strong>Esempio:</strong> Lealtà 7, Corruzione 7</p>
+        <ul>
+            <li><strong>Vita:</strong> TENSIONE MASSIMA. Hayes si fida, ma Zhou ti conosce. Giochi entrambi lati. Ricco + rispettato ma...</li>
+            <li><strong>Problema:</strong> <strong>Bomba a orologeria.</strong> Prima o poi uno scopre doppio gioco. Quando succede (non "se"), crollo catastrofico.</li>
+            <li><strong>Fine probabile:</strong> Tradimento da uno O entrambi lati. Morte O protezione testimoni se fortunato.</li>
+        </ul>
+        
+        <h5>4. IL PERDUTO (Lealtà Bassa, Corruzione Bassa)</h5>
+        <p><strong>Esempio:</strong> Lealtà 3, Corruzione 1</p>
+        <ul>
+            <li><strong>Vita:</strong> Povero ($600 stipendio) + sospettato + nessun alleato mercato nero. PEGGIORE combinazione.</li>
+            <li><strong>Problema:</strong> Nessuno si fida. Nessuno aiuta. Deficit -$300/sett garantito. Fame, sfratto, disperazione.</li>
+            <li><strong>Fine probabile:</strong> Corruzione (necessità) O morte (povertà/missioni suicide)</li>
+        </ul>
+    </div>
+    
+    <div class="box danger">
+        <h4>La Trappola del Doppio Agente</h4>
+        <p><strong>Molti giocatori tenteranno mantenere Lealtà + Corruzione alte contemporaneamente.</strong> "Voglio meglio di entrambi mondi!"</p>
+        <p>Questo è possibile breve termine (2-5 sessioni). Ma insostenibile lungo termine. Ecco perché:</p>
+        <ul>
+            <li><strong>Zhou chiede tradire Divisione</strong> (consegna Frammento a lei, non Hayes) → Scegli: Lealtà -5 O Corruzione -3</li>
+            <li><strong>Hayes ordina arrestare Zhou</strong> → Scegli: Obbedisci (Corruzione -5, Zhou vendetta) O rifiuti (Lealtà -4)</li>
+            <li><strong>Agente Divisione scopre vendi mercato nero</strong> → Report Hayes? (Lealtà +1, Corruzione -2, Zhou ti odia) O ometti? (Complice, Corruzione +2)</li>
+        </ul>
+        <p style="font-size: 1.1rem; margin-top: 1rem;"><strong>Il gioco ti forzerà scegliere. Prima o poi. Questo è il punto.</strong></p>
+    </div>
+    
+    <h3>Momenti Decisione Critica</h3>
+    
+    <p><strong>Direttore dovrebbe progettare 1-2 "scelte impossibili" per campagna:</strong></p>
+    
+    <div class="box">
+        <h4>Esempio 1: Il Testimone</h4>
+        <p><strong>Setup:</strong> Hai visto Zhou uccidere agente Divisione. Sei unico testimone. FBI offre immunità se testimoni.</p>
+        <p><strong>Opzioni:</strong></p>
+        <ul>
+            <li><strong>Testimonia:</strong> Zhou arrestata (Corruzione -5), ma hai tradito mercato nero. Taglia 30 CD su tua testa. Protezione testimoni necessaria. Lealtà +3.</li>
+            <li><strong>Taci:</strong> Zhou libera, ti "deve favore" (Corruzione +3). Ma agente morto non ha giustizia. Lealtà -2 se Hayes scopre.</li>
+            <li><strong>Menti (testimonia falso):</strong> Incolpa persona innocente. Zhou felice (Corruzione +5), agente "vendicato" (Lealtà +1). Ma hai distrutto vita innocente. Puoi vivere con questo?</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h4>Esempio 2: Il Frammento</h4>
+        <p><strong>Setup:</strong> Hai Frammento Oculus grande (valore 25 CD ≈ $25.000). Zhou offre 20 CD cash immediato. Hayes aspetta consegna ufficiale (3 CD compensation + Lealtà +2).</p>
+        <p><strong>Opzioni:</strong></p>
+        <ul>
+            <li><strong>Consegna Divisione:</strong> Leale ma povero. 3 CD non risolvono debiti. Morale alta ma pancia vuota.</li>
+            <li><strong>Vendi Zhou:</strong> Ricco (20 CD = 6 mesi affitto!) ma corrotto (+3 Corruzione). Hayes chiede Frammento. Devi mentire. Se scoperto: Lealtà -5, possibile arresto.</li>
+            <li><strong>Tieni Frammento:</strong> Potere immenso (manipoli tempo localmente). Ma entrambi ti cacciano. Fuggiasco istantaneo. Corruzione +5, Lealtà -10.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PARTE IX: PROGRESSIONE -->
+<section id="progressione" class="section">
+    <h2>PARTE IX: PROGRESSIONE E LIVELLI</h2>
+    
+    <div class="box">
+        <h3>Filosofia Progressione OSR</h3>
+        <p><strong>Lenta. Significativa. Pericolosa.</strong></p>
+        <p>Non sali livello ogni sessione. Campagna tipica (10-15 sessioni) finisce livello 3-4. Livello 5 è veterano cicatrizzato. Livello 6+ è leggenda vivente.</p>
+        <p><strong>Perché lento?</strong> Ogni livello deve essere <em>guadagnato</em>. Sopravvivere è achievement. Crescere è raro. Questo rende progressione speciale, memorabile.</p>
+    </div>
+    
+    <h3>Tabella Avanzamento Completa</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Livello</th>
+                <th>PE Richiesti</th>
+                <th>PF</th>
+                <th>THAC0</th>
+                <th>TS Base</th>
+                <th>Punti Abilità</th>
+                <th>Beneficio Speciale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1</strong></td>
+                <td>0</td>
+                <td>1d6+COS</td>
+                <td>20</td>
+                <td>16</td>
+                <td>2 (start)</td>
+                <td>Background</td>
+            </tr>
+            <tr>
+                <td><strong>2</strong></td>
+                <td>1.500</td>
+                <td>+1d6+COS</td>
+                <td>20</td>
+                <td>15</td>
+                <td>+2</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td><strong>3</strong></td>
+                <td>3.000</td>
+                <td>+1d6+COS</td>
+                <td>19</td>
+                <td>14</td>
+                <td>+2</td>
+                <td>THAC0 migliora</td>
+            </tr>
+            <tr>
+                <td><strong>4</strong></td>
+                <td>6.000</td>
+                <td>+1d6+COS</td>
+                <td>19</td>
+                <td>13</td>
+                <td>+2</td>
+                <td>—</td>
+            </tr>
+            <tr style="background: rgba(52, 152, 219, 0.2);">
+                <td><strong>5</strong></td>
+                <td>12.000</td>
+                <td>+1d6+COS</td>
+                <td>18</td>
+                <td>12</td>
+                <td>+3</td>
+                <td><strong>Talento Speciale</strong></td>
+            </tr>
+            <tr>
+                <td><strong>6</strong></td>
+                <td>24.000</td>
+                <td>+1d6+COS</td>
+                <td>18</td>
+                <td>11</td>
+                <td>+2</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td><strong>7</strong></td>
+                <td>48.000</td>
+                <td>+1d6+COS</td>
+                <td>17</td>
+                <td>10</td>
+                <td>+2</td>
+                <td>THAC0 migliora</td>
+            </tr>
+            <tr>
+                <td><strong>8</strong></td>
+                <td>96.000</td>
+                <td>+1d6+COS</td>
+                <td>17</td>
+                <td>9</td>
+                <td>+2</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td><strong>9</strong></td>
+                <td>192.000</td>
+                <td>+1d6+COS</td>
+                <td>16</td>
+                <td>8</td>
+                <td>+2</td>
+                <td>—</td>
+            </tr>
+            <tr style="background: rgba(241, 196, 15, 0.2);">
+                <td><strong>10</strong></td>
+                <td>384.000</td>
+                <td>+1d6+COS</td>
+                <td>16</td>
+                <td>7</td>
+                <td>+3</td>
+                <td><strong>Talento Speciale #2</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Come Guadagnare PE</h3>
+    
+    <h4>Fonti Primarie:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Fonte</th>
+                <th>PE</th>
+                <th>Frequenza</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Completare missione (base)</td>
+                <td>300-500</td>
+                <td>Ogni missione</td>
+            </tr>
+            <tr>
+                <td>Obiettivi bonus missione</td>
+                <td>+100-200</td>
+                <td>Opzionale</td>
+            </tr>
+            <tr>
+                <td>Tesoro recuperato (1 CD valore)</td>
+                <td>100 PE</td>
+                <td>Per CD valore</td>
+            </tr>
+            <tr>
+                <td>Superare sfida maggiore (puzzle, boss, trappola letale)</td>
+                <td>200-400</td>
+                <td>Situazionale</td>
+            </tr>
+            <tr>
+                <td>Scelta narrativa significativa (dilemma morale risolto)</td>
+                <td>100-300</td>
+                <td>1-2 per missione</td>
+            </tr>
+            <tr>
+                <td>Sopravvivere sessione (bonus base)</td>
+                <td>50-100</td>
+                <td>Ogni sessione</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box">
+        <h4>Esempio Calcolo PE Sessione:</h4>
+        <pre><code>MISSIONE: Loop Chicago (3-4 ore)
+
+PE GUADAGNATI:
+- Completamento missione base: 500 PE
+- Salvato civili (obiettivo bonus): +150 PE
+- Frammento Oculus recuperato (12 CD): 12×100 = +1.200 PE
+- Risolto paradosso temporale (puzzle maggiore): +300 PE
+- Sopravvivenza sessione: +100 PE
+─────────────────────────────────────────
+TOTALE: 2.250 PE (quasi liv 1→2 in una sessione se giochi bene!)</code></pre>
+    </div>
+    
+    <h3>Cosa Ottieni Salendo Livello</h3>
+    
+    <h4>Automatico Ogni Livello:</h4>
+    <ul>
+        <li><strong>Punti Ferita:</strong> Tira 1d6+COS, aggiungi a totale (minimo +1)</li>
+        <li><strong>Tiri Salvezza:</strong> Migliorano automaticamente (vedi tabella)</li>
+        <li><strong>Punti Abilità:</strong> 2-3 punti da spendere (vedi sotto)</li>
+    </ul>
+    
+    <h4>Ogni 2-3 Livelli:</h4>
+    <ul>
+        <li><strong>THAC0:</strong> Diminuisce 1 (colpisci più facilmente)</li>
+    </ul>
+    
+    <h4>Livelli Speciali (5 e 10):</h4>
+    <ul>
+        <li><strong>Talento:</strong> Abilità unica, potente, definitoria personaggio</li>
+    </ul>
+    
+    <h3>Spendere Punti Abilità</h3>
+    
+    <p><strong>Quando sali livello, ricevi 2-3 Punti Abilità. Puoi spenderli così:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Investimento</th>
+                <th>Costo Punti</th>
+                <th>Effetto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nuova Abilità</strong></td>
+                <td>1 punto</td>
+                <td>Impari abilità nuova dalla lista completa (Parte II)</td>
+            </tr>
+            <tr>
+                <td><strong>Migliorare Abilità Esistente</strong></td>
+                <td>1 punto</td>
+                <td>+2 bonus permanente check quella abilità<br>(Max 1 volta per abilità)</td>
+            </tr>
+            <tr>
+                <td><strong>Aumentare Attributo</strong></td>
+                <td>3 punti</td>
+                <td>+1 a UN attributo (max 18)<br>Molto costoso ma potente</td>
+            </tr>
+            <tr>
+                <td><strong>Resistenza Specifica</strong></td>
+                <td>2 punti</td>
+                <td>+4 TS vs un tipo danno/effetto specifico<br>(es: veleno, fuoco, contaminazione temporale)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Esempi Spesa Punti:</h4>
+    
+    <div class="box">
+        <h5>Scenario 1: Giocatore Sale Liv 1→2 (2 Punti)</h5>
+        <p><strong>Opzione A (Specializzazione):</strong></p>
+        <ul>
+            <li>1 punto → Migliora Armi da Fuoco (+2 permanente)</li>
+            <li>1 punto → Nuova abilità: Furtività</li>
+        </ul>
+        <p><strong>Opzione B (Sopravvivenza):</strong></p>
+        <ul>
+            <li>2 punti → Resistenza Contaminazione Temporale (+4 TS vs Quirk)</li>
+        </ul>
+        <p><strong>Opzione C (Versatilità):</strong></p>
+        <ul>
+            <li>1 punto → Medicina</li>
+            <li>1 punto → Hacking</li>
+        </ul>
+    </div>
+    
+    <h3>Talenti (Livello 5 e 10)</h3>
+    
+    <p><strong>Talenti sono abilità uniche che definiscono personaggio veterano. Scegli UNO:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Talento</th>
+                <th>Effetto</th>
+                <th>Quando Utile</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Veterano Indurito</strong></td>
+                <td>+1d6 PF permanente<br>Vantaggio TUTTI Tiri Salvezza (tira 2d20, prendi migliore)</td>
+                <td>Sempre - sopravvivenza generale</td>
+            </tr>
+            <tr>
+                <td><strong>Specialista di Classe Mondiale</strong></td>
+                <td>Scegli 1 Abilità: Check difficoltà "Normale" = successo automatico (no tiro)<br>Check "Difficile" = tira normale<br>Check "Molto Difficile" = -4 invece -8</td>
+                <td>Per master in un campo (hacker, medico, cecchino)</td>
+            </tr>
+            <tr>
+                <td><strong>Resilienza Temporale</strong></td>
+                <td>Immune a 2 tipi Quirk specifici (scegli 2 numeri su tabella d12)<br>Se tiri quei numeri, ritira<br>+4 tutti TS Contaminazione</td>
+                <td>Lunghe esposizioni zone temporali</td>
+            </tr>
+            <tr>
+                <td><strong>Rete Contatti Profonda</strong></td>
+                <td>Hai 3 contatti alto livello (Direttore crea):<br>• 1 nella Divisione (accesso info classificate)<br>• 1 nel mercato nero (Zhou-tier)<br>• 1 neutrale (giornalista, hacker, medico)<br>+4 check Contatti per ottenere favori</td>
+                <td>Manipolazione sociale, informazioni</td>
+            </tr>
+            <tr>
+                <td><strong>Sopravvissuto Nato</strong></td>
+                <td>1 volta per sessione: quando scendi a 0 PF, rimani automaticamente a 1 PF invece<br>No TS Morte necessario - pura tenacia</td>
+                <td>Clutch survival momento critico</td>
+            </tr>
+            <tr>
+                <td><strong>Lettura Temporale</strong></td>
+                <td>Vedi 1d6 secondi nel futuro immediato:<br>• +4 Iniziativa (sempre agisci quasi per primo)<br>• 1/giorno: evita automaticamente 1 attacco (vedi arrivare)</td>
+                <td>Combattimento, reazioni</td>
+            </tr>
+            <tr>
+                <td><strong>Corruttore Maestro</strong></td>
+                <td>• Check Persuasione/Inganno per corrompere PNG: +6<br>• Riduzione -2 Corruzione guadagnata (meno tracce)<br>• 1/sessione: Converti fallimento sociale in successo</td>
+                <td>Manipolazione, doppio agente</td>
+            </tr>
+            <tr>
+                <td><strong>Cacciatore di Echi</strong></td>
+                <td>• Danni vs Echi Temporali raddoppiati<br>• Immune paura/confusione da entità temporali<br>• Percezione automatica Echi entro 30m</td>
+                <td>Specialista zone pericolose, hunter</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box success">
+        <h4>Consiglio Selezione Talento</h4>
+        <p><strong>Scegli Talento che:</strong></p>
+        <ol>
+            <li>Riflette come hai giocato personaggio finora (cecchino → Specialista Armi)</li>
+            <li>Copre debolezza critica (muori spesso → Sopravvissuto Nato)</li>
+            <li>Abilita build specifica (doppio agente → Corruttore Maestro)</li>
+        </ol>
+        <p><strong>Discuti con Direttore.</strong> Talenti possono essere customizzati. Lista sopra è punto partenza, non limite.</p>
+    </div>
+    
+    <h3>Ritiro e Morte</h3>
+    
+    <div class="box">
+        <h4>Quando Ritirare Personaggio</h4>
+        <p><strong>Ucronie e Tesori ha scadenza naturale per PG:</strong></p>
+        <ul>
+            <li>4+ Quirk: Corpo/mente vicini collasso</li>
+            <li>Lealtà 0: Ricercato, impossibile continuare</li>
+            <li>Corruzione 10: Proprietà Zhou, nessuna agency</li>
+            <li>Vecchiaia (se Entropia Accelerata): 70+ anni, fisicamente incapace</li>
+        </ul>
+        <p><strong>Ritiro non è fallimento - è conclusione.</strong> Alcuni PG muoiono eroici. Altri si ritirano, rotti ma vivi. Entrambi memorabili.</p>
+    </div>
+    
+    <div class="box danger">
+        <h4>Morte Permanente</h4>
+        <p>Se giocate con opzione morte permanente (raccomandato OSR):</p>
+        <ul>
+            <li>Morte è parte gioco, non punizione</li>
+            <li>Nuovo personaggio inizia liv 1 MA può ereditare 1 contatto/item da PG morto</li>
+            <li>Gruppo continua missione con nuovo agente inviato da Divisione</li>
+        </ul>
+        <p><strong>Celebrare morti memorabili.</strong> Giocatore racconta come personaggio è ricordato. Direttore può fare cameo fantasma/eco in futuro.</p>
+    </div>
+</section>
+
+<!-- CONTINUA CON PARTE X e XI NEL PROSSIMO MESSAGGIO... -->
+<!-- PARTE X: IL MONDO -->
+<section id="mondo" class="section">
+    <h2>PARTE X: LAS VEGAS POST-OCULUS</h2>
+    
+    <div class="box">
+        <h3>Timeline Storica</h3>
+        <pre><code><strong>2025:</strong> Evento Oculus. Artefatto temporale alieno scoperto deserto Nevada.
+       Attivazione accidentale. Collasso temporale catastrofico.
+       Las Vegas epicentro. 40% città distrutta istantaneamente.
+       
+<strong>2025-2030:</strong> Zone Rosse sigillate. Evacuazione civili superstiti.
+            Governo federale stabilisce Divisione Temporale.
+            Prima squadre agenti (tasso mortalità 80% primo anno).
+            
+<strong>2030-2040:</strong> Stabilizzazione parziale. Zone Verdi sicure riaperte.
+            Strip parzialmente ricostruita (turismo controllato).
+            Mercato nero tesori temporali esplode (fortuna possibile).
+            Las Vegas diventa "città frontiera" - legge debole, criminalità alta.
+            
+<strong>2040-OGGI:</strong> Status quo instabile. Zone Rosse ancora pericolose.
+              Agenti Divisione = lavoro ingrato, alta mortalità, bassa paga.
+              Criminalità organizzata controlla 60% economia reale.
+              Governo mantiene apparenza controllo ma realtà è caos.</code></pre>
+    </div>
+    
+    <h3>Geografia: I Quattro Colori</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Zona</th>
+                <th>Sicurezza</th>
+                <th>Popolazione</th>
+                <th>Contaminazione</th>
+                <th>Controllo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: rgba(46, 204, 113, 0.3);">
+                <td><strong>🟢 VERDE</strong></td>
+                <td>Alta</td>
+                <td>~300.000</td>
+                <td>Zero (stabilizzata)</td>
+                <td>Governo/Divisione (80%)</td>
+            </tr>
+            <tr style="background: rgba(241, 196, 15, 0.3);">
+                <td><strong>🟡 GIALLA</strong></td>
+                <td>Media</td>
+                <td>~150.000</td>
+                <td>Bassa (glitch minori)</td>
+                <td>Misto (gang + Divisione)</td>
+            </tr>
+            <tr style="background: rgba(230, 126, 34, 0.3);">
+                <td><strong>🟠 ARANCIONE</strong></td>
+                <td>Bassa</td>
+                <td>~50.000</td>
+                <td>Media (check ogni 8h)</td>
+                <td>Gang/criminali (70%)</td>
+            </tr>
+            <tr style="background: rgba(231, 76, 60, 0.4);">
+                <td><strong>🔴 ROSSA</strong></td>
+                <td>Nessuna</td>
+                <td>0 (solo Echi)</td>
+                <td>Alta (check ogni 4h)</td>
+                <td>Nessuno (zone morte)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Quartieri Chiave (Zone Verdi/Gialle)</h4>
+    
+    <div class="box">
+        <h5>THE STRIP (Zona Verde - Turistica)</h5>
+        <ul>
+            <li><strong>Descrizione:</strong> Versione ricostruita famosa Strip. Casino riaperti (metà originali). Neon, luci, illusione normalità. Turisti pagano migliaia vedere "città miracolo sopravvissuta".</li>
+            <li><strong>Popolazione:</strong> Turisti ricchi, dealer, prostitute, artisti strada, truffatori</li>
+            <li><strong>Controllo:</strong> Divisione (pattuglie 24/7) + corporazioni casino</li>
+            <li><strong>Atmosfera:</strong> Finta allegria sopra disperazione. Sorrisi pagati. Nessuno parla Oculus.</li>
+            <li><strong>Punti Interesse:</strong>
+                <ul>
+                    <li><strong>Bellagio Ricostruito:</strong> Casino lusso, base operativa Divisione nascosta nel sotterraneo</li>
+                    <li><strong>Caesars Palace (Rovine):</strong> Metà distrutta, metà funzionante - confine letterale presente/passato</li>
+                    <li><strong>Fremont Street:</strong> Mercato nero "light" - turisti comprano souvenir temporali illegali</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h5>PARADISE (Zona Gialla - Residenziale Agenti)</h5>
+        <ul>
+            <li><strong>Descrizione:</strong> Monolocali economici, appartamenti sovietici-style, cemento grigio. Dove agenti Divisione vivono. Sicuro ma deprimente.</li>
+            <li><strong>Popolazione:</strong> Agenti, ex-militari, lavoratori Divisione, famiglie povere</li>
+            <li><strong>Controllo:</strong> Divisione (nominale) ma gang minori operano</li>
+            <li><strong>Atmosfera:</strong> Rassegnazione. Gente che ha smesso sognare. Sopravvivono.</li>
+            <li><strong>Affitto Tipico:</strong> $500/sett (monolocale base)</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h5>DOWNTOWN (Zona Gialla/Arancione - Mercato Nero)</h5>
+        <ul>
+            <li><strong>Descrizione:</strong> Cuore criminale città. Edifici collassati parzialmente. Neon rotti. Graffiti. Mercati aperti vendono tesori temporali, armi, droghe. Nessuno chiede domande.</li>
+            <li><strong>Popolazione:</strong> Criminali, mercanti neri, rifugiati, drogati, disperati</li>
+            <li><strong>Controllo:</strong> <strong>Madame Zhou</strong> (60%), gang minori (30%), Divisione (10% - solo raid occasionali)</li>
+            <li><strong>Atmosfera:</strong> Kowloon Walled City meets Blade Runner. Denso, caotico, pericoloso, vivo.</li>
+            <li><strong>Punti Interesse:</strong>
+                <ul>
+                    <li><strong>Golden Nugget:</strong> Casino/hotel decadente, HQ de facto Zhou</li>
+                    <li><strong>Black Market Arcade:</strong> Sotto galleria abbandonata, mercato armi/tech</li>
+                    <li><strong>The Chrono Bar:</strong> Locale dove agenti corrotti incontrano criminali - territorio neutro tacito</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h5>ZONA ROSSA: FREMONT LOOP (Missioni)</h5>
+        <ul>
+            <li><strong>Descrizione:</strong> Epicentro collasso Oculus 2025. Tempo letteralmente rotto. Edifici esistono multipli epoche simultanee. Gravità invertita casuale. Loop temporali 24/7.</li>
+            <li><strong>Popolazione:</strong> <strong>Zero vivi.</strong> Solo Echi (entità temporali), Doppelganger, versioni alternative persone morte</li>
+            <li><strong>Contaminazione:</strong> Check ogni 4h (Standard). Epicentro ogni 2h.</li>
+            <li><strong>Tesori:</strong> Massima concentrazione. Frammenti Oculus comuni. Tecnologia futura. Artefatti storici.</li>
+            <li><strong>Pericolo:</strong> Estremo. Collasso progressivo. Entità ostili. Fisica rotta. Tasso mortalità agenti 40%.</li>
+        </ul>
+    </div>
+    
+    <h3>PNG Chiave</h3>
+    
+    <div class="box">
+        <h4>COMANDANTE SARAH HAYES</h4>
+        <p><strong>Ruolo:</strong> Capo squadra agenti PG, superiore diretto, voce Divisione</p>
+        <p><strong>Età:</strong> 42 | <strong>Aspetto:</strong> Capelli grigi corti militari, cicatrice guancia sinistra, occhi stanchi ma vigili, uniforme Divisione sempre impeccabile</p>
+        <p><strong>Personalità:</strong> Pragmatica, cinica ma non crudele. Crede (credeva?) nella missione ma 15 anni lavoro l'hanno consumata. Sa che sistema è corrotto. Fa lavoro comunque. "Qualcuno deve."</p>
+        <p><strong>Motivazione:</strong> Pensione tra 3 anni. Vuole sopravvivere. Protegge agenti suoi se obbediscono. Spietata con traditori.</p>
+        <p><strong>Quirk:</strong> <strong>Sindrome Testimone</strong> (vede Echi). Nasconde da superiori (temono sia compromessa). PG possono scoprire se investigano.</p>
+        <p><strong>Quote Memorabili:</strong></p>
+        <ul>
+            <li><em>"Non vi chiedo essere eroi. Vi chiedo fare lavoro e tornare vivi. Questo basta."</em></li>
+            <li><em>"Zhou vi offre soldi? Certo. E tra anno sarete morti O suoi. Scegliete."</em></li>
+            <li><em>"Lealtà non è virtù qui. È sopravvivenza. Divisione protegge fedeli. Traditori finiscono in Zone Rosse senza backup."</em></li>
+        </ul>
+        <p><strong>Come Usarla:</strong> Voce costante briefing missioni. Premia lealtà, punisce tradimenti. Ma ha segreto (Quirk nascosto) - PG possono usare leverage O aiutarla.</p>
+    </div>
+    
+    <div class="box">
+        <h4>MADAME ZHOU XIULAN</h4>
+        <p><strong>Ruolo:</strong> Regina mercato nero Las Vegas, alternativa morale a Divisione</p>
+        <p><strong>Età:</strong> 38 (ma sembra 28 - compra anti-aging illegale) | <strong>Aspetto:</strong> Cinese, eleganza letale, cheongsam moderno seta nera, unghie rosse affilate, sorriso che non arriva occhi, gioielli epoca Qing (rubati zone temporali)</p>
+        <p><strong>Personalità:</strong> Carismatica, spietata, pragmatica. Non è "cattiva" - è businesswoman. Vede mondo come transazioni. Rispetta chi rispetta lei. Distrugge chi tradisce.</p>
+        <p><strong>Motivazione:</strong> Potere, ricchezza, controllo. Oculus è opportunità più grande storia - tesori infiniti da multipli timeline. Vuole monopolio.</p>
+        <p><strong>Quirk:</strong> <strong>Prescienza Maledetta</strong> (vede morti future). La usa per vantaggio - previene tradimenti. Ma paga prezzo sociale - nessuno vuole vicino.</p>
+        <p><strong>Organizzazione:</strong> Rete criminale 200+ membri. Corruzione profonda (giudici, polizia, alcuni agenti Divisione). Violenta quando necessario ma preferisce leverage economico.</p>
+        <p><strong>Quote Memorabili:</strong></p>
+        <ul>
+            <li><em>"Divisione paga $800/settimana perché vi vogliono disperati. Io pago equo perché voglio leali. Indovina chi vince?"</em></li>
+            <li><em>"Non sono cattiva, tesoro. Sono onesta. Divisione mente - dicono proteggono. Io dico: pago per servizio. Quale preferisci?"</em></li>
+            <li><em>"Ho visto tua morte. Martedì, 3:47 PM, colpo dietro testa. Evitabile se lavori per me. Altrimenti... *scrollata spalle*"</em></li>
+        </ul>
+        <p><strong>Come Usarla:</strong> Tentazione costante. Offre soldi veri. Offre rispetto. Ma compromette. Una volta lavori per lei, sempre lavori per lei. Prezzi aumentano.</p>
+    </div>
+    
+    <div class="box">
+        <h4>MARCUS "DOC" RIVERA</h4>
+        <p><strong>Ruolo:</strong> Medico Divisione, fonte informazioni/supporto</p>
+        <p><strong>Età:</strong> 55 | <strong>Aspetto:</strong> Latino, sovrappeso, barba grigia incolta, camice sporco sangue vecchio, occhiali spessi, mani tremanti leggermente (alcol)</p>
+        <p><strong>Personalità:</strong> Burbero ma gentile. Cinico superficie, sentimentale sotto. Ha visto troppi agenti morire. Beve per dimenticare.</p>
+        <p><strong>Background:</strong> Chirurgo trauma Boston. Errore operazione (paziente morto). Licenza revocata. Divisione lo assunse - non chiedono referenze.</p>
+        <p><strong>Motivazione:</strong> Redenzione impossibile. Salva agenti per espiare paziente perso. Sa è troppo tardi ma prova comunque.</p>
+        <p><strong>Quirk:</strong> <strong>Cicatrici Inverse</strong> (ferite future). Nasconde sotto camice. PG vedono se lo visitano ubriaco.</p>
+        <p><strong>Utilità Gameplay:</strong>
+            <ul>
+                <li>Guarigione gratuita se Lealtà 5+ (altrimenti $500/giorno)</li>
+                <li>Info Quirk (ha studiato 100+ casi)</li>
+                <li>Rimozione Quirk (procedura rischiosa, lui opera)</li>
+                <li>Fonte rumors (ubriaco, parla troppo)</li>
+            </ul>
+        </p>
+        <p><strong>Quote:</strong> <em>"Altro colpo pistola? Terzo questa settimana. Volete morte O solo pigri? *sospiro* Sdraiati tavolo."</em></p>
+    </div>
+    
+    <div class="box">
+        <h4>ECHO-7 (Entità Temporale)</h4>
+        <p><strong>Ruolo:</strong> Mistero ricorrente, forse alleato, forse minaccia</p>
+        <p><strong>Aspetto:</strong> Figura umanoide traslucida, fluttua 30cm sopra suolo, volto sfocato (cambia età/genere continuamente), voce echo sovrapposta (parla multipli momenti simultanei)</p>
+        <p><strong>Cosa È:</strong> Agente Divisione trasformato completamente in Eco (6+ Quirk). Esiste fuori tempo lineare. Vede passato/presente/futuro simultaneo. Coscienza frammentata tra timeline.</p>
+        <p><strong>Comportamento:</strong> Parla enigmi (difficile linguaggio lineare quando sei non-lineare). A volte aiuta PG (avvertimenti), a volte ostacola (confusione), a volte ignora (vede timeline dove PG non importano).</p>
+        <p><strong>Dialogo Esempio:</strong>
+            <pre style="font-size: 0.9rem;"><em>"Sei morto ieri domani forse. Frammento salva/uccide. Zhou tradisce/aiuta. Hayes mente/dice verità. Tutte vere. Tutte false. Scegli quale timeline vuoi."</em></pre>
+        </p>
+        <p><strong>Come Usare:</strong> Incontro 1-2 volte campagna. Fornisce info criptiche che hanno senso DOPO eventi. Creepy, inquietante, memorabile. Rappresenta destino possibile PG (fine strada contaminazione).</p>
+    </div>
+    
+    <h3>Atmosfera e Tono</h3>
+    
+    <div class="box success">
+        <h4>Pillole Atmosferiche per Direttore</h4>
+        
+        <h5>Suoni di Las Vegas Post-Oculus:</h5>
+        <ul>
+            <li>Neon che flickera (metà bruciati)</li>
+            <li>Sirene distanti (sempre, nessuno risponde)</li>
+            <li>Eco temporali - sentite conversazioni accadute 20 anni fa sovrapposti presente</li>
+            <li>Slot machine fantasma - suonano edifici abbandonati</li>
+            <li>Vento deserto porta polvere radioattiva temporale (odore ozono + metallo)</li>
+        </ul>
+        
+        <h5>Visuale:</h5>
+        <ul>
+            <li>Contrasto violento: Strip neon vivace vs blocchi fuori grigi morti</li>
+            <li>Edifici che "glitchano" - architettura anni '50 sovrapposta a 2080</li>
+            <li>Gente invecchiata precoce (Quirk comuni popolazione)</li>
+            <li>Checkpoint militari ogni 3 isolati (armi puntate, tensione)</li>
+            <li>Graffiti strani: "Il tempo ci guarda", "Zhou sa", "2025 non è finito"</li>
+        </ul>
+        
+        <h5>Sensazioni:</h5>
+        <ul>
+            <li>Paranoia costante (chi ti spia? Divisione? Zhou? Entrambi?)</li>
+            <li>Fatalismo - "Morirò presto comunque, perché non rischiare?"</li>
+            <li>Nostalgia impossibile - rimpiangere epoca mai vissuta (memorie false da contaminazione)</li>
+            <li>Dissonanza cognitiva - Strip finge normalità, ma 5 isolati fuori è apocalisse</li>
+        </ul>
+    </div>
+    
+    <h3>Random Encounters Città</h3>
+    
+    <p><strong>Quando PG esplorano città, tira d6 ogni ora. Con 1, evento accade:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>d6</th>
+                <th>Evento</th>
+                <th>Conseguenza Possibile</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>Checkpoint Divisione</strong></td>
+                <td>Badge richiesto, ispezione. Se corruzione alta O ricercati: arresto</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>Gang Shakedown</strong></td>
+                <td>3-5 gang membri chiedono "tassa passaggio" ($100 O combattimento)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>Mercante Ambulante</strong></td>
+                <td>Vende tesori temporali dubbi. 1d6: 1-2=truffa, 3-4=medio, 5-6=affare</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>Glitch Temporale Minore</strong></td>
+                <td>Auto anni '60 appare/scompare. Musica 1920 da nulla. Disorienta (SAG check O -1 Iniziativa 1h)</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>Rifugiato Disperato</strong></td>
+                <td>Chiede cibo/soldi. Storia tragica. Vero bisogno O truffatore? (SAG check discernere)</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>Informatore Zhou</strong></td>
+                <td>Ti segue discret. Se corruzione 5+, avvicina con "messaggio Madame". Offerta lavoro O minaccia.</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- PARTE XI: LOOP CHICAGO - AVVENTURA COMPLETA -->
+<section id="loop" class="section">
+    <h2>PARTE XI: LOOP CHICAGO</h2>
+    <h3 style="font-style: italic; color: var(--accent-blue);">Avventura Introduttiva One-Shot (3-4 ore)</h3>
+    
+    <div class="box">
+        <h3>Panoramica Avventura</h3>
+        <p><strong>Tipo:</strong> Dungeon crawl urbano + dilemma morale centrale</p>
+        <p><strong>Durata:</strong> 1 sessione (3-4 ore)</p>
+        <p><strong>Livello PG:</strong> 1 (perfetto first mission)</p>
+        <p><strong>Obiettivo:</strong> Recuperare Frammento Oculus da hotel collassato in loop temporale</p>
+        <p><strong>Dilemma Centrale:</strong> Salvare civili intrappolati (tempo perso, rischio) VS completare missione veloce (civili muoiono)</p>
+        <p><strong>Twist:</strong> Uno dei civili è versione futura PG (Doppelganger), vuole impedire loro prendere Frammento</p>
+    </div>
+    
+    <h3>Atto 1: Briefing (15 minuti)</h3>
+    
+    <div class="box">
+        <h4>Scena Apertura</h4>
+        <p><em>Stanza briefing Divisione, sotterraneo Bellagio. Tavolo acciaio, sedie scomode, schermo display zone rosse. Hayes entra, getta dossier tavolo.</em></p>
+        
+        <p><strong>HAYES:</strong> <em>"Ok reclute, prima missione vera. Niente simulazioni. Niente rete sicurezza. Se morite, restate morti. Chiaro?"</em></p>
+        
+        <p><em>Aspetta conferma, poi attiva display.</em></p>
+        
+        <p><strong>HAYES:</strong> <em>"Zona Rossa, settore Fremont-7. Hotel Chicago, crollato 2025 durante Evento Oculus. Da allora intrappolato in loop temporale - ogni 38 minuti, edificio ripete stesso segmento tempo. Interno: 12 Ottobre 1958. Esterno: 15 Maggio 2045. Fisica completamente rotta."</em></p>
+        
+        <p><em>Immagine display: Hotel art deco mezzo collassato, parti esistono multipli epoche.</em></p>
+        
+        <p><strong>HAYES:</strong> <em>"Intel suggerisce Frammento Oculus nella suite penthouse. Grande, valore 12-15 CD. Divisione vuole recupero. Avete 4 ore prima collasso zona diventa critico."</em></p>
+        
+        <p><strong>HAYES:</strong> <em>"Complicazione: Scanner detected 4-6 firme vitali. Civili, forse. Intrappolati nel loop. Non sono priorità. Frammento è priorità. Ma..."</em> <em>*pausa*</em> <em>"...se potete salvare, fate. Non siamo mostri. Solo realisti."</em></p>
+        
+        <p><strong>OBIETTIVI (Display):</strong></p>
+        <ul>
+            <li><strong>PRIMARIO:</strong> Recuperare Frammento Oculus, consegnare Divisione</li>
+            <li><strong>SECONDARIO:</strong> Evacuare civili (bonus $200 + Lealtà +1)</li>
+            <li><strong>LIMITE TEMPO:</strong> 4 ore (poi collasso zona)</li>
+        </ul>
+        
+        <p><strong>HAYES:</strong> <em>"Domande? No? Bene. Van vi aspetta fuori. Tute protezione obbligatorie. Telefoni funzioneranno ma non garantisco. Se non tornate in 4h... mandiamo recovery team domani. Forse."</em></p>
+        
+        <p><em>*Hayes esce. Porta si chiude. Siete soli con dossier e equipaggiamento.*</em></p>
+    </div>
+    
+    <div class="box success">
+        <h4>Info Giocatori (Dossier Leggibile)</h4>
+        <p><strong>Hotel Chicago - Schema Piano:</strong></p>
+        <ul>
+            <li><strong>Piano Terra:</strong> Lobby (collassata parzialmente), scala principale (instabile)</li>
+            <li><strong>Piano 2-6:</strong> Camere hotel (vuote, loop pulite)</li>
+            <li><strong>Piano 7:</strong> Sala ballo (dove civili intrappolati)</li>
+            <li><strong>Piano 8 (Penthouse):</strong> Suite lusso (Frammento Oculus qui)</li>
+        </ul>
+        
+        <p><strong>Mappa Zona:</strong> 2km da checkpoint Divisione. Van vi porta a 500m, poi piedi (van non entra zone instabili).</p>
+        
+        <p><strong>Equipaggiamento Fornito:</strong></p>
+        <ul>
+            <li>Tute protezione (+4 TS Contaminazione)</li>
+            <li>Radio tattica (range 1km, funziona SE loop non interferisce)</li>
+            <li>Torcia LED (batteria 6h)</li>
+            <li>Corda 50m</li>
+            <li>Kit medico base (3 usi)</li>
+        </ul>
+    </div>
+    
+    <h3>Atto 2: Infiltrazione (45-60 minuti)</h3>
+    
+    <h4>Scena 1: Arrivo (Turno 1 - 10 min)</h4>
+    
+    <div class="box">
+        <p><em>Van Divisione ferma 500m da Hotel Chicago. Autista (non scende) dice "4 ore. Non secondo più" e parte. Siete soli.</em></p>
+        
+        <p><strong>Descrizione Zona:</strong></p>
+        <p>Hotel Chicago davanti voi. Edificio art deco 8 piani, metà collassato, metà intatto. Ma intatto CAMBIA - ogni 30 secondi circa, vedi architettura "glitchare" tra epoche. Ora è 1958 (insegna neon "CHICAGO" funzionante), ora è 2025 (rovine fumo), ora è 2080 (vetro hi-tech).</p>
+        
+        <p>Aria odora ozono + polvere temporale. Silenzio inquietante - niente uccelli, niente vento. Solo... scricchiolio edificio che esiste in troppi momenti simultanei.</p>
+        
+        <p><strong>Check SAG (Percezione):</strong> Successo → Notate orologio sopra ingresso principale fermo a 3:47 PM. Ogni epoca, stesso orario. Loop lock.</p>
+    </div>
+    
+    <h4>Scena 2: Lobby (Turno 2 - 10 min)</h4>
+    
+    <div class="box">
+        <p><strong>Descrizione:</strong> Entrate lobby. Grandiosa, stile art deco, marmo/oro, ma metà pavimento è crollato creando voragine 3m. Vedi piano sotto (cantine allagate).</p>
+        
+        <p>Banco reception: scheletro in uniforme hotel 1958 (morto Evento Oculus, mai decomposto - tempo rotto). Registro aperto: ultima entry "Famiglia Castellano, Suite 803, 12 Ott 1958 3:42 PM".</p>
+        
+        <p>Scala principale: Visibile, va su, ma instabile (crepe, gradini mancanti).</p>
+        
+        <p><strong>Incontro:</strong> 3 Ratti Temporali (mutati da esposizione).</p>
+        <p><strong>Stats Ratti:</strong> PF 2, CA 8, THAC0 20, Danno 1d4 (morso velenoso - TS COS o -1 tutti check 1h), Morale 6</p>
+        
+        <p><strong>Tattica:</strong> Attaccano se PG si avvicinano troppo voragine (tana). Rumorosi (squittii), possibile attirare attenzione cose sopra.</p>
+        
+        <p><strong>Check INT (Investigare lobby):</strong> Successo → Trovate cassaforte dietro quadro. Scassinare (DES check)? Dentro: $400 contanti 1958 (collezionisti pagano 1 CD) + revolver .38 (1d6 danno, 6 colpi).</p>
+    </div>
+    
+    <h4>Scena 3: Scale (Turno 3 - 10 min)</h4>
+    
+    <div class="box">
+        <p><strong>Sfida:</strong> Scale instabili. Piano 1 → Piano 7 (sala ballo civili) richiede attraversare.</p>
+        
+        <p><strong>Check DES:</strong> Ogni PG tira. Successo = passa sicuro. Fallimento = gradino cede, cadi 3m (1d6 danni), rumore forte (incontro casuale innescato).</p>
+        
+        <p><strong>Alternativa:</strong> Corda (se qualcuno successo DES, assicura corda per altri → +4 check successivi PG).</p>
+        
+        <p><strong>Glitch Temporale:</strong> Metà salita, scala glitcha. Per 1d6 secondi, vedi scala com'era 1958 (perfetta, pulita) sovrapposta rovine 2045. Disorienta (SAG check o -1 prossimo check DES).</p>
+    </div>
+    
+    <h4>Scena 4: Piano 7 - Sala Ballo (Turno 4-6 - 30 min)</h4>
+    
+    <div class="box">
+        <p><strong>Descrizione:</strong> Sala ballo anni '50. Grande, lampadari cristallo, parquet lucido. Intatta - protetta da loop. Musica suona (Glenn Miller Orchestra, "In The Mood") da fonografo antico. Ma atmosfera SBAGLIATA - aria pesante, luce bluastra innaturale.</p>
+        
+        <p><strong>Civili Intrappolati (5 persone):</strong></p>
+        <ol>
+            <li><strong>Maria Castellano</strong> (donna, 34, vestito sera 1958) - Madre, terrorizzata, razionale</li>
+            <li><strong>Giuseppe Castellano</strong> (uomo, 38, smoking) - Padre, protettivo, sospettoso PG</li>
+            <li><strong>Lucia Castellano</strong> (bambina, 8) - Piange silenzioso, catatonica quasi</li>
+            <li><strong>Frank Holloway</strong> (uomo, 45, tuxedo) - Manager hotel, sa più di quanto dice</li>
+            <li><strong>[NOME PG]</strong> (versione 15 anni più vecchia, cicatrici, Quirk visibili) - <strong>DOPPELGANGER FUTURO</strong></li>
+        </ol>
+        
+        <p><strong>Interazione Iniziale:</strong></p>
+        <p>Famiglia Castellano corre verso PG: <em>"Aiuto! Per favore! Siamo intrappolati qui da... da..."</em> (confusi - per loro sono 5 minuti O 20 anni, percezione rotta)</p>
+        
+        <p>Giuseppe: <em>"Chi siete? Militari? Governo? Cosa SUCCEDE?"</em></p>
+        
+        <p>Frank (manager): <em>"Signori hanno badge Divisione Temporale. Sono... qui per..."</em> <em>*guarda Frammento*</em> <em>"Per quello sopra, vero? Non per noi."</em></p>
+        
+        <p><strong>Doppelganger:</strong> Sta angolo buio, cappuccio nasconde volto. Osserva PG silenzioso. Quando PG si avvicinano, alza testa - PG vedono: È UNO DI LORO. Più vecchio, cicatrizzato, disperato.</p>
+        
+        <p><strong>DOPPELGANGER:</strong> <em>"No. Non potete. Se prendete Frammento... tutto va male. Fidatevi. Io sono voi. 2060. Sono tornato fermavi. Per favore."</em></p>
+    </div>
+    
+    <div class="box danger">
+        <h4>⚠️ DILEMMA CENTRALE</h4>
+        <p><strong>PG devono scegliere:</strong></p>
+        
+        <h5>OPZIONE A: Evacuare Civili Prima</h5>
+        <ul>
+            <li><strong>Tempo:</strong> 1-1.5h (guide giù, scala instabile, famiglia lenta)</li>
+            <li><strong>Rischio:</strong> Potrebbero NON avere tempo recuperare Frammento dopo</li>
+            <li><strong>Conseguenza:</strong> Se successo: Lealtà +1, bonus $200, coscienza pulita. Se tempo scade: Missione fallita, Lealtà -1</li>
+        </ul>
+        
+        <h5>OPZIONE B: Prendere Frammento Prima, Civili Dopo</h5>
+        <ul>
+            <li><strong>Tempo:</strong> 20-30 min per Frammento, poi evacuare se tempo resta</li>
+            <li><strong>Rischio:</strong> Doppelganger interferisce (combattimento possibile)</li>
+            <li><strong>Conseguenza:</strong> Missione successo garantito. Ma morale grigia. Famiglia aspetta, terrorizzata.</li>
+        </ul>
+        
+        <h5>OPZIONE C: Dividere Team</h5>
+        <ul>
+            <li><strong>Tattica:</strong> 2 PG evacuano, 2 PG prendono Frammento</li>
+            <li><strong>Rischio:</strong> Team dimezzati, più vulnerabili. Comunicazione difficile (loop interferisce radio)</li>
+            <li><strong>Conseguenza:</strong> Possibile best outcome (entrambi) O worst (entrambi falliti)</li>
+        </ul>
+    </div>
+    
+    <div class="box">
+        <h4>Doppelganger - Verità</h4>
+        <p><strong>Se PG interrogano Doppelganger:</strong></p>
+        
+        <p><strong>PG:</strong> <em>"Perché non vuoi prendiamo Frammento?"</em></p>
+        
+        <p><strong>DOPPELGANGER:</strong> <em>"Perché nel mio passato - vostro futuro - l'avete preso. Venduto Zhou 20 CD. Sembrò affare. Ma lei vi ha usati. Corruzione 8. Lealtà 0. Ricercati. Morti quasi tutti. Sono sopravvissuto ma..."</em> <em>*mostra Quirk multipli*</em> <em>"...a che prezzo? Sono tornato cambiare timeline. Se NON prendete, vita vostra migliore."</em></p>
+        
+        <p><strong>PG:</strong> <em>"Ma possiamo prenderlo e NON venderlo Zhou."</em></p>
+        
+        <p><strong>DOPPELGANGER:</strong> <em>"Dicevamo stesso. Tutti lo dicono. Poi arrivano debiti. Fame. Disperazione. Zhou offre e..."</em> <em>*scuote testa*</em> <em>"Fidatevi. Meglio NON iniziare."</em></p>
+        
+        <p><strong>INT Check (Direttore):</strong> Doppelganger dice verità... di UNA timeline. Ma timeline non è destino. PG possono scegliere diverso. Ma tentazione sarà reale.</p>
+    </div>
+    
+    <h3>Atto 3: Climax (45-60 minuti)</h3>
+    
+    <h4>Scena 5: Penthouse - Il Frammento (Turno 7-9)</h4>
+    
+    <div class="box">
+        <p><strong>Descrizione:</strong> Suite 803, penthouse. Lusso 1958 (divano velluto, bar mogano, vista Vegas pre-collasso). Ma centro stanza: ANOMALIA.</p>
+        
+        <p>Frammento Oculus levita 1m sopra pavimento. Cristallo blu-viola, dimensione football, pulsa luce. Aria intorno distorta - vedi multipli momenti tempo sovrapposti. Toccare direttamente = contaminazione istantanea.</p>
+        
+        <p><strong>Container Speciale:</strong> Divisione fornito scatola piombo-temporale. Mettere Frammento dentro = safe transport. Ma devi avvicinarti, afferrarlo (guanti protezione ok).</p>
+        
+        <p><strong>Complicazione 1 - Guardiano Eco:</strong> 2 Echi Temporali (ex-ospiti hotel, morti 2025, ora entità) materializzano quando PG entrano penthouse.</p>
+        
+        <p><strong>Stats Eco:</strong></p>
+        <ul>
+            <li>PF: 12 | CA: 6 (parzialmente intangibili) | THAC0: 18</li>
+            <li>Danno: 1d8 (tocco drena tempo - invecchiamento 1d6 anni se colpiti)</li>
+            <li>Speciale: Immuni armi normali (serve fuoco/energia O armi benedette/temporali)</li>
+            <li>Debolezza: Frammento Oculus. Se PG lo prendono, Echi svaniscono (fonte energia persa)</li>
+        </ul>
+        
+        <p><strong>Tattica:</strong> Echi difendono Frammento (non capiscono è causa dolore loro). Attaccano chiunque si avvicina. Non intelligenti - pattern attack ripetitivo.</p>
+        
+        <p><strong>Complicazione 2 - Doppelganger Interferisce:</strong> Se PG ignorarono avvertimento, Doppelganger li segue. Cerca sabotare (rompere container, O afferrare Frammento lui e correre).</p>
+        
+        <p><strong>Check TS Contaminazione:</strong> Stare stanza con Frammento nudo = check immediato (-2 per vicinanza). Se fallisci = Quirk (tira d12).</p>
+    </div>
+    
+    <h4>Scena 6: Fuga/Collasso (Turno 10-12)</h4>
+    
+    <div class="box">
+        <p><strong>Quando Frammento viene preso (O 4h scadono):</strong> Loop collassa. Hotel inizia disintegrazione temporale.</p>
+        
+        <p><strong>Descrizione Collasso:</strong></p>
+        <ul>
+            <li>Muri glitchano violentemente (1958/2025/2080 sovrapposti, nausea)</li>
+            <li>Gravità fluttua (random direzioni, PG devono aggrapparsi)</li>
+            <li>Parti edificio svaniscono (pavimento sotto piedi sparisce istanti)</li>
+            <li>Suono terrificante - come vetro che si spacca rallentato + urlata lontana</li>
+        </ul>
+        
+        <p><strong>Meccanica Fuga:</strong> 3 check DES consecutivi (difficoltà crescente: 0, -2, -4). Ogni fallimento = 1d6 danni + ritardo 1 turno. 3 successi = fuori edificio safe.</p>
+        
+        <p><strong>Civili:</strong> Se PG portano famiglia, check DES loro (Direttore tira). Fallimento = uno resta indietro (Giuseppe si sacrifica salvare figlia? Maria resta Giuseppe? PG salvano?).</p>
+        
+        <p><strong>Doppelganger:</strong> Se vivo, ultimo tentativo fermare PG. O combattimento finale O scelta eroica (aiuta PG fuggire, accetta timeline divergenza, svanisce dicendo "Fate meglio di me").</p>
+    </div>
+    
+    <h3>Atto 4: Conseguenze (15-20 minuti)</h3>
+    
+    <h4>Debriefing Hayes</h4>
+    
+    <div class="box">
+        <p><strong>Scenario A - Successo Totale (Frammento + Civili):</strong></p>
+        <p><strong>HAYES:</strong> <em>"Impressionante. Frammento recuperato, civili vivi, zero morti squadra. Forse avevo sottovalutato. Divisione soddisfatta. Bonus $200, Lealtà +1. Enjoy mentre dura."</em></p>
+        
+        <p><strong>Scenario B - Solo Frammento (Civili Morti/Abbandonati):</strong></p>
+        <p><strong>HAYES:</strong> <em>"Frammento recuperato. Missione successo. Civili... unfortunate. Ma realistico. *pausa* Non vi sento dormire male. Questo lavoro richiede scelte dure. Missione completa."</em> <em>*Ma PG vedono disapprovazione suoi occhi*</em></p>
+        
+        <p><strong>Scenario C - Fallimento Totale:</strong></p>
+        <p><strong>HAYES:</strong> <em>"NO frammento. NO civili salvati. Cosa ESATTAMENTE avete fatto 4 ore? Incompetenza? Codardia? *sbatte pugno tavolo* Lealtà -1. Stipendio trattenuto questa settimana. Prossima missione - supervision diretta. USCITE."</em></p>
+    </div>
+    
+    <h4>Epiloghi Possibili</h4>
+    
+    <div class="box">
+        <h5>Se Consegnato Frammento a Divisione:</h5>
+        <ul>
+            <li>Hayes soddisfatto, fiducia inizia</li>
+            <li>3 CD compensation (standard Divisione)</li>
+            <li>Ma... Zhou sa. Informatori ovunque. Ti contatta: <em>"Peccato consegnato. Avrei pagato 20 CD. Offerta ancora valida... prossimo Frammento."</em></li>
+        </ul>
+        
+        <h5>Se Venduto Zhou (richiede scelta attiva):</h5>
+        <ul>
+            <li>20 CD immediato (ricchezza istantanea!)</li>
+            <li>Corruzione +3</li>
+            <li>Hayes chiede Frammento. Devi mentire (Inganno check). Fallimento = Lealtà -2 + sospetto</li>
+            <li>Zhou ora ti "conosce": <em>"Piacere fare affari. Chiamerò presto altre... opportunità."</em></li>
+        </ul>
+        
+        <h5>Se Tenuto Frammento (scelta folle):</h5>
+        <ul>
+            <li>Potere immenso (manipolare tempo localmente, 1/giorno)</li>
+            <li>Corruzione +5, Lealtà -10 (→ 0, ricercato)</li>
+            <li>Hayes manda squadre recupero (combattimento inevitabile)</li>
+            <li>Zhou pure vuole (cacciatori mercato nero)</li>
+            <li>Campagna diventa: fuga + sopravvivenza + trovare modo neutralizzare entrambi</li>
+        </ul>
+    </div>
+    
+    <h4>Hook Prossime Sessioni</h4>
+    
+    <div class="box">
+        <ul>
+            <li><strong>Famiglia Castellano:</strong> Se salvati, Giuseppe ti ringrazia, dice "Qualsiasi cosa serve, chiama." (Contatto civile, info quartieri)</li>
+            <li><strong>Doppelganger:</strong> Se sopravvissuto e ascoltato, lascia nota: "Timeline cambiate. Grazie. Ma fate attenzione Zhou - nella mia timeline, vi ha traditi anno 3." (Warning profetico)</li>
+            <li><strong>Frank (Manager):</strong> Se salvato, rivela: "Lavoravo Zhou prima Evento. So cose. Se mai serve info mercato nero... so chi chiedere." (Potenziale fonte intel corrotta)</li>
+            <li><strong>Doc Rivera:</strong> Se PG tornano feriti/contaminati, li cura, vede Quirk. Commenta: "Già comincia. Veleno lento. Quanto pensate durare?" (Filosofia fatalista OSR)</li>
+            <li><strong>Eco-7:</strong> Appare sogno PG random quella notte: <em>"Avete scelto bene oggi. O male. Entrambi. Tutte timeline convergono. Scelta prossima... più importante."</em> (Foreshadowing)</li>
+        </ul>
+    </div>
+    
+    <div class="box success">
+        <h3>✅ Fine Loop Chicago</h3>
+        <p style="font-size: 1.1rem;">Congratulazioni! Hai completato prima missione. Hai fatto scelte. Hai conseguenze. Hai iniziato tracciare chi sei diventando.</p>
+        <p><strong>Lealtà:</strong> [varia]<br>
+        <strong>Corruzione:</strong> [varia]<br>
+        <strong>Quirk:</strong> [possibile 0-2]<br>
+        <strong>CD:</strong> [3-20 depending choices]<br>
+        <strong>Coscienza:</strong> [pulita? sporca? grigia?]</p>
+        <p style="margin-top: 1rem; font-style: italic;">Benvenuto a Las Vegas. Benvenuto in Ucronie e Tesori.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p><strong>© 2024 Riccardo Sgaringi</strong> | Creative Commons BY 4.0</p>
+    <p><strong>UCRONIE E TESORI v2.0</strong> | Parte 2: Contenuto Centrale</p>
+    <p style="margin-top: 1rem; color: var(--accent-gold);">
+        <strong>Continua in:</strong> PARTE 3 (Materiali Direttore, Strumenti, Tabelle Random)
+    </p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTop');
+    btn.className = window.pageYOffset > 300 ? 'scroll-top show' : 'scroll-top';
+});
+</script>
+
+</body>
+</html>

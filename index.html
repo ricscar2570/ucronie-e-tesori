@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucronie e Tesori v2.0 | Manuale Completo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0a0e27;
+            --accent-blue: #3498db;
+            --accent-gold: #f39c12;
+            --accent-red: #e74c3c;
+            --accent-purple: #9b59b6;
+            --text: #ecf0f1;
+            --bg: #1a1f2e;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--primary), var(--bg));
+            background-attachment: fixed;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--primary);
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .hero .version {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-top: 1rem;
+        }
+        .intro {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+        .intro h2 {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .intro p {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .file-card {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .file-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+            border-color: var(--accent-gold);
+        }
+        .file-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .file-number {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .file-card p {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .file-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .file-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+            color: var(--accent-blue);
+        }
+        .file-card li:last-child {
+            border-bottom: none;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: scale(1.05);
+        }
+        .features {
+            background: var(--primary);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 2px solid var(--accent-purple);
+        }
+        .features h2 {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .feature {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
+        }
+        .feature h3 {
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        .feature p {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .quick-start {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid #2ecc71;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+        .quick-start h2 {
+            color: #2ecc71;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .quick-start ol {
+            margin-left: 2rem;
+            font-size: 1.1rem;
+        }
+        .quick-start li {
+            margin-bottom: 0.8rem;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--accent-blue);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        footer {
+            background: var(--primary);
+            padding: 2rem;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+            margin-top: 3rem;
+        }
+        footer p {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: var(--accent-gold);
+        }
+        .license-badge {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .tagline { font-size: 1.1rem; }
+            .files-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="hero">
+        <h1>⏳ UCRONIE E TESORI ⏳</h1>
+        <p class="tagline">"Breaking Bad meets OSR meets Looper"</p>
+        <p class="version"><strong>v2.0 REFINED</strong> | Manuale Completo HTML</p>
+        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text);">
+            Un gioco di ruolo OSR dove agenti temporali affrontano<br>
+            scelte morali impossibili, pressione economica letale,<br>
+            e conseguenze che durano per sempre.
+        </p>
+    </div>
+    
+    <div class="intro">
+        <h2>Benvenuto nel Manuale Completo</h2>
+        <p>Questo è il <strong>manuale digitale completo</strong> di Ucronie e Tesori, diviso in 3 files HTML interconnessi per facilitare navigazione e utilizzo al tavolo.</p>
+        <p style="margin-top: 1rem;">Ogni file è <strong>self-contained</strong> (funziona standalone) ma parte di sistema integrato. Puoi aprirli simultaneamente in tabs diversi, stampare sezioni specifiche, o salvare offline per uso mobile.</p>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-box">
+            <span class="stat-number">16</span>
+            <span class="stat-label">Parti Totali</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Pagine Equivalenti</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Quirk Dettagliati</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Gratis CC BY 4.0</span>
+        </div>
+    </div>
+    
+    <h2 style="text-align: center; color: var(--accent-gold); font-size: 2.5rem; margin: 3rem 0 2rem;">📚 I Tre Manuali</h2>
+    
+    <div class="files-grid">
+        
+        <!-- FILE 1 -->
+        <div class="file-card">
+            <span class="file-number">FILE 1</span>
+            <h3>📖 SISTEMA BASE</h3>
+            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
+                Fondamenta del gioco, meccaniche core, creazione personaggio
+            </p>
+            <ul>
+                <li>✦ Parte 0: I 5 Pilastri di Design</li>
+                <li>✦ Parte I: Introduzione e Pitch</li>
+                <li>✦ Parte II: Creazione Personaggio</li>
+                <li>✦ Parte III: Sistema di Gioco</li>
+                <li>✦ Parte IV: Esplorazione e Tempo</li>
+                <li>✦ Parte V: Contaminazione Temporale</li>
+            </ul>
+            <a href="ucronie_e_tesori_file1.html" class="cta-button">Apri File 1 →</a>
+        </div>
+        
+        <!-- FILE 2 -->
+        <div class="file-card">
+            <span class="file-number">FILE 2</span>
+            <h3>⚙️ CONTENUTO CENTRALE</h3>
+            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
+                Quirk, economia, moralità, progressione, mondo, avventura completa
+            </p>
+            <ul>
+                <li>✦ Parte VI: 12 Quirk Dettagliati</li>
+                <li>✦ Parte VII: Economia Disperazione</li>
+                <li>✦ Parte VIII: Lealtà e Corruzione</li>
+                <li>✦ Parte IX: Progressione e Livelli</li>
+                <li>✦ Parte X: Las Vegas Post-Oculus</li>
+                <li>✦ Parte XI: Loop Chicago (Avventura)</li>
+            </ul>
+            <a href="ucronie_e_tesori_file2.html" class="cta-button">Apri File 2 →</a>
+        </div>
+        
+        <!-- FILE 3 -->
+        <div class="file-card">
+            <span class="file-number">FILE 3</span>
+            <h3>🎲 MATERIALI DIRETTORE</h3>
+            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
+                Guida GM, tabelle random, gestione campagna, FAQ, crediti
+            </p>
+            <ul>
+                <li>✦ Parte XII: Guida per il Direttore</li>
+                <li>✦ Parte XIII: Tabelle e Generatori</li>
+                <li>✦ Parte XIV: Gestione Campagna</li>
+                <li>✦ Parte XV: FAQ Completa</li>
+                <li>✦ Parte XVI: Crediti e Licenza</li>
+            </ul>
+            <a href="ucronie_e_tesori_file3.html" class="cta-button">Apri File 3 →</a>
+        </div>
+        
+    </div>
+    
+    <div class="quick-start">
+        <h2>🚀 Quick Start - Inizia Subito</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.1rem;">Primo impatto con il gioco? Segui questo percorso:</p>
+        <ol>
+            <li><strong>Leggi Parte 0</strong> (FILE 1) - 5 minuti per capire filosofia design</li>
+            <li><strong>Crea personaggio</strong> (FILE 1, Parte II) - 10 minuti con tabelle random</li>
+            <li><strong>Impara sistema base</strong> (FILE 1, Parte III) - Roll-under d20, THAC0, TS</li>
+            <li><strong>Gioca Loop Chicago</strong> (FILE 2, Parte XI) - Avventura tutorial 3-4h</li>
+            <li><strong>Consulta tabelle</strong> (FILE 3) quando serve durante gioco</li>
+        </ol>
+        <p style="margin-top: 1rem; font-style: italic;">
+            <strong>Tempo per essere operativo:</strong> 30 minuti lettura + 1 sessione gioco
+        </p>
+    </div>
+    
+    <div class="features">
+        <h2>✨ Caratteristiche Speciali</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <h3>🎨 Design Moderno</h3>
+                <p>CSS responsive, navigazione sticky, tabelle colorate, mobile-friendly</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ Generatori Interattivi</h3>
+                <p>JavaScript per creare missioni, NPC, tesori random al click (FILE 3)</p>
+            </div>
+            <div class="feature">
+                <h3>📱 Offline-Ready</h3>
+                <p>Scarica e usa senza internet. Ideale per tablet al tavolo</p>
+            </div>
+            <div class="feature">
+                <h3>🖨️ Print-Friendly</h3>
+                <p>Stampa sezioni specifiche o intero manuale direttamente da browser</p>
+            </div>
+            <div class="feature">
+                <h3>🔗 Navigazione Rapida</h3>
+                <p>Menu sticky per saltare tra sezioni, scroll-to-top automatico</p>
+            </div>
+            <div class="feature">
+                <h3>📖 Self-Contained</h3>
+                <p>Ogni file funziona standalone. No dipendenze esterne.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="intro">
+        <h2>🎯 Cosa Rende Ucronie e Tesori Speciale?</h2>
+        <p><strong>1. Moralità Grigia Sistematica</strong> - Lealtà e Corruzione non sono "buono/cattivo". Sono tracciatori neutri di compromessi. Zhou non è villain - è alternativa. Hayes non è eroina - è burocrate.</p>
+        
+        <p style="margin-top: 1rem;"><strong>2. Economia Come Narrativa</strong> - Deficit non è "fail state". È motore drammatico. Debiti forzano scelte disperate. Fame è più pericoloso di mostri.</p>
+        
+        <p style="margin-top: 1rem;"><strong>3. Conseguenze Permanenti</strong> - Quirk consumano corpo. Corruzione intrappola. Lealtà persa non torna. Scelte hanno peso reale, duraturo, tangibile.</p>
+        
+        <p style="margin-top: 1rem;"><strong>4. Sistema OSR Semplificato</strong> - Roll-under d20. Niente skill bloat. Ruling over rules. 10 minuti per imparare, lifetime per masterare.</p>
+        
+        <p style="margin-top: 1rem;"><strong>5. Setting Ibrido Unico</strong> - Non "solo sci-fi" O "solo fantasy". Temporal anomaly + crime drama + survival horror + noir. Inspirazioni: Breaking Bad, Looper, Disco Elysium, The Wire.</p>
+    </div>
+    
+    <div style="background: var(--primary); padding: 2rem; border-radius: 12px; border: 2px solid var(--accent-red); margin-bottom: 3rem;">
+        <h2 style="color: var(--accent-red); margin-bottom: 1rem;">⚠️ Content Warning</h2>
+        <p style="font-size: 1.1rem;">Questo gioco contiene temi maturi:</p>
+        <ul style="margin-left: 2rem; margin-top: 1rem;">
+            <li>Violenza grafica (combat letale, body horror Quirk)</li>
+            <li>Pressione economica stressante (debiti, povertà, fame)</li>
+            <li>Dilemmi morali pesanti (sacrifici, tradimenti)</li>
+            <li>Horror esistenziale (perdita identità, trasformazione involontaria)</li>
+            <li>Corruzione progressiva (diventare cosa giuri combattere)</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 1.05rem;"><strong>Raccomandato: Sessione Zero + Safety Tools (X-Card).</strong></p>
+        <p style="margin-top: 0.5rem; font-style: italic;">Non per tutti i tavoli. Perfetto per gruppi che cercano drama intenso e conseguenze reali.</p>
+    </div>
+    
+    <div style="text-align: center; margin: 3rem 0;">
+        <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 2rem;">Scegli il Tuo Percorso</h2>
+        
+        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px; max-width: 350px;">
+                <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">👥 Sono un Giocatore</h3>
+                <p style="margin-bottom: 1rem;">Inizia con <strong>FILE 1</strong> (Sistema Base). Leggi Parti 0-II per creare personaggio. Consulta FILE 2 quando serva economia/Quirk.</p>
+                <a href="ucronie_e_tesori_file1.html" class="cta-button">Vai al FILE 1</a>
+            </div>
+            
+            <div style="flex: 1; min-width: 250px; max-width: 350px;">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">🎭 Sono il Direttore</h3>
+                <p style="margin-bottom: 1rem;">Leggi <strong>tutti e 3 files</strong> in ordine. Focus su FILE 3 (Materiali Direttore) per tabelle e consigli pratici.</p>
+                <a href="ucronie_e_tesori_file1.html" class="cta-button">Inizia FILE 1</a>
+            </div>
+            
+            <div style="flex: 1; min-width: 250px; max-width: 350px;">
+                <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">📚 Voglio Overview</h3>
+                <p style="margin-bottom: 1rem;">Leggi <strong>Parte 0</strong> (Pilastri Design) e <strong>Parte I</strong> (Introduzione). 10 minuti per capire se gioco fa per te.</p>
+                <a href="ucronie_e_tesori_file1.html#pilastri" class="cta-button">Leggi Pilastri</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<footer>
+    <p style="font-size: 1.3rem; color: var(--accent-gold); margin-bottom: 1rem;">
+        <strong>⏳ UCRONIE E TESORI v2.0 ⏳</strong>
+    </p>
+    <p><strong>Design e Sviluppo:</strong> Riccardo Sgaringi</p>
+    <p><strong>Pubblicazione:</strong> <a href="https://ilgiocointavolo.it">ilgiocointavolo.it</a></p>
+    <p style="margin-top: 1rem;">
+        <span class="license-badge">📄 CC BY 4.0 License</span>
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+        Sei libero di condividere, adattare, e usare commercialmente questo gioco.<br>
+        Unica richiesta: <strong>dai credito</strong> all'autore originale.
+    </p>
+    <p style="margin-top: 2rem; font-style: italic; color: var(--accent-blue);">
+        "Il tempo ti guarda. Fai scelte che contano."
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(236, 240, 241, 0.6);">
+        © 2024 Riccardo Sgaringi | Tutti i diritti riservati secondo licenza CC BY 4.0
+    </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucronie e Tesori v2.0 | PARTE 1: Sistema Base</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0a0e27; --accent-blue: #3498db; --accent-gold: #f39c12;
+            --accent-red: #e74c3c; --text: #ecf0f1; --bg: #1a1f2e;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: Georgia, serif; line-height: 1.6; color: var(--text);
+            background: linear-gradient(135deg, var(--primary), var(--bg));
+            background-attachment: fixed; padding: 0 1rem; max-width: 1200px; margin: 0 auto;
+        }
+        .header {
+            background: var(--primary); border-bottom: 3px solid var(--accent-gold);
+            padding: 2rem; text-align: center; margin: 2rem 0; border-radius: 12px;
+        }
+        .header h1 { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 0.5rem; }
+        .tagline { color: var(--accent-blue); font-style: italic; }
+        .nav { 
+            position: sticky; top: 0; background: var(--primary); 
+            padding: 1rem; border-bottom: 2px solid var(--accent-blue);
+            margin-bottom: 2rem; z-index: 100; border-radius: 8px;
+        }
+        .nav a {
+            color: var(--accent-blue); text-decoration: none;
+            margin: 0 0.5rem; font-size: 0.9rem;
+        }
+        .nav a:hover { color: var(--accent-gold); }
+        .section {
+            background: var(--bg); margin-bottom: 2rem; padding: 2rem;
+            border-radius: 12px; border-left: 4px solid var(--accent-blue);
+        }
+        h2 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem; 
+             border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; }
+        h3 { color: var(--accent-blue); font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+        h4 { color: var(--text); font-size: 1.2rem; margin: 1rem 0 0.5rem; }
+        h5 { color: var(--text); font-size: 1rem; margin: 0.8rem 0 0.4rem; font-weight: bold; }
+        p, li { margin-bottom: 0.5rem; }
+        ul, ol { margin-left: 1.5rem; }
+        .box {
+            padding: 1rem; margin: 1rem 0; border-radius: 6px;
+            border-left: 4px solid var(--accent-blue);
+            background: rgba(52, 152, 219, 0.1);
+        }
+        .warning { border-left-color: #f1c40f; background: rgba(241, 196, 15, 0.1); }
+        .danger { border-left-color: var(--accent-red); background: rgba(231, 76, 60, 0.1); }
+        .success { border-left-color: #2ecc71; background: rgba(46, 204, 113, 0.1); }
+        table {
+            width: 100%; border-collapse: collapse; margin: 1rem 0;
+            background: var(--primary);
+        }
+        th { background: var(--accent-blue); color: white; padding: 0.8rem; text-align: left; }
+        td { padding: 0.8rem; border-bottom: 1px solid var(--bg); }
+        tr:hover { background: rgba(52, 152, 219, 0.1); }
+        .badge {
+            display: inline-block; padding: 0.2rem 0.6rem;
+            border-radius: 12px; font-size: 0.85rem; font-weight: bold;
+        }
+        .badge-info { background: var(--accent-blue); color: white; }
+        .badge-warning { background: #f1c40f; color: black; }
+        .badge-danger { background: var(--accent-red); color: white; }
+        .badge-success { background: #2ecc71; color: white; }
+        pre {
+            background: var(--primary); padding: 1rem; border-radius: 6px;
+            overflow-x: auto; margin: 1rem 0; font-size: 0.9rem;
+        }
+        code { color: var(--accent-blue); }
+        .scroll-top {
+            position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+            background: var(--accent-gold); border: none; border-radius: 50%;
+            cursor: pointer; display: none; font-size: 1.5rem; color: var(--primary);
+        }
+        .scroll-top.show { display: block; }
+        .footer {
+            text-align: center; padding: 2rem; margin-top: 2rem;
+            border-top: 2px solid var(--accent-gold);
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .section { padding: 1rem; }
+            h2 { font-size: 1.5rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>⏳ UCRONIE E TESORI ⏳</h1>
+    <p class="tagline">"Breaking Bad meets OSR meets Looper"</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.0 REFINED | PARTE 1: SISTEMA BASE</p>
+</header>
+
+<nav class="nav">
+    <a href="#pilastri">Pilastri</a>
+    <a href="#intro">Introduzione</a>
+    <a href="#pg">Creazione PG</a>
+    <a href="#sistema">Sistema</a>
+    <a href="#esplorazione">Esplorazione</a>
+    <a href="#contaminazione">Contaminazione</a>
+</nav>
+
+<div class="container">
+
+<!-- PARTE 0: I 5 PILASTRI -->
+<section id="pilastri" class="section">
+    <h2>PARTE 0: I 5 PILASTRI DI DESIGN</h2>
+    
+    <div class="box">
+        <h3>1️⃣ SCELTE GRIGIE</h3>
+        <p><strong>Nessuna scelta è perfetta. Ogni decisione ha costo.</strong></p>
+        <p>Non sei eroe destinato a salvare il mondo. Sei persona disperata che cerca di sopravvivere in situazione impossibile. Ogni missione offre scelte senza risposta "giusta":</p>
+        <ul>
+            <li><strong>Consegnare Frammento Oculus alla Divisione:</strong> Leale ma povero, stipendio base, +1 Lealtà</li>
+            <li><strong>Venderlo al mercato nero:</strong> Ricco (+15 CD ≈ $15.000) ma corrotto (+2 Corruzione), ricercato se scoperti</li>
+            <li><strong>Tenerlo per te:</strong> Potere immenso (manipoli tempo), rischio enorme (tutti ti cacciano), +5 Corruzione immediato</li>
+        </ul>
+        <p><strong>Il gioco non giudica. Registra.</strong> Il sistema Lealtà/Corruzione traccia scelte, ma non dice quale è "migliore". Sono tutte valide. Sono tutte costose. Dopo 10 sessioni, guarderai scheda e vedrai chi sei diventato.</p>
+    </div>
+    
+    <div class="box">
+        <h3>2️⃣ PRESSIONE ECONOMICA</h3>
+        <p><strong>La corruzione non è scelta morale. È necessità matematica.</strong></p>
+        <p>Il sistema economico è calibrato per essere <em>insostenibile</em>. Questa non è svista di design - è il punto centrale:</p>
+        <pre><code>Stipendio base: $800/settimana
+Spese obbligatorie:
+  - Affitto: $500
+  - Cibo/necessità: $150
+  - Medicine anti-rigetto: $250
+────────────────────────────────
+TOTALE SPESE: $900/settimana
+────────────────────────────────
+Deficit garantito: -$100/settimana</code></pre>
+        <p><strong>Non puoi vincere giocando onesto.</strong> Questo è intenzionale. La Divisione paga poco perché sa che prenderai "extra" dalle missioni. Ti vogliono compromesso. È più facile controllare persone disperate che persone soddisfatte.</p>
+        <p>Dopo 10 settimane (2-3 mesi in-game): deficit accumulato di -$1.000. Sfratto imminente. Medicine finite. Fame. A quel punto, quando Madame Zhou offre $5.000 per una "piccola informazione" sulla Divisione... cosa fai?</p>
+        <p><strong>Il gioco ti spinge dolcemente verso corruzione.</strong> Non con forza. Con matematica.</p>
+    </div>
+    
+    <div class="box">
+        <h3>3️⃣ CONTAMINAZIONE TEMPORALE</h3>
+        <p><strong>Il tempo ti corrode. Lentamente. Permanentemente.</strong></p>
+        <p>Ogni 4 ore passate in zona temporale: Tiro Salvezza vs Bacchette. Fallisci? Acquisisci <strong>Quirk</strong> (mutazione temporale permanente):</p>
+        <ul>
+            <li><strong>Invecchiamento accelerato:</strong> +1d10 anni istantanei, capelli bianchi, ossa fragili</li>
+            <li><strong>Memoria di vite mai vissute:</strong> Flashback paralizzanti, -2 Iniziativa, confusione identità</li>
+            <li><strong>Capacità di vedere morti futuri:</strong> +1 tutti TS, ma CAR diventa 3 (nessuno ti sopporta)</li>
+            <li><strong>Corpo che sfasa parzialmente fuori fase:</strong> Mano traslucida, attraversi muri con INT check, ma contatto fisico doloroso</li>
+        </ul>
+        <p><strong>Limite: 5 Quirk massimo.</strong> Al sesto Quirk, il tuo corpo/mente non regge più la contraddizione temporale. Diventi <strong>Eco Temporale</strong> - entità non più umana che esiste simultaneamente in multipli momenti. Il tuo personaggio è perso per sempre, diventa PNG ostile controllato dal Direttore.</p>
+        <p>Questo crea pressione naturale: <em>quanto rischi per quel tesoro? Vale la tua umanità?</em></p>
+    </div>
+    
+    <div class="box">
+        <h3>4️⃣ VELOCITÀ</h3>
+        <p><strong>Dalla pagina bianca al gioco: 30 minuti totali.</strong></p>
+        <ul>
+            <li><strong>Creazione personaggio:</strong> 15 minuti (3d6 in ordine, scegli background, fatto)</li>
+            <li><strong>Spiegazione regole:</strong> 10 minuti ("Tira d20 sotto attributo. Combattimento: d20 ≥ THAC0-CA. Fine.")</li>
+            <li><strong>Briefing prima missione:</strong> 5 minuti (Direttore legge briefing Hayes, si parte)</li>
+        </ul>
+        <p>Il sistema è intenzionalmente <strong>semplice</strong>. Un solo meccanismo core (roll-under d20). Tutto deriva da quello. Zero skill tree complesse. Zero build optimization paralysis. Zero 2 ore a creare personaggio perfetto che muore in prima sessione.</p>
+        <p><strong>Sessioni target: 3-4 ore.</strong> One-shot friendly. Perfetto per convention, per gruppo che si vede mensile, per testare con amici scettici. "Proviamo stasera?" → "Ok, alle 20 giochiamo."</p>
+    </div>
+    
+    <div class="box">
+        <h3>5️⃣ CONSEGUENZE PERMANENTI</h3>
+        <p><strong>Le tue scelte contano. Per sempre.</strong></p>
+        <ul>
+            <li><strong>Morte è permanente</strong> (opzionale: regola 3 TS vs Morte per stabilizzare, ma se fallisci sei morto per sempre)</li>
+            <li><strong>Quirk sono permanenti</strong> (rimozione possibile ma rischiosa, costosa, non garantita)</li>
+            <li><strong>Reputazione è permanente</strong> (Lealtà 0 = ricercato dalla Divisione per sempre. Corruzione 10 = proprietà di Madame Zhou per sempre)</li>
+            <li><strong>Tradimenti sono permanenti</strong> (vendi segreti Divisione a Zhou? Lei ricorda. Per sempre. Ti userà. Per sempre.)</li>
+        </ul>
+        <p>Niente reset. Niente "carica salvataggio precedente". Il tempo scorre avanti (ironico per gioco su viaggi temporali). Le conseguenze si accumulano. Il peso delle scelte cresce.</p>
+        <p>Dopo 20 sessioni, la tua scheda personaggio non è foglio di statistiche - è <strong>mappa cicatrici</strong>. Fisica (Quirk). Economica (debiti). Sociale (alleanze tradite). Morale (Corruzione 8).</p>
+    </div>
+    
+    <div class="box success">
+        <h3>🎯 L'ESPERIENZA TARGET</h3>
+        <p style="font-size: 1.1rem;">Dopo una sessione di Ucronie e Tesori, i giocatori dovrebbero sentirsi:</p>
+        <ol style="font-size: 1.05rem; margin-top: 1rem;">
+            <li><strong>Complici</strong> - "Abbiamo fatto scelte difficili insieme, nessuno sa fuori da questo tavolo"</li>
+            <li><strong>Tesi</strong> - "Ogni decisione aveva peso reale, non stavo solo tirando dadi"</li>
+            <li><strong>Corrotti</strong> - "Ho fatto cose che non pensavo di fare. E le ho giustificate."</li>
+            <li><strong>Compromessi</strong> - "Ho scelto sopravvivenza sopra principi. Rifarei lo stesso?"</li>
+            <li><strong>Curiosi</strong> - "Cosa succede dopo? Quanto posso spingermi prima di rompermi?"</li>
+        </ol>
+        <p style="margin-top: 1rem;"><strong>Se ottieni questo,</strong> il gioco funziona. Il resto è dettaglio.</p>
+    </div>
+</section>
+
+<!-- PARTE I: INTRODUZIONE -->
+<section id="intro" class="section">
+    <h2>PARTE I: COS'È UCRONIE E TESORI</h2>
+    
+    <div class="box">
+        <h3>High Concept</h3>
+        <p style="font-size: 1.2rem; text-align: center; padding: 1rem; font-weight: bold;">
+            "Sei un agente sottopagato di un'agenzia governativa che esplora zone dove il tempo si è rotto. Ogni missione offre scelta: lealtà o corruzione? Intanto, l'esposizione temporale ti trasforma lentamente in qualcosa di... altro."
+        </p>
+    </div>
+    
+    <h4>In Altre Parole:</h4>
+    <ul>
+        <li><strong>Breaking Bad incontra OSR incontra Looper</strong></li>
+        <li>Sei disperato per soldi, e il tempo stesso è la tua rapina</li>
+        <li>Ogni sessione è dilemma morale mascherato da dungeon crawl</li>
+        <li>Il sistema economico è truccato per spingerti verso corruzione</li>
+        <li>I tuoi personaggi hanno scadenza (Quirk ti consumano lentamente)</li>
+    </ul>
+    
+    <h3>Cosa Significa OSR</h3>
+    <p><strong>OSR = Old School Renaissance/Revival</strong></p>
+    <p>Movimento giochi di ruolo che riprende stile D&D anni '70-'80. Non per nostalgia, ma perché quel design aveva focus su:</p>
+    <ul>
+        <li><strong>Letalità:</strong> La morte è sempre a un tiro di dado. Combattimento è ultima risorsa, non inevitabilità.</li>
+        <li><strong>Scelta del giocatore &gt; Meccaniche del personaggio:</strong> "Cosa fai?" non "Quale abilità usi? Tira Persuasione."</li>
+        <li><strong>Esplorazione e gestione rischio:</strong> Risorse limitate (munizioni, medicine, tempo), pericolo costante, devi decidere: spingi avanti o torni indietro?</li>
+        <li><strong>Rulings not rules:</strong> Il Direttore decide caso per caso, veloce. Non cerca regola nel manuale per 10 minuti. "Sembra ragionevole? Ok, tira d20 sotto INT."</li>
+        <li><strong>Emergent storytelling:</strong> Storia nasce dal gioco, non è pre-scritta. Niente "scena cutscene". Tu agisci, mondo reagisce, storia emerge.</li>
+    </ul>
+    
+    <h3>Durata della Campagna</h3>
+    <p><strong>Ucronie e Tesori è progettato per:</strong></p>
+    
+    <h4>One-shot (3-4 ore):</h4>
+    <p><strong>Perfetto.</strong> Loop Chicago (avventura inclusa) è progettato per questo. Inizio, dilemma centrale, risoluzione, tutto in una sera. Prova ideale per convention, demo, gruppo nuovo.</p>
+    
+    <h4>Mini-campagna (4-8 sessioni):</h4>
+    <p><strong>Ideale.</strong> Abbastanza tempo per vedere archi Lealtà/Corruzione evolversi. Personaggi accumulano 2-3 Quirk. Debiti crescono. Alleanze si formano e tradiscono. Sweet spot del design.</p>
+    
+    <h4>Campagna lunga (10+ sessioni):</h4>
+    <p><strong>Possibile ma difficile.</strong> Quirk consumano personaggi. A 10 sessioni, la maggior parte avrà 3-4 Quirk, alcuni 5 (limite). Preparati a dire addio a PG amati quando diventano Echi. O prepara sistema "nuova generazione" (ex: figli dei PG originali, nuove reclute).</p>
+    
+    <h3>Cosa Serve per Giocare</h3>
+    <ul>
+        <li><strong>3-5 giocatori</strong> + 1 Direttore</li>
+        <li><strong>Dadi:</strong> Almeno 1d20, 1d6, 1d4 per persona (ideale: set completo poliedrici)</li>
+        <li><strong>Schede personaggio</strong> (scaricabili/stampabili, incluse nel manuale)</li>
+        <li><strong>Matite e carta</strong> per note</li>
+        <li><strong>3-4 ore</strong> di tempo libero</li>
+        <li><strong>(Opzionale) Musica ambient</strong> - playlist Spotify/YouTube con noir, synth, suspense (cerca: "cyberpunk ambient", "noir jazz", "dark synth")</li>
+        <li><strong>(Opzionale) Snack e bevande</strong> - 4 ore è lungo, prevedi break</li>
+    </ul>
+    
+    <h3>Contenuti Sensibili e Sicurezza al Tavolo</h3>
+    
+    <div class="box warning">
+        <h4>⚠️ Temi Presenti nel Gioco:</h4>
+        <p>Prima di giocare, il gruppo dovrebbe essere consapevole che Ucronie e Tesori include:</p>
+        <ul>
+            <li><strong>Violenza:</strong> Combattimento può essere letale e descrizioni possono essere grafiche. Morti improvvise. Sangue.</li>
+            <li><strong>Dilemmi morali grigi:</strong> Non ci sono scelte "giuste". Corruzione, tradimento, mentire a persone fidate.</li>
+            <li><strong>Body horror temporale:</strong> Quirk sono mutazioni corporee descritte in dettaglio (invecchiamento accelerato, parti del corpo che sfasano, memorie aliene).</li>
+            <li><strong>Pressione economica e disperazione:</strong> Debiti, sfratti, fame. Può evocare ansie reali.</li>
+            <li><strong>Morte di PNG:</strong> Civili innocenti possono morire. Personaggi amati possono morire.</li>
+            <li><strong>Morte di PG:</strong> Con opzione morte permanente, personaggi giocanti possono morire definitivamente.</li>
+        </ul>
+    </div>
+    
+    <h4>Safety Tools Raccomandati:</h4>
+    
+    <h5>1. Sessione Zero</h5>
+    <p>Prima sessione dedicata NON al gioco ma a discutere:</p>
+    <ul>
+        <li>Aspettative (tono, serietà, umorismo?)</li>
+        <li>Temi sensibili per qualcuno?</li>
+        <li>Limiti hard (cosa non vogliamo al tavolo)</li>
+        <li>Contratto sociale (orari, pause, telefoni)</li>
+    </ul>
+    
+    <h5>2. X-Card (di John Stavropoulos)</h5>
+    <p>Carta fisica sul tavolo con "X" grande. Chiunque, in qualsiasi momento, per qualsiasi ragione, può:</p>
+    <ul>
+        <li>Toccare la carta (silenzioso)</li>
+        <li>Dire "X-Card" (verbale)</li>
+    </ul>
+    <p>Risultato: Direttore immediatamente salta/cambia contenuto. <strong>Nessuna domanda, nessuna spiegazione richiesta.</strong> Si continua come se niente fosse.</p>
+    
+    <h5>3. Lines & Veils (di Ron Edwards)</h5>
+    <p><strong>Lines</strong> = Contenuto assolutamente NON presente (mai menzionato, mai accade)<br>
+    <strong>Veils</strong> = Contenuto accade ma "off-screen" (fade to black, accenniamo ma non descriviamo)</p>
+    <p><em>Esempio Lines:</em> "Niente violenza su bambini", "Niente violenza sessuale"<br>
+    <em>Esempio Veils:</em> "Torture ok menzionare ma non descrivere dettagli", "Morte PG ok ma non grafica"</p>
+    
+    <h5>4. Check-in Periodici</h5>
+    <p>Direttore, ogni ora circa, chiede veloce: <em>"Tutti ok? Qualcuno ha bisogno pausa o vuole moderare intensità?"</em></p>
+    
+    <div class="box">
+        <p style="font-weight: bold; font-size: 1.1rem;">Ricorda: L'obiettivo è divertimento condiviso e sicuro per tutti.</p>
+        <p>Nessun contenuto di gioco, nessuna "fedeltà al tono", nessuna "coerenza narrativa" vale più del benessere di persone reali sedute al tavolo.</p>
+        <p>Se qualcuno è a disagio, il gioco si adatta. Sempre. Senza discussione.</p>
+    </div>
+</section>
+
+<!-- PARTE II: CREAZIONE PERSONAGGIO -->
+<section id="pg" class="section">
+    <h2>PARTE II: CREAZIONE PERSONAGGIO</h2>
+    
+    <div class="box">
+        <h3>⏱️ Tempo Target: 15 Minuti</h3>
+        <p>Creazione personaggio è intenzionalmente veloce. Non costruisci build ottimale dopo 2 ore di analisi - generi persona disperata pronta a giocare subito.</p>
+        <p><strong>Filosofia:</strong> In OSR, personaggio livello 1 è fragile, probabilmente morirà, quindi non investiamo ore. Investiamo <em>durante</em> gioco, quando sopravvive.</p>
+    </div>
+    
+    <h3>Panoramica (9 Passi)</h3>
+    <ol style="font-size: 1.1rem; line-height: 1.8;">
+        <li><strong>Scegli Background</strong> (1 min)</li>
+        <li><strong>Tira Attributi</strong> 3d6 in ordine (2 min)</li>
+        <li><strong>Calcola Capacità Derivate</strong> (2 min)</li>
+        <li><strong>Nota Abilità Background</strong> (1 min)</li>
+        <li><strong>Scegli 2 Abilità Extra</strong> (2 min)</li>
+        <li><strong>Tira Punti Ferita</strong> (30 sec)</li>
+        <li><strong>Equipaggiamento Standard</strong> (2 min)</li>
+        <li><strong>Tracciatori Iniziali</strong> (2 min)</li>
+        <li><strong>Dettagli Narrativi</strong> (2 min)</li>
+    </ol>
+    
+    <h3>1. Background</h3>
+    <p><strong>Scegli deliberatamente o tira 1d6:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">d6</th>
+                <th>Background</th>
+                <th>Abilità Automatiche</th>
+                <th>Equipaggiamento Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="badge badge-info">1</span></td>
+                <td><strong>Ex-Militare</strong><br>Hai servito esercito/marines. Sei stato scaricato (ferita? PTSD? fine contratto?). Ora lavori per la Divisione perché è l'unica cosa che sai fare.</td>
+                <td>Armi da Fuoco<br>Sopravvivenza</td>
+                <td>Coltello da combattimento<br>Bussola<br>Accendino Zippo</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-info">2</span></td>
+                <td><strong>Accademico Fallito</strong><br>Dottorato in storia/fisica/archeologia. Mai completato (fondi tagliati? scandalo? burnout?). La Divisione paga le bollette che università non pagava.</td>
+                <td>Storia<br>Lingue</td>
+                <td>3 libri rari (scegli epoche)<br>Lente d'ingrandimento<br>Taccuino riempito metà</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-info">3</span></td>
+                <td><strong>Criminale Riformato</strong><br>Hai fatto rapine, furti, peggio. Beccato. Divisione ti ha offerto lavoro invece di prigione. "Riformato" è parola grossa - sei ancora criminale, solo legalizzato.</td>
+                <td>Furtività<br>Contatti (mercato nero)</td>
+                <td>Set grimaldelli professionale<br>1 contatto criminale fidato<br>Telefono burner usa-e-getta</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-info">4</span></td>
+                <td><strong>Poliziotto Corrotto</strong><br>Eri sbirro. Prendevi mazzette (tutti lo facevano, giusto?). Scoperto. Licenziato. La Divisione non giudica - assume chi sa già stare nella zona grigia.</td>
+                <td>Investigare<br>Intimidire</td>
+                <td>Badge falso (dice "Detective")<br>Paio manette<br>Spray peperoncino</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-info">5</span></td>
+                <td><strong>Medico Radiato</strong><br>Avevi licenza medica. Errore (tuo? burocratico? paziente morto?) te l'ha tolta. La Divisione non chiede referenze - chiede competenze. Tu curi senza fare domande.</td>
+                <td>Medicina<br>Scienza</td>
+                <td>Kit medico da campo (5 usi)<br>Morfina (3 fiale)<br>Bisturi chirurgico</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-info">6</span></td>
+                <td><strong>Truffatore</strong><br>Hai venduto aria, false promesse, investimenti inesistenti. Bravo con parole, meglio con bugie. La Divisione sa che menti - ti assume per questo.</td>
+                <td>Persuasione<br>Inganno</td>
+                <td>3 identità false (documenti)<br>$500 extra in contanti<br>Rolex falso (sembra vero)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box warning">
+        <p><strong>Nota Importante:</strong> Background non è solo meccanica. È <em>chi eri</em>. Quando fai scelte morali difficili, ricorda: stai già scappando da un passato. Quanto lontano vuoi andare?</p>
+    </div>
+    
+    <h3>2. Attributi</h3>
+    <p><strong>Tira 3d6 SEI VOLTE, in ordine rigoroso. Assegna risultati a:</strong></p>
+    <ol style="font-size: 1.1rem;">
+        <li><strong>FOR</strong> (Forza) - Potenza fisica, corpo a corpo, sollevare/spingere</li>
+        <li><strong>DES</strong> (Destrezza) - Agilità, riflessi, precisione, schivare</li>
+        <li><strong>COS</strong> (Costituzione) - Resistenza, salute, Punti Ferita</li>
+        <li><strong>INT</strong> (Intelligenza) - Ragionamento, memoria, conoscenza, logica</li>
+        <li><strong>SAG</strong> (Saggezza) - Percezione, intuito, buon senso, notare dettagli</li>
+        <li><strong>CAR</strong> (Carisma) - Presenza, persuasione, comando, prima impressione</li>
+    </ol>
+    
+    <div class="box danger">
+        <p><strong>⚠️ NIENTE RIARRANGIAMENTI. NIENTE "POSSO SCAMBIARE?"</strong></p>
+        <p>Attributi bassi fanno parte integrante del design OSR. Non sei supereroe - sei persona <em>normale</em> in situazione straordinaria. FOR 6? Sei debole. COS 8? Ti stanchi veloce. CAR 5? Nessuno ti ascolta.</p>
+        <p><strong>Questo è feature, non bug.</strong> Costringe creatività, cooperazione, cautela. Eroe perfetto è noioso. Persona imperfetta che sopravvive è storia.</p>
+    </div>
+    
+    <h4>Modificatori Attributo</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Punteggio</th>
+                <th>Modificatore</th>
+                <th>Descrizione Umana</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td>-3</td>
+                <td>Gravemente carente (debilitante nel quotidiano)</td>
+            </tr>
+            <tr>
+                <td>4-5</td>
+                <td>-2</td>
+                <td>Molto debole (notato da altri, limitante)</td>
+            </tr>
+            <tr>
+                <td>6-8</td>
+                <td>-1</td>
+                <td>Sotto media (funzioni ma con difficoltà)</td>
+            </tr>
+            <tr>
+                <td>9-12</td>
+                <td>0</td>
+                <td>Media (persona normale, niente di speciale)</td>
+            </tr>
+            <tr>
+                <td>13-15</td>
+                <td>+1</td>
+                <td>Sopra media (notato positivamente, talento)</td>
+            </tr>
+            <tr>
+                <td>16-17</td>
+                <td>+2</td>
+                <td>Eccellente (top 5% popolazione)</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>+3</td>
+                <td>Straordinario (top 1%, quasi sovrumano)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>3. Capacità Derivate</h3>
+    
+    <h4>Punti Ferita (PF)</h4>
+    <p><strong>Formula: 1d6 + modificatore COS (minimo 1 PF totale)</strong></p>
+    <p><em>Esempio:</em> COS 14 (+1) → Tiri 1d6, ottieni 3 → PF = 3+1 = 4 PF<br>
+    <em>Esempio 2:</em> COS 6 (-1) → Tiri 1d6, ottieni 2 → PF = 2-1 = 1 PF (minimo garantito)</p>
+    
+    <div class="box">
+        <p><strong>Cosa Significano i PF:</strong> Non sono "carne" o "sangue". Sono astrazione di fortuna, schivate last-second, colpi che graffiano invece di trafiggere. Quando arrivi a 0 PF, la fortuna finisce. Il prossimo colpo ti uccide davvero.</p>
+    </div>
+    
+    <h4>Classe Armatura (CA)</h4>
+    <p><strong>Formula: 9 - modificatore DES</strong></p>
+    <p>Sistema discendente (eredità D&D classico): <strong>CA più bassa = più difficile colpire = migliore</strong></p>
+    <p><em>Esempio:</em> DES 14 (+1) → CA = 9-1 = 8 (difficile colpire)<br>
+    <em>Esempio 2:</em> DES 7 (-1) → CA = 9-(-1) = 10 (facile colpire, goffo)</p>
+    
+    <h4>THAC0 (To Hit Armor Class 0)</h4>
+    <p><strong>Tutti al livello 1: THAC0 = 20</strong></p>
+    <p>Diminuirà salendo livelli. Rappresenta abilità combattimento. Più basso = più facile colpire.</p>
+    
+    <h4>Tiri Salvezza (TS)</h4>
+    <p><strong>Tutti al livello 1: TS base = 16</strong></p>
+    <p>Quando devi resistere veleno, magia, pericolo improvviso → Tiri d20, serve 16+ per successo.</p>
+    <p>Migliora salendo livelli. Alcune Abilità o Quirk modificano.</p>
+    
+    <h4>Morale</h4>
+    <p><strong>Base: 8</strong></p>
+    <p>Usato da Direttore per PNG/nemici (quando fuggono?). Per PG è opzionale - giocatori decidono quando scappare.</p>
+    
+    <h3>4-5. Abilità</h3>
+    
+    <p><strong>Ottieni:</strong></p>
+    <ul>
+        <li>2 Abilità automatiche dal Background (vedi tabella sopra)</li>
+        <li>+ Scegli 2 Abilità extra dalla lista completa sotto</li>
+    </ul>
+    
+    <h4>Lista Abilità Completa (con Attributi Check Associati)</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Abilità</th>
+                <th>Attributo Check</th>
+                <th>Quando Usi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3"><strong>Combattimento</strong></td>
+                <td>Armi da Fuoco</td>
+                <td>DES</td>
+                <td>Sparare pistole, fucili, mitragliatrici. Manutenzione armi.</td>
+            </tr>
+            <tr>
+                <td>Armi da Mischia</td>
+                <td>FOR o DES</td>
+                <td>Coltelli, mazze, combattimento corpo a corpo. FOR per danno, DES per precisione.</td>
+            </tr>
+            <tr>
+                <td>Armi Improvvisate</td>
+                <td>FOR</td>
+                <td>Bottiglie rotte, tubi, sedie. Trasformare ambiente in arma.</td>
+            </tr>
+            <tr>
+                <td rowspan="4"><strong>Sociale</strong></td>
+                <td>Persuasione</td>
+                <td>CAR</td>
+                <td>Convincere, negoziare, ispirare. "Ti prego, aiutami."</td>
+            </tr>
+            <tr>
+                <td>Intimidire</td>
+                <td>FOR o CAR</td>
+                <td>Minacciare, spaventare. Fisica (FOR) o presenza (CAR).</td>
+            </tr>
+            <tr>
+                <td>Inganno</td>
+                <td>CAR</td>
+                <td>Mentire convincente, bluffare, fingere identità.</td>
+            </tr>
+            <tr>
+                <td>Contatti</td>
+                <td>CAR</td>
+                <td>Conoscere persone giuste, ottenere favori, informazioni.</td>
+            </tr>
+            <tr>
+                <td rowspan="3"><strong>Infiltrazione</strong></td>
+                <td>Furtività</td>
+                <td>DES</td>
+                <td>Muoversi silenzioso, nascondersi, non essere visto.</td>
+            </tr>
+            <tr>
+                <td>Scassinare</td>
+                <td>DES</td>
+                <td>Aprire serrature, disarmare trappole meccaniche.</td>
+            </tr>
+            <tr>
+                <td>Borseggio</td>
+                <td>DES</td>
+                <td>Rubare da tasche, sottrarre oggetti senza essere notato.</td>
+            </tr>
+            <tr>
+                <td rowspan="4"><strong>Conoscenza</strong></td>
+                <td>Storia</td>
+                <td>INT</td>
+                <td>Riconoscere epoche, eventi storici, artefatti. Date, luoghi, figure.</td>
+            </tr>
+            <tr>
+                <td>Lingue</td>
+                <td>INT</td>
+                <td>Parlare/leggere lingue extra (1 lingua per volta). Latino, cinese, russo.</td>
+            </tr>
+            <tr>
+                <td>Scienza</td>
+                <td>INT</td>
+                <td>Fisica, chimica, biologia. Capire tecnologia, fenomeni temporali.</td>
+            </tr>
+            <tr>
+                <td>Occulto</td>
+                <td>INT</td>
+                <td>Leggende temporali, mitologia, profezie. Cosa "non dovrebbe esistere".</td>
+            </tr>
+            <tr>
+                <td rowspan="4"><strong>Sopravvivenza</strong></td>
+                <td>Sopravvivenza</td>
+                <td>SAG</td>
+                <td>Orientamento, trovare acqua/cibo, accamparsi, primo soccorso base.</td>
+            </tr>
+            <tr>
+                <td>Medicina</td>
+                <td>INT o SAG</td>
+                <td>Curare ferite, diagnosticare malattie, chirurgia campo. INT teoria, SAG pratica.</td>
+            </tr>
+            <tr>
+                <td>Investigare</td>
+                <td>INT o SAG</td>
+                <td>Cercare indizi, analizzare scene crimine, dedurre. INT logica, SAG intuito.</td>
+            </tr>
+            <tr>
+                <td>Percezione</td>
+                <td>SAG</td>
+                <td>Notare dettagli, sentire rumori, senso pericolo imminente.</td>
+            </tr>
+            <tr>
+                <td rowspan="3"><strong>Tecnico</strong></td>
+                <td>Meccanica</td>
+                <td>INT</td>
+                <td>Riparare veicoli, macchinari, capire ingranaggi.</td>
+            </tr>
+            <tr>
+                <td>Elettronica</td>
+                <td>INT</td>
+                <td>Computer, circuiti, disarmare allarmi elettronici.</td>
+            </tr>
+            <tr>
+                <td>Hacking</td>
+                <td>INT</td>
+                <td>Penetrare sistemi digitali, bypassare sicurezza software.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box">
+        <h4>Come Funzionano le Abilità in Gioco</h4>
+        <p><strong>Se hai l'Abilità:</strong> Fai check roll-under sull'attributo associato. Successo = risultato competente.<br>
+        <strong>Se NON hai l'Abilità:</strong> Puoi comunque provare (Direttore decide), ma check più difficile (-4) e successo parziale possibile.</p>
+        <p><em>Esempio:</em> Vuoi scassinare porta. Hai Scassinare + DES 14.<br>
+        → Tiri d20, servi 14 o meno. Ottieni 11. Successo pulito, porta aperta silenzioso.<br>
+        <em>Esempio 2:</em> Vuoi scassinare, NON hai Abilità, DES 12.<br>
+        → Direttore: "Puoi provare ma check difficile". Tiri d20, servi 8 o meno (12-4). Ottieni 13. Fallimento - porta resta chiusa O si apre ma fai rumore (Direttore decide).</p>
+    </div>
+    
+    <h3>6. Punti Ferita</h3>
+    <p>(Vedi sezione Capacità Derivate sopra - 1d6 + mod COS)</p>
+    
+    <h3>7. Equipaggiamento Standard</h3>
+    <p><strong>Tutti gli agenti Divisione iniziano con:</strong></p>
+    
+    <h4>Armi e Munizioni</h4>
+    <ul>
+        <li><strong>Glock 17</strong> (pistola semiautomatica, 1d6 danni, 17 colpi caricatore)</li>
+        <li><strong>30 proiettili extra</strong> (circa 2 caricatori aggiuntivi)</li>
+    </ul>
+    
+    <h4>Comunicazione</h4>
+    <ul>
+        <li><strong>Telefono cellulare</strong> (criptato Divisione, tracciabile da loro, funziona in zone temporali stabili)</li>
+    </ul>
+    
+    <h4>Identificazione</h4>
+    <ul>
+        <li><strong>Badge Divisione</strong> (accesso zone verdi, checkpoint, intimidire civili)</li>
+    </ul>
+    
+    <h4>Denaro</h4>
+    <ul>
+        <li><strong>$500 contanti</strong> (stipendio anticipo prima missione)</li>
+    </ul>
+    
+    <h4>Abbigliamento</h4>
+    <ul>
+        <li><strong>Abbigliamento civile</strong> (jeans, t-shirt, scarpe comode - aspetto: "turista/lavoratore")</li>
+        <li><strong>Giacca tattica leggera</strong> (tasche multiple, protezione minima, CA nessun bonus - è tela, non kevlar)</li>
+    </ul>
+    
+    <h4>Medico</h4>
+    <ul>
+        <li><strong>Kit primo soccorso base</strong> (3 usi, ogni uso guarisce 1d6 PF, serve 10 minuti applicare)</li>
+    </ul>
+    
+    <h4>Background Equipment</h4>
+    <ul>
+        <li><strong>+ Equipaggiamento specifico</strong> dal Background scelto (vedi tabella Background)</li>
+    </ul>
+    
+    <div class="box warning">
+        <h4>Nota su Armature e Armi Migliori</h4>
+        <p><strong>Perché non giubbotto antiproiettile? Perché non fucile d'assalto?</strong></p>
+        <p>La Divisione ti considera <em>sacrificabile</em>. Equipaggiamento base ti tiene vivo <em>abbastanza</em> per completare missioni, ma non ti protegge <em>davvero</em>. Se vuoi attrezzatura migliore:</p>
+        <ul>
+            <li>Compra con soldi tuoi (negozi, mercato nero)</li>
+            <li>Ruba da nemici morti</li>
+            <li>Scambia Crediti Divisione (CD)</li>
+            <li>Trova in zone temporali</li>
+        </ul>
+        <p>Questo è intenzionale. Paga bassa + equipaggiamento scarso = <strong>pressione verso corruzione</strong>.</p>
+    </div>
+    
+    <h3>8. Tracciatori Iniziali</h3>
+    <p><strong>Segna sulla scheda:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Tracciatore</th>
+                <th>Valore Iniziale</th>
+                <th>Significato</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Lealtà</strong></td>
+                <td>5</td>
+                <td>Neutrale verso Divisione. Non eroe, non traditore. Ancora.</td>
+            </tr>
+            <tr>
+                <td><strong>Corruzione</strong></td>
+                <td>0</td>
+                <td>Pulito (sulla carta). Non hai ancora fatto scelte grigie. Ancora.</td>
+            </tr>
+            <tr>
+                <td><strong>Crediti Divisione (CD)</strong></td>
+                <td>0</td>
+                <td>Valuta mercato nero. 1 CD ≈ $1.000. Accumuli rubando/vendendo.</td>
+            </tr>
+            <tr>
+                <td><strong>Quirk</strong></td>
+                <td>0</td>
+                <td>Mutazioni temporali. Limite 5. Al 6° diventi Eco (perdi personaggio).</td>
+            </tr>
+            <tr>
+                <td><strong>Livello</strong></td>
+                <td>1</td>
+                <td>Esperienza. Sali lento (OSR style). Maggioranza campagne finisce liv 3-5.</td>
+            </tr>
+            <tr>
+                <td><strong>Punti Esperienza (PE)</strong></td>
+                <td>0</td>
+                <td>Accumuli completando missioni, sopravvivendo, trovando tesori.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>9. Dettagli Narrativi</h3>
+    <p><strong>Rispondi brevemente (1-2 frasi max per domanda):</strong></p>
+    
+    <h4>Domanda 1: Perché ti sei unito alla Divisione?</h4>
+    <p><em>Esempi:</em></p>
+    <ul>
+        <li>"Avevo debiti con gente sbagliata. Divisione ha pagato in cambio di contratto."</li>
+        <li>"Mio fratello è morto in zona temporale. Voglio capire cosa è successo davvero."</li>
+        <li>"Ero disoccupato da 8 mesi. La Divisione assume, niente domande."</li>
+        <li>"Amo l'adrenalina. Zona temporale è droga migliore che ho provato."</li>
+    </ul>
+    
+    <h4>Domanda 2: Qual è il tuo debito/problema che ti tiene disperato?</h4>
+    <p><em>Esempi:</em></p>
+    <ul>
+        <li>"$15.000 a strozzino. Interessi 10%/mese. Se non pago, mia sorella soffre."</li>
+        <li>"Affitto arretrato 3 mesi. Sfratto tra 2 settimane. Ho figlia 7 anni."</li>
+        <li>"Medicine per madre costano $300/settimana. Senza muore in 6 mesi."</li>
+        <li>"Gioco d'azzardo. Devo $8.000 a casinò. Stanno perdendo pazienza."</li>
+    </ul>
+    
+    <h4>Domanda 3: Una persona a cui tieni (viva o morta)?</h4>
+    <p><em>Esempi:</em></p>
+    <ul>
+        <li>"Mia ex-moglie Sarah. Divorziati ma ancora parliamo. Lei sa chi sono davvero."</li>
+        <li>"Mio mentore Martinez. Morto 2 anni fa. Mi diceva sempre 'Stay clean'. Fallito."</li>
+        <li>"Cane randagio Max che ho trovato. Unico essere che mi aspetta a casa."</li>
+        <li>"Nessuno. Ho bruciato tutti ponti. Sono solo. Preferisco così."</li>
+    </ul>
+    
+    <div class="box success">
+        <h3>✅ Scheda Personaggio Completa!</h3>
+        <p style="font-size: 1.1rem;">Congratulazioni. Hai creato un agente della Divisione Temporale pronto a giocare.</p>
+        <p><strong>Cosa hai:</strong></p>
+        <ul>
+            <li>Background che definisce chi eri</li>
+            <li>Attributi che definiscono cosa puoi fare</li>
+            <li>Abilità che definiscono cosa sai fare</li>
+            <li>Equipaggiamento che (forse) ti tiene vivo</li>
+            <li>Tracciatori che mostreranno chi diventi</li>
+            <li>Motivazioni che spiegano perché lo fai</li>
+        </ul>
+        <p><strong>Prossimo step:</strong> Leggi sistema gioco (Parte III) O salta direttamente all'avventura Loop Chicago se Direttore te la spiega.</p>
+    </div>
+</section>
+
+
+<!-- PARTE III: SISTEMA DI GIOCO -->
+<section id="sistema" class="section">
+    <h2>PARTE III: SISTEMA DI GIOCO UNIFICATO</h2>
+    
+    <div class="box">
+        <h3>🎯 Filosofia di Design</h3>
+        <p><strong>Un solo meccanismo per tutto.</strong> Non impari "sistema combattimento" separato da "sistema abilità" separato da "sistema sociale". Impari UNA regola. Il resto è variazione.</p>
+        <p>Questo mantiene gioco veloce, fluido, intuitivo. Direttore non cerca regole. Giocatori non calcolano bonus complessi. Tiri dado, confronti numero, vai avanti.</p>
+    </div>
+    
+    <h3>Roll-Under d20 (Core Mechanic)</h3>
+    
+    <div class="box success">
+        <p style="font-size: 1.3rem; text-align: center; font-weight: bold; padding: 1rem;">
+            REGOLA BASE:<br>
+            Tira d20 ≤ Attributo Rilevante = SUCCESSO
+        </p>
+    </div>
+    
+    <h4>Come Funziona (Passo per Passo):</h4>
+    <ol style="font-size: 1.05rem; line-height: 1.8;">
+        <li><strong>Direttore identifica quale Attributo è rilevante</strong>
+            <ul>
+                <li>Sollevare cancello pesante? FOR</li>
+                <li>Scavalcare recinzione? DES</li>
+                <li>Correre maratona? COS</li>
+                <li>Risolvere enigma? INT</li>
+                <li>Notare imboscata? SAG</li>
+                <li>Convincere guardia? CAR</li>
+            </ul>
+        </li>
+        <li><strong>Direttore applica modificatore difficoltà</strong> (se necessario - vedi tabella sotto)</li>
+        <li><strong>Giocatore tira d20</strong></li>
+        <li><strong>Confronta risultato con Attributo modificato:</strong>
+            <ul>
+                <li>Risultato ≤ Attributo = SUCCESSO (fai cosa volevi, pulito)</li>
+                <li>Risultato > Attributo = FALLIMENTO (non riesci, O riesci con conseguenze)</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h4>Esempio Completo:</h4>
+    <div class="box">
+        <p><strong>Situazione:</strong> Vuoi scavalcare recinzione 3 metri mentre guarda insegue.</p>
+        <p><strong>Direttore:</strong> "Check DES, difficoltà normale perché sei sotto pressione."</p>
+        <p><strong>Giocatore:</strong> "DES 14. Nessun modificatore. Tiro d20."</p>
+        <p><strong>Risultato dado:</strong> 11</p>
+        <p><strong>11 ≤ 14?</strong> SÌ → SUCCESSO</p>
+        <p><strong>Narrativa:</strong> "Salti, afferri cima recinzione, ti tiri su agile. Guarda dietro cerca di seguire ma inciampa. Hai vantaggio 1 round."</p>
+    </div>
+    
+    <h4>Modificatori Difficoltà</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Difficoltà</th>
+                <th>Modificatore</th>
+                <th>Quando Applicare</th>
+                <th>Esempio Concreto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Molto Facile</strong></td>
+                <td>+8</td>
+                <td>Azione quasi automatica per chiunque</td>
+                <td>Camminare su marciapiede piano, aprire porta non chiusa</td>
+            </tr>
+            <tr>
+                <td><strong>Facile</strong></td>
+                <td>+4</td>
+                <td>Azione semplice, poco rischio</td>
+                <td>Scavalcare recinzione bassa (1m), scassinare lucchetto economico</td>
+            </tr>
+            <tr>
+                <td><strong>Normale</strong></td>
+                <td>0</td>
+                <td>Azione standard, rischio medio</td>
+                <td>Scalare muro 3m con appigli, scassinare serratura standard, convincere guardia distratto</td>
+            </tr>
+            <tr>
+                <td><strong>Difficile</strong></td>
+                <td>-4</td>
+                <td>Azione complessa, alto rischio</td>
+                <td>Hackerare sistema militare, scalare parete liscia 10m, convincere nemico a tradire alleati</td>
+            </tr>
+            <tr>
+                <td><strong>Molto Difficile</strong></td>
+                <td>-8</td>
+                <td>Azione quasi impossibile</td>
+                <td>Disarmare bomba senza addestramento, convincere fanatico a suicidarsi, saltare tra palazzi 10m distanza</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box warning">
+        <h4>⚠️ Quando NON Tirare Dadi</h4>
+        <p><strong>Non ogni azione richiede tiro.</strong> Tira solo quando:</p>
+        <ul>
+            <li>C'è rischio reale di fallimento</li>
+            <li>Il fallimento ha conseguenze interessanti</li>
+            <li>Il tempo/stress conta</li>
+        </ul>
+        <p><strong>NON tirare per:</strong></p>
+        <ul>
+            <li>Azioni banali ("Apro porta?" → Apri, basta)</li>
+            <li>Quando successo/fallimento sono entrambi narrativamente vuoti</li>
+            <li>Quando giocatore ha già pagato prezzo per riuscire (speso risorse, pianificato bene)</li>
+        </ul>
+        <p><em>Esempio:</em> "Voglio hackerare computer." Hai Abilità Hacking, hai comprato laptop professionale ($2.000), hai 2 ore tempo, nessuna pressione. <strong>Direttore:</strong> "Ok, riesci. Cosa trovi?" (niente tiro - hai competenza + strumenti + tempo = successo automatico)</p>
+    </div>
+    
+    <h4>Critici e Fumble</h4>
+    <ul>
+        <li><strong>Tiri 1 (critico):</strong> Successo <em>straordinario</em>. Non solo riesci, riesci meglio. Direttore aggiunge beneficio extra.
+            <ul>
+                <li><em>Es. combattimento:</em> Doppio danno</li>
+                <li><em>Es. sociale:</em> PNG diventa alleato temporaneo</li>
+                <li><em>Es. esplorazione:</em> Trovi indizio bonus o risorsa extra</li>
+            </ul>
+        </li>
+        <li><strong>Tiri 20 (fumble):</strong> Fallimento <em>catastrofico</em>. Non solo fallisci, peggiori situazione. Direttore aggiunge complicazione.
+            <ul>
+                <li><em>Es. combattimento:</em> Arma si inceppa O colpisci alleato</li>
+                <li><em>Es. sociale:</em> PNG si offende profondamente, diventa ostile</li>
+                <li><em>Es. esplorazione:</em> Fai rumore, attivi allarme, O rompi strumento</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>Abilità e Check Attributo</h3>
+    
+    <h4>Come Interagiscono</h4>
+    <p><strong>Se HAI l'Abilità rilevante:</strong></p>
+    <ul>
+        <li>Fai check roll-under sull'Attributo associato all'Abilità</li>
+        <li>Successo = risultato competente, professionale</li>
+        <li>Fallimento = non riesci ma capisci perché (esperienza ti dice problema)</li>
+    </ul>
+    
+    <p><strong>Se NON HAI l'Abilità:</strong></p>
+    <ul>
+        <li>Puoi comunque provare (se Direttore dice è plausibile)</li>
+        <li>Check è Difficile (-4 automatico)</li>
+        <li>Successo = risultato goffo, parziale, O con conseguenze</li>
+        <li>Fallimento = fallimento totale, possibili danni collaterali</li>
+    </ul>
+    
+    <h4>Esempi Side-by-Side</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Situazione</th>
+                <th>Con Abilità</th>
+                <th>Senza Abilità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Scassinare porta</strong></td>
+                <td>Hai Scassinare, DES 14<br>Tiri d20 ≤ 14<br>Successo = porta aperta, nessun rumore<br>Fallimento = non si apre, ma grimaldelli intatti</td>
+                <td>Non hai Abilità, DES 14<br>Tiri d20 ≤ 10 (14-4)<br>Successo = apri ma fai rumore O impieghi 10 min invece di 1<br>Fallimento = rompi grimaldelli O attivi allarme</td>
+            </tr>
+            <tr>
+                <td><strong>Diagnosticare malattia</strong></td>
+                <td>Hai Medicina, INT 12<br>Tiri d20 ≤ 12<br>Successo = sai esattamente malattia + cura<br>Fallimento = non sei sicuro, ma sai che non sai</td>
+                <td>Non hai Abilità, INT 12<br>Tiri d20 ≤ 8 (12-4)<br>Successo = intuisci categoria (infezione? avvelenamento?) ma non cura<br>Fallimento = diagnosi errata, peggiori paziente</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Combattimento</h3>
+    
+    <div class="box danger">
+        <h4>⚠️ Filosofia Combattimento OSR</h4>
+        <p><strong>Combattimento è letale e DOVREBBE essere ultima risorsa.</strong></p>
+        <p>Non sei eroe action movie. Sei persona normale con pistola. Proiettili uccidono. Anche te. Combattimento "giusto" è combattimento stupido. Imboscate, trappole, fuga, persuasione - questi sono strumenti smart.</p>
+        <p>Se entri combattimento, accetti rischio morte reale.</p>
+    </div>
+    
+    <h4>Sequenza Combattimento</h4>
+    <ol style="font-size: 1.05rem; line-height: 1.8;">
+        <li><strong>Iniziativa (solo round 1):</strong>
+            <ul>
+                <li>Ogni <em>lato</em> (non individuo) tira 1d6</li>
+                <li>Più alto agisce per primo quel round</li>
+                <li>Iniziativa si ritira ogni round (situazione fluida)</li>
+            </ul>
+        </li>
+        <li><strong>Dichiarazione Azioni (lato vincente):</strong>
+            <ul>
+                <li>Giocatori dicono cosa fanno ("Sparo a guardia 1", "Corro copertura", "Ricarico")</li>
+                <li>Non risolvono ancora - solo dichiarano</li>
+            </ul>
+        </li>
+        <li><strong>Dichiarazione Azioni (lato perdente):</strong>
+            <ul>
+                <li>Direttore dichiara azioni nemici</li>
+            </ul>
+        </li>
+        <li><strong>Risoluzione (lato vincente per primo):</strong>
+            <ul>
+                <li>Attacchi, movimento, abilità speciali</li>
+                <li>Risolvi in ordine dichiarato</li>
+            </ul>
+        </li>
+        <li><strong>Risoluzione (lato perdente):</strong>
+            <ul>
+                <li>Nemici sopravvissuti agiscono</li>
+            </ul>
+        </li>
+        <li><strong>Check Morale (se applicabile):</strong>
+            <ul>
+                <li>Se PNG/nemici perdono 50%+ alleati</li>
+                <li>O leader muore</li>
+                <li>O situazione cambia drasticamente</li>
+                <li>Direttore tira 2d6 ≤ Morale nemico (base 8)</li>
+                <li>Fallimento = fuggono O si arrendono</li>
+            </ul>
+        </li>
+        <li><strong>Nuovo Round:</strong> Torna a step 1</li>
+    </ol>
+    
+    <h4>Attaccare</h4>
+    <p><strong>Formula: d20 ≥ (THAC0 dell'attaccante - CA del bersaglio)</strong></p>
+    
+    <div class="box">
+        <h5>Spiegazione Sistema THAC0</h5>
+        <p><strong>THAC0 = "To Hit Armor Class 0"</strong> (sistema D&D classico)</p>
+        <p>Più basso THAC0 = più facile colpire (migliore combattente)<br>
+        Più bassa CA = più difficile essere colpiti (migliore armatura/agilità)</p>
+        <p>Sistema è <em>discendente</em> - numeri alti sono peggiori, numeri bassi sono migliori.</p>
+    </div>
+    
+    <h5>Esempio Attacco Passo-per-Passo:</h5>
+    <pre><code>ATTACCANTE:
+- THAC0: 20 (livello 1 standard)
+- Arma: Pistola Glock 17
+
+BERSAGLIO:
+- CA: 7 (DES buona, magari copertura)
+
+CALCOLO NUMERO TARGET:
+20 (THAC0) - 7 (CA) = 13
+
+ATTACCANTE DEVE TIRARE 13+ su d20 per COLPIRE
+
+Tiro: d20 → 15
+15 ≥ 13? SÌ → COLPITO!
+
+Ora tira danni: 1d6 → 4 danni
+Bersaglio aveva 6 PF → ora ha 2 PF (ferito ma vivo)</code></pre>
+    
+    <h4>Modificatori Situazionali Combattimento</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Situazione</th>
+                <th>Modificatore</th>
+                <th>Spiegazione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Copertura (bersaglio)</strong></td>
+                <td>CA -2</td>
+                <td>Dietro muro, macchina, albero - metà corpo coperto</td>
+            </tr>
+            <tr>
+                <td><strong>Copertura Totale</strong></td>
+                <td>Non colpibile</td>
+                <td>Completamente nascosto - devi aspettare esca O cambi posizione</td>
+            </tr>
+            <tr>
+                <td><strong>Bersaglio Ignaro</strong></td>
+                <td>CA +4</td>
+                <td>Non sa che stai per sparare - più facile colpire</td>
+            </tr>
+            <tr>
+                <td><strong>Mirare (azione dedicata)</strong></td>
+                <td>+2 colpire</td>
+                <td>Spendi round a mirare, prossimo attacco +2</td>
+            </tr>
+            <tr>
+                <td><strong>Movimento Veloce</strong></td>
+                <td>-2 colpire</td>
+                <td>Tu O bersaglio corre (non cammina)</td>
+            </tr>
+            <tr>
+                <td><strong>Condizioni Povere</strong></td>
+                <td>-2 colpire</td>
+                <td>Buio, nebbia, pioggia forte, fumo</td>
+            </tr>
+            <tr>
+                <td><strong>Range Estremo</strong></td>
+                <td>-4 colpire</td>
+                <td>Oltre range normale arma</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Danni Armi Comuni</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Arma</th>
+                <th>Danno</th>
+                <th>Range</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pugno / Calcio</td>
+                <td>1d2 + mod FOR</td>
+                <td>Mischia</td>
+                <td>Non letale (knockout a 0 PF)</td>
+            </tr>
+            <tr>
+                <td>Coltello / Pugnale</td>
+                <td>1d4</td>
+                <td>Mischia</td>
+                <td>Nascondibile, silenzioso</td>
+            </tr>
+            <tr>
+                <td>Mazza / Bastone</td>
+                <td>1d6</td>
+                <td>Mischia</td>
+                <td>Improvvisabile (tubi, bastoni)</td>
+            </tr>
+            <tr>
+                <td>Spada / Machete</td>
+                <td>1d8</td>
+                <td>Mischia</td>
+                <td>Raro nel setting moderno</td>
+            </tr>
+            <tr>
+                <td>Pistola (9mm standard)</td>
+                <td>1d6</td>
+                <td>50m</td>
+                <td>Arma standard agenti</td>
+            </tr>
+            <tr>
+                <td>Pistola (.45 pesante)</td>
+                <td>1d8</td>
+                <td>30m</td>
+                <td>Più danno, meno precisione</td>
+            </tr>
+            <tr>
+                <td>Fucile d'assalto</td>
+                <td>1d8</td>
+                <td>200m</td>
+                <td>Raffica: 3 colpi, -2 colpire</td>
+            </tr>
+            <tr>
+                <td>Fucile da cecchino</td>
+                <td>2d6</td>
+                <td>800m</td>
+                <td>Richiede mirare, rumoroso</td>
+            </tr>
+            <tr>
+                <td>Fucile a pompa</td>
+                <td>2d6</td>
+                <td>20m</td>
+                <td>-2 colpire oltre 20m</td>
+            </tr>
+            <tr>
+                <td>Esplosivo (granata/C4)</td>
+                <td>3d6</td>
+                <td>Area 10m</td>
+                <td>Tutti in area, TS dimezza</td>
+            </tr>
+            <tr>
+                <td>Molotov</td>
+                <td>2d6 (fuoco)</td>
+                <td>Lancio 10m</td>
+                <td>Continua 1d6/round x 3 round</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Azioni in Combattimento</h4>
+    <p><strong>Ogni round (6 secondi), puoi fare:</strong></p>
+    <ul>
+        <li><strong>1 Azione Standard + Movimento</strong></li>
+    </ul>
+    
+    <h5>Azioni Standard:</h5>
+    <ul>
+        <li><strong>Attaccare</strong> (mischia O distanza)</li>
+        <li><strong>Mirare</strong> (prossimo attacco +2)</li>
+        <li><strong>Ricaricare arma</strong> (1 round per caricatore)</li>
+        <li><strong>Usare oggetto</strong> (bere pozione, attivare dispositivo)</li>
+        <li><strong>Lanciare granata</strong></li>
+        <li><strong>Aiutare alleato</strong> (prossimo suo check +2)</li>
+        <li><strong>Azione complessa</strong> (hackerare sotto fuoco, disarmare bomba - richiede check)</li>
+    </ul>
+    
+    <h5>Movimento:</h5>
+    <ul>
+        <li><strong>Camminare:</strong> 9 metri (30 piedi)</li>
+        <li><strong>Correre:</strong> 18 metri ma -2 CA (più esposto)</li>
+        <li><strong>Scatto:</strong> 27 metri ma NESSUNA azione standard quel round (solo corri)</li>
+    </ul>
+    
+    <h4>Morte e Guarigione</h4>
+    
+    <h5>A 0 Punti Ferita:</h5>
+    <p><strong>Opzione 1 (Standard OSR - Letale):</strong></p>
+    <ul>
+        <li>Sei morto. Punto. Crea nuovo personaggio.</li>
+    </ul>
+    
+    <p><strong>Opzione 2 (Leggermente Meno Letale - Raccomandata):</strong></p>
+    <ul>
+        <li><strong>A 0 PF:</strong> Cadi incosciente, stai morendo</li>
+        <li><strong>Ogni round a 0 PF:</strong> Fai TS vs Morte (tira d20 ≥ 16)</li>
+        <li><strong>3 successi:</strong> Stabilizzato a 1 PF (cosciente, disabilitato)</li>
+        <li><strong>3 fallimenti:</strong> Morto definitivamente</li>
+        <li><strong>Colpo mentre a 0 PF:</strong> Morte immediata (colpo di grazia)</li>
+    </ul>
+    
+    <div class="box warning">
+        <p><strong>Discussione con Gruppo:</strong> Decidete insieme Opzione 1 o 2 in Sessione Zero. Opzione 1 è più OSR puro (morte incentiva cautela). Opzione 2 dà chance eroiche last-minute. Entrambi validi.</p>
+    </div>
+    
+    <h5>Guarigione Naturale:</h5>
+    <ul>
+        <li><strong>Riposo Breve (1 ora):</strong> Recuperi 1 PF</li>
+        <li><strong>Riposo Lungo (8 ore, sonno):</strong> Recuperi 1d6 + mod COS PF</li>
+        <li><strong>Una Settimana Riposo Completo:</strong> Recuperi TUTTI PF</li>
+    </ul>
+    
+    <h5>Guarigione Medica:</h5>
+    <ul>
+        <li><strong>Kit Medico (1 uso):</strong> Guarisce 1d6 PF, richiede 10 minuti, check Medicina (se senza Abilità: -4)</li>
+        <li><strong>Ospedale (1 giorno):</strong> Guarisce 2d6 PF, costa $500/giorno</li>
+        <li><strong>Divisione Medica (se Lealtà 5+):</strong> Gratuito, 1d6 PF/giorno</li>
+    </ul>
+</section>
+
+<!-- PARTE IV: ESPLORAZIONE E TEMPO -->
+<section id="esplorazione" class="section">
+    <h2>PARTE IV: ESPLORAZIONE E TEMPO</h2>
+    
+    <div class="box">
+        <h3>Perché il Tempo Conta</h3>
+        <p>In Ucronie e Tesori, <strong>tempo non è solo narrativa - è meccanica critica:</strong></p>
+        <ul>
+            <li>Ogni 4 ore in zona temporale → Check Contaminazione (rischio Quirk)</li>
+            <li>Zone temporali instabili hanno countdown collasso</li>
+            <li>Più tempo passi, più rischi incontri casuali</li>
+            <li>Risorse (cibo, munizioni, batterie) si consumano</li>
+        </ul>
+        <p><strong>Tracciare tempo crea tensione naturale:</strong> "Abbiamo 2 ore prima prossimo check Contaminazione. Esploriamo ancora o torniamo base?"</p>
+    </div>
+    
+    <h3>Scale Temporali</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Scala</th>
+                <th>Durata</th>
+                <th>Quando Usare</th>
+                <th>Granularità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Round</strong></td>
+                <td>~6 secondi</td>
+                <td>Combattimento, azioni critiche time-sensitive</td>
+                <td>Dettaglio massimo: ogni azione conta</td>
+            </tr>
+            <tr>
+                <td><strong>Turno</strong></td>
+                <td>10 minuti</td>
+                <td>Esplorazione dungeon/edificio, ricerca area</td>
+                <td>Azioni deliberate: muovere cauto, cercare, ascoltare</td>
+            </tr>
+            <tr>
+                <td><strong>Ora</strong></td>
+                <td>60 minuti</td>
+                <td>Viaggi brevi, attese, riparazioni</td>
+                <td>Montaggio: "Passi 2 ore a riparare generatore"</td>
+            </tr>
+            <tr>
+                <td><strong>Giorno</strong></td>
+                <td>24 ore</td>
+                <td>Downtime tra missioni, riposo, guarigione</td>
+                <td>Grossolana: "Cosa fai nei prossimi 3 giorni?"</td>
+            </tr>
+            <tr>
+                <td><strong>Settimana</strong></td>
+                <td>7 giorni</td>
+                <td>Campagna management, stipendio/spese</td>
+                <td>Macro: economia, reputazione, evoluzione mondo</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Turni di Esplorazione (10 minuti)</h3>
+    <p><strong>Quando gruppo esplora zona (dungeon, edificio abbandonato, zona temporale):</strong></p>
+    
+    <h4>Ogni Turno, il Gruppo Può Fare UNA di Queste Azioni:</h4>
+    <ol>
+        <li><strong>Muoversi 120 metri</strong> (esplorazione cauta, mappano, controllano trappole)
+            <ul>
+                <li>Se corrono incauti: 360m ma -4 Percezione e rischio triggering trappole senza notare</li>
+            </ul>
+        </li>
+        <li><strong>Cercare stanza/area</strong> (check SAG, trovano segreti, indizi, tesori nascosti)</li>
+        <li><strong>Ascoltare alla porta</strong> (check SAG, sentono cosa c'è oltre senza aprire)</li>
+        <li><strong>Forzare porta bloccata</strong> (check FOR O Scassinare, 1 turno = 1 tentativo)</li>
+        <li><strong>Riposare breve</strong> (recupero 1 PF, respiro, check equipaggiamento)</li>
+        <li><strong>Azione specifica complessa</strong> (scassinare cassaforte, hackerare terminale, disarmare C4)</li>
+    </ol>
+    
+    <h4>Dopo Ogni Turno, Direttore:</h4>
+    <ul>
+        <li><strong>Tira d6 per Incontro Casuale</strong> (con 1: qualcosa accade - vedi tabella avventura)</li>
+        <li><strong>Aggiorna countdown temporali</strong> (4 turni = 40 min ≈ check Contaminazione presto)</li>
+        <li><strong>Traccia risorse consumate</strong> (torce si spengono, batterie scaricano)</li>
+    </ul>
+    
+    <div class="box">
+        <h4>Esempio Esplorazione Turno-per-Turno</h4>
+        <pre><code><strong>TURNO 1 (10 min):</strong>
+Gruppo entra edificio abbandonato. Muovono 120m cauti lungo corridoio.
+Direttore tira incontro casuale: d6 → 4 (niente).
+Tempo totale in zona: 10 minuti.
+
+<strong>TURNO 2 (20 min):</strong>
+Trovano porta chiusa. Leader decide "Cerchiamo stanza prima di forzare".
+Check SAG: successo. Trovano ventilazione, possibile via alternativa.
+Direttore tira: d6 → 1 (incontro!). Sente passi lontani, si avvicinano...
+
+<strong>TURNO 3 (30 min):</strong>
+Gruppo decide nascondersi, aspettare passi passino.
+Nessun movimento, nessun check. Solo attesa tesa.
+Passi passano. Safe.
+
+<strong>TURNO 4 (40 min):</strong>
+Forzano porta. Check FOR: fallimento. Porta non cede.
+Direttore: "Fate rumore. Se c'era qualcosa vicino, ora sa siete qui."
+Tempo totale: 40 minuti. Prossimo check Contaminazione tra 3h20m.</code></pre>
+    </div>
+    
+    <h3>Movimento</h3>
+    
+    <h4>Durante Combattimento (Round = 6 secondi):</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Distanza</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Camminare</td>
+                <td>9 metri</td>
+                <td>Puoi attaccare/agire</td>
+            </tr>
+            <tr>
+                <td>Correre</td>
+                <td>18 metri</td>
+                <td>Puoi agire ma -2 CA (esposto)</td>
+            </tr>
+            <tr>
+                <td>Scatto</td>
+                <td>27 metri</td>
+                <td>SOLO movimento, no azioni</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Durante Esplorazione (Turno = 10 minuti):</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Distanza</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cauti</td>
+                <td>120 metri</td>
+                <td>Controllano trappole, mappano, parlano piano</td>
+            </tr>
+            <tr>
+                <td>Normali</td>
+                <td>360 metri</td>
+                <td>Camminata standard, conversazione normale</td>
+            </tr>
+            <tr>
+                <td>Corsa</td>
+                <td>720 metri</td>
+                <td>-4 Percezione, rumorosi, rischioso</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Viaggi Lunghi (Ore):</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Mezzo</th>
+                <th>Velocità</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A piedi</td>
+                <td>4 km/h</td>
+                <td>Standard cammino umano</td>
+            </tr>
+            <tr>
+                <td>Bicicletta</td>
+                <td>15 km/h</td>
+                <td>Silenziosa, no carburante</td>
+            </tr>
+            <tr>
+                <td>Auto</td>
+                <td>60 km/h (media città)</td>
+                <td>Veloce ma rumorosa, richiede strade</td>
+            </tr>
+            <tr>
+                <td>Elicottero</td>
+                <td>200 km/h</td>
+                <td>Divisione only, molto rumoroso</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Tracciare Tempo in Gioco</h3>
+    
+    <div class="box success">
+        <h4>Consiglio per Direttore</h4>
+        <p><strong>Usa timer visibile sul tavolo (telefono/orologio).</strong></p>
+        <p>Ogni 10 minuti tempo reale = 1 turno tempo gioco (esplorazione)<br>
+        O ogni 30 minuti tempo reale = 1 ora tempo gioco (downtime)</p>
+        <p><strong>Quando timer suona:</strong> "Ok, è passata 1 ora. Check Contaminazione tra 3 ore. Cosa fate?"</p>
+        <p>Questo crea pressione <em>reale</em> al tavolo. Giocatori sentono tempo scorrere. Smettono chiacchierare fuori personaggio. Decidono veloce. <strong>Immersione aumenta.</strong></p>
+    </div>
+    
+    <h3>Fatica e Bisogni Base</h3>
+    
+    <h4>Senza Cibo:</h4>
+    <ul>
+        <li>3 giorni: -2 tutti attributi fisici (FOR, DES, COS)</li>
+        <li>7 giorni: -4 tutti attributi, TS ogni giorno o 1d6 danni</li>
+        <li>14 giorni: Morte probabile</li>
+    </ul>
+    
+    <h4>Senza Acqua:</h4>
+    <ul>
+        <li>1 giorno: -2 COS</li>
+        <li>2 giorni: -4 COS, allucinazioni</li>
+        <li>3 giorni: TS vs Morte o muori</li>
+    </ul>
+    
+    <h4>Senza Sonno:</h4>
+    <ul>
+        <li>24 ore: -2 INT, SAG, DES (goffo, confuso)</li>
+        <li>48 ore: -4 tutti attributi mentali, allucinazioni minori</li>
+        <li>72 ore: TS ogni ora o collasso (incosciente 1d6 ore)</li>
+    </ul>
+    
+    <div class="box warning">
+        <p><strong>Nota Realismo:</strong> Tracciare fatica/fame è opzionale. Se gruppo gradisce survival management, usa queste regole. Se preferisce focus su dilemmi morali e combattimento, ignora. Decidete in Sessione Zero.</p>
+    </div>
+</section>
+
+<!-- PARTE V: CONTAMINAZIONE TEMPORALE -->
+<section id="contaminazione" class="section">
+    <h2>PARTE V: CONTAMINAZIONE TEMPORALE</h2>
+    
+    <div class="box danger">
+        <h3>Il Prezzo del Tempo</h3>
+        <p style="font-size: 1.2rem;"><strong>Ogni 4 ore passate in zona temporale attiva:</strong></p>
+        <p style="font-size: 1.5rem; text-align: center; font-weight: bold; margin: 1rem 0;">
+            Tiro Salvezza vs Bacchette<br>
+            (d20 ≥ 16, modificato)
+        </p>
+        <p style="font-size: 1.2rem;"><strong>Fallimento = Acquisisci 1 Quirk (tira d12)</strong></p>
+        <p style="margin-top: 1rem;">Questo non è negoziabile. Non è evitabile completamente. È il <strong>prezzo biologico</strong> di entrare in luoghi dove leggi fisica/tempo sono rotte.</p>
+    </div>
+    
+    <h3>Quando Scatta Check Contaminazione</h3>
+    
+    <h4>✅ Scatta Check Quando:</h4>
+    <ul>
+        <li>Hai passato 4 ore cumulative in zona temporale attiva (conta pause)</li>
+        <li>Entri epicentro collasso temporale (check immediato, -4 al TS)</li>
+        <li>Tocchi Frammento Oculus direttamente (check immediato, -6 al TS)</li>
+        <li>Usi dispositivo temporale senza protezioni (check dopo uso)</li>
+        <li>Attraversi "interfaccia" tra epoche diverse (es: porta che collega 1920 e 2080)</li>
+    </ul>
+    
+    <h4>❌ NON Scatta Check Quando:</h4>
+    <ul>
+        <li>Sei in zona verde stabilizzata (Strip Vegas, quartieri sicuri)</li>
+        <li>Sei in base/HQ Divisione (fuori zona temporale)</li>
+        <li>Sei in veicolo schermato Divisione</li>
+        <li>Dormi in zona sicura tra missioni</li>
+    </ul>
+    
+    <h3>Modificatori TS Contaminazione</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Condizione</th>
+                <th>Modificatore TS</th>
+                <th>Disponibilità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Tuta Protezione Divisione</strong></td>
+                <td>+4</td>
+                <td>Standard issue, tutti agenti hanno</td>
+            </tr>
+            <tr>
+                <td><strong>Abilità: Resistenza Temporale</strong></td>
+                <td>+2</td>
+                <td>Acquisibile con Punti Abilità (raccomandato liv 2+)</td>
+            </tr>
+            <tr>
+                <td><strong>Mod COS positivo</strong></td>
+                <td>+COS</td>
+                <td>COS 14 (+1) = +1 al TS</td>
+            </tr>
+            <tr>
+                <td><strong>Mod COS negativo</strong></td>
+                <td>-COS</td>
+                <td>COS 8 (-1) = -1 al TS</td>
+            </tr>
+            <tr>
+                <td><strong>Farmaci Anti-Contaminazione</strong></td>
+                <td>+2 (1 dose)</td>
+                <td>$100/dose mercato nero, dura 8h</td>
+            </tr>
+            <tr>
+                <td><strong>Epicentro Temporale</strong></td>
+                <td>-4</td>
+                <td>Ground Zero, cuore collasso</td>
+            </tr>
+            <tr>
+                <td><strong>Frammento Oculus vicino (10m)</strong></td>
+                <td>-2</td>
+                <td>Non toccare, solo vicinanza</td>
+            </tr>
+            <tr>
+                <td><strong>Già hai 3+ Quirk</strong></td>
+                <td>-2</td>
+                <td>Corpo già compromesso, meno resistente</td>
+            </tr>
+            <tr>
+                <td><strong>Ferito (sotto 50% PF)</strong></td>
+                <td>-2</td>
+                <td>Sistema immunitario debole</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Esempio Calcolo TS Contaminazione:</h4>
+    <pre><code>AGENTE: COS 12 (mod 0), ha Tuta (+4), NO Resistenza Temporale
+SITUAZIONE: 4 ore in zona temporale standard, salute piena
+
+TS BASE: 16
++ Tuta: +4
++ COS: 0
+──────────
+TOTALE: Servono 12+ su d20 per evitare Quirk
+
+Tiro: d20 → 9
+9 < 12 → FALLIMENTO
+Direttore: "Senti nausea. Visione si distorce. Tira d12 su tabella Quirk."
+Tiro: d12 → 7 (Cicatrici Inverse)
+"Vedi ferita apparire su braccio. Sanguina... ma sangue sale verso alto, non scende. La ferita è dal tuo FUTURO."</code></pre>
+    
+    <h3>Countdown del Collasso</h3>
+    <p><strong>Zone temporali instabili (maggior parte missioni) collassano gradualmente:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Fase</th>
+                <th>Tempo</th>
+                <th>Sintomi Zona</th>
+                <th>Effetti Meccanici</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Fase 1: Stabile</strong></td>
+                <td>Ore 0-4</td>
+                <td>Glitch temporali minori, déjà vu, eco sonori</td>
+                <td>Check Contaminazione ogni 4h (normale)</td>
+            </tr>
+            <tr>
+                <td><strong>Fase 2: Deterioramento</strong></td>
+                <td>Ore 4-8</td>
+                <td>Oggetti cambiano epoca spontaneo, gravità fluttua, suoni invertiti</td>
+                <td>Check ogni 2h invece che 4h<br>-2 tutti TS Contaminazione</td>
+            </tr>
+            <tr>
+                <td><strong>Fase 3: Critico</strong></td>
+                <td>Ore 8-12</td>
+                <td>Pareti/pavimenti frammentano, loop locali 1d6 minuti, doppelganger appaiono</td>
+                <td>Check ogni 1h<br>-4 tutti TS<br>1d6 danni temporali/ora a tutti</td>
+            </tr>
+            <tr>
+                <td><strong>Fase 4: Collasso Imminente</strong></td>
+                <td>Ore 12+</td>
+                <td>Realtà si sfalda, multipli tempi sovrapposti, fisica rotta</td>
+                <td>Check ogni 30 min<br>-6 tutti TS<br>2d6 danni/ora<br><strong>FUGA NECESSARIA</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box danger">
+        <h4>⚠️ Collasso Finale</h4>
+        <p>Quando zona raggiunge Ora 12-14 (varia per stabilità iniziale), <strong>collasso totale:</strong></p>
+        <ul>
+            <li>Tutti in zona: TS vs Morte o diventano Eco Temporale istantaneo (persi)</li>
+            <li>Edifici implodono in singolarità temporale</li>
+            <li>Tesori/oggetti in zona distrutti O espulsi epoca random</li>
+            <li>Zona diventa "buco nero temporale" - nessuno entra mai più</li>
+        </ul>
+        <p><strong>Questo crea deadline naturale per missioni.</strong> Non puoi esplorare 100% zona. Devi decidere: vai più profondo (più tesori, più rischi) O esci safe?</p>
+    </div>
+    
+    <h3>Eventi Temporali Random</h3>
+    <p><strong>Ogni ora in zona temporale, Direttore tira d6. Con 1-2, evento accade:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>d6</th>
+                <th>Evento</th>
+                <th>Effetto Meccanico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>Eco del Passato</strong></td>
+                <td>Oggetto/persona epoca 1920-1980 appare. Dura 1d6 turni poi svanisce. Possibile dialogo/interazione.<br><em>Es: Soldato WWII confuso, auto anni '50 che appare/sparisce</em></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>Flash del Futuro</strong></td>
+                <td>Tecnologia 2040-2100 appare brevemente. Può essere studiata (INT check) ma svanisce 1d6 round.<br><em>Es: Drone AI, arma energia, display olografico</em></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>Loop Locale Minore</strong></td>
+                <td>Prossimi 1d6 minuti si ripetono identici. Gruppo vive stessi eventi 2 volte. Possono cambiare azioni seconda iterazione (sanno cosa accade).<br><strong>Vantaggio tattico O confusione</strong></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>Invecchiamento Rapido</strong></td>
+                <td>Tutti in area: TS vs Bacchette O invecchiano +1d6 anni istantaneo (permanente). Capelli bianchi, rughe, vista peggiora.<br><strong>No effetto stats... ancora. Ma accumula.</strong></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>Doppelganger Temporale</strong></td>
+                <td>Versione alternativa PG casuale appare (da timeline dove fece scelte diverse). Può essere ostile, alleato, O confuso. Dura 2d6 turni.<br><em>PNG controllato da Direttore, stats identici a PG</em></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>Rottura Fisica Locale</strong></td>
+                <td>Leggi fisica rotte 1d6 turni:<br>• Gravità invertita (tutti cadono soffitto)<br>• Pioggia sale invece scendere<br>• Fuoco congela, ghiaccio brucia<br>• Suoni viaggiano indietro nel tempo (senti effetto prima causa)<br><strong>Richiede adattamento veloce O danni</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Esempio Evento in Gioco:</h4>
+    <div class="box">
+        <pre><code>DIRETTORE: "Siete nell'edificio abbandonato, Fase 2 collasso. È passata 1 ora da ultimo evento. Tiro d6... 2. Evento accade. Tiro d6 per tipo... 5."
+
+"Improvvisamente, davanti a voi appare... Marco. O meglio, un Marco. Ma ha cicatrice che tu non hai, Marco. Porta uniforme Divisione che non riconosci - nera, non blu. E ha 5 anni più vecchio. Ti guarda, sconvolto."
+
+MARCO (PG): "Chi... chi sei?"
+
+DIRETTORE (Doppelganger): "Marco Ferretti, agente Sigma-9. Tu chi cazzo sei? E perché hai la mia faccia ma... giovane?"
+
+[Tensione drammatica. Doppelganger sa cose che Marco non sa. Viene da timeline dove Loop Chicago è finito MALE. Può dare info... ma è stabile mentalmente? Direttore tira dado: Ostile.]
+
+DOPPELGANGER: "No. NO. Sei LORO. Sei un trucco! MUORI!" [Estrae arma]
+
+[Combattimento con sé stesso. Meta. Inquietante. Perfetto per tono gioco.]</code></pre>
+    </div>
+    
+    <h3>Strategie Sopravvivenza Contaminazione</h3>
+    
+    <div class="box success">
+        <h4>Consigli per Giocatori</h4>
+        <ul>
+            <li><strong>Missioni veloci:</strong> Entra, obiettivo, esci. Meno di 4h = zero check.</li>
+            <li><strong>Investi in Resistenza Temporale:</strong> +2 TS vale oro. Prima abilità da prendere liv 2.</li>
+            <li><strong>Compra farmaci:</strong> $100/dose sembra caro ma 1 Quirk può rovinare personaggio.</li>
+            <li><strong>Lavora in team:</strong> Ruota chi entra epicentro (più esposto). Proteggi membri con già 3+ Quirk.</li>
+            <li><strong>Conosci limite:</strong> A 4 Quirk, considera ritiro. 5° è ultimo avvertimento. 6° = fine.</li>
+        </ul>
+    </div>
+    
+    <div class="box warning">
+        <h4>Nota Importante: Quirk Come Orologio</h4>
+        <p>Quirk non sono solo "penalità meccaniche". Sono <strong>countdown permanente verso fine personaggio</strong>.</p>
+        <p>Ogni Quirk ricorda: "Hai 5-X Quirk rimasti prima diventare Eco."</p>
+        <p>Questo crea tensione esistenziale naturale. Non è "posso vincere combattimento?" È <strong>"Quanto posso spingere prima perdere me stesso?"</strong></p>
+        <p>Alcuni giocatori gestiranno conservativo (1-2 Quirk max, poi ritirano). Altri rischieranno tutto (4-5 Quirk, vivono pericolosamente). <strong>Entrambi validi. Entrambi interessanti narrativamente.</strong></p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p><strong>© 2024 Riccardo Sgaringi</strong> | Creative Commons BY 4.0</p>
+    <p><strong>UCRONIE E TESORI v2.0</strong> | Parte 1: Sistema Base</p>
+    <p style="margin-top: 1rem; color: var(--accent-gold);">
+        <strong>Continua in:</strong> PARTE 2 (Quirk, Economia, Mondo, Loop Chicago)
+    </p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTop');
+    btn.className = window.pageYOffset > 300 ? 'scroll-top show' : 'scroll-top';
+});
+</script>
+
+</body>
+</html>

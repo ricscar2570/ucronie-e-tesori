@@ -1,500 +1,813 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ucronie e Tesori v2.0 | Manuale completo</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #0a0e27;
-            --accent-blue: #3498db;
-            --accent-gold: #f39c12;
-            --accent-red: #e74c3c;
-            --accent-purple: #9b59b6;
-            --text: #ecf0f1;
-            --bg: #1a1f2e;
-        }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body {
-            font-family: Georgia, serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: linear-gradient(135deg, var(--primary), var(--bg));
-            background-attachment: fixed;
-            padding: 0;
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            flex: 1;
-        }
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: var(--primary);
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            border: 3px solid var(--accent-gold);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--accent-blue);
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        .hero .version {
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-top: 1rem;
-        }
-        .intro {
-            background: var(--bg);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            border-left: 4px solid var(--accent-blue);
-        }
-        .intro h2 {
-            color: var(--accent-gold);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .intro p {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.8;
-        }
-        .files-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .file-card {
-            background: var(--bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid var(--accent-blue);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .file-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-        }
-        .file-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
-            border-color: var(--accent-gold);
-        }
-        .file-card h3 {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        .file-number {
-            display: inline-block;
-            background: var(--accent-blue);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-        .file-card p {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-        .file-card ul {
-            list-style: none;
-            margin: 1rem 0;
-        }
-        .file-card li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-            color: var(--accent-blue);
-        }
-        .file-card li:last-child {
-            border-bottom: none;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent-gold);
-        }
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent-gold);
-            transform: scale(1.05);
-        }
-        .features {
-            background: var(--primary);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            border: 2px solid var(--accent-purple);
-        }
-        .features h2 {
-            color: var(--accent-gold);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .feature {
-            background: var(--bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-blue);
-        }
-        .feature h3 {
-            color: var(--accent-blue);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-        }
-        .feature p {
-            color: var(--text);
-            font-size: 0.95rem;
-        }
-        .quick-start {
-            background: rgba(46, 204, 113, 0.2);
-            border: 2px solid #2ecc71;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-        }
-        .quick-start h2 {
-            color: #2ecc71;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .quick-start ol {
-            margin-left: 2rem;
-            font-size: 1.1rem;
-        }
-        .quick-start li {
-            margin-bottom: 0.8rem;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .stat-box {
-            background: var(--primary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid var(--accent-blue);
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            font-weight: bold;
-            display: block;
-        }
-        .stat-label {
-            color: var(--accent-blue);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        footer {
-            background: var(--primary);
-            padding: 2rem;
-            text-align: center;
-            border-top: 3px solid var(--accent-gold);
-            margin-top: 3rem;
-        }
-        footer p {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-        footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-        footer a:hover {
-            color: var(--accent-gold);
-        }
-        .license-badge {
-            display: inline-block;
-            background: var(--accent-blue);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero .tagline { font-size: 1.1rem; }
-            .files-grid { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
-        }
-        .scroll-indicator {
-            text-align: center;
-            margin-top: 2rem;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-    </style>
-</head>
-<body>
+<h3>Abilità e prove di attributo</h3>
+    
+    <h4>Come interagiscono</h4>
+    <p><strong>Se hai l'abilità rilevante:</strong></p>
+    <ul>
+        <li>Fai una prova roll-under sull'attributo associato all'abilità</li>
+        <li>Successo = risultato competente, professionale</li>
+        <li>Fallimento = non riesci ma capisci perché (l'esperienza ti dice il problema)</li>
+    </ul>
+    
+    <p><strong>Se non hai l'abilità:</strong></p>
+    <ul>
+        <li>Puoi comunque provare (se il direttore dice che è plausibile)</li>
+        <li>La prova è difficile (-4 automatico)</li>
+        <li>Successo = risultato goffo, parziale, o con conseguenze</li>
+        <li>Fallimento = fallimento totale, possibili danni collaterali</li>
+    </ul>
+    
+    <h4>Esempi affiancati</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Situazione</th>
+                <th>Con abilità</th>
+                <th>Senza abilità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Scassinare una porta</strong></td>
+                <td>Hai scassinare, destrezza 14<br>Tiri d20 ≤ 14<br>Successo = porta aperta, nessun rumore<br>Fallimento = non si apre, ma i grimaldelli sono intatti</td>
+                <td>Non hai l'abilità, destrezza 14<br>Tiri d20 ≤ 10 (14-4)<br>Successo = apri ma fai rumore o impieghi 10 minuti invece di 1<br>Fallimento = rompi i grimaldelli o attivi un allarme</td>
+            </tr>
+            <tr>
+                <td><strong>Diagnosticare una malattia</strong></td>
+                <td>Hai medicina, intelligenza 12<br>Tiri d20 ≤ 12<br>Successo = sai esattamente la malattia + cura<br>Fallimento = non sei sicuro, ma sai che non sai</td>
+                <td>Non hai l'abilità, intelligenza 12<br>Tiri d20 ≤ 8 (12-4)<br>Successo = intuisci la categoria (infezione? avvelenamento?) ma non la cura<br>Fallimento = diagnosi errata, peggiori il paziente</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Combattimento</h3>
+    
+    <div class="box danger">
+        <h4>⚠️ Filosofia del combattimento OSR</h4>
+        <p><strong>Il combattimento è letale e dovrebbe essere l'ultima risorsa.</strong></p>
+        <p>Non sei un eroe da film d'azione. Sei una persona normale con una pistola. I proiettili uccidono. Anche te. Un combattimento "giusto" è un combattimento stupido. Imboscate, trappole, fuga, persuasione - questi sono gli strumenti intelligenti.</p>
+        <p>Se entri in combattimento, accetti il rischio di morte reale.</p>
+    </div>
+    
+    <h4>Sequenza del combattimento</h4>
+    <ol style="font-size: 1.05rem; line-height: 1.8;">
+        <li><strong>Iniziativa (solo round 1):</strong>
+            <ul>
+                <li>Ogni <em>lato</em> (non individuo) tira 1d6</li>
+                <li>Il più alto agisce per primo quel round</li>
+                <li>L'iniziativa si ritira ogni round (situazione fluida)</li>
+            </ul>
+        </li>
+        <li><strong>Dichiarazione azioni (lato vincente):</strong>
+            <ul>
+                <li>I giocatori dicono cosa fanno ("Sparo alla guardia 1", "Corro in copertura", "Ricarico")</li>
+                <li>Non risolvono ancora - solo dichiarano</li>
+            </ul>
+        </li>
+        <li><strong>Dichiarazione azioni (lato perdente):</strong>
+            <ul>
+                <li>Il direttore dichiara le azioni dei nemici</li>
+            </ul>
+        </li>
+        <li><strong>Risoluzione (lato vincente per primo):</strong>
+            <ul>
+                <li>Attacchi, movimento, abilità speciali</li>
+                <li>Risolvi nell'ordine dichiarato</li>
+            </ul>
+        </li>
+        <li><strong>Risoluzione (lato perdente):</strong>
+            <ul>
+                <li>I nemici sopravvissuti agiscono</li>
+            </ul>
+        </li>
+        <li><strong>Prova di morale (se applicabile):</strong>
+            <ul>
+                <li>Se PNG/nemici perdono 50%+ degli alleati</li>
+                <li>O il leader muore</li>
+                <li>O la situazione cambia drasticamente</li>
+                <li>Il direttore tira 2d6 ≤ morale del nemico (base 8)</li>
+                <li>Fallimento = fuggono o si arrendono</li>
+            </ul>
+        </li>
+        <li><strong>Nuovo round:</strong> torna allo step 1</li>
+    </ol>
+    
+    <h4>Attaccare</h4>
+    <p><strong>Formula: d20 ≥ (THAC0 dell'attaccante - CA del bersaglio)</strong></p>
+    
+    <div class="box">
+        <h5>Spiegazione del sistema THAC0</h5>
+        <p><strong>THAC0 = "To Hit Armor Class 0"</strong> (sistema D&D classico)</p>
+        <p>Più basso il THAC0 = più facile colpire (migliore combattente)<br>
+        Più bassa la CA = più difficile essere colpiti (migliore armatura/agilità)</p>
+        <p>Il sistema è <em>discendente</em> - i numeri alti sono peggiori, i numeri bassi sono migliori.</p>
+    </div>
+    
+    <h5>Esempio di attacco passo per passo:</h5>
+    <pre><code>Attaccante:
+- THAC0: 20 (livello 1 standard)
+- Arma: pistola Glock 17
 
-<div class="container">
+Bersaglio:
+- CA: 7 (buona destrezza, magari in copertura)
+
+Calcolo numero target:
+20 (THAC0) - 7 (CA) = 13
+
+L'attaccante deve tirare 13+ su d20 per colpire
+
+Tiro: d20 → 15
+15 ≥ 13? Sì → colpito!
+
+Ora tira i danni: 1d6 → 4 danni
+Il bersaglio aveva 6 PF → ora ha 2 PF (ferito ma vivo)</code></pre>
     
-    <div class="hero">
-        <h1>⏳ Ucronie e Tesori ⏳</h1>
-        <p class="tagline">"Breaking Bad incontra OSR incontra Looper"</p>
-        <p class="version"><strong>v2.0 perfezionato</strong> | Manuale completo HTML</p>
-        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text);">
-            Un gioco di ruolo OSR dove agenti temporali affrontano<br>
-            scelte morali impossibili, pressione economica letale,<br>
-            e conseguenze che durano per sempre.
-        </p>
+    <h4>Modificatori situazionali del combattimento</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Situazione</th>
+                <th>Modificatore</th>
+                <th>Spiegazione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Copertura (bersaglio)</strong></td>
+                <td>CA -2</td>
+                <td>Dietro un muro, macchina, albero - metà corpo coperto</td>
+            </tr>
+            <tr>
+                <td><strong>Copertura totale</strong></td>
+                <td>Non colpibile</td>
+                <td>Completamente nascosto - devi aspettare che esca o cambi posizione</td>
+            </tr>
+            <tr>
+                <td><strong>Bersaglio ignaro</strong></td>
+                <td>CA +4</td>
+                <td>Non sa che stai per sparare - più facile colpire</td>
+            </tr>
+            <tr>
+                <td><strong>Mirare (azione dedicata)</strong></td>
+                <td>+2 a colpire</td>
+                <td>Spendi un round a mirare, il prossimo attacco +2</td>
+            </tr>
+            <tr>
+                <td><strong>Movimento veloce</strong></td>
+                <td>-2 a colpire</td>
+                <td>Tu o il bersaglio corre (non cammina)</td>
+            </tr>
+            <tr>
+                <td><strong>Condizioni povere</strong></td>
+                <td>-2 a colpire</td>
+                <td>Buio, nebbia, pioggia forte, fumo</td>
+            </tr>
+            <tr>
+                <td><strong>Raggio estremo</strong></td>
+                <td>-4 a colpire</td>
+                <td>Oltre il raggio normale dell'arma</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Danni delle armi comuni</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Arma</th>
+                <th>Danno</th>
+                <th>Raggio</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pugno / calcio</td>
+                <td>1d2 + mod forza</td>
+                <td>Mischia</td>
+                <td>Non letale (knockout a 0 PF)</td>
+            </tr>
+            <tr>
+                <td>Coltello / pugnale</td>
+                <td>1d4</td>
+                <td>Mischia</td>
+                <td>Nascondibile, silenzioso</td>
+            </tr>
+            <tr>
+                <td>Mazza / bastone</td>
+                <td>1d6</td>
+                <td>Mischia</td>
+                <td>Improvvisabile (tubi, bastoni)</td>
+            </tr>
+            <tr>
+                <td>Spada / machete</td>
+                <td>1d8</td>
+                <td>Mischia</td>
+                <td>Raro nel setting moderno</td>
+            </tr>
+            <tr>
+                <td>Pistola (9mm standard)</td>
+                <td>1d6</td>
+                <td>50 metri</td>
+                <td>Arma standard degli agenti</td>
+            </tr>
+            <tr>
+                <td>Pistola (.45 pesante)</td>
+                <td>1d8</td>
+                <td>30 metri</td>
+                <td>Più danno, meno precisione</td>
+            </tr>
+            <tr>
+                <td>Fucile d'assalto</td>
+                <td>1d8</td>
+                <td>200 metri</td>
+                <td>Raffica: 3 colpi, -2 a colpire</td>
+            </tr>
+            <tr>
+                <td>Fucile da cecchino</td>
+                <td>2d6</td>
+                <td>800 metri</td>
+                <td>Richiede mirare, rumoroso</td>
+            </tr>
+            <tr>
+                <td>Fucile a pompa</td>
+                <td>2d6</td>
+                <td>20 metri</td>
+                <td>-2 a colpire oltre 20 metri</td>
+            </tr>
+            <tr>
+                <td>Esplosivo (granata/C4)</td>
+                <td>3d6</td>
+                <td>Area 10 metri</td>
+                <td>Tutti nell'area, TS dimezza</td>
+            </tr>
+            <tr>
+                <td>Molotov</td>
+                <td>2d6 (fuoco)</td>
+                <td>Lancio 10 metri</td>
+                <td>Continua 1d6/round per 3 round</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Azioni in combattimento</h4>
+    <p><strong>Ogni round (6 secondi), puoi fare:</strong></p>
+    <ul>
+        <li><strong>1 azione standard + movimento</strong></li>
+    </ul>
+    
+    <h5>Azioni standard:</h5>
+    <ul>
+        <li><strong>Attaccare</strong> (mischia o distanza)</li>
+        <li><strong>Mirare</strong> (prossimo attacco +2)</li>
+        <li><strong>Ricaricare l'arma</strong> (1 round per caricatore)</li>
+        <li><strong>Usare un oggetto</strong> (bere una pozione, attivare un dispositivo)</li>
+        <li><strong>Lanciare una granata</strong></li>
+        <li><strong>Aiutare un alleato</strong> (il suo prossimo check +2)</li>
+        <li><strong>Azione complessa</strong> (hackerare sotto il fuoco, disarmare una bomba - richiede una prova)</li>
+    </ul>
+    
+    <h5>Movimento:</h5>
+    <ul>
+        <li><strong>Camminare:</strong> 9 metri (30 piedi)</li>
+        <li><strong>Correre:</strong> 18 metri ma -2 CA (più esposto)</li>
+        <li><strong>Scatto:</strong> 27 metri ma nessuna azione standard quel round (solo corri)</li>
+    </ul>
+    
+    <h4>Morte e guarigione</h4>
+    
+    <h5>A 0 punti ferita:</h5>
+    <p><strong>Opzione 1 (standard OSR - letale):</strong></p>
+    <ul>
+        <li>Sei morto. Punto. Crea un nuovo personaggio.</li>
+    </ul>
+    
+    <p><strong>Opzione 2 (leggermente meno letale - raccomandata):</strong></p>
+    <ul>
+        <li><strong>A 0 PF:</strong> cadi incosciente, stai morendo</li>
+        <li><strong>Ogni round a 0 PF:</strong> fai un TS vs morte (tira d20 ≥ 16)</li>
+        <li><strong>3 successi:</strong> stabilizzato a 1 PF (cosciente, disabilitato)</li>
+        <li><strong>3 fallimenti:</strong> morto definitivamente</li>
+        <li><strong>Colpo mentre a 0 PF:</strong> morte immediata (colpo di grazia)</li>
+    </ul>
+    
+    <div class="box warning">
+        <p><strong>Discussione con il gruppo:</strong> decidete insieme l'opzione 1 o 2 nella sessione zero. L'opzione 1 è più OSR puro (la morte incentiva la cautela). L'opzione 2 dà possibilità eroiche last-minute. Entrambe sono valide.</p>
     </div>
     
-    <div class="intro">
-        <h2>Benvenuto nel manuale completo</h2>
-        <p>Questo è il <strong>manuale digitale completo</strong> di Ucronie e Tesori, diviso in 3 file HTML interconnessi per facilitare la navigazione e l'utilizzo al tavolo.</p>
-        <p style="margin-top: 1rem;">Ogni file è <strong>self-contained</strong> (funziona standalone) ma fa parte di un sistema integrato. Puoi aprirli simultaneamente in tab diversi, stampare sezioni specifiche, o salvare offline per uso mobile.</p>
-    </div>
+    <h5>Guarigione naturale:</h5>
+    <ul>
+        <li><strong>Riposo breve (1 ora):</strong> recuperi 1 PF</li>
+        <li><strong>Riposo lungo (8 ore, sonno):</strong> recuperi 1d6 + mod costituzione PF</li>
+        <li><strong>Una settimana di riposo completo:</strong> recuperi tutti i PF</li>
+    </ul>
     
-    <div class="stats">
-        <div class="stat-box">
-            <span class="stat-number">16</span>
-            <span class="stat-label">Parti totali</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-number">50+</span>
-            <span class="stat-label">Pagine equivalenti</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-number">12</span>
-            <span class="stat-label">Stranezze dettagliate</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Gratis CC BY 4.0</span>
-        </div>
-    </div>
+    <h5>Guarigione medica:</h5>
+    <ul>
+        <li><strong>Kit medico (1 uso):</strong> guarisce 1d6 PF, richiede 10 minuti, prova di medicina (se senza abilità: -4)</li>
+        <li><strong>Ospedale (1 giorno):</strong> guarisce 2d6 PF, costa $500 al giorno</li>
+        <li><strong>Medico della divisione (se lealtà 5+):</strong> gratuito, 1d6 PF al giorno</li>
+    </ul>
+</section>
+
+<!-- PARTE IV: ESPLORAZIONE E TEMPO -->
+<section id="esplorazione" class="section">
+    <h2>Parte IV: esplorazione e tempo</h2>
     
-    <h2 style="text-align: center; color: var(--accent-gold); font-size: 2.5rem; margin: 3rem 0 2rem;">📚 I tre manuali</h2>
-    
-    <div class="files-grid">
-        
-        <!-- FILE 1 -->
-        <div class="file-card">
-            <span class="file-number">File 1</span>
-            <h3>📖 Sistema base</h3>
-            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
-                Fondamenta del gioco, meccaniche core, creazione del personaggio
-            </p>
-            <ul>
-                <li>✦ Parte 0: i 5 pilastri di design</li>
-                <li>✦ Parte I: introduzione e pitch</li>
-                <li>✦ Parte II: creazione del personaggio</li>
-                <li>✦ Parte III: sistema di gioco</li>
-                <li>✦ Parte IV: esplorazione e tempo</li>
-                <li>✦ Parte V: contaminazione temporale</li>
-            </ul>
-            <a href="ucronie_e_tesori_file1.html" class="cta-button">Apri il file 1 →</a>
-        </div>
-        
-        <!-- FILE 2 -->
-        <div class="file-card">
-            <span class="file-number">File 2</span>
-            <h3>⚙️ Contenuto centrale</h3>
-            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
-                Stranezze, economia, moralità, progressione, mondo, avventura completa
-            </p>
-            <ul>
-                <li>✦ Parte VI: 12 stranezze dettagliate</li>
-                <li>✦ Parte VII: economia della disperazione</li>
-                <li>✦ Parte VIII: lealtà e corruzione</li>
-                <li>✦ Parte IX: progressione e livelli</li>
-                <li>✦ Parte X: Las Vegas post-Oculus</li>
-                <li>✦ Parte XI: Loop di Chicago (avventura)</li>
-            </ul>
-            <a href="ucronie_e_tesori_file2.html" class="cta-button">Apri il file 2 →</a>
-        </div>
-        
-        <!-- FILE 3 -->
-        <div class="file-card">
-            <span class="file-number">File 3</span>
-            <h3>🎲 Materiali del direttore</h3>
-            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
-                Guida per il GM, tabelle random, gestione della campagna, FAQ, crediti
-            </p>
-            <ul>
-                <li>✦ Parte XII: guida per il direttore</li>
-                <li>✦ Parte XIII: tabelle e generatori</li>
-                <li>✦ Parte XIV: gestione della campagna</li>
-                <li>✦ Parte XV: FAQ completa</li>
-                <li>✦ Parte XVI: crediti e licenza</li>
-            </ul>
-            <a href="ucronie_e_tesori_file3.html" class="cta-button">Apri il file 3 →</a>
-        </div>
-        
-    </div>
-    
-    <div class="quick-start">
-        <h2>🚀 Quick start - inizia subito</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.1rem;">Primo impatto con il gioco? Segui questo percorso:</p>
-        <ol>
-            <li><strong>Leggi la parte 0</strong> (file 1) - 5 minuti per capire la filosofia del design</li>
-            <li><strong>Crea il personaggio</strong> (file 1, parte II) - 10 minuti con tabelle random</li>
-            <li><strong>Impara il sistema base</strong> (file 1, parte III) - roll-under d20, THAC0, TS</li>
-            <li><strong>Gioca il Loop di Chicago</strong> (file 2, parte XI) - avventura tutorial 3-4 ore</li>
-            <li><strong>Consulta le tabelle</strong> (file 3) quando serve durante il gioco</li>
-        </ol>
-        <p style="margin-top: 1rem; font-style: italic;">
-            <strong>Tempo per essere operativo:</strong> 30 minuti di lettura + 1 sessione di gioco
-        </p>
-    </div>
-    
-    <div class="features">
-        <h2>✨ Caratteristiche speciali</h2>
-        <div class="features-grid">
-            <div class="feature">
-                <h3>🎨 Design moderno</h3>
-                <p>CSS responsive, navigazione sticky, tabelle colorate, mobile-friendly</p>
-            </div>
-            <div class="feature">
-                <h3>⚡ Generatori interattivi</h3>
-                <p>JavaScript per creare missioni, PNG, tesori random al click (file 3)</p>
-            </div>
-            <div class="feature">
-                <h3>📱 Offline-ready</h3>
-                <p>Scarica e usa senza internet. Ideale per tablet al tavolo</p>
-            </div>
-            <div class="feature">
-                <h3>🖨️ Print-friendly</h3>
-                <p>Stampa sezioni specifiche o l'intero manuale direttamente dal browser</p>
-            </div>
-            <div class="feature">
-                <h3>🔗 Navigazione rapida</h3>
-                <p>Menu sticky per saltare tra sezioni, scroll-to-top automatico</p>
-            </div>
-            <div class="feature">
-                <h3>📖 Self-contained</h3>
-                <p>Ogni file funziona standalone. Nessuna dipendenza esterna.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="intro">
-        <h2>🎯 Cosa rende Ucronie e Tesori speciale?</h2>
-        <p><strong>1. Moralità grigia sistematica</strong> - lealtà e corruzione non sono "buono/cattivo". Sono tracciatori neutri di compromessi. Zhou non è un villain - è un'alternativa. Hayes non è un'eroina - è una burocrate.</p>
-        
-        <p style="margin-top: 1rem;"><strong>2. Economia come narrativa</strong> - il deficit non è un "fail state". È un motore drammatico. I debiti forzano scelte disperate. La fame è più pericolosa dei mostri.</p>
-        
-        <p style="margin-top: 1rem;"><strong>3. Conseguenze permanenti</strong> - le stranezze consumano il corpo. La corruzione intrappola. La lealtà persa non torna. Le scelte hanno un peso reale, duraturo, tangibile.</p>
-        
-        <p style="margin-top: 1rem;"><strong>4. Sistema OSR semplificato</strong> - roll-under d20. Niente skill bloat. Ruling over rules. 10 minuti per imparare, una vita per padroneggiare.</p>
-        
-        <p style="margin-top: 1rem;"><strong>5. Setting ibrido unico</strong> - non "solo sci-fi" o "solo fantasy". Anomalia temporale + crime drama + survival horror + noir. Ispirazioni: Breaking Bad, Looper, Disco Elysium, The Wire.</p>
-    </div>
-    
-    <div style="background: var(--primary); padding: 2rem; border-radius: 12px; border: 2px solid var(--accent-red); margin-bottom: 3rem;">
-        <h2 style="color: var(--accent-red); margin-bottom: 1rem;">⚠️ Content warning</h2>
-        <p style="font-size: 1.1rem;">Questo gioco contiene temi maturi:</p>
-        <ul style="margin-left: 2rem; margin-top: 1rem;">
-            <li>Violenza grafica (combattimento letale, body horror delle stranezze)</li>
-            <li>Pressione economica stressante (debiti, povertà, fame)</li>
-            <li>Dilemmi morali pesanti (sacrifici, tradimenti)</li>
-            <li>Horror esistenziale (perdita dell'identità, trasformazione involontaria)</li>
-            <li>Corruzione progressiva (diventare ciò che giuri di combattere)</li>
+    <div class="box">
+        <h3>Perché il tempo conta</h3>
+        <p>In Ucronie e Tesori, <strong>il tempo non è solo narrativa - è una meccanica critica:</strong></p>
+        <ul>
+            <li>Ogni 4 ore in una zona temporale → prova di contaminazione (rischio di stranezza)</li>
+            <li>Le zone temporali instabili hanno un countdown al collasso</li>
+            <li>Più tempo passi, più rischi incontri casuali</li>
+            <li>Le risorse (cibo, munizioni, batterie) si consumano</li>
         </ul>
-        <p style="margin-top: 1rem; font-size: 1.05rem;"><strong>Raccomandato: sessione zero + safety tools (X-Card).</strong></p>
-        <p style="margin-top: 0.5rem; font-style: italic;">Non per tutti i tavoli. Perfetto per gruppi che cercano drama intenso e conseguenze reali.</p>
+        <p><strong>Tracciare il tempo crea tensione naturale:</strong> "Abbiamo 2 ore prima della prossima prova di contaminazione. Esploriamo ancora o torniamo alla base?"</p>
     </div>
     
-    <div style="text-align: center; margin: 3rem 0;">
-        <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 2rem;">Scegli il tuo percorso</h2>
-        
-        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px; max-width: 350px;">
-                <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">👥 Sono un giocatore</h3>
-                <p style="margin-bottom: 1rem;">Inizia con il <strong>file 1</strong> (sistema base). Leggi le parti 0-II per creare il personaggio. Consulta il file 2 quando serve economia/stranezze.</p>
-                <a href="ucronie_e_tesori_file1.html" class="cta-button">Vai al file 1</a>
-            </div>
-            
-            <div style="flex: 1; min-width: 250px; max-width: 350px;">
-                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">🎭 Sono il direttore</h3>
-                <p style="margin-bottom: 1rem;">Leggi <strong>tutti e 3 i file</strong> in ordine. Focus sul file 3 (materiali del direttore) per tabelle e consigli pratici.</p>
-                <a href="ucronie_e_tesori_file1.html" class="cta-button">Inizia il file 1</a>
-            </div>
-            
-            <div style="flex: 1; min-width: 250px; max-width: 350px;">
-                <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">📚 Voglio una panoramica</h3>
-                <p style="margin-bottom: 1rem;">Leggi la <strong>parte 0</strong> (pilastri del design) e la <strong>parte I</strong> (introduzione). 10 minuti per capire se il gioco fa per te.</p>
-                <a href="ucronie_e_tesori_file1.html#pilastri" class="cta-button">Leggi i pilastri</a>
-            </div>
-        </div>
-    </div>
+    <h3>Scale temporali</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Scala</th>
+                <th>Durata</th>
+                <th>Quando usarla</th>
+                <th>Granularità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Round</strong></td>
+                <td>~6 secondi</td>
+                <td>Combattimento, azioni critiche time-sensitive</td>
+                <td>Dettaglio massimo: ogni azione conta</td>
+            </tr>
+            <tr>
+                <td><strong>Turno</strong></td>
+                <td>10 minuti</td>
+                <td>Esplorazione dungeon/edificio, ricerca area</td>
+                <td>Azioni deliberate: muovere cauto, cercare, ascoltare</td>
+            </tr>
+            <tr>
+                <td><strong>Ora</strong></td>
+                <td>60 minuti</td>
+                <td>Viaggi brevi, attese, riparazioni</td>
+                <td>Montaggio: "Passi 2 ore a riparare il generatore"</td>
+            </tr>
+            <tr>
+                <td><strong>Giorno</strong></td>
+                <td>24 ore</td>
+                <td>Downtime tra missioni, riposo, guarigione</td>
+                <td>Grossolana: "Cosa fai nei prossimi 3 giorni?"</td>
+            </tr>
+            <tr>
+                <td><strong>Settimana</strong></td>
+                <td>7 giorni</td>
+                <td>Gestione della campagna, stipendio/spese</td>
+                <td>Macro: economia, reputazione, evoluzione del mondo</td>
+            </tr>
+        </tbody>
+    </table>
     
-</div>
+    <h3>Turni di esplorazione (10 minuti)</h3>
+    <p><strong>Quando il gruppo esplora una zona (dungeon, edificio abbandonato, zona temporale):</strong></p>
+    
+    <h4>Ogni turno, il gruppo può fare una di queste azioni:</h4>
+    <ol>
+        <li><strong>Muoversi 120 metri</strong> (esplorazione cauta, mappano, controllano le trappole)
+            <ul>
+                <li>Se corrono incauti: 360 metri ma -4 percezione e rischio di attivare trappole senza notarle</li>
+            </ul>
+        </li>
+        <li><strong>Cercare una stanza/area</strong> (prova di saggezza, trovano segreti, indizi, tesori nascosti)</li>
+        <li><strong>Ascoltare alla porta</strong> (prova di saggezza, sentono cosa c'è oltre senza aprire)</li>
+        <li><strong>Forzare una porta bloccata</strong> (prova di forza o scassinare, 1 turno = 1 tentativo)</li>
+        <li><strong>Riposare brevemente</strong> (recupero 1 PF, riprendere fiato, controllare l'equipaggiamento)</li>
+        <li><strong>Azione specifica complessa</strong> (scassinare una cassaforte, hackerare un terminale, disarmare del C4)</li>
+    </ol>
+    
+    <h4>Dopo ogni turno, il direttore:</h4>
+    <ul>
+        <li><strong>Tira d6 per incontro casuale</strong> (con 1: qualcosa accade - vedi tabella avventura)</li>
+        <li><strong>Aggiorna i countdown temporali</strong> (4 turni = 40 minuti ≈ prova di contaminazione presto)</li>
+        <li><strong>Traccia le risorse consumate</strong> (le torce si spengono, le batterie si scaricano)</li>
+    </ul>
+    
+    <div class="box">
+        <h4>Esempio di esplorazione turno per turno</h4>
+        <pre><code><strong>Turno 1 (10 minuti):</strong>
+Il gruppo entra nell'edificio abbandonato. Si muovono 120 metri cauti lungo il corridoio.
+Il direttore tira per l'incontro casuale: d6 → 4 (niente).
+Tempo totale nella zona: 10 minuti.
 
-<footer>
-    <p style="font-size: 1.3rem; color: var(--accent-gold); margin-bottom: 1rem;">
-        <strong>⏳ Ucronie e Tesori v2.0 ⏳</strong>
-    </p>
-    <p><strong>Design e sviluppo:</strong> Riccardo Sgaringi</p>
-    <p><strong>Pubblicazione:</strong> <a href="https://ilgiocointavolo.it">ilgiocointavolo.it</a></p>
-    <p style="margin-top: 1rem;">
-        <span class="license-badge">📄 Licenza CC BY 4.0</span>
-    </p>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">
-        Sei libero di condividere, adattare, e usare commercialmente questo gioco.<br>
-        Unica richiesta: <strong>dai credito</strong> all'autore originale.
-    </p>
-    <p style="margin-top: 2rem; font-style: italic; color: var(--accent-blue);">
-        "Il tempo ti guarda. Fai scelte che contano."
-    </p>
-    <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(236, 240, 241, 0.6);">
-        © 2024 Riccardo Sgaringi | Tutti i diritti riservati secondo licenza CC BY 4.0
+<strong>Turno 2 (20 minuti):</strong>
+Trovano una porta chiusa. Il leader decide "Cerchiamo la stanza prima di forzare".
+Prova di saggezza: successo. Trovano una ventilazione, possibile via alternativa.
+Il direttore tira: d6 → 1 (incontro!). Si sentono passi lontani, si avvicinano...
+
+<strong>Turno 3 (30 minuti):</strong>
+Il gruppo decide di nascondersi, aspettare che i passi passino.
+Nessun movimento, nessuna prova. Solo attesa tesa.
+I passi passano. Salvi.
+
+<strong>Turno 4 (40 minuti):</strong>
+Forzano la porta. Prova di forza: fallimento. La porta non cede.
+Direttore: "Fate rumore. Se c'era qualcosa vicino, ora sa che siete qui."
+Tempo totale: 40 minuti. Prossima prova di contaminazione tra 3 ore e 20 minuti.</code></pre>
+    </div>
+    
+    <h3>Movimento</h3>
+    
+    <h4>Durante il combattimento (round = 6 secondi):</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Distanza</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Camminare</td>
+                <td>9 metri</td>
+                <td>Puoi attaccare/agire</td>
+            </tr>
+            <tr>
+                <td>Correre</td>
+                <td>18 metri</td>
+                <td>Puoi agire ma -2 CA (esposto)</td>
+            </tr>
+            <tr>
+                <td>Scatto</td>
+                <td>27 metri</td>
+                <td>Solo movimento, nessuna azione</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Durante l'esplorazione (turno = 10 minuti):</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Distanza</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cauti</td>
+                <td>120 metri</td>
+                <td>Controllano le trappole, mappano, parlano piano</td>
+            </tr>
+            <tr>
+                <td>Normali</td>
+                <td>360 metri</td>
+                <td>Camminata standard, conversazione normale</td>
+            </tr>
+            <tr>
+                <td>Corsa</td>
+                <td>720 metri</td>
+                <td>-4 percezione, rumorosi, rischioso</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Viaggi lunghi (ore):</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Mezzo</th>
+                <th>Velocità</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A piedi</td>
+                <td>4 km/h</td>
+                <td>Cammino umano standard</td>
+            </tr>
+            <tr>
+                <td>Bicicletta</td>
+                <td>15 km/h</td>
+                <td>Silenziosa, niente carburante</td>
+            </tr>
+            <tr>
+                <td>Auto</td>
+                <td>60 km/h (media città)</td>
+                <td>Veloce ma rumorosa, richiede strade</td>
+            </tr>
+            <tr>
+                <td>Elicottero</td>
+                <td>200 km/h</td>
+                <td>Solo divisione, molto rumoroso</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Tracciare il tempo nel gioco</h3>
+    
+    <div class="box success">
+        <h4>Consiglio per il direttore</h4>
+        <p><strong>Usa un timer visibile sul tavolo (telefono/orologio).</strong></p>
+        <p>Ogni 10 minuti di tempo reale = 1 turno di tempo nel gioco (esplorazione)<br>
+        O ogni 30 minuti di tempo reale = 1 ora di tempo nel gioco (downtime)</p>
+        <p><strong>Quando il timer suona:</strong> "Ok, è passata 1 ora. Prova di contaminazione tra 3 ore. Cosa fate?"</p>
+        <p>Questo crea pressione <em>reale</em> al tavolo. I giocatori sentono il tempo scorrere. Smettono di chiacchierare fuori personaggio. Decidono velocemente. <strong>L'immersione aumenta.</strong></p>
+    </div>
+    
+    <h3>Fatica e bisogni base</h3>
+    
+    <h4>Senza cibo:</h4>
+    <ul>
+        <li>3 giorni: -2 a tutti gli attributi fisici (forza, destrezza, costituzione)</li>
+        <li>7 giorni: -4 a tutti gli attributi, TS ogni giorno o 1d6 danni</li>
+        <li>14 giorni: morte probabile</li>
+    </ul>
+    
+    <h4>Senza acqua:</h4>
+    <ul>
+        <li>1 giorno: -2 costituzione</li>
+        <li>2 giorni: -4 costituzione, allucinazioni</li>
+        <li>3 giorni: TS vs morte o muori</li>
+    </ul>
+    
+    <h4>Senza sonno:</h4>
+    <ul>
+        <li>24 ore: -2 intelligenza, saggezza, destrezza (goffo, confuso)</li>
+        <li>48 ore: -4 a tutti gli attributi mentali, allucinazioni minori</li>
+        <li>72 ore: TS ogni ora o collasso (incosciente per 1d6 ore)</li>
+    </ul>
+    
+    <div class="box warning">
+        <p><strong>Nota sul realismo:</strong> tracciare fatica/fame è opzionale. Se il gruppo gradisce il survival management, usa queste regole. Se preferisce il focus sui dilemmi morali e il combattimento, ignora. Decidete nella sessione zero.</p>
+    </div>
+</section>
+
+<!-- PARTE V: CONTAMINAZIONE TEMPORALE -->
+<section id="contaminazione" class="section">
+    <h2>Parte V: contaminazione temporale</h2>
+    
+    <div class="box danger">
+        <h3>Il prezzo del tempo</h3>
+        <p style="font-size: 1.2rem;"><strong>Ogni 4 ore passate in una zona temporale attiva:</strong></p>
+        <p style="font-size: 1.5rem; text-align: center; font-weight: bold; margin: 1rem 0;">
+            Tiro salvezza vs bacchette<br>
+            (d20 ≥ 16, modificato)
+        </p>
+        <p style="font-size: 1.2rem;"><strong>Fallimento = acquisisci 1 stranezza (tira d12)</strong></p>
+        <p style="margin-top: 1rem;">Questo non è negoziabile. Non è evitabile completamente. È il <strong>prezzo biologico</strong> di entrare in luoghi dove le leggi della fisica e del tempo sono rotte.</p>
+    </div>
+    
+    <h3>Quando scatta la prova di contaminazione</h3>
+    
+    <h4>✅ Scatta la prova quando:</h4>
+    <ul>
+        <li>Hai passato 4 ore cumulative in una zona temporale attiva (conta le pause)</li>
+        <li>Entri nell'epicentro di un collasso temporale (prova immediata, -4 al TS)</li>
+        <li>Tocchi direttamente un frammento Oculus (prova immediata, -6 al TS)</li>
+        <li>Usi un dispositivo temporale senza protezioni (prova dopo l'uso)</li>
+        <li>Attraversi un'"interfaccia" tra epoche diverse (es: porta che collega il 1920 e il 2080)</li>
+    </ul>
+    
+    <h4>❌ Non scatta la prova quando:</h4>
+    <ul>
+        <li>Sei in una zona verde stabilizzata (Strip di Vegas, quartieri sicuri)</li>
+        <li>Sei nella base/HQ della divisione (fuori dalla zona temporale)</li>
+        <li>Sei in un veicolo schermato della divisione</li>
+        <li>Dormi in una zona sicura tra le missioni</li>
+    </ul>
+    
+    <h3>Modificatori TS contaminazione</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Condizione</th>
+                <th>Modificatore TS</th>
+                <th>Disponibilità</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Tuta di protezione della divisione</strong></td>
+                <td>+4</td>
+                <td>Dotazione standard, tutti gli agenti ce l'hanno</td>
+            </tr>
+            <tr>
+                <td><strong>Abilità: resistenza temporale</strong></td>
+                <td>+2</td>
+                <td>Acquisibile con punti abilità (raccomandato dal livello 2+)</td>
+            </tr>
+            <tr>
+                <td><strong>Mod costituzione positivo</strong></td>
+                <td>+costituzione</td>
+                <td>Costituzione 14 (+1) = +1 al TS</td>
+            </tr>
+            <tr>
+                <td><strong>Mod costituzione negativo</strong></td>
+                <td>-costituzione</td>
+                <td>Costituzione 8 (-1) = -1 al TS</td>
+            </tr>
+            <tr>
+                <td><strong>Farmaci anti-contaminazione</strong></td>
+                <td>+2 (1 dose)</td>
+                <td>$100 a dose sul mercato nero, dura 8 ore</td>
+            </tr>
+            <tr>
+                <td><strong>Epicentro temporale</strong></td>
+                <td>-4</td>
+                <td>Ground zero, cuore del collasso</td>
+            </tr>
+            <tr>
+                <td><strong>Frammento Oculus vicino (10 metri)</strong></td>
+                <td>-2</td>
+                <td>Non toccarlo, solo vicinanza</td>
+            </tr>
+            <tr>
+                <td><strong>Già hai 3+ stranezze</strong></td>
+                <td>-2</td>
+                <td>Corpo già compromesso, meno resistente</td>
+            </tr>
+            <tr>
+                <td><strong>Ferito (sotto 50% PF)</strong></td>
+                <td>-2</td>
+                <td>Sistema immunitario debole</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Esempio di calcolo TS contaminazione:</h4>
+    <pre><code>Agente: costituzione 12 (mod 0), ha la tuta (+4), no resistenza temporale
+Situazione: 4 ore in zona temporale standard, salute piena
+
+TS base: 16
++ Tuta: +4
++ Costituzione: 0
+──────────
+Totale: servono 12+ su d20 per evitare la stranezza
+
+Tiro: d20 → 9
+9 < 12 → fallimento
+Direttore: "Senti nausea. La visione si distorce. Tira d12 sulla tabella stranezze."
+Tiro: d12 → 7 (cicatrici inverse)
+"Vedi una ferita apparire sul braccio. Sanguina... ma il sangue sale verso l'alto, non scende. La ferita è dal tuo futuro."</code></pre>
+    
+    <h3>Countdown del collasso</h3>
+    <p><strong>Le zone temporali instabili (la maggior parte delle missioni) collassano gradualmente:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Fase</th>
+                <th>Tempo</th>
+                <th>Sintomi della zona</th>
+                <th>Effetti meccanici</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Fase 1: stabile</strong></td>
+                <td>Ore 0-4</td>
+                <td>Glitch temporali minori, déjà vu, echi sonori</td>
+                <td>Prova di contaminazione ogni 4 ore (normale)</td>
+            </tr>
+            <tr>
+                <td><strong>Fase 2: deterioramento</strong></td>
+                <td>Ore 4-8</td>
+                <td>Gli oggetti cambiano epoca spontaneamente, la gravità fluttua, suoni invertiti</td>
+                <td>Prova ogni 2 ore invece di 4<br>-2 a tutti i TS contaminazione</td>
+            </tr>
+            <tr>
+                <td><strong>Fase 3: critico</strong></td>
+                <td>Ore 8-12</td>
+                <td>Pareti/pavimenti si frammentano, loop locali di 1d6 minuti, appaiono doppelganger</td>
+                <td>Prova ogni 1 ora<br>-4 a tutti i TS<br>1d6 danni temporali all'ora a tutti</td>
+            </tr>
+            <tr>
+                <td><strong>Fase 4: collasso imminente</strong></td>
+                <td>Ore 12+</td>
+                <td>La realtà si sfalda, tempi multipli sovrapposti, fisica rotta</td>
+                <td>Prova ogni 30 minuti<br>-6 a tutti i TS<br>2d6 danni all'ora<br><strong>Fuga necessaria</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="box danger">
+        <h4>⚠️ Collasso finale</h4>
+        <p>Quando la zona raggiunge l'ora 12-14 (varia per stabilità iniziale), <strong>collasso totale:</strong></p>
+        <ul>
+            <li>Tutti nella zona: TS vs morte o diventano eco temporale istantaneo (persi)</li>
+            <li>Gli edifici implodono in una singolarità temporale</li>
+            <li>I tesori/oggetti nella zona sono distrutti o espulsi in un'epoca casuale</li>
+            <li>La zona diventa un "buco nero temporale" - nessuno entra mai più</li>
+        </ul>
+        <p><strong>Questo crea una deadline naturale per le missioni.</strong> Non puoi esplorare il 100% della zona. Devi decidere: vai più in profondità (più tesori, più rischi) o esci al sicuro?</p>
+    </div>
+    
+    <h3>Eventi temporali casuali</h3>
+    <p><strong>Ogni ora in una zona temporale, il direttore tira d6. Con 1-2, accade un evento:</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>d6</th>
+                <th>Evento</th>
+                <th>Effetto meccanico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>Eco del passato</strong></td>
+                <td>Appare un oggetto/persona dell'epoca 1920-1980. Dura 1d6 turni poi svanisce. Possibile dialogo/interazione.<br><em>Es: soldato della seconda guerra mondiale confuso, auto degli anni '50 che appare/sparisce</em></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>Flash del futuro</strong></td>
+                <td>Appare brevemente tecnologia 2040-2100. Può essere studiata (prova di intelligenza) ma svanisce in 1d6 round.<br><em>Es: drone AI, arma a energia, display olografico</em></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>Loop locale minore</strong></td>
+                <td>I prossimi 1d6 minuti si ripetono identici. Il gruppo vive gli stessi eventi 2 volte. Possono cambiare le azioni alla seconda iterazione (sanno cosa accade).<br><strong>Vantaggio tattico o confusione</strong></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>Invecchiamento rapido</strong></td>
+                <td>Tutti nell'area: TS vs bacchette o invecchiano di +1d6 anni istantanei (permanente). Capelli bianchi, rughe, vista che peggiora.<br><strong>Nessun effetto sulle statistiche... ancora. Ma si accumula.</strong></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>Doppelganger temporale</strong></td>
+                <td>Appare una versione alternativa di un PG casuale (da una timeline dove ha fatto scelte diverse). Può essere ostile, alleato, o confuso. Dura 2d6 turni.<br><em>PNG controllato dal direttore, statistiche identiche al PG</em></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>Rottura fisica locale</strong></td>
+                <td>Le leggi della fisica si rompono per 1d6 turni:<br>• Gravità invertita (tutti cadono sul soffitto)<br>• La pioggia sale invece di scendere<br>• Il fuoco congela, il ghiaccio brucia<br>• I suoni viaggiano indietro nel tempo (senti l'effetto prima della causa)<br><strong>Richiede adattamento veloce o danni</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4>Esempio di evento nel gioco:</h4>
+    <div class="box">
+        <pre><code>Direttore: "Siete nell'edificio abbandonato, fase 2 del collasso. È passata 1 ora dall'ultimo evento. Tiro d6... 2. Accade un evento. Tiro d6 per il tipo... 5."
+
+"Improvvisamente, davanti a voi appare... Marco. O meglio, un Marco. Ma ha una cicatrice che tu non hai, Marco. Porta un'uniforme della divisione che non riconosci - nera, non blu. E ha 5 anni in più. Ti guarda, sconvolto."
+
+Marco (PG): "Chi... chi sei?"
+
+Direttore (doppelganger): "Marco Ferretti, agente Sigma-9. Tu chi cazzo sei? E perché hai la mia faccia ma... giovane?"
+
+[Tensione drammatica. Il doppelganger sa cose che Marco non sa. Viene da una timeline dove il Loop di Chicago è finito male. Può dare informazioni... ma è stabile mentalmente? Il direttore tira il dado: ostile.]
+
+Doppelganger: "No. No. Sei loro. Sei un trucco! Muori!" [Estrae l'arma]
+
+[Combattimento con sé stesso. Meta. Inquietante. Perfetto per il tono del gioco.]</code></pre>
+    </div>
+    
+    <h3>Strategie di sopravvivenza alla contaminazione</h3>
+    
+    <div class="box success">
+        <h4>Consigli per i giocatori</h4>
+        <ul>
+            <li><strong>Missioni veloci:</strong> entra, obiettivo, esci. Meno di 4 ore = zero prove.</li>
+            <li><strong>Investi in resistenza temporale:</strong> +2 al TS vale oro. Prima abilità da prendere al livello 2.</li>
+            <li><strong>Compra farmaci:</strong> $100 a dose sembra caro ma 1 stranezza può rovinare il personaggio.</li>
+            <li><strong>Lavora in team:</strong> ruota chi entra nell'epicentro (più esposto). Proteggi i membri con già 3+ stranezze.</li>
+            <li><strong>Conosci il limite:</strong> a 4 stranezze, considera il ritiro. La 5ª è l'ultimo avvertimento. La 6ª = fine.</li>
+        </ul>
+    </div>
+    
+    <div class="box warning">
+        <h4>Nota importante: le stranezze come orologio</h4>
+        <p>Le stranezze non sono solo "penalità meccaniche". Sono un <strong>countdown permanente verso la fine del personaggio</strong>.</p>
+        <p>Ogni stranezza ricorda: "Hai 5-X stranezze rimaste prima di diventare eco."</p>
+        <p>Questo crea una tensione esistenziale naturale. Non è "posso vincere il combattimento?" È <strong>"Quanto posso spingermi prima di perdere me stesso?"</strong></p>
+        <p>Alcuni giocatori gestiranno in modo conservativo (1-2 stranezze massimo, poi si ritirano). Altri rischieranno tutto (4-5 stranezze, vivono pericolosamente). <strong>Entrambi sono validi. Entrambi sono interessanti narrativamente.</strong></p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p><strong>© 2024 Riccardo Sgaringi</strong> | Creative Commons BY 4.0</p>
+    <p><strong>Ucronie e Tesori v2.0</strong> | Parte 1: sistema base</p>
+    <p style="margin-top: 1rem; color: var(--accent-gold);">
+        <strong>Continua con:</strong> parte 2 (stranezze, economia, mondo, Loop di Chicago)
     </p>
 </footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTop');
+    btn.className = window.pageYOffset > 300 ? 'scroll-top show' : 'scroll-top';
+});
+</script>
 
 </body>
 </html>

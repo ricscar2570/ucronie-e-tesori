@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ucronie e Tesori v2.0 | Parte 3: Materiali del Direttore</title>
+    <title>Ucronie e Tesori v2.0 | File 3: Materiali per il Direttore</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -19,6 +19,11 @@
         .header {
             background: var(--primary); border-bottom: 3px solid var(--accent-gold);
             padding: 2rem; text-align: center; margin: 2rem 0; border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .header:hover {
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
+            transform: translateY(-2px);
         }
         .header h1 { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 0.5rem; }
         .tagline { color: var(--accent-blue); font-style: italic; }
@@ -26,15 +31,27 @@
             position: sticky; top: 0; background: var(--primary); 
             padding: 1rem; border-bottom: 2px solid var(--accent-blue);
             margin-bottom: 2rem; z-index: 100; border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .nav a {
             color: var(--accent-blue); text-decoration: none;
             margin: 0 0.5rem; font-size: 0.9rem;
+            transition: all 0.3s ease; padding: 0.3rem 0.6rem;
+            border-radius: 4px;
         }
-        .nav a:hover { color: var(--accent-gold); }
+        .nav a:hover { 
+            color: var(--accent-gold); 
+            background: rgba(243, 156, 18, 0.1);
+            transform: translateY(-2px);
+        }
         .section {
             background: var(--bg); margin-bottom: 2rem; padding: 2rem;
             border-radius: 12px; border-left: 4px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            box-shadow: -4px 0 15px rgba(52, 152, 219, 0.3);
+            border-left-width: 6px;
         }
         h2 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem; 
              border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; }
@@ -47,1202 +64,1495 @@
             padding: 1rem; margin: 1rem 0; border-radius: 6px;
             border-left: 4px solid var(--accent-blue);
             background: rgba(52, 152, 219, 0.1);
+            transition: all 0.3s ease;
         }
-        .warning { border-left-color: #f1c40f; background: rgba(241, 196, 15, 0.1); }
-        .danger { border-left-color: var(--accent-red); background: rgba(231, 76, 60, 0.1); }
-        .success { border-left-color: #2ecc71; background: rgba(46, 204, 113, 0.1); }
+        .box:hover {
+            transform: translateX(5px);
+            box-shadow: -4px 0 15px rgba(52, 152, 219, 0.3);
+            border-left-width: 6px;
+        }
+        .warning { 
+            border-left-color: #f1c40f; 
+            background: rgba(241, 196, 15, 0.1); 
+        }
+        .warning:hover {
+            box-shadow: -4px 0 15px rgba(241, 196, 15, 0.3);
+        }
+        .danger { 
+            border-left-color: var(--accent-red); 
+            background: rgba(231, 76, 60, 0.1); 
+        }
+        .danger:hover {
+            box-shadow: -4px 0 15px rgba(231, 76, 60, 0.3);
+        }
+        .success { 
+            border-left-color: #2ecc71; 
+            background: rgba(46, 204, 113, 0.1); 
+        }
+        .success:hover {
+            box-shadow: -4px 0 15px rgba(46, 204, 113, 0.3);
+        }
         table {
             width: 100%; border-collapse: collapse; margin: 1rem 0;
             background: var(--primary);
         }
-        th { background: var(--accent-blue); color: white; padding: 0.8rem; text-align: left; }
-        td { padding: 0.8rem; border-bottom: 1px solid var(--bg); }
-        tr:hover { background: rgba(52, 152, 219, 0.1); }
+        th { 
+            background: var(--accent-blue); color: white; 
+            padding: 0.8rem; text-align: left; 
+        }
+        td { 
+            padding: 0.8rem; 
+            border-bottom: 1px solid var(--bg); 
+        }
+        tr {
+            transition: all 0.3s ease;
+        }
+        tr:hover { 
+            background: rgba(52, 152, 219, 0.2);
+            transform: scale(1.01);
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+        }
         .badge {
             display: inline-block; padding: 0.2rem 0.6rem;
             border-radius: 12px; font-size: 0.85rem; font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: default;
         }
-        .badge-danger { background: var(--accent-red); color: white; }
-        .badge-warning { background: #f1c40f; color: black; }
+        .badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
         .badge-info { background: var(--accent-blue); color: white; }
+        .badge-warning { background: #f1c40f; color: black; }
+        .badge-danger { background: var(--accent-red); color: white; }
         .badge-success { background: #2ecc71; color: white; }
         pre {
             background: var(--primary); padding: 1rem; border-radius: 6px;
             overflow-x: auto; margin: 1rem 0; font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-blue);
+        }
+        pre:hover {
+            border-left-color: var(--accent-gold);
+            box-shadow: -4px 0 15px rgba(243, 156, 18, 0.3);
         }
         code { color: var(--accent-blue); }
         .scroll-top {
             position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
             background: var(--accent-gold); border: none; border-radius: 50%;
             cursor: pointer; display: none; font-size: 1.5rem; color: var(--primary);
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+        }
+        .scroll-top:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
         }
         .scroll-top.show { display: block; }
         .footer {
             text-align: center; padding: 2rem; margin-top: 2rem;
             border-top: 2px solid var(--accent-gold);
         }
-        .generator {
-            background: var(--primary); padding: 1.5rem; border-radius: 8px;
-            margin: 1rem 0; border: 2px solid var(--accent-blue);
+        
+        /* Tooltip system */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--accent-blue);
+            cursor: help;
         }
-        .generator button {
-            background: var(--accent-blue); color: white; border: none;
-            padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer;
-            font-size: 1rem; font-weight: bold; margin: 0.5rem;
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+            background-color: var(--primary);
+            color: var(--text);
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.8rem;
+            border: 2px solid var(--accent-blue);
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
         }
-        .generator button:hover { background: var(--accent-gold); color: var(--primary); }
-        .result {
-            background: rgba(52, 152, 219, 0.2); padding: 1rem;
-            border-radius: 6px; margin-top: 1rem; min-height: 60px;
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
+        
+        /* Table of Contents */
+        .table-of-contents {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+        .table-of-contents:hover {
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
+        }
+        .table-of-contents h2 {
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .toc-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .toc-section h3 {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        .toc-section ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .toc-section li {
+            margin: 0.5rem 0;
+        }
+        .toc-section a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: block;
+            padding: 0.3rem 0;
+        }
+        .toc-section a:hover {
+            color: var(--accent-gold);
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--accent-gold);
+        }
+        
+        /* File navigation */
+        .file-navigation {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--accent-blue);
+        }
+        .file-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .nav-button {
+            display: block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-blue);
+        }
+        .nav-button:hover {
+            background: transparent;
+            color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .nav-button.home {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        .nav-button.home:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Generator button style */
+        .generator-button {
+            background: var(--accent-purple);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+        .generator-button:hover {
+            background: var(--accent-gold);
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(155, 89, 182, 0.4);
+        }
+        .generator-output {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent-purple);
+            min-height: 100px;
+        }
+        
         @media (max-width: 768px) {
             .header h1 { font-size: 1.8rem; }
             .section { padding: 1rem; }
             h2 { font-size: 1.5rem; }
             table { font-size: 0.85rem; }
             th, td { padding: 0.5rem; }
+            .toc-columns { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <header class="header">
-    <h1>⏳ UCRONIE E TESORI ⏳</h1>
+    <h1>⏳ Ucronie e Tesori ⏳</h1>
     <p class="tagline">"Breaking Bad incontra OSR incontra Looper"</p>
-    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.0 Perfezionato | Parte 3: materiali del direttore</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.0 perfezionato | File 3: Materiali per il Direttore</p>
 </header>
 
 <nav class="nav">
-    <a href="#direttore">Guida del direttore</a>
-    <a href="#tabelle">Tabelle casuali</a>
-    <a href="#campagna">Gestione campagna</a>
-    <a href="#faq">Domande frequenti</a>
+    <a href="index.html">🏠 Home</a>
+    <a href="ucronie_e_tesori_file1.html">📖 File 1: Sistema</a>
+    <a href="ucronie_e_tesori_file2.html">⚙️ File 2: Contenuto</a>
+    <a href="ucronie_e_tesori_file3.html" style="background: rgba(52, 152, 219, 0.2);">🎲 File 3: Direttore</a>
+    <span style="color: var(--text); margin: 0 1rem;">|</span>
+    <a href="#guida">Guida GM</a>
+    <a href="#tabelle">Tabelle</a>
+    <a href="#campagna">Campagna</a>
+    <a href="#faq">FAQ</a>
     <a href="#crediti">Crediti</a>
 </nav>
 
 <div class="container">
 
+<!-- INDICE DETTAGLIATO -->
+<div class="table-of-contents">
+    <h2>📑 Indice dettagliato del File 3</h2>
+    <div class="toc-columns">
+        <div class="toc-section">
+            <h3>Parte XII: Guida per il direttore</h3>
+            <ul>
+                <li><a href="#guida-intro">→ Il tuo ruolo come direttore</a></li>
+                <li><a href="#guida-filosofia">→ La filosofia OSR applicata</a></li>
+                <li><a href="#guida-prep">→ Preparazione della sessione</a></li>
+                <li><a href="#guida-ritmo">→ Gestione del ritmo</a></li>
+                <li><a href="#guida-dilemmi">→ Creare dilemmi morali efficaci</a></li>
+                <li><a href="#guida-morte">→ Gestire la morte dei personaggi</a></li>
+                <li><a href="#guida-improvvisazione">→ L'improvvisazione al tavolo</a></li>
+            </ul>
+        </div>
+        
+        <div class="toc-section">
+            <h3>Parte XIII: Tabelle e generatori</h3>
+            <ul>
+                <li><a href="#tabelle-missioni">→ Generatore di missioni</a></li>
+                <li><a href="#tabelle-png">→ PNG al volo</a></li>
+                <li><a href="#tabelle-zone">→ Zone temporali random</a></li>
+                <li><a href="#tabelle-tesori">→ Tesori e artefatti</a></li>
+                <li><a href="#tabelle-complicazioni">→ Complicazioni improvvise</a></li>
+                <li><a href="#tabelle-nomi">→ Nomi per PNG</a></li>
+            </ul>
+        </div>
+        
+        <div class="toc-section">
+            <h3>Parte XIV: Gestione della campagna</h3>
+            <ul>
+                <li><a href="#campagna-archi">→ Gli archi narrativi</a></li>
+                <li><a href="#campagna-fazioni">→ Le fazioni in gioco</a></li>
+                <li><a href="#campagna-conseguenze">→ Le conseguenze a lungo termine</a></li>
+                <li><a href="#campagna-finale">→ Possibili finali della campagna</a></li>
+                <li><a href="#campagna-downtime">→ Gestire il downtime</a></li>
+            </ul>
+        </div>
+        
+        <div class="toc-section">
+            <h3>Parte XV: Le FAQ</h3>
+            <ul>
+                <li><a href="#faq-regole">→ FAQ sulle regole</a></li>
+                <li><a href="#faq-ambientazione">→ FAQ sull'ambientazione</a></li>
+                <li><a href="#faq-bilanciamento">→ FAQ sul bilanciamento</a></li>
+                <li><a href="#faq-sessione">→ FAQ sulla sessione zero</a></li>
+            </ul>
+        </div>
+        
+        <div class="toc-section">
+            <h3>Parte XVI: Crediti e licenza</h3>
+            <ul>
+                <li><a href="#crediti-autore">→ L'autore</a></li>
+                <li><a href="#crediti-ispirazioni">→ Le ispirazioni</a></li>
+                <li><a href="#crediti-ringraziamenti">→ I ringraziamenti</a></li>
+                <li><a href="#crediti-licenza">→ La licenza CC BY 4.0</a></li>
+                <li><a href="#crediti-contatti">→ I contatti</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <!-- PARTE XII: GUIDA PER IL DIRETTORE -->
-<section id="direttore" class="section">
-    <h2>Parte XII: guida per il direttore</h2>
+<section id="guida" class="section">
+    <h2>Parte XII: La guida per il direttore</h2>
     
-    <div class="box success">
-        <h3>Benvenuto, direttore</h3>
-        <p style="font-size: 1.1rem;">Se stai leggendo questa sezione, stai per dirigere Ucronie e Tesori. Grazie per aver scelto questo gioco. La tua preparazione e facilitazione faranno la differenza tra una sessione memorabile e una sessione dimenticabile.</p>
-        <p style="margin-top: 1rem;"><strong>Questa sezione contiene:</strong> principi direttivi, consigli pratici, trappole comuni e strumenti per gestire la pressione morale ed economica centrale al gioco.</p>
-    </div>
-    
-    <h3>I 7 principi del direttore OSR</h3>
-    
-    <div class="box">
-        <h4>1. Il mondo è neutrale, non giusto</h4>
-        <p><strong>Non bilanciare gli incontri per il livello dei PG.</strong> La zona rossa è pericolosa. Se i PG di livello 1 incontrano un eco potente, è pericoloso. Dovrebbero fuggire o essere furbi.</p>
-        <p><strong>Non "salvare" i PG da scelte stupide.</strong> Se decidono di correre attraverso una zona che sta collassando per avidità, le conseguenze sono loro. La morte è possibile. È parte del gioco.</p>
-        <p><strong>Ricompense proporzionali al rischio.</strong> I tesori grandi si trovano in posti pericolosi. I soldi facili hanno costi nascosti (corruzione, debiti, ricatti).</p>
-    </div>
-    
-    <div class="box">
-        <h4>2. Telegrafare il pericolo, poi lasciare scegliere</h4>
-        <p><strong>Dai sempre segnali prima del pericolo mortale:</strong></p>
+    <div id="guida-intro" class="box success">
+        <h3>Il tuo ruolo come direttore</h3>
+        <p><strong>Non sei un narratore. Non sei un arbitro neutrale. Non sei il "nemico" dei giocatori.</strong></p>
+        <p>Sei un <strong>facilitatore di storie emergenti</strong>. Il tuo compito è:</p>
         <ul>
-            <li><em>"Sentite uno scricchiolio sotto i piedi. Il pavimento sembra fragile."</em> (trappola con caduta)</li>
-            <li><em>"Un eco si materializza all'angolo. Ci vedi attraverso. Gli occhi sono vuoti e bui. Avanza lentamente."</em> (nemico potente)</li>
-            <li><em>"Zhou sorride. Ma il sorriso non arriva agli occhi. 'Affare fatto, caro. Ricorda... i debiti vanno sempre ripagati.'"</em> (conseguenze future)</li>
+            <li>Presentare situazioni interessanti (non soluzioni)</li>
+            <li>Interpretare le regole in modo rapido e giusto (non cercare la perfezione nel manuale)</li>
+            <li>Reagire alle scelte dei giocatori in modo logico e coerente</li>
+            <li>Creare tensione attraverso la scarsità (tempo, risorse, opzioni)</li>
+            <li>Celebrare i successi, ma rendere i fallimenti significativi</li>
         </ul>
-        <p><strong>Dopo l'avvertimento, la scelta è loro.</strong> Se lo ignorano e muoiono = scelta loro, non tua crudeltà.</p>
+        <p style="margin-top: 1rem; font-weight: bold;">La storia migliore nasce dalla collaborazione. Tu presenti il mondo. I giocatori scelgono. Il risultato emerge naturalmente.</p>
     </div>
     
-    <div class="box">
-        <h4>3. Decidere sul momento anziché seguire le regole</h4>
-        <p><strong>Non cercare la regola nel manuale per 10 minuti.</strong> Fai una decisione veloce (30 secondi massimo), annotala su carta, rivedila dopo la sessione se necessario.</p>
-        <p><strong>Formula generica per qualsiasi situazione:</strong></p>
-        <pre><code>Il PG vuole fare X
-→ Ha senso? (è plausibile nel mondo?)
-→ Sì: prova di attributo rilevante, difficoltà basata su quanto è improbabile
-→ No: "Non puoi farlo perché [ragione fisica/logica]"</code></pre>
-        <p><strong>Esempi:</strong></p>
-        <ul>
-            <li><em>"Voglio convincere Zhou a suicidarsi."</em> → Non plausibile (è pragmatica, non depressa). "Non funzionerebbe - lei ride e se ne va."</li>
-            <li><em>"Voglio hackerare un computer degli anni '50 con un laptop del 2045."</em> → Plausibile ma difficile (tecnologie incompatibili). "Prova di intelligenza -4. Devi improvvisare degli adattatori."</li>
-        </ul>
-    </div>
-    
-    <div class="box">
-        <h4>4. Informazioni > combattimento</h4>
-        <p><strong>Premia i PG che investigano, parlano, osservano.</strong> Il combattimento dovrebbe essere evitabile il 70% delle volte se i PG sono intelligenti.</p>
-        <p><strong>Dai informazioni gratis con una buona percezione:</strong></p>
-        <ul>
-            <li><em>"Saggezza 15? Noti che l'eco si muove secondo uno schema prevedibile - gira a sinistra ogni 30 secondi. Potresti cronometrare il momento giusto per passare."</em></li>
-            <li><em>"Intelligenza 14? Riconosci i simboli sulla porta - è il sigillo di Zhou. Probabilmente c'è una trappola se la apri direttamente."</em></li>
-        </ul>
-        <p><strong>Le informazioni rendono i PG potenti senza alzare le statistiche.</strong> La conoscenza = potere nell'OSR.</p>
-    </div>
-    
-    <div class="box">
-        <h4>5. L'economia è pressione, non contabilità</h4>
-        <p><strong>Non tracciare ogni singolo dollaro maniacalmente.</strong> Approssima. <em>"Ok, la settimana scorsa hai pagato $900 di spese. Hai $450. Deficit di -$450. Come paghi?"</em></p>
-        <p><strong>Usa il deficit come aggancio narrativo:</strong></p>
-        <ul>
-            <li>Il PG ha -$800 di debiti? Zhou "coincidentalmente" chiama con un'offerta di $1.000 per un favore semplice.</li>
-            <li>L'affitto è scaduto? Il proprietario bussa alla porta con un avviso di sfratto + 2 sicari della gang.</li>
-            <li>Le medicine sono finite? Il dottore Rivera dice <em>"Posso dartele gratis... se mi fai un piccolo favore. Ho un paziente membro di una gang ferito. Niente domande, niente rapporti alla divisione."</em></li>
-        </ul>
-        <p><strong>L'economia è il motore dei dilemmi, non un foglio Excel.</strong></p>
-    </div>
-    
-    <div class="box">
-        <h4>6. Scelte grigie sempre</h4>
-        <p><strong>Evita scelte bianche/nere ("salva l'innocente" vs "uccidi l'innocente").</strong> Invece:</p>
-        <ul>
-            <li><em>"Salvi l'innocente ma riveli la posizione a Zhou (lei si vendica dopo)"</em> vs <em>"Ignori l'innocente, completi la missione velocemente"</em></li>
-            <li><em>"Arresti il criminale (lealtà +1) ma era una fonte di informazioni preziosa (perdi il contatto)"</em> vs <em>"Lo lasci andare (informazioni future) ma tradisci la divisione (lealtà -1)"</em></li>
-        </ul>
-        <p><strong>Ogni scelta ha un costo.</strong> Nessuna è "giusta". Sono tutte valide. Sono tutte dolorose.</p>
-    </div>
-    
-    <div class="box">
-        <h4>7. Conseguenze permanenti memorabili</h4>
-        <p><strong>Traccia tutto.</strong> I PG vendono informazioni a Zhou? Lei ricorda. Per sempre. Tra 5 sessioni, chiama un favore.</p>
-        <p><strong>Il mondo reagisce ai PG:</strong></p>
-        <ul>
-            <li>Corruzione 7+ → I criminali li riconoscono per strada, fanno un cenno di rispetto (o paura)</li>
-            <li>Lealtà 1 → Gli agenti della divisione evitano di parlare con loro, voci di "traditore potenziale"</li>
-            <li>4 stranezze → I civili sussurrano, indicano, tengono le distanze (stigma visibile)</li>
-        </ul>
-        <p><strong>Le azioni hanno peso.</strong> Il mondo tiene memoria. Questo rende le scelte significative.</p>
-    </div>
-    
-    <h3>Gestire la pressione morale</h3>
-    
-    <div class="box warning">
-        <h4>Il ruolo del direttore: tentatore neutrale</h4>
-        <p><strong>Non sei l'antagonista dei PG. Sei il mondo.</strong> Il mondo offre scelte. Alcune facili ma costose moralmente. Alcune difficili ma pulite.</p>
-        <p><strong>Il tuo lavoro:</strong> presentare opzioni, mostrare i costi, lasciare decidere. Poi applicare le conseguenze in modo neutrale.</p>
-    </div>
-    
-    <h4>Tecniche pratiche:</h4>
-    
-    <h5>1. Offerte immediate vs conseguenze ritardate</h5>
-    <div class="box">
-        <p><strong>La corruzione funziona perché la ricompensa è ora, il costo è dopo.</strong></p>
-        <p><strong>Esempio:</strong> Zhou offre $5.000 (20 certificati) per informazioni confidenziali della divisione.</p>
-        <ul>
-            <li><strong>Ricompensa immediata:</strong> soldi istantanei. Debiti pagati. Affitto sicuro per 3 mesi. Respiro.</li>
-            <li><strong>Costo ritardato:</strong> +4 corruzione (adesso solo un numero). Ma tra 5 sessioni, Zhou chiama un favore pericoloso. E se rifiuti, lei ricatta con le prove del tradimento (registrazione della conversazione). Adesso i PG sono intrappolati.</li>
-        </ul>
-        <p><strong>Gli umani scontano naturalmente il futuro.</strong> Usa questo. Rendi la tentazione reale, dolce. Poi fai pagare il prezzo lentamente.</p>
-    </div>
-    
-    <h5>2. PNG umani, non cartoni animati</h5>
-    <div class="box">
-        <p><strong>Zhou non è "la cattiva malvagia".</strong> È una donna d'affari pragmatica. Rispetta chi rispetta lei. Può essere cortese, persino generosa.</p>
-        <p><strong>Hayes non è "la brava eroina".</strong> È una burocrate stanca che ha visto troppo. Cinismo protettivo. Vuole solo la pensione.</p>
-        <p><strong>Questo rende le scelte difficili.</strong> È facile tradire un villain stereotipato. È difficile tradire una persona complessa che ha mostrato umanità.</p>
-        <p><strong>Esempio di dialogo con Zhou (dopo che i PG hanno lavorato per lei 3 volte):</strong></p>
-        <p><em>"Sai, mi piaci davvero. Non molti hanno... l'integrità che hai tu. Sì, lavori per me, ma sei onesto sui tuoi limiti. Rispetto questo. Il mondo ha bisogno di persone come te - gente che sopravvive senza perdere completamente sé stessa. *pausa* Mio figlio aveva la tua età quando morì. Nell'evento Oculus. Ogni volta che ti vedo... lo ricordo. *sorriso triste* Comunque. Affari. Ho un lavoro, se sei interessato."</em></p>
-        <p>Adesso i PG hanno una relazione con Zhou. Non è solo "il boss criminale" - è una persona. Tradirla dopo questo momento? Difficile. Doloroso. <strong>Perfetto.</strong></p>
-    </div>
-    
-    <h5>3. Conti alla rovescia visibili</h5>
-    <div class="box">
-        <p><strong>Rendi le conseguenze tangibili prima che accadano:</strong></p>
-        <ul>
-            <li><strong>Settimana 1 di ritardo nell'affitto:</strong> <em>"Il proprietario bussa. 'L'affitto è in ritardo. Ho una famiglia, capisci? Paga la settimana prossima o devo agire.'"</em></li>
-            <li><strong>Settimana 2:</strong> <em>"Nessuno bussa. Ma noti un avviso di sfratto scivolato sotto la porta. 7 giorni."</em></li>
-            <li><strong>Giorno 7:</strong> <em>"Lo sceriffo + 2 vice. 'Ho un mandato. Raccogli gli oggetti personali. 2 ore.'"</em></li>
-        </ul>
-        <p>I PG vedono arrivare il treno. Possono agire. O no. Ma sanno.</p>
-    </div>
-    
-    <h5>4. Specchio morale (PG vs PG)</h5>
-    <div class="box">
-        <p><strong>Se il gruppo ha membri con lealtà/corruzione diverse, sfruttalo.</strong></p>
-        <p><strong>Esempio:</strong> PG-A (lealtà 8, corruzione 1) e PG-B (lealtà 3, corruzione 7) trovano un frammento.</p>
-        <ul>
-            <li><strong>PG-A:</strong> <em>"Dobbiamo consegnarlo a Hayes. È il nostro lavoro."</em></li>
-            <li><strong>PG-B:</strong> <em>"Hayes paga $3.000. Zhou paga $20.000. Siamo idioti se lo consegniamo."</em></li>
-        </ul>
-        <p><strong>Ora hanno un conflitto interno al gruppo.</strong> Devono negoziare, compromettere, o dividersi (rottura del team possibile).</p>
-        <p><strong>Questo è oro narrativo.</strong> I giocatori ricorderanno il dibattito per anni.</p>
-    </div>
-    
-    <h3>Gestire le sessioni</h3>
-    
-    <h4>Struttura di una sessione tipo (3-4 ore)</h4>
-    
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 120px;">Fase</th>
-                <th style="width: 100px;">Tempo</th>
-                <th>Contenuto</th>
-                <th>Obiettivo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Riepilogo</strong></td>
-                <td>5-10 min</td>
-                <td>Riassunto della sessione precedente, aggiornamento dei tracciatori (lealtà, corruzione, economia)</td>
-                <td>Rinfrescare la memoria, stabilire continuità</td>
-            </tr>
-            <tr>
-                <td><strong>Tempo libero</strong></td>
-                <td>15-30 min</td>
-                <td>I PG gestiscono la vita quotidiana: pagano le spese, comprano equipaggiamento, interazioni sociali, missioni secondarie personali</td>
-                <td>Mostrare conseguenze economiche, costruire il mondo, sviluppo dei personaggi</td>
-            </tr>
-            <tr>
-                <td><strong>Briefing</strong></td>
-                <td>5-10 min</td>
-                <td>Hayes (o altro) presenta la missione, gli obiettivi, il limite di tempo</td>
-                <td>Impostare le aspettative, obiettivi chiari</td>
-            </tr>
-            <tr>
-                <td><strong>Missione</strong></td>
-                <td>90-150 min</td>
-                <td>Esplorazione della zona temporale, combattimento, enigmi, incontri</td>
-                <td>Gameplay principale, tensione, rischio</td>
-            </tr>
-            <tr>
-                <td><strong>Debriefing</strong></td>
-                <td>10-15 min</td>
-                <td>Hayes commenta i risultati, distribuisce le ricompense, aggiorna la reputazione</td>
-                <td>Chiusura della missione, conseguenze immediate</td>
-            </tr>
-            <tr>
-                <td><strong>Colpo di scena finale</strong></td>
-                <td>5 min</td>
-                <td>Aggancio per la prossima sessione (Zhou chiama, nuova minaccia, informazioni criptiche)</td>
-                <td>Anticipazione, voglia di tornare</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <h4>Ritmo della tensione</h4>
-    
-    <div class="box">
-        <p><strong>Le sessioni OSR sono uno scarico emotivo/mentale.</strong> Morte possibile, scelte pesanti, pressione costante. Devi gestire il ritmo.</p>
+    <div id="guida-filosofia">
+        <h3>La filosofia OSR applicata a Ucronie e Tesori</h3>
         
-        <h5>Schema ottimale:</h5>
-        <pre><code>Tensione alta (30-45 min)
-  ↓
-Respiro (10-15 min) - gioco di ruolo leggero, esplorazione sicura
-  ↓
-Tensione alta (30-45 min)
-  ↓
-Respiro
-  ↓
-Climax (20-30 min) - combattimento con il boss, scelta critica, collasso della zona
-  ↓
-Risoluzione calma (10-15 min)</code></pre>
+        <h4>1. Rulings, not rules (interpretazioni, non regole)</h4>
+        <div class="box">
+            <p><strong>Quando un giocatore propone un'azione non coperta dal manuale:</strong></p>
+            <ol>
+                <li>Chiediti: "È ragionevole nel contesto?"</li>
+                <li>Se sì: decidi velocemente un meccanismo (roll-under, TS, tiro contrapposto)</li>
+                <li>Applica modificatori di difficoltà se necessario (-4 per difficile, +4 per facile)</li>
+                <li>Vai avanti. Non cercare la regola per 10 minuti.</li>
+            </ol>
+            <p><strong>Esempio in gioco:</strong></p>
+            <p><em>Giocatore:</em> "Voglio usare il mio Quirk temporale 'sfasamento corporeo' per attraversare il muro e aprire la porta dall'interno."</p>
+            <p><em>Direttore:</em> "Ok. Fai una prova di intelligenza (per concentrarti sul passaggio parziale attraverso la materia solida). Il muro è spesso, difficoltà -2."</p>
+            <p><em>Giocatore:</em> [tira, successo] "Ce l'ho!"</p>
+            <p><em>Direttore:</em> "La tua mano sfasata passa attraverso il cemento. Fa male come sempre, ma raggiungi la maniglia dall'altra parte. Clic. La porta si apre. La mano è intorpidita per 1 turno."</p>
+            <p style="margin-top: 1rem;"><strong>Veloce. Giusto. Narrativo. Avanti.</strong></p>
+        </div>
         
-        <p><strong>3 ore di tensione costante non sono sostenibili.</strong> I giocatori si bruciano. Dai momenti di respiro.</p>
+        <h4>2. Player skill, not character skill (abilità del giocatore, non del personaggio)</h4>
+        <div class="box">
+            <p><strong>Premia la creatività, la pianificazione e l'astuzia.</strong></p>
+            <p>Se i giocatori trovano una soluzione intelligente a un problema (evitano il combattimento con un piano astuto, negoziano invece di combattere, usano l'ambiente), NON richiedere un tiro di dado.</p>
+            <p>Il successo è automatico se la soluzione è buona.</p>
+            <p><strong>Esempio:</strong></p>
+            <p><em>Situazione:</em> i giocatori devono infiltrarsi in un magazzino sorvegliato da 10 guardie.</p>
+            <p><em>Soluzione A (bruta):</em> "Attacchiamo frontalmente." → Richiede combattimento, è letale.</p>
+            <p><em>Soluzione B (astuta):</em> "Facciamo suonare un allarme incendio falso dall'altra parte del complesso. Mentre corrono lì, entriamo dal retro."</p>
+            <p><em>Direttore:</em> "Brillante. Nessun tiro necessario. Le guardie corrono via. Avete 10 minuti di finestra libera. Andate."</p>
+        </div>
+        
+        <h4>3. Danger is real (il pericolo è reale)</h4>
+        <div class="box danger">
+            <p><strong>La morte è sempre a un tiro di dado di distanza.</strong></p>
+            <p>Non bilanci gli incontri in base al livello del party. Se i giocatori entrano in una zona rossa senza preparazione, incontreranno nemici letali. Se attaccano 10 guardie da soli, moriranno.</p>
+            <p><strong>Questo non è essere cattivi. È essere onesti.</strong></p>
+            <p>I giocatori imparano velocemente: il combattimento è l'ultima risorsa. La fuga, la negoziazione, l'inganno, la preparazione - questi sono gli strumenti della sopravvivenza.</p>
+            <p style="margin-top: 1rem;"><strong>Non salvare i giocatori dalle loro scelte stupide.</strong> Ma avvertili prima che facciano qualcosa di suicida:</p>
+            <p><em>"Ragazzi, ci sono 10 guardie armate con fucili d'assalto. Voi siete 4, con pistole. Matematicamente, questo è suicidio. Siete sicuri?"</em></p>
+            <p>Se dicono sì → accettano le conseguenze. Gioca onestamente. Alcuni moriranno. È il prezzo delle scelte.</p>
+        </div>
+        
+        <h4>4. Give them information (dai loro informazioni)</h4>
+        <div class="box success">
+            <p><strong>Non nascondere le informazioni critiche dietro tiri di dado.</strong></p>
+            <p>Se c'è una trappola ovvia, i personaggi esperti la vedono. Nessun tiro.</p>
+            <p>Se c'è un indizio necessario per la trama, lo trovano. Nessun tiro.</p>
+            <p><strong>I tiri di dado servono per:</strong></p>
+            <ul>
+                <li>Informazioni extra (bonus che aiutano ma non sono essenziali)</li>
+                <li>Situazioni sotto pressione (hai 10 secondi per decidere, tira percezione)</li>
+                <li>Competizione tra PNG e PG (chi trova l'indizio per primo?)</li>
+            </ul>
+            <p><strong>Ma mai per bloccare la progressione della storia.</strong></p>
+        </div>
     </div>
     
-    <h3>Improvvisazione e preparazione</h3>
-    
-    <div class="box success">
-        <h4>Quanto preparare?</h4>
-        <p><strong>L'OSR è a bassa preparazione per design.</strong> Non scrivi un copione. Scrivi situazioni, i PG decidono.</p>
+    <div id="guida-prep">
+        <h3>La preparazione della sessione</h3>
         
-        <h5>Preparazione minima per sessione (30-45 min):</h5>
+        <h4>Quanto preparare (minimo):</h4>
         <ul>
-            <li><strong>5 punti elenco per l'obiettivo della missione</strong> (es: "Recupera il frammento", "4 civili intrappolati al piano 7", "Eco guardiano al penthouse", "Un doppelganger interferisce", "Collasso dopo 4 ore")</li>
-            <li><strong>Mappa grossolana</strong> (schizzo su carta - non deve essere bella, deve essere funzionale)</li>
-            <li><strong>3-5 incontri possibili</strong> (nemici, PNG, trappole - non tutti usati, dipende dalle scelte dei PG)</li>
-            <li><strong>1 dilemma centrale</strong> ("Salva i civili o prendi il frammento velocemente?")</li>
-            <li><strong>1 colpo di scena</strong> (doppelganger, traditore, verità nascosta)</li>
+            <li><strong>30 minuti prima della sessione:</strong> rileggi gli appunti della sessione precedente, rivedi dove sono i PG, cosa è successo</li>
+            <li><strong>La situazione iniziale:</strong> un gancio chiaro (briefing di Hayes, chiamata di Zhou, evento improvviso)</li>
+            <li><strong>La location centrale:</strong> una mappa approssimativa (anche disegnata a mano), 5-7 stanze/aree chiave</li>
+            <li><strong>3-5 PNG rilevanti:</strong> nome, motivazione, 1 segreto ciascuno</li>
+            <li><strong>Il dilemma centrale:</strong> la scelta impossibile che i PG dovranno affrontare</li>
+            <li><strong>Le conseguenze possibili:</strong> cosa succede se scelgono A, B, o C</li>
         </ul>
         
-        <p style="margin-top: 1rem;"><strong>Questo basta.</strong> Il resto lo improvvisi basandoti sulle scelte dei PG. Segui la loro direzione.</p>
+        <h4>Cosa NON preparare:</h4>
+        <ul>
+            <li>Dialoghi scritti parola per parola (improvviserai meglio al momento)</li>
+            <li>Una "trama" rigida (i giocatori la romperanno comunque)</li>
+            <li>Incontri di combattimento bilanciati (non è D&D 5e, qui il combattimento è letale)</li>
+            <li>Descrizioni dettagliate di ogni stanza (usa bullet points, espandi al volo)</li>
+        </ul>
+        
+        <h4>Il metodo della "preparazione a diamante":</h4>
+        <div class="box">
+            <p><strong>Invece di preparare una sequenza lineare (A → B → C), prepara un "diamante":</strong></p>
+            <pre><code>           INIZIO (situazione chiara)
+                |
+        ┌───────┴───────┐
+    OPZIONE A      OPZIONE B      OPZIONE C
+        └───────┬───────┘
+                |
+            CLIMAX (convergenza)
+                |
+         CONSEGUENZE (varie)</code></pre>
+            <p>I giocatori possono scegliere percorsi diversi, ma tutti convergono verso lo stesso climax (il confronto centrale). Le conseguenze variano in base alle loro scelte lungo il percorso.</p>
+            <p><strong>Esempio dal Loop di Chicago:</strong></p>
+            <ul>
+                <li><strong>Inizio:</strong> briefing di Hayes, andate all'hotel Meridian</li>
+                <li><strong>Opzioni:</strong> evacuare i civili subito, portarli con voi, o lasciarli</li>
+                <li><strong>Climax:</strong> tutti arrivano alla suite 2701, incontrano i mercenari di Zhou</li>
+                <li><strong>Conseguenze:</strong> variano (lealtà/corruzione, civili morti/salvati, frammento recuperato/perso)</li>
+            </ul>
+        </div>
     </div>
     
-    <div class="box">
-        <h4>Quando improvvisi (100% del tempo)</h4>
+    <div id="guida-ritmo">
+        <h3>La gestione del ritmo</h3>
         
-        <h5>Tecniche rapide:</h5>
+        <h4>La struttura di una sessione tipo (3-4 ore):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fase</th>
+                    <th>Durata</th>
+                    <th>Obiettivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Apertura/Recap</strong></td>
+                    <td>10 minuti</td>
+                    <td>Riconnetti i giocatori alla storia. "Ultima volta avevate..." Rispondi a domande rapide.</td>
+                </tr>
+                <tr>
+                    <td><strong>Il gancio</strong></td>
+                    <td>10-15 minuti</td>
+                    <td>Presenta la situazione/missione. Briefing di Hayes, chiamata di Zhou, evento improvviso.</td>
+                </tr>
+                <tr>
+                    <td><strong>Esplorazione/Investigazione</strong></td>
+                    <td>60-90 minuti</td>
+                    <td>I giocatori esplorano, raccolgono info, fanno scelte, gestiscono risorse.</td>
+                </tr>
+                <tr>
+                    <td><strong>Il climax</strong></td>
+                    <td>30-45 minuti</td>
+                    <td>Il confronto centrale: combattimento maggiore, dilemma morale critico, o entrambi.</td>
+                </tr>
+                <tr>
+                    <td><strong>La risoluzione</strong></td>
+                    <td>15-20 minuti</td>
+                    <td>Conseguenze immediate, debriefing, gancio per la prossima sessione.</td>
+                </tr>
+                <tr>
+                    <td><strong>Chiusura/Downtime</strong></td>
+                    <td>10 minuti</td>
+                    <td>Gestione economia, progressione PG, conversazioni personali.</td>
+                </tr>
+            </tbody>
+        </table>
         
-        <p><strong>1. "Sì, e..."</strong></p>
-        <p>Un PG propone un'idea creativa? Il default è sì (se plausibile), poi aggiungi una complicazione.</p>
+        <h4>Come variare il ritmo:</h4>
+        <div class="box">
+            <p><strong>Alterna tensione e rilascio:</strong></p>
+            <ul>
+                <li><strong>Tensione:</strong> combattimenti, countdown temporali, dilemmi morali con timer, rischio di contaminazione</li>
+                <li><strong>Rilascio:</strong> momenti di esplorazione calma, conversazioni con PNG amichevoli, pianificazione strategica, humor</li>
+            </ul>
+            <p><strong>Regola pratica:</strong> dopo una scena ad alta tensione (combattimento, decisione critica), dai 10-15 minuti di "respiro" prima della prossima scena intensa.</p>
+            <p><em>Esempio:</em> dopo un combattimento letale contro gli echi temporali, i PG trovano un rifugio sicuro temporaneo. Hanno 10 minuti per curarsi, parlare tra loro, riorganizzarsi. Poi il countdown riprende.</p>
+        </div>
+        
+        <h4>I segnali che il ritmo è troppo lento:</h4>
         <ul>
-            <li><em>"Posso usare la corda per calarmi dalla finestra invece che dalla scala?"</em> → <em>"Sì. Prova di destrezza. Successo... ma il vetro si rompe rumorosamente. Tutti nell'edificio sanno che sei qui."</em></li>
+            <li>I giocatori controllano il telefono</li>
+            <li>Le conversazioni off-topic aumentano</li>
+            <li>Qualcuno chiede "Cosa succede adesso?"</li>
+            <li>La sessione sembra "trascinare"</li>
+        </ul>
+        <p><strong>Soluzione:</strong> introduci una complicazione improvvisa (evento temporale, arrivo di un PNG, allarme, countdown che accelera)</p>
+        
+        <h4>I segnali che il ritmo è troppo veloce:</h4>
+        <ul>
+            <li>I giocatori sembrano confusi</li>
+            <li>Non hanno tempo di fare scelte ponderate</li>
+            <li>Dicono "Aspetta, cosa sta succedendo?"</li>
+            <li>Stress reale al tavolo (non tensione di gioco - stress negativo)</li>
+        </ul>
+        <p><strong>Soluzione:</strong> fai una pausa di 5 minuti, riassumi la situazione chiaramente, chiedi ai giocatori cosa vogliono fare</p>
+    </div>
+    
+    <div id="guida-dilemmi">
+        <h3>Creare dilemmi morali efficaci</h3>
+        
+        <div class="box warning">
+            <h4>Cos'è un dilemma morale efficace?</h4>
+            <p><strong>Un dilemma dove ogni opzione ha:</strong></p>
+            <ul>
+                <li>Un beneficio chiaro</li>
+                <li>Un costo chiaro</li>
+                <li>Nessuna opzione è "giusta" o "sbagliata" oggettivamente</li>
+                <li>Conseguenze permanenti</li>
+            </ul>
+        </div>
+        
+        <h4>La formula del dilemma:</h4>
+        <pre><code>Situazione critica + Tempo limitato + Opzioni mutuamente esclusive = Dilemma
+        
+OPZIONE A: Beneficio X, ma Costo Y
+OPZIONE B: Beneficio Y, ma Costo X
+OPZIONE C: Evitare la scelta, ma Costo Z (diverso e spesso peggiore)</code></pre>
+        
+        <h4>Esempi concreti di dilemmi:</h4>
+        
+        <div class="box">
+            <p><strong>Dilemma 1: Il civile ostaggio</strong></p>
+            <p><em>Situazione:</em> un eco temporale ha preso in ostaggio un bambino di 8 anni. L'eco ha un frammento Oculus legato al petto (bomba improvvisata). Se lo uccidete, il frammento esplode, uccide il bambino e distrugge l'edificio. Se negoziate, l'eco chiede che lo lasciate andare con il frammento.</p>
+            <ul>
+                <li><strong>Opzione A:</strong> sparare all'eco. Completate la missione (frammento recuperato... in frammenti). Ma il bambino muore. +1 lealtà, trauma psicologico per i PG.</li>
+                <li><strong>Opzione B:</strong> lasciarlo andare. Il bambino vive. Ma il frammento è perso. -2 lealtà, nessun bonus missione. Hayes è furiosa.</li>
+                <li><strong>Opzione C:</strong> tentare un tiro impossibile (colpo di precisione, disarmare la bomba sotto pressione). Richiede un tiro con -6. Se fallisci, entrambi muoiono.</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <p><strong>Dilemma 2: Il collega corrotto</strong></p>
+            <p><em>Situazione:</em> scoprite che un altro agente della vostra squadra, Marcus (livello 4, veterano, vi ha salvato la vita 2 volte), sta vendendo informazioni a Zhou. Avete le prove. Cosa fate?</p>
+            <ul>
+                <li><strong>Opzione A:</strong> denunciarlo a Hayes. Marcus viene arrestato, probabilmente giustiziato. +2 lealtà. Ma la squadra vi odia ("spia"). Perdete un alleato potente.</li>
+                <li><strong>Opzione B:</strong> confrontarlo privatamente. Marcus vi offre una tangente (5 certificati) per il vostro silenzio. +5 corruzione se accettate. Guadagnate un alleato corrotto ma potente.</li>
+                <li><strong>Opzione C:</strong> ignorare le prove, fingere di non avere visto. Nessun cambiamento immediato. Ma Marcus continua a tradire, eventualmente Zhou scopre che sapevate - vi ricatta entrambi.</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <p><strong>Dilemma 3: Il tempo o le vite</strong></p>
+            <p><em>Situazione:</em> siete in una zona temporale in fase 4 (collasso imminente). Avete 30 minuti per estrarre. Avete il frammento. Ma ci sono 15 civili intrappolati al piano inferiore. Evacuarli richiede 40 minuti. Non avete abbastanza tempo per entrambi.</p>
+            <ul>
+                <li><strong>Opzione A:</strong> estrarre subito con il frammento. Missione completata. I civili muoiono nel collasso. +1 lealtà (missione compiuta). Trauma pesante, incubi, senso di colpa narrativo.</li>
+                <li><strong>Opzione B:</strong> evacuare i civili, lasciare il frammento. 15 vite salvate. Ma nessun frammento. -2 lealtà, nessun bonus. Hayes: "Capisco la scelta, ma è inaccettabile."</li>
+                <li><strong>Opzione C:</strong> tentare entrambi (velocità estrema). Richiede TS costituzione per tutti. Se fallite, siete intrappolati nel collasso. Morte probabile.</li>
+            </ul>
+        </div>
+        
+        <h4>Errori comuni da evitare:</h4>
+        <ul>
+            <li><strong>La scelta ovvia:</strong> se un'opzione è chiaramente superiore (nessun costo reale), non è un dilemma. È solo una scelta facile mascherata da dilemma.</li>
+            <li><strong>La punizione nascosta:</strong> se scegli A e poi il direttore rivela "Ah, ma in realtà succedeva anche X che non avevi modo di sapere" → i giocatori si sentono traditi. Sii trasparente sui costi visibili.</li>
+            <li><strong>L'illusione della scelta:</strong> se tutte le opzioni portano alla stessa conseguenza con testi diversi, i giocatori lo capiranno. Le scelte devono contare davvero.</li>
+            <li><strong>Il dilemma troppo frequente:</strong> se ogni scena è un dilemma morale pesante, i giocatori si esauriscono emotivamente. Dosali (1-2 per sessione, massimo).</li>
+        </ul>
+    </div>
+    
+    <div id="guida-morte">
+        <h3>Gestire la morte dei personaggi</h3>
+        
+        <div class="box danger">
+            <h4>La morte è parte del gioco</h4>
+            <p><strong>Non salvataggi dall'editor. Non deus ex machina. Non "in realtà eri solo svenuto".</strong></p>
+            <p>Se i dadi dicono che il personaggio muore, muore. Questo è il contratto sociale dell'OSR.</p>
+            <p>Ma puoi rendere la morte <em>significativa</em>.</p>
+        </div>
+        
+        <h4>Come gestire la morte al tavolo:</h4>
+        
+        <h5>1. Fai una pausa</h5>
+        <p>Quando un personaggio raggiunge 0 PF e fallisce i TS vs morte (opzione 2 delle regole), oppure muore direttamente (opzione 1), fermati. Non correre avanti subito.</p>
+        <p><em>"Ok, fermiamoci un momento. [Nome del PG] è morto. Prendiamoci 5 minuti di pausa."</em></p>
+        
+        <h5>2. Dai spazio narrativo alla morte</h5>
+        <p>Quando riprendi, descrivi la morte in modo memorabile (non grafico, ma significativo).</p>
+        <p><em>Esempio:</em> "Marco, il colpo dell'eco temporale ti attraversa il petto. Non fa male immediatamente - è strano, come un freddo che si espande. Cadi in ginocchio. Vedi i tuoi compagni correre verso di te, ma sembrano lontani, sfocati. La tua visione si oscura. Le ultime parole che senti sono di Sarah: 'Marco! Resisti!' Ma non puoi. Il freddo è ovunque. Poi... niente."</p>
+        
+        <h5>3. Permetti un'ultima azione o frase</h5>
+        <p>Chiedi al giocatore: <em>"Hai un'ultima azione o qualcosa che vuoi dire prima che Marco muoia?"</em></p>
+        <p>Molti giocatori apprezzeranno questo momento. Esempi:</p>
+        <ul>
+            <li>"Con l'ultimo respiro, passo il frammento Oculus a Sarah. 'Finisci... la missione.'"</li>
+            <li>"Guardo il cielo e sorrido. Finalmente non devo più correre."</li>
+            <li>"Dico a Zhou, tramite la radio: 'Hai vinto. Ma un giorno... qualcuno ti fermerà.'"</li>
         </ul>
         
-        <p><strong>2. Rubare dai PG</strong></p>
-        <p>Un PG dice un dettaglio sul mondo a cui non avevi pensato? Adottalo come canone.</p>
+        <h5>4. Conseguenze per i sopravvissuti</h5>
+        <p>La morte di un PG ha un impatto sui PNG e sugli altri PG:</p>
         <ul>
-            <li><em>PG: "Mio fratello lavorava alla divisione prima di morire."</em> → Tu (direttore): <em>"Interessante. Come è morto?"</em> → PG: <em>"Zona rossa, non hanno mai trovato il corpo."</em> → Tu (mentalmente): <em>"Ok, un eco più avanti nella campagna è il fratello. Colpo di scena."</em></li>
+            <li>Hayes esprime condoglianze (se la lealtà era alta) oppure indifferenza (se era bassa)</li>
+            <li>Rodriguez (il capitano) è addolorato - perde un soldato</li>
+            <li>Gli altri PG possono avere trauma (prova di saggezza, se fallisci: -1 a tutte le prove per 1 settimana nel gioco)</li>
+            <li>La famiglia/amici del PG morto possono contattare i sopravvissuti</li>
         </ul>
         
-        <p><strong>3. Tabelle casuali (vedi sotto)</strong></p>
-        <p>Quando non sai cosa fare, tira un d6/d12 su una tabella. Il risultato suggerisce una direzione.</p>
+        <h5>5. Creazione del nuovo personaggio</h5>
+        <p><strong>Opzione A (veloce):</strong> il giocatore crea un nuovo personaggio tra le sessioni. Entra nella prossima sessione come "nuova recluta" assegnata alla squadra.</p>
+        <p><strong>Opzione B (narrativa):</strong> il nuovo personaggio è già presente nella stessa missione (era un PNG che diventa PG), oppure arriva con un'estrazione di emergenza.</p>
+        <p><strong>Opzione C (eroica):</strong> se la morte è avvenuta verso la fine della sessione, il giocatore gioca un PNG temporaneo per completare la scena, poi crea il nuovo PG tra le sessioni.</p>
+        
+        <div class="box success">
+            <h4>Trasforma la morte in storia</h4>
+            <p>Alcune delle morti più memorabili diventano leggende al tavolo:</p>
+            <ul>
+                <li>"Ricordi quando Marcus si è sacrificato per farci fuggire?"</li>
+                <li>"Sarah è morta perché abbiamo scelto la missione sopra la sua vita. Non lo dimenticheremo mai."</li>
+                <li>"Il mio primo personaggio, quello che è diventato un eco temporale al livello 4. Quella è stata una sessione pesante."</li>
+            </ul>
+            <p><strong>La morte, se gestita bene, è una delle esperienze più potenti e memorabili nel gioco di ruolo.</strong></p>
+        </div>
+    </div>
+    
+    <div id="guida-improvvisazione">
+        <h3>L'improvvisazione al tavolo</h3>
+        
+        <h4>I giocatori vanno sempre "off-script"</h4>
+        <p>Hai preparato 3 stanze dell'hotel. I giocatori decidono di scappare dall'hotel e andare in una biblioteca vicina che hai menzionato di sfuggita. Panico? No. <strong>Improvvisa.</strong></p>
+        
+        <h4>Tecniche di improvvisazione rapida:</h4>
+        
+        <h5>1. Il metodo "Sì, e..."</h5>
+        <p><em>Giocatore:</em> "C'è una biblioteca nelle vicinanze dove possiamo cercare info storiche sull'hotel?"</p>
+        <p><em>Direttore (potrebbe dire "No"):</em> ma invece → <strong>"Sì, e... è gestita da un vecchio bibliotecario, Mr. Chen, che era presente durante l'evento Oculus. Sa cose che nessun altro sa."</strong></p>
+        <p>Hai appena creato un PNG interessante al volo. Bonus: potrebbe diventare un alleato ricorrente.</p>
+        
+        <h5>2. Ruba dai tuoi media preferiti</h5>
+        <p>I giocatori entrano in un bar che non avevi preparato. Descrizione al volo:</p>
+        <p><em>"È come il bar di Blade Runner 2049 - neon rosa, bancone cromato, clienti loschi. C'è una donna al bancone che vi fissa intensamente. Sembra... armata."</em></p>
+        <p>Hai rubato l'estetica da un film che ami. Funziona. I giocatori visualizzano immediatamente.</p>
+        
+        <h5>3. Chiedi ai giocatori</h5>
+        <p><em>Giocatore:</em> "Il mio background dice che ho un contatto criminale. Posso chiamarlo?"</p>
+        <p><em>Direttore:</em> "Certo. Come si chiama? E perché ti fida?"</p>
+        <p><em>Giocatore:</em> "Uhm... Vince. Ci siamo conosciuti in prigione. Ho coperto per lui una volta."</p>
+        <p><em>Direttore:</em> "Perfetto. Vince risponde al telefono. 'Marco? Cazzo, non sento la tua voce da anni. Cosa ti serve?'"</p>
+        <p><strong>Il giocatore ha appena creato un PNG per te. Gratis. Usa questo trucco spesso.</strong></p>
+        
+        <h5>4. Le tabelle random (vedi la prossima sezione)</h5>
+        <p>Hai bisogno di un PNG al volo? Tira sulla tabella PNG. Hai bisogno di una complicazione? Tira sulla tabella complicazioni.</p>
+        <p>Le tabelle sono i tuoi alleati nell'improvvisazione.</p>
+        
+        <h5>5. Temporeggia con descrizioni sensoriali</h5>
+        <p>I giocatori ti fanno una domanda e tu non sai la risposta? Guadagna tempo descrivendo i sensi:</p>
+        <p><em>Giocatore:</em> "Cosa vedo nella stanza?"</em></p>
+        <p><em>Direttore (non hai preparato questa stanza):</em> "L'aria è pesante, odore di muffa e ozono. Le pareti sono umide al tatto. Senti un ronzio elettrico costante provenire da... [guardi rapidamente i tuoi appunti] ...un generatore nell'angolo. La stanza è buia, la torcia rivela... [invent] ...un tavolo operatorio coperto di strumenti medici arrugginiti. Qualcuno operava qui. Recentemente."</p>
+        <p>Hai appena creato una stanza horror al volo. I dettagli sensoriali danno texture mentre il cervello crea i contenuti.</p>
+        
+        <div class="box success">
+            <h4>Il segreto dell'improvvisazione</h4>
+            <p><strong>I giocatori non sanno cosa avevi preparato.</strong></p>
+            <p>Se improvvisi bene, pensano che era tutto pianificato. Se qualcosa non funziona, adattalo al volo e vai avanti.</p>
+            <p><strong>Non cercare la perfezione. Cerca la coerenza narrativa e il ritmo.</strong></p>
+            <p>Il 70% del tuo lavoro come direttore è improvvisazione. Abbracciala.</p>
+        </div>
     </div>
 </section>
-
-<!-- PARTE XIII: TABELLE RANDOM -->
+<!-- PARTE XIII: TABELLE E GENERATORI -->
 <section id="tabelle" class="section">
-    <h2>Parte XIII: tabelle casuali e generatori</h2>
+    <h2>Parte XIII: Tabelle e generatori random</h2>
     
     <div class="box">
-        <h3>Perché le tabelle casuali?</h3>
-        <p><strong>Improvvisazione supportata.</strong> Quando non sai cosa succede, tiri il dado. Il risultato ti dà una direzione. Poi elabori narrativamente.</p>
-        <p><strong>Sorpresa per il direttore.</strong> Anche tu non sai cosa esce. Questo rende il gioco fresco, imprevedibile, eccitante per tutti.</p>
+        <h3>Come usare le tabelle</h3>
+        <p><strong>Le tabelle random sono i tuoi migliori amici per l'improvvisazione.</strong></p>
+        <p>Quando hai bisogno di qualcosa al volo (un PNG, una complicazione, un tesoro), tira un dado e consulta la tabella corrispondente.</p>
+        <p>Non sei obbligato a seguire il risultato alla lettera - usalo come <em>ispirazione</em>, poi adatta al contesto.</p>
     </div>
     
-    <h3>Tabelle delle missioni</h3>
-    
-    <h4>Generatore di missioni veloce</h4>
-    
-    <div class="generator">
-        <h5>Generatore automatico di missioni</h5>
-        <button onclick="generateMission()">🎲 Genera missione</button>
-        <div id="missionResult" class="result"></div>
+    <div id="tabelle-missioni">
+        <h3>Generatore di missioni (tira d6 tre volte)</h3>
+        
+        <h4>1. Il tipo di missione (d6):</h4>
+        <table>
+            <thead>
+                <tr><th>d6</th><th>Tipo</th><th>Descrizione</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Recupero</strong></td><td>Recuperare un frammento Oculus o artefatto temporale da una zona instabile</td></tr>
+                <tr><td>2</td><td><strong>Evacuazione</strong></td><td>Salvare civili intrappolati in una zona temporale prima del collasso</td></tr>
+                <tr><td>3</td><td><strong>Investigazione</strong></td><td>Indagare su un evento temporale anomalo, raccogliere dati, campioni</td></tr>
+                <tr><td>4</td><td><strong>Eliminazione</strong></td><td>Distruggere una minaccia (echi temporali ostili, tecnologia instabile, bomba temporale)</td></tr>
+                <tr><td>5</td><td><strong>Scorta/Protezione</strong></td><td>Proteggere uno scienziato/VIP durante una missione in zona pericolosa</td></tr>
+                <tr><td>6</td><td><strong>Sabotaggio</strong></td><td>Missione segreta: sabotare un'operazione di Zhou o di una fazione ostile</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>2. La location (d6):</h4>
+        <table>
+            <thead>
+                <tr><th>d6</th><th>Location</th><th>Epoca dominante</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Hotel/Casinò abbandonato</strong></td><td>Anni '30-'50 sovrapposto a 2080</td></tr>
+                <tr><td>2</td><td><strong>Quartiere residenziale</strong></td><td>Anni '70-'90 sovrapposto a 2080</td></tr>
+                <tr><td>3</td><td><strong>Fabbrica industriale</strong></td><td>Anni '40 (produzione bellica) + 2060 (automazione)</td></tr>
+                <tr><td>4</td><td><strong>Stazione metro/Tunnel</strong></td><td>Anni '20 (costruzione) + 2080 (futuristica)</td></tr>
+                <tr><td>5</td><td><strong>Ospedale/Laboratorio</strong></td><td>Anni '50-'60 (esperimenti) + 2080 (AI mediche)</td></tr>
+                <tr><td>6</td><td><strong>Centro commerciale/Strip mall</strong></td><td>Anni '80 (consumismo) + 2070 (distopia corporativa)</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>3. La complicazione (d6):</h4>
+        <table>
+            <thead>
+                <tr><th>d6</th><th>Complicazione</th><th>Effetto</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><strong>I mercenari di Zhou sono già lì</strong></td><td>Competizione diretta per l'obiettivo</td></tr>
+                <tr><td>2</td><td><strong>Collasso accelerato</strong></td><td>Tempo dimezzato (4 ore invece di 8)</td></tr>
+                <tr><td>3</td><td><strong>Civili ostili/armati</strong></td><td>I residenti intrappolati non vi fidano, potrebbero attaccarvi</td></tr>
+                <tr><td>4</td><td><strong>Echi temporali intelligenti</strong></td><td>Non sono bestie - possono parlare, negoziare, mentire</td></tr>
+                <tr><td>5</td><td><strong>Equipaggiamento difettoso</strong></td><td>1 pezzo dell'equipaggiamento standard non funziona (scegli random)</td></tr>
+                <tr><td>6</td><td><strong>Tradimento interno</strong></td><td>Uno degli agenti assegnati alla missione è corrotto (lavora per Zhou)</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>Esempio di missione generata:</h4>
+        <div class="box success">
+            <p><strong>Tiri:</strong> 1 (Recupero) + 5 (Ospedale) + 2 (Collasso accelerato)</p>
+            <p><strong>Missione risultante:</strong></p>
+            <p style="font-style: italic;">"Hayes: 'Agenti, abbiamo localizzato un frammento Oculus di classe-B nell'ospedale St. Mary, downtown. Era un ospedale psichiatrico negli anni '60 - facevano esperimenti... discutibili. Ora è sovrapposto a una clinica AI del 2080. Il problema? La zona sta collassando più velocemente del previsto. Avete 4 ore, non 8. I sensori mostrano attività ostile all'interno - echi degli ex-pazienti, probabilmente. Recuperate il frammento. Muovetevi.'"</p>
+        </div>
     </div>
     
-    <h4>Tabella dell'obiettivo primario (d10)</h4>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d10</th>
-                <th>Obiettivo</th>
-                <th>Valore in certificati</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>Recupera frammento Oculus (piccolo)</td><td>10-12 certificati</td></tr>
-            <tr><td>2</td><td>Recupera frammento Oculus (grande)</td><td>20-25 certificati</td></tr>
-            <tr><td>3</td><td>Recupera artefatto storico specifico (gioiello, documento, arma)</td><td>5-8 certificati</td></tr>
-            <tr><td>4</td><td>Elimina/cattura eco pericoloso (minaccia per la zona verde)</td><td>Bonus di 3-5 certificati</td></tr>
-            <tr><td>5</td><td>Salva agente della divisione intrappolato/ferito nella zona rossa</td><td>Lealtà +2</td></tr>
-            <tr><td>6</td><td>Distruggi dispositivo temporale instabile (bomba entropica)</td><td>4-6 certificati</td></tr>
-            <tr><td>7</td><td>Estrai informazioni da un eco cosciente (interrogatorio impossibile)</td><td>2-4 certificati + informazioni</td></tr>
-            <tr><td>8</td><td>Recupera tecnologia futuristica funzionante</td><td>15-20 certificati</td></tr>
-            <tr><td>9</td><td>Chiudi un ciclo temporale (zona intrappolata che ripete un evento)</td><td>8-12 certificati</td></tr>
-            <tr><td>10</td><td>Installa un faro di stabilizzazione (trasforma zona rossa → arancione)</td><td>6-8 certificati + lealtà +1</td></tr>
-        </tbody>
-    </table>
-    
-    <h4>Tabella delle complicazioni (d8)</h4>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d8</th>
-                <th>Complicazione</th>
-                <th>Effetto</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>Civili intrappolati (1d6 persone)</td><td>Obiettivo secondario: salva (bonus) o ignora (veloce ma immorale)</td></tr>
-            <tr><td>2</td><td>La gang di Zhou è già nella zona (cerca lo stesso tesoro)</td><td>Competizione, possibile combattimento o negoziazione</td></tr>
-            <tr><td>3</td><td>La zona collassa rapidamente (2 ore invece di 4)</td><td>Pressione temporale doppia</td></tr>
-            <tr><td>4</td><td>Appare un doppelganger di un PG (futuro o passato)</td><td>Aiuta, ostacola o confonde - tira d6 per determinare</td></tr>
-            <tr><td>5</td><td>Ciclo temporale attivo (gli eventi si ripetono ogni 30 min)</td><td>I PG possono sfruttarlo (conoscono il futuro) ma è disorientante</td></tr>
-            <tr><td>6</td><td>Tradimento interno: un "alleato" lavora per Zhou</td><td>Un PNG o (con il permesso del giocatore) un PG ha ordini segreti</td></tr>
-            <tr><td>7</td><td>Fauna/flora mutata temporalmente (animali anacronistici)</td><td>Incontri casuali più pericolosi (+2 alla frequenza)</td></tr>
-            <tr><td>8</td><td>Comunicazioni interrotte (la radio non funziona)</td><td>Nessun supporto dalla divisione, squadra isolata</td></tr>
-        </tbody>
-    </table>
-    
-    <h4>Tabella del colpo di scena finale (d6)</h4>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d6</th>
-                <th>Colpo di scena</th>
-                <th>Rivelazione</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>L'obiettivo è una trappola</td><td>Il frammento è un'esca - il vero obiettivo di Zhou era mappare la zona per un raid futuro</td></tr>
-            <tr><td>2</td><td>Un civile è un eco</td><td>Uno dei "civili" salvati è un eco mimetico - segue i PG fuori, minaccia la zona verde</td></tr>
-            <tr><td>3</td><td>Hayes mentiva</td><td>La vera missione non era il recupero - era un test di lealtà dei PG (osservati tutto il tempo)</td></tr>
-            <tr><td>4</td><td>L'artefatto è maledetto</td><td>Il frammento causa automaticamente una stranezza a chi lo tocca (nessun tiro salvezza)</td></tr>
-            <tr><td>5</td><td>La zona contiene un segreto della divisione</td><td>I PG trovano prove: la divisione ha causato deliberatamente l'evento Oculus (insabbiamento governativo)</td></tr>
-            <tr><td>6</td><td>Paradosso temporale</td><td>Completare la missione crea l'evento che i PG cercavano di prevenire (ciclo causale)</td></tr>
-        </tbody>
-    </table>
-    
-    <h3>Tabelle degli incontri</h3>
-    
-    <h4>Incontri casuali nelle zone rosse (d12)</h4>
-    <p><strong>Tira ogni ora di esplorazione. Con 1-2 su d6, l'evento accade. Poi tira d12:</strong></p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d12</th>
-                <th>Incontro</th>
-                <th>Pericolo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td><strong>Eco solitario</strong> (1 entità, confusa)</td><td>Medio - attacca se provocato</td></tr>
-            <tr><td>2</td><td><strong>Branco di ratti temporali</strong> (2d6 ratti mutati)</td><td>Basso - molti ma deboli</td></tr>
-            <tr><td>3</td><td><strong>Glitch temporale</strong> (oggetto/persona di epoca diversa appare per 1d6 turni)</td><td>Zero - opportunità (informazioni o tesoro)</td></tr>
-            <tr><td>4</td><td><strong>Trappola ambientale</strong> (il pavimento cede, la gravità si inverte, il soffitto crolla)</td><td>Alto - 2d6 danni se si fallisce destrezza</td></tr>
-            <tr><td>5</td><td><strong>Saccheggiatore umano</strong> (criminale cerca tesori, armato)</td><td>Variabile - negoziazione possibile</td></tr>
-            <tr><td>6</td><td><strong>Doppelganger</strong> (versione alternativa di un PG casuale)</td><td>Alto - statistiche identiche, comportamento imprevedibile</td></tr>
-            <tr><td>7</td><td><strong>Ciclo locale</strong> (i prossimi 10 min si ripetono - i PG li vivono 2 volte)</td><td>Zero - tattico (vantaggio)</td></tr>
-            <tr><td>8</td><td><strong>Agente della divisione perduto</strong> (collega disperso, ferito o impazzito)</td><td>Medio - può aiutare o ostacolare</td></tr>
-            <tr><td>9</td><td><strong>Tesoro esposto</strong> (valore di 1d4 certificati, accesso facile)</td><td>Sospetto - forse una trappola?</td></tr>
-            <tr><td>10</td><td><strong>Gang di Zhou (3-5 membri)</strong></td><td>Alto - vogliono il tesoro, ostili</td></tr>
-            <tr><td>11</td><td><strong>Branco di echi</strong> (2d4 entità, coordinate)</td><td>Molto alto - fuga consigliata</td></tr>
-            <tr><td>12</td><td><strong>Anomalia temporale maggiore</strong> (portale verso altra epoca, singolarità o eco di livello 7)</td><td>Estremo o zero (dipende)</td></tr>
-        </tbody>
-    </table>
-    
-    <h3>Generatori di PNG</h3>
-    
-    <h4>PNG casuale veloce</h4>
-    
-    <div class="generator">
-        <h5>Generatore di PNG</h5>
-        <button onclick="generateNPC()">🎲 Genera PNG</button>
-        <div id="npcResult" class="result"></div>
+    <div id="tabelle-png">
+        <h3>PNG al volo (tira d6 per ogni categoria)</h3>
+        
+        <h4>1. Aspetto fisico (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Descrizione</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>Giovane (20-30 anni), atletico, viso pulito, ottimista</td></tr>
+                <tr><td>2</td><td>Mezza età (40-50), corporatura media, occhi stanchi, pragmatico</td></tr>
+                <tr><td>3</td><td>Anziano (60+), fragile, mani tremanti, saggio/cinico</td></tr>
+                <tr><td>4</td><td>Cicatrici visibili, corpo da veterano, espressione dura</td></tr>
+                <tr><td>5</td><td>Attraente, carismatico, sorriso facile, ma occhi freddi</td></tr>
+                <tr><td>6</td><td>Quirk temporale visibile (scegli uno dalla lista): aspetto inquietante</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>2. Occupazione/Ruolo (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Ruolo</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Agente della divisione</strong> (collega, possibile alleato o rivale)</td></tr>
+                <tr><td>2</td><td><strong>Mercenario di Zhou</strong> (pragmatico, corrotto, pericoloso)</td></tr>
+                <tr><td>3</td><td><strong>Civile intrappolato</strong> (disperato, spaventato, può diventare alleato)</td></tr>
+                <tr><td>4</td><td><strong>Scienziato/Ricercatore</strong> (esperto di tempo, utile ma fragile)</td></tr>
+                <tr><td>5</td><td><strong>Criminale locale</strong> (sciacallo, ruba dai morti, conosce le zone pericolose)</td></tr>
+                <tr><td>6</td><td><strong>Eco temporale senziente</strong> (intelligente, alieno, motivazioni misteriose)</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>3. Motivazione primaria (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Motivazione</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Sopravvivenza:</strong> "Voglio solo uscire vivo da qui"</td></tr>
+                <tr><td>2</td><td><strong>Avidità:</strong> "C'è una fortuna qui dentro, la voglio"</td></tr>
+                <tr><td>3</td><td><strong>Vendetta:</strong> "Qualcuno mi ha tolto qualcosa/qualcuno, pagherà"</td></tr>
+                <tr><td>4</td><td><strong>Lealtà:</strong> "Devo proteggere/salvare [persona/gruppo]"</td></tr>
+                <tr><td>5</td><td><strong>Conoscenza:</strong> "Devo capire cosa è successo qui, la verità"</td></tr>
+                <tr><td>6</td><td><strong>Redenzione:</strong> "Ho fatto qualcosa di terribile, devo riparare"</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>4. Segreto/Twist (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Segreto</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>Sta mentendo sulla sua identità (è un agente sotto copertura)</td></tr>
+                <tr><td>2</td><td>È infetto/contaminato gravemente (4 Quirk temporali, nascosti)</td></tr>
+                <tr><td>3</td><td>Ha già rubato l'oggetto che state cercando (lo nasconde)</td></tr>
+                <tr><td>4</td><td>È un doppelganger temporale di qualcuno che conoscete</td></tr>
+                <tr><td>5</td><td>Sta registrando tutto per Zhou/la divisione (spia)</td></tr>
+                <tr><td>6</td><td>Sa qualcosa di critico sul collasso temporale ma non lo dice</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>Esempio di PNG generato:</h4>
+        <div class="box">
+            <p><strong>Tiri:</strong> 2 (Mezza età) + 4 (Scienziato) + 5 (Conoscenza) + 6 (Segreto critico)</p>
+            <p><strong>PNG risultante: Dr. Evelyn Torres</strong></p>
+            <ul>
+                <li><strong>Aspetto:</strong> Donna sui 45 anni, corporatura media, occhi stanchi ma intelligenti, capelli grigi raccolti, camice da laboratorio macchiato</li>
+                <li><strong>Ruolo:</strong> Scienziata, ex-dipendente del Progetto Oculus originale (2025)</li>
+                <li><strong>Motivazione:</strong> "Devo documentare cosa è successo veramente. Il governo ha mentito. Il mondo merita la verità."</li>
+                <li><strong>Segreto:</strong> Sa che il collasso non è casuale - è stato programmato. C'è una tecnologia di auto-distruzione nel cuore del sistema Oculus. Se attivata, distruggerà non solo Vegas, ma creerà un buco nero temporale che potrebbe consumare l'intero pianeta.</li>
+                <li><strong>Uso in gioco:</strong> I PG la trovano intrappolata in un laboratorio. Lei chiede aiuto per estrarre i dati dai server prima del collasso. I dati rivelano una cospirazione governativa. Cosa ne faranno i PG? Li consegnano a Hayes (lealtà) o li vendono (corruzione) o li rendono pubblici (caos)?</li>
+            </ul>
+        </div>
     </div>
     
-    <h4>Tabella professione/background PNG (d20)</h4>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d20</th>
-                <th>Professione</th>
-                <th>Motivazione tipica</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>Agente della divisione (collega)</td><td>Sopravvivenza, lealtà o corruzione</td></tr>
-            <tr><td>2</td><td>Criminale del mercato nero</td><td>Profitto, vendetta o fuga</td></tr>
-            <tr><td>3</td><td>Medico/scienziato</td><td>Cura, conoscenza o esperimenti</td></tr>
-            <tr><td>4</td><td>Giornalista investigativo</td><td>Verità, Pulitzer o ricatto</td></tr>
-            <tr><td>5</td><td>Ex-militare veterano</td><td>Disturbo post-traumatico, redenzione o vendetta</td></tr>
-            <tr><td>6</td><td>Membro di gang (Zhou o rivali)</td><td>Rispetto, denaro o protezione della famiglia</td></tr>
-            <tr><td>7</td><td>Rifugiato (ha perso tutto con l'Oculus)</td><td>Sopravvivenza di base, famiglia o vendetta contro la divisione</td></tr>
-            <tr><td>8</td><td>Hacker/specialista tecnologico</td><td>Informazioni, libertà digitale o soldi</td></tr>
-            <tr><td>9</td><td>Truffatore/imbroglione</td><td>Preda facile, debiti di gioco o ego</td></tr>
-            <tr><td>10</td><td>Poliziotto locale corrotto</td><td>Tangenti, pensione o famiglia ricattata</td></tr>
-            <tr><td>11</td><td>Proprietario di attività legittima</td><td>Profitto, comunità o copertura criminale</td></tr>
-            <tr><td>12</td><td>Cultista temporale (crede che l'Oculus = dio)</td><td>Ascensione, conversione o apocalisse</td></tr>
-            <tr><td>13</td><td>Artista/performer</td><td>Espressione, fama sulla Strip o droghe</td></tr>
-            <tr><td>14</td><td>Mercenario freelance</td><td>Contratto attuale, nessuna lealtà</td></tr>
-            <tr><td>15</td><td>Informatore doppio agente</td><td>Chi offre di più, sopravvivenza</td></tr>
-            <tr><td>16</td><td>Genitore disperato (figlio malato)</td><td>Medicina costosa, tutto per la famiglia</td></tr>
-            <tr><td>17</td><td>Saccheggiatore della zona rossa</td><td>Tesori, adrenalina, desiderio di morte</td></tr>
-            <tr><td>18</td><td>Burocrate della divisione</td><td>Pensione, evitare problemi, scartoffie</td></tr>
-            <tr><td>19</td><td>Collezionista ricco</td><td>Artefatti rari, status, ossessione</td></tr>
-            <tr><td>20</td><td>Eco parzialmente cosciente</td><td>Ricordare chi era, vendetta o pace</td></tr>
-        </tbody>
-    </table>
-    
-    <h4>Tabella stranezza/tratto PNG (d12)</h4>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d12</th>
-                <th>Tratto distintivo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>Mente sempre (compulsivamente - anche quando la verità è più facile)</td></tr>
-            <tr><td>2</td><td>Parla in terza persona ("Marco pensa che tu sbagli")</td></tr>
-            <tr><td>3</td><td>Odio irrazionale verso [oggetto comune] (es: orologi - "il tempo è il nemico")</td></tr>
-            <tr><td>4</td><td>Cicatrici temporali visibili (invecchiamento parziale, stranezza minore)</td></tr>
-            <tr><td>5</td><td>Ossessione particolare (colleziona cucchiai degli anni '50, conta tutto)</td></tr>
-            <tr><td>6</td><td>Tic nervoso (batte le dita a ritmo 3/4, sbatte le palpebre due volte)</td></tr>
-            <tr><td>7</td><td>Voce inusuale (sussurro costante, doppia sovrapposta, eco)</td></tr>
-            <tr><td>8</td><td>Lealtà fanatica a [fazione] (morirebbe per la causa)</td></tr>
-            <tr><td>9</td><td>Umorismo nero inappropriato (ride delle morti, battute pessime nei momenti sbagliati)</td></tr>
-            <tr><td>10</td><td>Superstizione estrema (non cammina sotto le scale, non sale mai 13 volte, ecc)</td></tr>
-            <tr><td>11</td><td>Memoria perfetta (ricorda ogni dettaglio degli incontri precedenti - inquietante)</td></tr>
-            <tr><td>12</td><td>Profezie criptiche (dice cose che sembrano non avere senso poi risultano vere - o coincidenza?)</td></tr>
-        </tbody>
-    </table>
-    
-    <h3>Tesori casuali</h3>
-    
-    <h4>Generatore di tesori</h4>
-    
-    <div class="generator">
-        <h5>Generatore veloce di tesori</h5>
-        <button onclick="generateTreasure()">🎲 Genera tesoro</button>
-        <div id="treasureResult" class="result"></div>
+    <div id="tabelle-zone">
+        <h3>Caratteristiche delle zone temporali (d6 per ognuna)</h3>
+        
+        <h4>1. Stabilità della zona (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Stabilità</th><th>Effetto</th></tr></thead>
+            <tbody>
+                <tr><td>1-2</td><td><strong>Fase 1: Stabile</strong></td><td>Prova contaminazione ogni 4 ore, collasso in 12+ ore</td></tr>
+                <tr><td>3-4</td><td><strong>Fase 2: Deterioramento</strong></td><td>Prova ogni 2 ore, collasso in 8 ore</td></tr>
+                <tr><td>5</td><td><strong>Fase 3: Critico</strong></td><td>Prova ogni 1 ora, collasso in 4 ore</td></tr>
+                <tr><td>6</td><td><strong>Fase 4: Imminente</strong></td><td>Prova ogni 30 min, collasso in 1-2 ore</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>2. Fenomeno visivo dominante (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Fenomeno</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Sovrapposizione:</strong> Vedi due epoche contemporaneamente, come doppie esposizioni fotografiche</td></tr>
+                <tr><td>2</td><td><strong>Frammentazione:</strong> Lo spazio è rotto in "frammenti" temporali - ogni stanza è un'epoca diversa</td></tr>
+                <tr><td>3</td><td><strong>Loop visivo:</strong> Gli eventi si ripetono ogni 5-10 minuti (vedi le stesse persone morire ripetutamente)</td></tr>
+                <tr><td>4</td><td><strong>Inversione:</strong> Il tempo scorre all'indietro visivamente (pioggia che sale, fumo che entra nelle sigarette)</td></tr>
+                <tr><td>5</td><td><strong>Velocità variabile:</strong> Alcune aree accelerate (invecchiamento rapido), altre rallentate (movimento slow-motion)</td></tr>
+                <tr><td>6</td><td><strong>Trasparenza temporale:</strong> Vedi i "fantasmi" di tutte le epoche simultaneamente (centinaia di persone sovrapposte)</td></tr>
+            </tbody>
+        </table>
+        
+        <h4>3. Rischio unico della zona (d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Rischio</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Gravità instabile:</strong> Occasionalmente si inverte o scompare (vola, cadi, fluttui)</td></tr>
+                <tr><td>2</td><td><strong>Temperatura estrema:</strong> Alcune aree sono -50°C, altre +80°C (nessuna logica)</td></tr>
+                <tr><td>3</td><td><strong>Materia instabile:</strong> Gli oggetti si dissolvono o cambiano materiale spontaneamente</td></tr>
+                <tr><td>4</td><td><strong>Memoria condivisa:</strong> Tutti nella zona sperimentano flashback delle vite altrui</td></tr>
+                <tr><td>5</td><td><strong>Doppelganger ubiqui:</strong> Vedi versioni alternative di te stesso ovunque</td></tr>
+                <tr><td>6</td><td><strong>Collasso parziale continuo:</strong> Parti della zona scompaiono permanentemente ogni 30 minuti</td></tr>
+            </tbody>
+        </table>
     </div>
     
-    <h4>Tabella dei tesori della zona rossa (d20)</h4>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d20</th>
-                <th>Tesoro</th>
-                <th>Valore</th>
-                <th>Descrizione</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1-5</td><td>Monete/metalli antichi</td><td>0,5-1 certificato</td><td>Oro romano, dollari d'argento del 1800, corone britanniche</td></tr>
-            <tr><td>6-9</td><td>Gioielli storici</td><td>1-3 certificati</td><td>Anello vittoriano, collana art déco, spilla di famiglia nobile</td></tr>
-            <tr><td>10-12</td><td>Arte/manufatti minori</td><td>2-5 certificati</td><td>Quadro firmato da artista minore, scultura in bronzo, manoscritto miniato</td></tr>
-            <tr><td>13-15</td><td>Armi storiche</td><td>3-8 certificati</td><td>Spada da samurai, revolver del Wild West, fucile della Guerra Civile funzionante</td></tr>
-            <tr><td>16-17</td><td>Tecnologia anacronistica</td><td>8-15 certificati</td><td>Laptop del 2080 (parziale), drone con AI, dispositivo medico del futuro</td></tr>
-            <tr><td>18</td><td>Arte importante</td><td>10-20 certificati</td><td>Quadro di artista famoso (non Da Vinci ma riconoscibile), scultura in marmo</td></tr>
-            <tr><td>19</td><td>Frammento Oculus piccolo</td><td>10-15 certificati</td><td>Cristallo blu-viola, dimensioni di un pugno, pulsa di luce debole</td></tr>
-            <tr><td>20</td><td>Frammento Oculus grande</td><td>20-30 certificati</td><td>Cristallo grande come un pallone da football, energia visibile, pericoloso da toccare</td></tr>
-        </tbody>
-    </table>
+    <div id="tabelle-tesori">
+        <h3>Tesori e artefatti (tira d6 + d6)</h3>
+        
+        <table>
+            <thead>
+                <tr><th>2d6</th><th>Tesoro trovato</th><th>Valore</th><th>Effetto speciale</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>2</td><td><strong>Frammento Oculus maggiore</strong></td><td>20 certificati</td><td>Radioattivo temporalmente. +5 corruzione se rubato. La divisione lo vuole disperatamente.</td></tr>
+                <tr><td>3</td><td><strong>Tecnologia futura (2100+)</strong></td><td>10 certificati</td><td>Arma energetica, computer quantistico, medicina avanzata. Difficile da usare senza addestramento.</td></tr>
+                <tr><td>4</td><td><strong>Reliquia storica di valore</strong></td><td>5 certificati</td><td>Gioielli anni '20, oro del 1890, arte rubata. Nessun potere, solo soldi.</td></tr>
+                <tr><td>5</td><td><strong>Documenti classificati</strong></td><td>3 certificati (se venduti)</td><td>Segreti governativi, piani della divisione, dossier su Hayes o Zhou. Pericoloso da possedere.</td></tr>
+                <tr><td>6</td><td><strong>Medicina rara</strong></td><td>2 certificati</td><td>Antibiotici del futuro, siero anti-contaminazione, stimolanti militari. Guarisce 2d6 PF o +4 al prossimo TS.</td></tr>
+                <tr><td>7</td><td><strong>Arma storica funzionante</strong></td><td>$500-$2.000</td><td>Fucile WW2, revolver anni '30, spada samurai. Collezionismo o uso pratico.</td></tr>
+                <tr><td>8</td><td><strong>Oggetto temporale minore</strong></td><td>1 certificato</td><td>Orologio che va al contrario, specchio che mostra il passato, foto che cambia. Curioso ma poco utile.</td></tr>
+                <tr><td>9</td><td><strong>Provviste utili</strong></td><td>$200-$500</td><td>Cibo militare, acqua, batterie, munizioni. Consumabili preziosi.</td></tr>
+                <tr><td>10</td><td><strong>Informazioni preziose</strong></td><td>Variabile</td><td>Password, mappe, segreti su PNG. Valore dipende dall'uso che ne fai.</td></tr>
+                <tr><td>11</td><td><strong>Niente di valore</strong></td><td>$0</td><td>Spazzatura, oggetti rotti, false speranze. A volte non si trova nulla.</td></tr>
+                <tr><td>12</td><td><strong>Trappola/Maledizione temporale</strong></td><td>-</td><td>Oggetto maledetto. Chi lo tocca: TS contaminazione immediato oppure subisce 2d6 danni temporali.</td></tr>
+            </tbody>
+        </table>
+    </div>
     
-    <h4>Tabella delle proprietà speciali del tesoro (d10 - opzionale)</h4>
-    <p><strong>Tira solo per tesori da 5+ certificati. Con 1-2 su d6, il tesoro ha una proprietà:</strong></p>
+    <div id="tabelle-complicazioni">
+        <h3>Complicazioni improvvise (d6 - usa quando serve tensione)</h3>
+        
+        <table>
+            <thead>
+                <tr><th>d6</th><th>Complicazione</th><th>Quando usarla</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Equipaggiamento guasto</strong></td>
+                    <td>Radio si rompe, torcia si spegne, arma si inceppa. La tecnologia fallisce al momento peggiore.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Arrivo di rinforzi nemici</strong></td>
+                    <td>2d6 echi temporali o mercenari di Zhou arrivano nella location. Countdown: 5 turni.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Collasso parziale</strong></td>
+                    <td>Una parte della struttura (stanza, piano, scala) collassa temporalmente e scompare. Ora devi trovare un'altra via.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Rivelazione shock</strong></td>
+                    <td>Scoprite che [PNG fidato] vi ha mentito, oppure [oggetto critico] era una copia, oppure [la missione] era una trappola.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Testimone problematico</strong></td>
+                    <td>Un civile (o giornalista, o spia) vi ha visti fare qualcosa di compromettente. Ora potrebbe testimoniare contro di voi.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Dilemma improvviso</strong></td>
+                    <td>Due emergenze simultanee: [salvare i civili] o [completare la missione]. Non c'è tempo per entrambe. Scegli.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 60px;">d10</th>
-                <th>Proprietà</th>
-                <th>Effetto</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>Maledetto</td><td>+1 stranezza automatica a chi lo possiede per 1+ settimane (nessun tiro salvezza)</td></tr>
-            <tr><td>2</td><td>Ricercato</td><td>Zhou o la divisione lo vogliono specificamente - gli agenti ti danno la caccia</td></tr>
-            <tr><td>3</td><td>Instabile</td><td>Salta tra le epoche - diventa un oggetto diverso ogni 1d6 ore (sempre valore simile)</td></tr>
-            <tr><td>4</td><td>Senziente</td><td>L'oggetto ha una coscienza parziale - sussurra, mostra visioni, influenza le emozioni</td></tr>
-            <tr><td>5</td><td>Chiave</td><td>Sblocca una location nascosta (caveau della divisione, bunker di Zhou, zona rossa segreta)</td></tr>
-            <tr><td>6</td><td>Informazioni</td><td>Contiene dati critici (memoria digitale, diario codificato, mappa del tesoro maggiore)</td></tr>
-            <tr><td>7</td><td>Benedetto</td><td>+2 ai tiri salvezza mentre lo si porta (protezione temporale debole)</td></tr>
-            <tr><td>8</td><td>Replica</td><td>Sembra autentico ma è falso - valore reale 10% (truffa o test)</td></tr>
-            <tr><td>9</td><td>Set</td><td>Parte di un set di 3-5 pezzi - valore triplo se la collezione è completa</td></tr>
-            <tr><td>10</td><td>Profetico</td><td>Mostra una visione del futuro a chi lo tocca (1 volta) - utile o terrificante (d6: 1-3 utile, 4-6 traumatica)</td></tr>
-        </tbody>
-    </table>
+    <div id="tabelle-nomi">
+        <h3>Nomi rapidi per PNG (tira d6 + d6)</h3>
+        
+        <h4>Nomi maschili:</h4>
+        <p>Marcus, James, Chen, Rodriguez, Viktor, Dmitri, Jackson, Cole, Hayes (cognome usato come nome), Zhou (idem), Tommy, Vincent, Anton, Miles, Dante, Xavier</p>
+        
+        <h4>Nomi femminili:</h4>
+        <p>Sarah, Elena, Anya, Sofia, Nina, Evelyn, Maria, Isabella, Zhang, Kim, Rachel, Victoria, Lucia, Maya, Zara, Carmen</p>
+        
+        <h4>Cognomi:</h4>
+        <p>Rodriguez, Chen, Volkov, Martinez, Torres, Kovalenko, Johnson, Smith, Tanaka, O'Brien, Moretti, Ferretti, Greene, Blackwood, Kane, Reyes</p>
+        
+        <h4>Soprannomi/Codename:</h4>
+        <p>Whisper, Ghost, Tank, Viper, Ironside, Dice, Razor, Echo, Phoenix, Shadow, Cipher, Atlas, Raven, Nomad, Spectre, Void</p>
+    </div>
 </section>
 
-<!-- CONTINUA NEL PROSSIMO MESSAGGIO... -->
-
-<script>
-// Generatore di missioni
-function generateMission() {
-    const obiettivi = [
-        "Recupera frammento Oculus piccolo (10-12 certificati)",
-        "Recupera frammento Oculus grande (20-25 certificati)",
-        "Recupera artefatto storico specifico (5-8 certificati)",
-        "Elimina eco pericoloso (bonus di 3-5 certificati)",
-        "Salva agente della divisione intrappolato (lealtà +2)",
-        "Distruggi dispositivo temporale instabile (4-6 certificati)",
-        "Estrai informazioni da eco cosciente (2-4 certificati + informazioni)",
-        "Recupera tecnologia futuristica (15-20 certificati)",
-        "Chiudi ciclo temporale (8-12 certificati)",
-        "Installa faro di stabilizzazione (6-8 certificati + lealtà +1)"
-    ];
-    
-    const complicazioni = [
-        "Civili intrappolati (1d6 persone) - salva o ignora",
-        "La gang di Zhou è già nella zona - competizione per il tesoro",
-        "La zona collassa rapidamente (2 ore invece di 4)",
-        "Appare un doppelganger di un PG (futuro/passato)",
-        "Ciclo temporale attivo (gli eventi si ripetono ogni 30 min)",
-        "Tradimento interno - un alleato lavora per Zhou",
-        "Fauna/flora mutata - incontri più frequenti",
-        "Comunicazioni interrotte - squadra isolata"
-    ];
-    
-    const twist = [
-        "L'obiettivo è una trappola - esca per Zhou",
-        "Un civile è un eco mimetico - segue i PG fuori",
-        "Hayes mentiva - test di lealtà sotto osservazione",
-        "Artefatto maledetto - stranezza automatica a chi lo tocca",
-        "La zona contiene un segreto della divisione - insabbiamento governativo",
-        "Paradosso temporale - la missione crea l'evento che cercavi di prevenire"
-    ];
-    
-    const obiettivo = obiettivi[Math.floor(Math.random() * obiettivi.length)];
-    const complicazione = complicazioni[Math.floor(Math.random() * complicazioni.length)];
-    const twistFinale = twist[Math.floor(Math.random() * twist.length)];
-    
-    const result = `
-        <h4 style="color: var(--accent-gold); margin-bottom: 1rem;">📋 Missione generata</h4>
-        <p><strong>🎯 Obiettivo primario:</strong><br>${obiettivo}</p>
-        <p style="margin-top: 0.8rem;"><strong>⚠️ Complicazione:</strong><br>${complicazione}</p>
-        <p style="margin-top: 0.8rem;"><strong>🌀 Colpo di scena finale:</strong><br>${twistFinale}</p>
-        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-blue);">Limite di tempo: 4 ore | Zona: rossa (prova contaminazione ogni 4 ore)</p>
-    `;
-    
-    document.getElementById('missionResult').innerHTML = result;
-}
-
-// Generatore di PNG
-function generateNPC() {
-    const nomi = ["Marco", "Elena", "Vincent", "Sofia", "Diego", "Maria", "Frank", "Isabella", "Rico", "Anna"];
-    const cognomi = ["Rossi", "Chen", "Martinez", "Volkov", "Kim", "O'Brien", "Castellano", "Wong", "Silva", "Müller"];
-    
-    const professioni = [
-        "Agente della divisione", "Criminale del mercato nero", "Medico/scienziato", 
-        "Giornalista investigativo", "Ex-militare", "Membro della gang di Zhou",
-        "Rifugiato", "Hacker", "Truffatore", "Poliziotto corrotto"
-    ];
-    
-    const tratti = [
-        "Mente sempre compulsivamente", "Parla in terza persona",
-        "Cicatrici temporali visibili", "Ossessione particolare",
-        "Tic nervoso evidente", "Voce inusuale (eco)",
-        "Lealtà fanatica a una fazione", "Umorismo nero inappropriato",
-        "Memoria perfetta (ricorda tutto)", "Profezie criptiche"
-    ];
-    
-    const motivazioni = [
-        "Sopravvivenza della famiglia", "Vendetta personale", "Profitto facile",
-        "Redenzione del passato", "Proteggere un segreto", "Fuga dai debiti",
-        "Ricerca della verità", "Lealtà cieca", "Disperazione economica", "Niente da perdere"
-    ];
-    
-    const nome = nomi[Math.floor(Math.random() * nomi.length)];
-    const cognome = cognomi[Math.floor(Math.random() * cognomi.length)];
-    const professione = professioni[Math.floor(Math.random() * professioni.length)];
-    const tratto = tratti[Math.floor(Math.random() * tratti.length)];
-    const motivazione = motivazioni[Math.floor(Math.random() * motivazioni.length)];
-    const eta = 25 + Math.floor(Math.random() * 35);
-    
-    const result = `
-        <h4 style="color: var(--accent-gold); margin-bottom: 1rem;">👤 ${nome} ${cognome}</h4>
-        <p><strong>Età:</strong> ${eta} anni</p>
-        <p><strong>Professione:</strong> ${professione}</p>
-        <p><strong>Tratto distintivo:</strong> ${tratto}</p>
-        <p><strong>Motivazione:</strong> ${motivazione}</p>
-        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-blue);">
-            Elabora i dettagli basandoti su questi elementi. Aggiungi background, connessioni con i PG, segreti.
-        </p>
-    `;
-    
-    document.getElementById('npcResult').innerHTML = result;
-}
-
-// Generatore di tesori
-function generateTreasure() {
-    const tesori = [
-        { nome: "Monete d'oro romane", valore: "0,5-1 certificato", desc: "Aureus dell'imperatore Traiano, 98 d.C." },
-        { nome: "Dollari d'argento 1889", valore: "0,8 certificati", desc: "Morgan Silver Dollar, condizioni perfette" },
-        { nome: "Anello vittoriano", valore: "2 certificati", desc: "Oro 18k, rubino centrale, incisione interna" },
-        { nome: "Collana art déco", valore: "3 certificati", desc: "Platino + diamanti, stile Cartier 1925" },
-        { nome: "Quadro firmato", valore: "4 certificati", desc: "Paesaggio a olio, artista minore riconoscibile" },
-        { nome: "Scultura in bronzo", valore: "5 certificati", desc: "Figura umana, stile Rodin, patina autentica" },
-        { nome: "Revolver Colt .45", valore: "6 certificati", desc: "Peacemaker 1873, funzionante, inciso" },
-        { nome: "Spada katana", valore: "8 certificati", desc: "Periodo Edo, firma del fabbro, affilata" },
-        { nome: "Laptop 2080", valore: "12 certificati", desc: "Interfaccia neurale parziale, funzionante al 60%" },
-        { nome: "Frammento Oculus", valore: "15 certificati", desc: "Cristallo blu-viola dimensioni di un pugno" }
-    ];
-    
-    const proprieta = [
-        { nome: "Nessuna", effetto: "Oggetto normale" },
-        { nome: "Maledetto", effetto: "+1 stranezza automatica dopo 1 settimana di possesso" },
-        { nome: "Ricercato", effetto: "Zhou/divisione lo vogliono - gli agenti ti danno la caccia" },
-        { nome: "Instabile", effetto: "Cambia forma ogni 1d6 ore (valore simile)" },
-        { nome: "Senziente", effetto: "Sussurra, mostra visioni, influenza le emozioni" },
-        { nome: "Informazioni", effetto: "Contiene dati critici (codice, mappa, segreto)" },
-        { nome: "Benedetto", effetto: "+2 ai tiri salvezza mentre lo si porta" },
-        { nome: "Profetico", effetto: "Mostra una visione del futuro 1 volta (utile o traumatica)" }
-    ];
-    
-    const tesoro = tesori[Math.floor(Math.random() * tesori.length)];
-    const haProprietà = Math.random() < 0.3; // 30% di probabilità di proprietà speciale
-    const prop = haProprietà ? proprieta[1 + Math.floor(Math.random() * (proprieta.length-1))] : proprieta[0];
-    
-    const result = `
-        <h4 style="color: var(--accent-gold); margin-bottom: 1rem;">💎 ${tesoro.nome}</h4>
-        <p><strong>Valore:</strong> ${tesoro.valore}</p>
-        <p><strong>Descrizione:</strong> ${tesoro.desc}</p>
-        ${haProprietà ? `<p style="margin-top: 0.8rem;"><strong>⚡ Proprietà speciale:</strong> ${prop.nome}<br><em>${prop.effetto}</em></p>` : ''}
-        <p style="margin-top: 1rem; font-style: italic; color: var(--accent-blue);">
-            Trovato in: ${["Cassaforte nascosta", "Cadavere scheletrico", "Altare temporale", "Detriti di un edificio", "Stanza segreta"][Math.floor(Math.random() * 5)]}
-        </p>
-    `;
-    
-    document.getElementById('treasureResult').innerHTML = result;
-}
-</script>
-<!-- PARTE XIV: GESTIONE CAMPAGNA -->
+<!-- PARTE XIV: GESTIONE DELLA CAMPAGNA -->
 <section id="campagna" class="section">
-    <h2>Parte XIV: gestione della campagna a lungo termine</h2>
+    <h2>Parte XIV: Gestione della campagna a lungo termine</h2>
     
-    <div class="box">
-        <h3>Archi narrativi e struttura</h3>
-        <p><strong>Ucronie e Tesori funziona meglio in "mini-campagne" di 6-12 sessioni.</strong> Abbastanza per vedere le conseguenze accumularsi, non così lungo che le stranezze consumino tutti i PG.</p>
+    <div id="campagna-archi">
+        <h3>Gli archi narrativi (struttura a 3 atti per 10-15 sessioni)</h3>
+        
+        <h4>Atto I: Sopravvivenza e Scoperta (Sessioni 1-5)</h4>
+        <div class="box">
+            <p><strong>Focus:</strong> i PG imparano le meccaniche, fanno le prime scelte morali, accumulano i primi Quirk temporali e debiti.</p>
+            <p><strong>Temi:</strong> "Chi siamo? Possiamo fidarci della divisione? Cosa è realmente successo con l'evento Oculus?"</p>
+            <p><strong>Missioni tipo:</strong> recuperi semplici, evacuazioni, primi contatti con Zhou, incontri con echi temporali.</p>
+            <p><strong>Finale dell'atto I:</strong> i PG scoprono qualcosa di compromettente sulla divisione (esempio: Hayes ha ordinato la morte di civili per recuperare un frammento). Ora devono decidere: restare leali o cercare alternative?</p>
+        </div>
+        
+        <h4>Atto II: Corruzione e Scelte (Sessioni 6-10)</h4>
+        <div class="box">
+            <p><strong>Focus:</strong> i tracciatori di lealtà e corruzione divergono. Alcuni PG diventano corrotti, altri restano leali. La tensione interna cresce.</p>
+            <p><strong>Temi:</strong> "Quanto siamo disposti a sacrificare? Chi siamo diventati? Possiamo ancora tornare indietro?"</p>
+            <p><strong>Missioni tipo:</strong> sabotaggio, tradimenti, dilemmi morali pesanti, primi PG che raggiungono 4-5 Quirk temporali.</p>
+            <p><strong>Eventi chiave:</strong></p>
+            <ul>
+                <li>Zhou fa un'offerta importante a tutti i PG (lavorare per lei full-time)</li>
+                <li>Hayes scopre che qualcuno nel gruppo è corrotto (investigazione interna)</li>
+                <li>Un PG diventa eco temporale (primo collega perso alla contaminazione)</li>
+                <li>I debiti diventano insostenibili (sfratti, fame, disperazione reale)</li>
+            </ul>
+            <p><strong>Finale dell'atto II:</strong> una missione va catastroficamente male. Morti multiple (PG o PNG importanti). Il gruppo si frantuma (alcuni vanno con Zhou, altri restano con Hayes, alcuni si ritirano). <strong>È il punto più basso della campagna.</strong></p>
+        </div>
+        
+        <h4>Atto III: Conseguenze e Risoluzione (Sessioni 11-15)</h4>
+        <div class="box">
+            <p><strong>Focus:</strong> le fazioni si scontrano apertamente. I PG sono nel mezzo di una guerra tra la divisione e Zhou. Le scelte passate tornano a perseguitarli.</p>
+            <p><strong>Temi:</strong> "Possiamo ancora fare la cosa giusta? È troppo tardi per la redenzione? Cosa lasceremo dietro di noi?"</p>
+            <p><strong>Missioni tipo:</strong> assalti, guerre tra fazioni, missioni suicide, rivelazioni finali sulla cospirazione dell'Oculus.</p>
+            <p><strong>La rivelazione finale:</strong> l'evento Oculus non è stato un incidente. È stato intenzionale. [Scegli chi, in base alla tua campagna:]</p>
+            <ul>
+                <li><strong>Opzione A:</strong> Hayes lo sapeva da sempre. Lei era presente, lo ha permesso. Era un esperimento per creare "super-soldati temporali".</li>
+                <li><strong>Opzione B:</strong> Zhou lo ha causato. Lei era una scienziata del progetto Oculus, ha sabotato l'esperimento per creare il mercato nero.</li>
+                <li><strong>Opzione C:</strong> Un'entità temporale aliena lo ha provocato. L'Oculus ha aperto un portale. Qualcosa è passato. E ora vuole espandersi.</li>
+            </ul>
+            <p><strong>Il climax finale (sessione 15):</strong> i PG devono scegliere l'ultimo dilemma impossibile. Esempi:</p>
+            <ul>
+                <li>Distruggere il nucleo Oculus (ferma l'espansione temporale, ma uccide tutti nella zona rossa - 10.000 persone)</li>
+                <li>Lasciare che l'espansione continui (salva le vite ora, ma l'instabilità temporale si diffonde al pianeta intero in 10 anni)</li>
+                <li>Usare la tecnologia Oculus per "resettare" il 2025 (annulla l'evento ma cancella 55 anni di storia - tutti i nati dopo il 2025 non esisteranno mai, inclusi molti PNG amati)</li>
+            </ul>
+        </div>
     </div>
     
-    <h3>Struttura di una campagna tipo (10 sessioni)</h3>
-    
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 100px;">Sessioni</th>
-                <th>Fase</th>
-                <th>Focus</th>
-                <th>Evoluzione dei PG</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr style="background: rgba(46, 204, 113, 0.2);">
-                <td><strong>1-2</strong></td>
-                <td><strong>Introduzione</strong></td>
-                <td>• Imparare le meccaniche<br>• Stabilire il tono grigio<br>• Prima missione (Loop di Chicago)<br>• Incontro con Hayes, Doc, Zhou</td>
-                <td>Livello 1 → 2<br>Lealtà 5<br>Corruzione 0-2<br>0 stranezze</td>
-            </tr>
-            <tr style="background: rgba(52, 152, 219, 0.2);">
-                <td><strong>3-5</strong></td>
-                <td><strong>Escalation</strong></td>
-                <td>• Missioni più complesse<br>• Dilemmi morali crescenti<br>• Zhou inizia a fare offerte<br>• Deficit economico critico<br>• Prima stranezza tipicamente qui</td>
-                <td>Livello 2 → 3<br>Lealtà 4-7 (diverge)<br>Corruzione 2-5<br>1-2 stranezze</td>
-            </tr>
-            <tr style="background: rgba(241, 196, 15, 0.2);">
-                <td><strong>6-8</strong></td>
-                <td><strong>Conseguenze</strong></td>
-                <td>• Le scelte passate tornano<br>• Zhou o Hayes chiedono la resa dei conti<br>• Tradimenti possibili<br>• Conflitti interni al gruppo<br>• Le stranezze si accumulano (2-3 tipico)</td>
-                <td>Livello 3 → 4<br>Lealtà 2-9 (estremi)<br>Corruzione 4-8<br>2-3 stranezze</td>
-            </tr>
-            <tr style="background: rgba(231, 76, 60, 0.3);">
-                <td><strong>9-10</strong></td>
-                <td><strong>Climax</strong></td>
-                <td>• Scelta finale maggiore<br>• Tradire Zhou o la divisione<br>• Conseguenze permanenti<br>• Morti possibili<br>• Risoluzione degli archi personali</td>
-                <td>Livello 4 (alcuni 5)<br>Lealtà 0-10 (polarizzato)<br>Corruzione 6-10<br>3-4 stranezze<br>Alcuni PG ritirati/morti</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <h3>Archi narrativi maggiori</h3>
-    
-    <h4>Arco 1: "La verità sull'Oculus"</h4>
-    <div class="box">
-        <p><strong>Tema:</strong> cospirazione governativa. La divisione sa più di quanto dice.</p>
+    <div id="campagna-fazioni">
+        <h3>Le fazioni in gioco e le loro agende</h3>
         
-        <h5>Sviluppo:</h5>
-        <ul>
-            <li><strong>Sessione 2-3:</strong> i PG trovano un documento classificato in una zona rossa. Suggerisce che l'evento Oculus non fu un incidente.</li>
-            <li><strong>Sessione 5:</strong> il dottore Rivera ubriaco accenna: <em>"Sai cosa è assurdo? La divisione esisteva prima dell'evento. Come facevano a sapere come prepararsi?"</em></li>
-            <li><strong>Sessione 7:</strong> un eco di livello 7 rivela: <em>"La divisione ha attivato l'Oculus deliberatamente. Era un esperimento di controllo temporale. È andato male. Insabbiamento."</em></li>
-            <li><strong>Sessione 9-10:</strong> i PG devono scegliere: esporre la verità (distruggere la divisione ma causare il caos) o mantenere il segreto (ordine ma ingiustizia).</li>
-        </ul>
+        <h4>1. La Divisione Temporale (Hayes)</h4>
+        <table>
+            <tr><td><strong>Obiettivo pubblico:</strong></td><td>Stabilizzare le zone temporali, proteggere i civili, contenere l'espansione</td></tr>
+            <tr><td><strong>Obiettivo segreto:</strong></td><td>Monopolizzare la tecnologia Oculus per il governo USA. Armare i soldati con poteri temporali.</td></tr>
+            <tr><td><strong>Risorse:</strong></td><td>Militari, tecnologia, legittimità legale, 15.000 dipendenti</td></tr>
+            <tr><td><strong>Debolezza:</strong></td><td>Burocrazia lenta, corruzione interna, budget limitato (paga poco gli agenti)</td></tr>
+            <tr><td><strong>Cosa vogliono dai PG:</strong></td><td>Lealtà cieca. Completare missioni senza domande. Sacrificio quando necessario.</td></tr>
+        </table>
         
-        <p><strong>Finale possibile:</strong> i PG testimoniano pubblicamente. La divisione collassa. Zhou prende il controllo della città. <em>"Hai vinto la battaglia morale ma perso la guerra pratica. Ora Las Vegas è mia."</em></p>
+        <h4>2. Il Mercato Nero di Zhou</h4>
+        <table>
+            <tr><td><strong>Obiettivo pubblico:</strong></td><td>Profitto. Vendere artefatti temporali al miglior offerente.</td></tr>
+            <tr><td><strong>Obiettivo segreto:</strong></td><td>Accedere ai file classificati del Progetto Oculus. Vuole capire come replicare la tecnologia e creare nuove zone temporali controllate (monopolio totale).</td></tr>
+            <tr><td><strong>Risorse:</strong></td><td>Denaro illimitato, mercenari, informatori ovunque, nessun limite morale</td></tr>
+            <tr><td><strong>Debolezza:</strong></td><td>Illegale (la divisione può eliminarla se la trova). Dipende da agenti corrotti (che possono tradirla).</td></tr>
+            <tr><td><strong>Cosa vuole dai PG:</strong></td><td>Informazioni. Artefatti. Tradimenti occasionali. Diventare i suoi asset permanenti.</td></tr>
+        </table>
+        
+        <h4>3. I Rifugiati (fazione emergente)</h4>
+        <table>
+            <tr><td><strong>Chi sono:</strong></td><td>Civili intrappolati nelle zone temporali da anni. Si sono organizzati in comunità di sopravvivenza.</td></tr>
+            <tr><td><strong>Obiettivo:</strong></td><td>Vivere in pace. Non essere evacuati con la forza (molti hanno creato vite nuove nelle zone temporali).</td></tr>
+            <tr><td><strong>Risorse:</strong></td><td>Conoscenza delle zone (trappole, scorciatoie, sicure). Solidarietà. Numeri (migliaia di persone).</td></tr>
+            <tr><td><strong>Debolezza:</strong></td><td>Poche armi, nessun potere politico, dispersi geograficamente</td></tr>
+            <tr><td><strong>Cosa vogliono dai PG:</strong></td><td>Essere lasciati in pace. Oppure aiuto per negoziare con la divisione/Zhou.</td></tr>
+        </table>
+        
+        <h4>4. Gli Echi Senzienti (fazione misteriosa)</h4>
+        <table>
+            <tr><td><strong>Chi sono:</strong></td><td>Echi temporali che hanno sviluppato intelligenza e coscienza. Non sono più "mostri" - sono entità pensanti.</td></tr>
+            <tr><td><strong>Obiettivo:</strong></td><td>Sopravvivere. Espandere le zone temporali (per loro è l'habitat naturale). Eliminare gli umani che "invadono" il loro territorio.</td></tr>
+            <tr><td><strong>Risorse:</strong></td><td>Poteri temporali (teleportazione locale, invecchiamento accelerato, prescienza). Numeri crescenti.</td></tr>
+            <tr><td><strong>Debolezza:</strong></td><td>Vulnerabili fuori dalle zone temporali. Nessuna organizzazione centrale (ancora).</td></tr>
+            <tr><td><strong>Cosa vogliono dai PG:</strong></td><td>Dipende. Alcuni vogliono negoziare (coesistenza). Altri vogliono eliminarvi. Alcuni vogliono diventare umani di nuovo (se mai lo sono stati).</td></tr>
+        </table>
+        
+        <h4>Come le fazioni interagiscono:</h4>
+        <div class="box">
+            <ul>
+                <li><strong>Divisione vs Zhou:</strong> guerra fredda costante. La divisione arresta i corrotti, Zhou corrompe nuovi agenti. Stallo.</li>
+                <li><strong>Divisione vs Rifugiati:</strong> la divisione vuole evacuarli (per la loro sicurezza). I rifugiati rifiutano (vogliono autonomia). Tensione crescente.</li>
+                <li><strong>Zhou vs Rifugiati:</strong> Zhou li sfrutta (compra artefatti che trovano, li usa come informatori). Rapporto transazionale.</li>
+                <li><strong>Echi vs Tutti:</strong> gli echi attaccano indiscriminatamente. Ma alcuni echi senzienti cercano alleanze con Zhou (lei offre protezione in cambio di servigi).</li>
+            </ul>
+            <p><strong>I PG sono nel mezzo.</strong> Le loro scelte determinano quale fazione vince alla fine.</p>
+        </div>
     </div>
     
-    <h4>Arco 2: "Il prezzo di Zhou"</h4>
-    <div class="box">
-        <p><strong>Tema:</strong> corruzione progressiva. Diventi ciò contro cui giuri di combattere.</p>
+    <div id="campagna-conseguenze">
+        <h3>Le conseguenze a lungo termine</h3>
         
-        <h5>Sviluppo:</h5>
-        <ul>
-            <li><strong>Sessione 1:</strong> Zhou è un antagonista lontano. Un nome su un briefing.</li>
-            <li><strong>Sessione 3:</strong> Zhou salva i PG da una gang rivale. <em>"Il nemico del mio nemico è... un'opportunità."</em> Offre informazioni gratis.</li>
-            <li><strong>Sessione 5:</strong> i PG lavorano per Zhou "una volta". I soldi sono ottimi. Corruzione +3 ma nessuna conseguenza immediata.</li>
-            <li><strong>Sessione 7:</strong> Zhou chiama per un favore. <em>"Ricordi quando ti salvai? È ora di ripagare."</em> Il favore è pericoloso/immorale.</li>
-            <li><strong>Sessione 9:</strong> i PG scoprono: Zhou ha manipolato gli eventi fin dalla sessione 1. Tutto era pianificato. <em>"Scusa caro. Affari. Ma ammetto... mi sei affezionato. Quasi dispiaciuta."</em></li>
-        </ul>
+        <h4>Il tracking delle scelte (tieni un registro):</h4>
+        <div class="box success">
+            <p><strong>Dopo ogni sessione, annota:</strong></p>
+            <ul>
+                <li>Chi hanno tradito? (PNG specifici)</li>
+                <li>Chi hanno salvato?</li>
+                <li>Quali segreti hanno scoperto?</li>
+                <li>Cosa hanno rubato vs cosa hanno consegnato?</li>
+                <li>I loro tracciatori attuali (lealtà, corruzione, Quirk temporali, debiti)</li>
+            </ul>
+            <p>Poi, ogni 3-5 sessioni, fai tornare una conseguenza passata.</p>
+        </div>
         
-        <p><strong>Finale possibile:</strong> i PG devono scegliere: tradire Zhou (lei si vendica brutalmente) o accettare la proprietà (ricchi ma schiavi).</p>
+        <h4>Esempi di conseguenze ritardate:</h4>
+        
+        <div class="box">
+            <p><strong>Sessione 3:</strong> i PG hanno abbandonato un gruppo di civili in una zona temporale per completare la missione più velocemente. 15 civili sono morti nel collasso.</p>
+            <p><strong>Conseguenza (Sessione 8):</strong> uno dei sopravvissuti (un bambino, ora adulto con Quirk temporali gravi) rintraccia i PG. Vuole vendetta. Diventa un antagonista ricorrente. Oppure vuole capire perché lo hanno abbandonato (dilemma morale: chiedi perdono? Uccidilo per proteggerti?).</p>
+        </div>
+        
+        <div class="box">
+            <p><strong>Sessione 5:</strong> i PG hanno venduto informazioni classificate a Zhou per $5.000. +3 corruzione ciascuno.</p>
+            <p><strong>Conseguenza (Sessione 10):</strong> quelle informazioni hanno permesso a Zhou di sabotare un'operazione della divisione. 8 agenti sono morti (incluso un PNG che i PG conoscevano). Hayes scopre che c'è stata una fuga di notizie. Inizia un'investigazione interna. Gli affari interni interrogano tutti. I PG devono mentire (prova di inganno difficile) oppure confessare (conseguenze devastanti).</p>
+        </div>
+        
+        <div class="box">
+            <p><strong>Sessione 7:</strong> i PG hanno risparmiato un eco temporale senziente (invece di ucciderlo) perché ha implorato per la sua vita.</p>
+            <p><strong>Conseguenza (Sessione 12):</strong> quell'eco li ricorda. Ora guida una fazione di echi senzienti che vogliono negoziare con gli umani. Li contatta: "Voi mi avete mostrato compassione. Forse possiamo coesistere. Aiutatemi a convincere Hayes." Diventa un alleato improbabile in un mondo di conflitto.</p>
+        </div>
     </div>
     
-    <h4>Arco 3: "Il costo personale"</h4>
-    <div class="box">
-        <p><strong>Tema:</strong> le stranezze consumano l'umanità. Horror corporeo esistenziale.</p>
+    <div id="campagna-finale">
+        <h3>Possibili finali della campagna</h3>
         
-        <h5>Sviluppo:</h5>
-        <ul>
-            <li><strong>Sessione 1-2:</strong> 0 stranezze. I PG sono "normali".</li>
-            <li><strong>Sessione 4:</strong> prima stranezza (es: glossolalia). Fastidiosa ma gestibile. Fonte di battute.</li>
-            <li><strong>Sessione 6:</strong> seconda stranezza (es: invecchiamento). Visibile. I civili iniziano a evitarli. Il partner romantico di un PG dice <em>"Non ti riconosco più."</em></li>
-            <li><strong>Sessione 8:</strong> terza stranezza (es: cicatrici inverse). Dolore costante. Il dottore: <em>"Il tuo corpo sta rifiutando l'esistenza. Hai... 6 mesi? Un anno? Non lo so."</em></li>
-            <li><strong>Sessione 10:</strong> quarta stranezza. Scelta: ritiro (vivere quel poco che resta della vita) o continuare (la 5ª stranezza è vicina, poi eco).</li>
-        </ul>
+        <h4>Finale A: La Lealtà Redenta</h4>
+        <p><strong>Condizione:</strong> i PG hanno lealtà media 7+ e corruzione media <4</p>
+        <p><strong>Epilogo:</strong> Hanno fermato Zhou, esposto la corruzione nella divisione, Hayes viene sostituita da un leader più etico. Vegas inizia a stabilizzarsi. I PG diventano leggende - eroi della divisione. Ma hanno perso molto (amici morti, Quirk temporali permanenti, trauma). La pace ha un prezzo.</p>
         
-        <p><strong>Finale possibile:</strong> un PG con 4 stranezze sceglie il sacrificio eroico. Entra nell'epicentro del collasso, salva la città, diventa un eco. Ultimo dialogo: <em>"Valevate la pena. Tutto questo... valeva la pena. Ricordatemi... come ero."</em></p>
+        <h4>Finale B: Il Regno della Corruzione</h4>
+        <p><strong>Condizione:</strong> i PG hanno corruzione media 7+ e lealtà <3</p>
+        <p><strong>Epilogo:</strong> Hanno tradito la divisione, aiutato Zhou a vincere. Zhou controlla Vegas. I PG sono ricchi, potenti, ma intrappolati. Zhou li possiede. Vivono nel lusso ma nella paura costante (se provano a lasciare, lei li elimina). Hanno vinto il mondo ma perso l'anima.</p>
+        
+        <h4>Finale C: L'Equilibrio Precario</h4>
+        <p><strong>Condizione:</strong> i PG hanno lealtà e corruzione entrambi nel range 4-6</p>
+        <p><strong>Epilogo:</strong> Hanno giocato entrambi i lati. Né Hayes né Zhou li fidano completamente, ma entrambi li rispettano. Vegas resta instabile - guerra fredda continua. I PG sopravvivono nel mezzo, facendo missioni per entrambi, vivendo alla giornata. Non eroi, non villain. Sopravvissuti pragmatici in un mondo grigio.</p>
+        
+        <h4>Finale D: Il Sacrificio Finale</h4>
+        <p><strong>Condizione:</strong> i PG scelgono di distruggere il nucleo Oculus (uccidendo sé stessi nel processo)</p>
+        <p><strong>Epilogo:</strong> Sacrificano le loro vite per fermare l'espansione temporale. Vegas viene distrutta ma il resto del mondo è salvo. Diventano martiri. Statue, memoriali, strade intitolate a loro. Ma loro non lo vedono mai - sono morti. Un finale eroico, tragico, definitivo.</p>
+        
+        <h4>Finale E: La Fuga</h4>
+        <p><strong>Condizione:</strong> i PG scelgono di fuggire da Vegas (abbandonare la divisione, Zhou, tutto)</p>
+        <p><strong>Epilogo:</strong> Rubano una fortuna (certificati, artefatti) e scappano. Nuove identità, nuovo paese, nuova vita. Ma Hayes manda squadre di recupero. Zhou mette una taglia sulle loro teste. Sono ricchi ma sempre in fuga. Un finale aperto - forse trovano la pace, forse muoiono traditi in un vicolo lontano. Il direttore decide (oppure lascia ambiguo).</p>
     </div>
     
-    <h3>Gestire la morte e il ritiro dei PG</h3>
-    
-    <div class="box danger">
-        <h4>Quando un PG muore o si ritira</h4>
+    <div id="campagna-downtime">
+        <h3>Gestire il downtime tra le missioni</h3>
         
-        <h5>Opzione 1: nuovo PG (OSR classico)</h5>
+        <h4>Cosa fare nel downtime (1 settimana di tempo nel gioco):</h4>
         <ul>
-            <li>Il giocatore crea un nuovo agente di livello 1</li>
-            <li>Può ereditare 1 contatto o 1 oggetto dal PG precedente (connessione narrativa)</li>
-            <li>Entra nella squadra come "sostituto" (Hayes: <em>"Abbiamo perso Rodriguez. Tu sei il rimpiazzo. Non deludermi."</em>)</li>
-            <li><strong>Pro:</strong> veloce, mantiene il rischio della morte reale</li>
-            <li><strong>Contro:</strong> disparità di livello se la campagna è avanzata</li>
+            <li><strong>Recupero:</strong> Guarigione naturale (1d6+COS PF per ogni settimana di riposo)</li>
+            <li><strong>Guadagno secondario:</strong> Lavori extra, piccoli crimini, vendita di oggetti (+$200-$500)</li>
+            <li><strong>Training:</strong> Allenamento per una nuova abilità (richiede 4 settimane downtime + un mentore)</li>
+            <li><strong>Sociale:</strong> Rafforzare relazioni con PNG (invita qualcuno a cena, fai un favore, costruisci alleanze)</li>
+            <li><strong>Indagine personale:</strong> Cercare informazioni su un mistero, seguire una pista personale</li>
+            <li><strong>Vizio:</strong> Alcol, droghe, gioco d'azzardo (modo per gestire lo stress ma rischia dipendenza)</li>
         </ul>
         
-        <h5>Opzione 2: PG di riserva (preparato in anticipo)</h5>
-        <ul>
-            <li>Il giocatore ha un 2° personaggio già fatto (gioca raramente come PNG)</li>
-            <li>Quando il PG primario muore, il 2° diventa principale</li>
-            <li><strong>Pro:</strong> zero tempo morto, continuità emotiva</li>
-            <li><strong>Contro:</strong> richiede preparazione extra</li>
-        </ul>
-        
-        <h5>Opzione 3: recupero accelerato</h5>
-        <ul>
-            <li>Il nuovo PG inizia al livello = media del gruppo -1</li>
-            <li><strong>Es:</strong> il gruppo è di livello 4, il nuovo PG inizia al livello 3</li>
-            <li><strong>Pro:</strong> bilancia il potere, mantiene la sfida</li>
-            <li><strong>Contro:</strong> meno OSR "puro" (non tutte le morti sono uguali)</li>
-        </ul>
-        
-        <p style="margin-top: 1rem;"><strong>Raccomandazione:</strong> opzione 1 per campagne di 1-6 sessioni. Opzione 3 per 7+ sessioni (evita la frustrazione della disparità estrema).</p>
-    </div>
-    
-    <h3>Calendari e timeline</h3>
-    
-    <div class="box">
-        <h4>Tracciare il tempo nel gioco</h4>
-        <p><strong>Mantenere il senso del tempo che passa è cruciale per la pressione economica.</strong></p>
-        
-        <h5>Metodo semplice:</h5>
-        <pre><code>Sessione 1: settimana 1 (es: 6-12 gennaio 2045)
-Missione: 1 giorno (6 gennaio)
-Tempo libero: 6 giorni
-Spese: -$900
-Stipendio: +$800
-Netto: -$100
-
-Sessione 2: settimana 2 (13-19 gennaio)
-[ripeti...]</code></pre>
-        
-        <p><strong>Non serve precisione al minuto.</strong> L'approssimazione settimanale basta. Focus: accumulo del deficit, conto alla rovescia degli eventi.</p>
-    </div>
-    
-    <h3>Far evolvere i PNG</h3>
-    
-    <div class="box success">
-        <h4>I PNG devono cambiare in base alle azioni dei PG</h4>
-        
-        <h5>Esempio: Hayes</h5>
-        <ul>
-            <li><strong>Se i PG sono sempre leali (lealtà 8+):</strong> Hayes si apre. Rivela la sua stranezza (sindrome del testimone). Chiede aiuto personale. Diventa una vera alleata, non solo un capo.</li>
-            <li><strong>Se i PG sono mediocri (lealtà 4-6):</strong> Hayes è professionale ma distante. Fa il suo lavoro. Zero legame emotivo.</li>
-            <li><strong>Se i PG sono corrotti (lealtà 1-3):</strong> Hayes è ostile. Assegna missioni suicide. Cerca prove per l'arresto. Possibile antagonista finale.</li>
-        </ul>
-        
-        <h5>Esempio: Zhou</h5>
-        <ul>
-            <li><strong>Se i PG lavorano con lei (corruzione 7+):</strong> Zhou è protettiva. <em>"Sei una risorsa preziosa. Nessuno ti tocca."</em> Ma proprietà implicita.</li>
-            <li><strong>Se i PG sono neutrali:</strong> Zhou è cortese ma calcolatrice. Offerte di affari. Niente di personale.</li>
-            <li><strong>Se i PG la ostacolano (arrestano i suoi membri, rovinano le operazioni):</strong> Zhou è fredda. <em>"Mi sei costato $50k. Debito registrato. Ripagherai. Prima o poi."</em> Minaccia a lungo termine.</li>
-        </ul>
-        
-        <p><strong>PNG statici = mondo morto.</strong> PNG reattivi = mondo vivo.</p>
-    </div>
-    
-    <h3>Agganci per campagne future</h3>
-    
-    <div class="box">
-        <p><strong>Se il gruppo vuole continuare dopo 10 sessioni:</strong></p>
-        
-        <h4>Opzione A: nuova generazione</h4>
-        <p>Salta avanti di 5 anni. I PG originali sono ritirati/morti/echi. I nuovi PG sono reclute che hanno sentito le leggende dei veterani. Il mondo è cambiato (Zhou più potente? Divisione riformata? Nuova minaccia?).</p>
-        
-        <h4>Opzione B: escalation geografica</h4>
-        <p>Las Vegas è stabilizzata. La divisione manda i PG a un nuovo epicentro Oculus (Chicago? Tokyo? Londra?). Stesse meccaniche, ambientazione diversa.</p>
-        
-        <h4>Opzione C: cospirazione finale</h4>
-        <p>I PG scoprono: l'Oculus non era unico. Ce ne sono 12 nel mondo. Divisione/Zhou/nuova fazione combattono per il controllo di tutti. Scala globale, posta in gioco apocalittica.</p>
+        <h4>Eventi casuali del downtime (tira d6):</h4>
+        <table>
+            <thead><tr><th>d6</th><th>Evento</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><strong>Nessun evento</strong> - Settimana tranquilla, finalmente</td></tr>
+                <tr><td>2</td><td><strong>Spesa imprevista</strong> - Elettrodomestico rotto, multa, tassa ($200-$500 persi)</td></tr>
+                <tr><td>3</td><td><strong>Opportunità</strong> - Zhou ti contatta con una missione laterale rapida (+2 certificati, +1 corruzione)</td></tr>
+                <tr><td>4</td><td><strong>Incontro sociale</strong> - Un PNG importante ti invita (bar, cena, evento). Opportunità per alleanze o info</td></tr>
+                <tr><td>5</td><td><strong>Problema di salute</strong> - Un Quirk temporale peggiora. Prova di costituzione oppure subisci -1 a un attributo per 1 settimana</td></tr>
+                <tr><td>6</td><td><strong>Minaccia</strong> - Un nemico passato torna. Richiede confronto (sociale o violento)</td></tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 <!-- PARTE XV: FAQ -->
 <section id="faq" class="section">
-    <h2>Parte XV: domande frequenti</h2>
+    <h2>Parte XV: Le domande frequenti (FAQ)</h2>
     
-    <div class="box">
-        <h4>D: Il gioco è troppo deprimente/grigio?</h4>
-        <p><strong>R:</strong> Dipende dal tavolo. Il tono è moralmente grigio, non grimdark. Ci sono momenti di allegria, umorismo, speranza. Ma sì, è un gioco su scelte difficili e conseguenze pesanti. Se il gruppo preferisce una power fantasy eroica, questo non è il gioco giusto. Se il gruppo apprezza il dramma morale stile The Wire/Breaking Bad, questo è perfetto.</p>
-        <p><strong>Consiglio:</strong> nella sessione zero discuti del tono. Usa la X-Card. Permetti momenti di leggerezza (il dottore ubriaco racconta barzellette, i PG fanno una serata fuori servizio).</p>
+    <div id="faq-regole">
+        <h3>FAQ sulle regole</h3>
+        
+        <div class="box">
+            <h4>Q: Se ho destrezza 14 e l'abilità "armi da fuoco", come funziona esattamente un attacco?</h4>
+            <p><strong>A:</strong> L'abilità "armi da fuoco" ti permette di usare le armi da fuoco in modo competente, ma non modifica direttamente il tiro per colpire. Il tiro per colpire usa il sistema THAC0:</p>
+            <ul>
+                <li>Tiri d20, devi ottenere ≥ (THAC0 - CA del nemico)</li>
+                <li>La destrezza influisce indirettamente: alta destrezza = CA bassa per te (più difficile essere colpito), ma non modifica il tuo THAC0</li>
+                <li>Il THAC0 migliora solo salendo di livello (livello 1 = 20, livello 2 = 19, ecc.)</li>
+                <li>L'abilità "armi da fuoco" significa: sai usarle, non hai penalità. Se NON avessi l'abilità, avresti -4 al tiro</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h4>Q: Quando esattamente devo fare una prova di abilità vs un attacco normale?</h4>
+            <p><strong>A:</strong></p>
+            <ul>
+                <li><strong>Attacco normale (THAC0):</strong> Quando vuoi colpire un nemico in combattimento</li>
+                <li><strong>Prova di abilità (roll-under):</strong> Quando fai qualcosa di abile fuori dal combattimento (scassinare, hackerare, convincere, nasconderti)</li>
+                <li><strong>Esempio pratico:</strong> Vuoi sparare a una guardia → THAC0. Vuoi convincere la guardia a non spararti → prova di persuasione (carisma).</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h4>Q: La contaminazione temporale: devo fare la prova ogni 4 ore di tempo reale o di tempo nel gioco?</h4>
+            <p><strong>A:</strong> <strong>Tempo nel gioco</strong>, non tempo reale. Se i PG passano 4 ore all'interno di una zona temporale (misurate in turni di esplorazione, ore narrative), allora fanno la prova. Non basarti sull'orologio reale al tavolo.</p>
+        </div>
+        
+        <div class="box">
+            <h4>Q: Se un personaggio ha corruzione 8 e lealtà 2, cosa succede praticamente?</h4>
+            <p><strong>A:</strong></p>
+            <ul>
+                <li><strong>Corruzione 8:</strong> Zhou ti possiede. Ti chiama per missioni regolarmente. Rifiutare = ritorsioni (minacce, violenza, eliminazione). Hai accesso al mercato nero (prezzi ridotti del 30%).</li>
+                <li><strong>Lealtà 2:</strong> La divisione ti considera un sospetto. Sei sotto sorveglianza costante. Hayes non ti fida. Missioni peggiori, stipendio ridotto, nessun bonus. Se scoprono prove concrete di tradimento → arresto o eliminazione.</li>
+                <li><strong>Praticamente:</strong> Vivi in un equilibrio precario. Lavori per Zhou in segreto, fingi lealtà alla divisione. È stressante, pericoloso, ma redditizio. Fino a quando non vieni scoperto.</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h4>Q: I Quirk temporali sono curabili?</h4>
+            <p><strong>A:</strong> Sì ma è difficile, costoso, rischioso:</p>
+            <ul>
+                <li><strong>Chirurgia di Zhou:</strong> $50.000 (50 certificati), prova di TS senza modificatori. Successo = rimosso. Fallimento = peggiora o acquisisci un secondo Quirk temporale.</li>
+                <li><strong>Protocollo della divisione:</strong> Gratuito se lealtà ≥8. Prova di TS con +2. Stesso rischio di peggioramento se fallisci.</li>
+                <li><strong>Nessuna cura garantita al 100%.</strong> Molti PG scelgono di conviverci.</li>
+            </ul>
+        </div>
     </div>
     
-    <div class="box">
-        <h4>D: Cosa faccio se i PG ignorano completamente l'economia?</h4>
-        <p><strong>R:</strong> Forza le conseguenze naturali:</p>
-        <ul>
-            <li>Settimana 1 senza pagare l'affitto → avvertimento del proprietario</li>
-            <li>Settimana 2 → avviso di sfratto</li>
-            <li>Settimana 3 → sceriffo + vice, roba in strada</li>
-            <li>Settimana 4+ → senzatetto (dormi in auto/strada, -2 costituzione, equipaggiamento rubato)</li>
-        </ul>
-        <p><strong>Non "punire" - applica la fisica del mondo.</strong> Affitto non pagato = sfratto. Medicina non comprata = stranezza. Causa-effetto neutrale.</p>
+    <div id="faq-ambientazione">
+        <h3>FAQ sull'ambientazione</h3>
+        
+        <div class="box">
+            <h4>Q: Le zone temporali esistono solo a Vegas?</h4>
+            <p><strong>A:</strong> No. Vegas è l'epicentro (la più grande, la più instabile), ma altre zone temporali minori sono apparse in tutto il mondo dopo il 2025. Esempi:</p>
+            <ul>
+                <li>Chicago (il Loop nell'avventura)</li>
+                <li>Tokyo (quartiere Shibuya, sovrapposizione 1980/2080)</li>
+                <li>Londra (Tower Bridge, sovrapposizione epoca vittoriana/futuro)</li>
+                <li>Il Cairo (piramidi con anomalie temporali)</li>
+            </ul>
+            <p>Vegas è speciale perché è la più grande e permanente. Le altre sono più piccole, meno studiate.</p>
+        </div>
+        
+        <div class="box">
+            <h4>Q: Perché la divisione non usa semplicemente bombe nucleari per distruggere le zone temporali?</h4>
+            <p><strong>A:</strong> L'hanno considerato. I problemi:</p>
+            <ul>
+                <li>Le zone temporali sono <em>instabilità nello spaziotempo</em>, non luoghi fisici. Distruggere gli edifici non ferma l'instabilità - peggiora il collasso.</li>
+                <li>Un'esplosione nucleare in una zona temporale causerebbe un <em>feedback temporale</em> - l'esplosione si ripeterebbe in loop infinito, espandendosi.</li>
+                <li>Civili intrappolati (migliaia). Genocidio non è un'opzione politicamente accettabile.</li>
+                <li>Artefatti temporali inestimabili andrebbero persi. Il governo vuole quella tecnologia.</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h4>Q: Posso giocare una campagna ambientata in un'altra città (non Vegas)?</h4>
+            <p><strong>A:</strong> Assolutamente sì! Il sistema è modulare. Cambia:</p>
+            <ul>
+                <li>La location centrale (es: Tokyo invece di Vegas)</li>
+                <li>I PNG chiave (crea equivalenti di Hayes e Zhou per la tua città)</li>
+                <li>Le fazioni locali (forse la Yakuza invece del mercato nero cinese)</li>
+                <li>Mantieni le meccaniche core (economia, lealtà/corruzione, contaminazione, Quirk temporali)</li>
+            </ul>
+        </div>
     </div>
     
-    <div class="box">
-        <h4>D: I PG vendono tutto a Zhou, ignorano la divisione. Rovina il gioco?</h4>
-        <p><strong>R:</strong> No - è una scelta valida! Ma applica le conseguenze:</p>
-        <ul>
-            <li>La lealtà crolla (eventualmente 0)</li>
-            <li>Hayes scopre (investigazione interna)</li>
-            <li>Tentato arresto (PG vs squadre Sigma)</li>
-            <li>La campagna diventa: fuga + lavorare al 100% per Zhou (che ora li possiede)</li>
-        </ul>
-        <p>Questo è un esito legittimo. Non è un "fallimento" - è una storia diversa. <em>"Da agenti corrotti a criminali a tempo pieno."</em> Abbraccialo.</p>
+    <div id="faq-bilanciamento">
+        <h3>FAQ sul bilanciamento</h3>
+        
+        <div class="box">
+            <h4>Q: L'economia sembra impossibile. È un errore?</h4>
+            <p><strong>A:</strong> No, è intenzionale. L'economia è progettata per essere insostenibile con solo lo stipendio legale. Questo spinge i PG verso:</p>
+            <ul>
+                <li>Scelte disperate (rubare, corruzione)</li>
+                <li>Vivere al limite (debiti, stress)</li>
+                <li>Decisioni moralmente grigie</li>
+            </ul>
+            <p>Se i PG fossero ricchi e confortevoli, non ci sarebbe tensione. La povertà è un driver narrativo.</p>
+        </div>
+        
+        <div class="box">
+            <h4>Q: I miei giocatori muoiono troppo spesso. Come bilancio meglio?</h4>
+            <p><strong>A:</strong> Nell'OSR, la morte è frequente. Ma puoi:</p>
+            <ul>
+                <li>Usare la regola 2 (TS vs morte a 0 PF invece di morte immediata)</li>
+                <li>Avvertire i giocatori quando una scelta è suicida ("Ragazzi, ci sono 10 guardie. Siete sicuri?")</li>
+                <li>Dare più informazioni in anticipo (lascia che esplorino, pianifichino, preparino imboscate)</li>
+                <li>Non bilanciare gli incontri ma bilancia le <em>opzioni</em> (dai sempre fuga, negoziazione, inganno come alternative al combattimento)</li>
+            </ul>
+            <p><strong>Non rendere il gioco più facile. Insegna ai giocatori a essere più furbi.</strong></p>
+        </div>
+        
+        <div class="box">
+            <h4>Q: Un giocatore ha trovato un "loop infinito" per guadagnare certificati. Cosa faccio?</h4>
+            <p><strong>A:</strong> Esempi comuni:</p>
+            <ul>
+                <li>"Rubo artefatti dalla divisione e li vendo a Zhou ripetutamente"</li>
+                <li>"Faccio finte missioni per Zhou, prendo i soldi ma non consegno"</li>
+            </ul>
+            <p><strong>Soluzione:</strong> Le conseguenze narrative. Zhou non è stupida. Se la truffi, lei:</p>
+            <ul>
+                <li>Smette di fidarsi (nessun contratto futuro)</li>
+                <li>Manda mercenari a ucciderti ("Nessuno mi truffa")</li>
+                <li>Diffonde la tua reputazione (ora nessuno ti fida)</li>
+            </ul>
+            <p>Similmente, la divisione nota se spariscono artefatti. Investigazioni interne. Arresto.</p>
+            <p><strong>Il mondo reagisce logicamente. Non ci sono exploit senza conseguenze.</strong></p>
+        </div>
     </div>
     
-    <div class="box">
-        <h4>D: I PG hanno 4 stranezze, rifiutano di entrare nelle zone rosse. Stallo?</h4>
-        <p><strong>R:</strong> Offri alternative:</p>
-        <ul>
-            <li><strong>Missioni in zona gialla/arancione</strong> (pagano meno ma meno contaminazione)</li>
-            <li><strong>Lavori "di personale"</strong> (addestrare reclute, analizzare dati - solo stipendio)</li>
-            <li><strong>Ritiro onorevole</strong> (pensione parziale se lealtà 7+)</li>
-            <li><strong>Rimozione delle stranezze</strong> (rischiosa ma un'opzione)</li>
-        </ul>
-        <p>Oppure suggerisci al giocatore di creare un nuovo PG, questo si ritira. <strong>4 stranezze = fine naturale della carriera.</strong></p>
-    </div>
-    
-    <div class="box">
-        <h4>D: Come bilancio i combattimenti se il sistema è letale?</h4>
-        <p><strong>R:</strong> Non li bilanci. L'OSR non ha incontri bilanciati. Ma:</p>
-        <ul>
-            <li><strong>Telegrafare il pericolo:</strong> <em>"L'eco è enorme, 3 metri di altezza, occhi vuoti. Probabilmente fortissimo."</em></li>
-            <li><strong>Offri una via di fuga:</strong> sempre una via di fuga (porta, finestra, nascondiglio)</li>
-            <li><strong>Morale dei nemici:</strong> i nemici fuggono se perdono il 50%+ degli alleati. Non combattono fino alla morte.</li>
-            <li><strong>Informazioni pre-combattimento:</strong> i PG intelligenti evitano il combattimento con la preparazione (imboscata, veleno, trappola)</li>
-        </ul>
-        <p><strong>Se i PG muoiono in un combattimento "ingiusto":</strong> era loro scelta ingaggiare. La morte è una conseguenza, non un errore tuo.</p>
-    </div>
-    
-    <div class="box">
-        <h4>D: Posso usare il sistema con un'ambientazione diversa?</h4>
-        <p><strong>R:</strong> Assolutamente! Le meccaniche principali (tira-sotto, lealtà/corruzione, stranezze, economia) funzionano con qualsiasi ambientazione moralmente grigia. Esempi:</p>
-        <ul>
-            <li><strong>Cyberpunk:</strong> runner corporativi, cyberware invece di stranezze, corruzione = debiti corporei</li>
-            <li><strong>Western:</strong> banditi/sceriffi di frontiera, stranezze = ferite permanenti, corruzione = livello di ricercato</li>
-            <li><strong>Fantasy oscuro medievale:</strong> mercenari, stranezze = mutazioni magiche, corruzione = maledizioni</li>
-            <li><strong>Spionaggio moderno:</strong> agenti CIA, stranezze = traumi psicologici, corruzione = kompromat</li>
-        </ul>
-        <p><strong>Il nucleo è la pressione morale/economica + conseguenze permanenti.</strong> Il resto è cosmetico.</p>
-    </div>
-    
-    <div class="box">
-        <h4>D: Sessione zero - cosa coprire?</h4>
-        <p><strong>R:</strong> Lista essenziale:</p>
-        <ol>
-            <li><strong>Tono del gioco:</strong> grigio, conseguenze pesanti, morte possibile. Va bene per tutti?</li>
-            <li><strong>Strumenti di sicurezza:</strong> X-Card, linee/veli. Cosa è fuori dai limiti?</li>
-            <li><strong>Morte permanente:</strong> sì o opzione "3 tiri salvezza"? Decidere insieme.</li>
-            <li><strong>Aspettative di frequenza:</strong> settimanale? Mensile? One-shot o campagna?</li>
-            <li><strong>PvP:</strong> permesso? (es: un PG tradisce un PG per Zhou) o no?</li>
-            <li><strong>Stile di gioco:</strong> tattico? Incentrato sul gioco di ruolo? Bilanciato?</li>
-            <li><strong>Contenuti sensibili:</strong> qualcuno ha trigger? (violenza grafica, droghe, debiti, temi economici stressanti?)</li>
-        </ol>
-        <p><strong>30-60 minuti di sessione zero prevengono il 90% dei problemi futuri.</strong></p>
-    </div>
-    
-    <div class="box">
-        <h4>D: Un giocatore si lamenta "Il personaggio è corrotto contro la mia volontà"</h4>
-        <p><strong>R:</strong> Chiarisci: la corruzione non è "malvagità" - è <strong>compromesso economico/sociale</strong>. Puoi avere corruzione 7 ed essere una persona morale che fa scelte disperate. La corruzione misura quanto il mercato nero ti conosce/possiede.</p>
-        <p>Se il giocatore è davvero a disagio, offri una missione "pulisci la lavagna": testimoniare contro Zhou (rischio di morte ma -5 corruzione). O ritiro del PG, nuovo personaggio.</p>
-        <p><strong>Ma ricorda:</strong> il sistema è progettato per spingere verso la corruzione. Se rimuovi la pressione, rimuovi il punto centrale del gioco.</p>
-    </div>
-    
-    <div class="box">
-        <h4>D: Ho solo 2 giocatori. Funziona?</h4>
-        <p><strong>R:</strong> Sì ma con modifiche:</p>
-        <ul>
-            <li><strong>Dai 2 PG ciascuno:</strong> ogni giocatore controlla 2 personaggi (totale 4 PG nella squadra)</li>
-            <li><strong>PNG compagno:</strong> assegna un PNG fidato della divisione (controllato dai giocatori turno per turno)</li>
-            <li><strong>Riduci la difficoltà del combattimento:</strong> -20% nemici o -2 PF ai nemici</li>
-        </ul>
-        <p>Il gioco funziona con 2-5 giocatori. Il punto ottimale è 3-4.</p>
-    </div>
-    
-    <div class="box">
-        <h4>D: Quanto devo conoscere D&D per dirigere questo?</h4>
-        <p><strong>R:</strong> Zero. Il sistema è autonomo. Se sai tirare un d20 e sottrarre, sai tutto il necessario.</p>
-        <p><strong>Se conosci D&D:</strong> alcuni termini sono familiari (THAC0, TS, PF) ma usati in modo semplificato. Dimentica le prove di abilità complesse di D&D - qui è solo "tira d20 sotto l'attributo".</p>
-        <p><strong>Se sei nuovo agli RPG:</strong> leggi la parte III (sistema), gioca il Loop di Chicago (tutorial naturale), sei pronto.</p>
+    <div id="faq-sessione">
+        <h3>FAQ sulla sessione zero</h3>
+        
+        <div class="box">
+            <h4>Q: Cosa dovrei coprire nella sessione zero?</h4>
+            <p><strong>A:</strong> Una checklist:</p>
+            <ol>
+                <li><strong>Safety tools:</strong> X-Card, Lines & Veils, consenso su contenuti sensibili</li>
+                <li><strong>Aspettative sul tono:</strong> Quanto oscuro? Quanto humor? Realismo vs eroismo?</li>
+                <li><strong>La regola della morte:</strong> Opzione 1 (morte istantanea a 0 PF) o Opzione 2 (TS vs morte)? Votate insieme.</li>
+                <li><strong>Frequenza delle sessioni:</strong> Settimanale? Bisettimanale? Mensile?</li>
+                <li><strong>Durata target:</strong> One-shot? Mini-campagna? Campagna lunga?</li>
+                <li><strong>Creazione dei personaggi:</strong> Insieme, al tavolo. Discutete i background, create connessioni ("Io e Sarah eravamo partner prima", "Marcus mi deve un favore").</li>
+                <li><strong>Il contratto sociale:</strong> Presenza al tavolo (no telefoni durante le scene importanti), rispetto reciproco, comunicazione aperta.</li>
+            </ol>
+        </div>
+        
+        <div class="box">
+            <h4>Q: I miei giocatori non conoscono l'OSR. Come lo introduco?</h4>
+            <p><strong>A:</strong> Spiega i 3 principi core:</p>
+            <ol>
+                <li><strong>"Il combattimento è letale."</strong> Non è D&D 5e. Non siete supereroi. Un proiettile può ucciderti. Il combattimento è l'ultima risorsa.</li>
+                <li><strong>"Le vostre scelte contano più delle vostre statistiche."</strong> Un piano astuto batte sempre un tiro di dado. Creatività > ottimizzazione della build.</li>
+                <li><strong>"Il mondo non si adatta a voi."</strong> Se entrate in una zona pericolosa, incontrerete pericoli reali. Non bilancio gli incontri. Voi decidete quando ritirarvi.</li>
+            </ol>
+            <p>Poi gioca la prima sessione. Impareranno velocemente (di solito dopo la prima morte).</p>
+        </div>
     </div>
 </section>
 
 <!-- PARTE XVI: CREDITI E LICENZA -->
 <section id="crediti" class="section">
-    <h2>Parte XVI: crediti e licenza</h2>
+    <h2>Parte XVI: Crediti, ringraziamenti e licenza</h2>
     
-    <div class="box success">
-        <h3>🎲 Ucronie e Tesori v2.0</h3>
-        <p style="font-size: 1.2rem;"><strong>Design, scrittura, sviluppo:</strong> Riccardo Sgaringi</p>
-        <p><strong>Pubblicazione:</strong> ilgiocointavolo.it</p>
-        <p><strong>Anno:</strong> 2024</p>
-        <p><strong>Versione:</strong> 2.0 perfezionato (ottobre 2024)</p>
+    <div id="crediti-autore">
+        <h3>L'autore</h3>
+        <div class="box success">
+            <p><strong>Riccardo Sgaringi</strong></p>
+            <p>Designer di giochi di ruolo, sviluppatore, podcaster italiano.</p>
+            <p><strong>Altri progetti:</strong></p>
+            <ul>
+                <li><strong>Rinascimento Oscuro:</strong> GDR horror investigativo ambientato nell'Italia del 1503</li>
+                <li><strong>Il Gioco in Tavolo:</strong> Sito web e canale YouTube dedicati ai giochi da tavolo italiani</li>
+                <li><strong>Podcast:</strong> Interviste con designer italiani (Daniele Tascini, Walter Obert, e altri)</li>
+            </ul>
+            <p><strong>Filosofia di design:</strong> "I sistemi dovrebbero emergere dalle scelte, non soffocarle."</p>
+        </div>
     </div>
     
-    <h3>Ringraziamenti</h3>
-    
-    <div class="box">
-        <h4>Playtest</h4>
-        <p>Grazie a tutti i gruppi di playtest che hanno testato le versioni alpha/beta e fornito feedback prezioso. Le vostre morti orribili hanno migliorato il gioco per tutti.</p>
+    <div id="crediti-ispirazioni">
+        <h3>Le ispirazioni</h3>
         
-        <h4>Influenze e ispirazioni</h4>
+        <h4>Media (film, serie, giochi):</h4>
         <ul>
-            <li><strong>Breaking Bad</strong> (Vince Gilligan) - progressione morale grigia, pressione economica come motore narrativo</li>
-            <li><strong>Looper</strong> (Rian Johnson) - paradossi temporali, confronto con il sé futuro</li>
-            <li><strong>The Wire</strong> (David Simon) - sistema corrotto, nessun eroe puro, conseguenze istituzionali</li>
-            <li><strong>Disco Elysium</strong> (ZA/UM) - prove di abilità come rivelazione del personaggio, mondo indifferente</li>
-            <li><strong>Old School Essentials</strong> (Gavin Norman) - sistema OSR di base, THAC0, TS</li>
-            <li><strong>Troika!</strong> (Melsonian Arts Council) - background creativi, sistema semplice</li>
-            <li><strong>Mothership RPG</strong> (Tuesday Knight Games) - meccaniche di stress/trauma, tiri salvezza dalla morte</li>
-            <li><strong>Into The Odd</strong> (Chris McDowall) - semplicità radicale, decidere sul momento anziché seguire le regole</li>
-            <li><strong>Blades in the Dark</strong> (John Harper) - fazioni, calore/ricercato, economia del tempo libero</li>
+            <li><strong>Breaking Bad (serie TV):</strong> La discesa morale graduale, la pressione economica come driver narrativo, "I am the one who knocks"</li>
+            <li><strong>Looper (film):</strong> I loop temporali, le conseguenze permanenti, l'estetica noir + sci-fi</li>
+            <li><strong>Blade Runner 2049 (film):</strong> L'estetica decadente, i contrasti visivi, le scelte moralmente grigie</li>
+            <li><strong>Disco Elysium (videogioco):</strong> Le statistiche come narrativa, i dialoghi interni, il fallimento come parte della storia</li>
+            <li><strong>The Wire (serie TV):</strong> Le istituzioni corrotte, nessun personaggio è "puro", la complessità morale</li>
+            <li><strong>Primer (film):</strong> Il time travel come maledizione, non benedizione</li>
+            <li><strong>Annihilation (film):</strong> La contaminazione biologica/temporale, la zona aliena</li>
         </ul>
         
-        <h4>Community OSR</h4>
-        <p>Gratitudine immensa alla community OSR italiana e internazionale per aver tenuto viva la filosofia di design "abilità del giocatore sopra la costruzione del personaggio" e "il mondo è neutrale, non giusto".</p>
-    </div>
-    
-    <h3>Licenza</h3>
-    
-    <div class="box">
-        <h4>Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)</h4>
-        
-        <p><strong>Sei libero di:</strong></p>
+        <h4>Giochi di ruolo:</h4>
         <ul>
-            <li><strong>Condividere:</strong> copiare e ridistribuire il materiale in qualsiasi mezzo o formato</li>
-            <li><strong>Adattare:</strong> remixare, trasformare e costruire sul materiale per qualsiasi scopo, anche commerciale</li>
+            <li><strong>Old School Essentials / B/X D&D:</strong> Il sistema roll-under, THAC0, la letalità, ruling over rules</li>
+            <li><strong>Mothership RPG:</strong> Lo stress e la paura come meccaniche, il body horror, la morte permanente</li>
+            <li><strong>Blades in the Dark:</strong> Le fazioni, le conseguenze a lungo termine, i flashback tattici</li>
+            <li><strong>Traveller:</strong> La generazione di personaggi con storia, la morte possibile durante la creazione</li>
+            <li><strong>Into the Odd:</strong> La semplicità delle regole, niente skill bloat, fast and deadly</li>
         </ul>
         
-        <p style="margin-top: 1rem;"><strong>Alle seguenti condizioni:</strong></p>
+        <h4>Letteratura:</h4>
         <ul>
-            <li><strong>Attribuzione:</strong> devi dare credito appropriato, fornire un link alla licenza e indicare se sono state fatte modifiche. Puoi farlo in qualsiasi modo ragionevole, ma non in modo che suggerisca che il licenziante approvi te o il tuo uso.</li>
-        </ul>
-        
-        <p style="margin-top: 1rem;"><strong>Nessuna restrizione aggiuntiva:</strong> non puoi applicare termini legali o misure tecnologiche che legalmente limitino altri dal fare qualsiasi cosa
-
-        che la licenza permette.</p>
-        
-        <p style="margin-top: 1rem;"><strong>Testo completo della licenza:</strong> <a href="https://creativecommons.org/licenses/by/4.0/" style="color: var(--accent-blue);">https://creativecommons.org/licenses/by/4.0/</a></p>
-    </div>
-    
-    <div class="box warning">
-        <h4>Attribuzione suggerita</h4>
-        <p>Se usi/adatti questo gioco, per favore includi:</p>
-        <pre style="font-size: 0.95rem;"><code>"Basato su Ucronie e Tesori di Riccardo Sgaringi
-(ilgiocointavolo.it), licenziato sotto CC BY 4.0"</code></pre>
-    </div>
-    
-    <h3>Cosa puoi fare con questo gioco</h3>
-    
-    <div class="box success">
-        <h4>✅ Permesso esplicito per:</h4>
-        <ul>
-            <li>Pubblicare hack/varianti (es: "Ucronie e Tesori - edizione cyberpunk")</li>
-            <li>Creare avventure/moduli aggiuntivi</li>
-            <li>Tradurre in altre lingue</li>
-            <li>Usare in contesto commerciale (vendere PDF, stampa su richiesta, Kickstarter)</li>
-            <li>Streaming/podcast/actual play (YouTube, Twitch, podcast)</li>
-            <li>Insegnare in workshop/convention</li>
-            <li>Includere in bundle/antologie</li>
-        </ul>
-        <p><strong>Unica richiesta: dai credito (vedi attribuzione sopra).</strong></p>
-    </div>
-    
-    <h3>Contatti e feedback</h3>
-    
-    <div class="box">
-        <p><strong>Sito web:</strong> <a href="https://ilgiocointavolo.it" style="color: var(--accent-blue);">ilgiocointavolo.it</a></p>
-        <p><strong>Email:</strong> [inserisci email se vuoi feedback diretto]</p>
-        <p><strong>Itch.io:</strong> [se pubblichi lì, inserisci link]</p>
-        <p><strong>DriveThruRPG:</strong> [se pubblichi lì, inserisci link]</p>
-        
-        <p style="margin-top: 1rem;"><strong>Il feedback è benvenuto!</strong> Se giochi a questo gioco, per favore mandami un feedback:</p>
-        <ul>
-            <li>Cosa ha funzionato al tuo tavolo?</li>
-            <li>Cosa è stato confuso?</li>
-            <li>Quali regole della casa hai usato?</li>
-            <li>Storie memorabili/morti eroiche/tradimenti epici?</li>
-        </ul>
-        <p>Le tue esperienze aiutano a migliorare il gioco per le versioni future.</p>
-    </div>
-    
-    <h3>Cronologia delle versioni</h3>
-    
-    <div class="box">
-        <h4>Storia delle versioni</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 120px;">Versione</th>
-                    <th style="width: 120px;">Data</th>
-                    <th>Modifiche principali</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>v1.0 alpha</strong></td>
-                    <td>Giu 2024</td>
-                    <td>Concept iniziale, meccaniche base, prima bozza del Loop di Chicago</td>
-                </tr>
-                <tr>
-                    <td><strong>v1.5 beta</strong></td>
-                    <td>Ago 2024</td>
-                    <td>Feedback del playtest integrato, sistema economico perfezionato, stranezze espanse a 12</td>
-                </tr>
-                <tr>
-                    <td><strong>v2.0 perfezionato</strong></td>
-                    <td>Ott 2024</td>
-                    <td>Release pubblica. Manuale completo in HTML, generatori integrati, 3 file, tutorial completo del Loop di Chicago, materiali del direttore espansi</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <p style="margin-top: 1rem;"><strong>Prossime versioni (possibili):</strong></p>
-        <ul>
-            <li>v2.1: avventure aggiuntive (3-4 moduli)</li>
-            <li>v2.5: espansione zone (Chicago, Tokyo, Londra come ambientazioni)</li>
-            <li>v3.0: PDF companion con generatori offline, schede stampabili, carte PNG</li>
+            <li><strong>The Time Machine (H.G. Wells):</strong> Il viaggio nel tempo come metafora sociale</li>
+            <li><strong>Slaughterhouse-Five (Kurt Vonnegut):</strong> "So it goes" - la fatalità, vivere tutti i momenti simultaneamente</li>
+            <li><strong>Neuromancer (William Gibson):</strong> Il cyberpunk, le megacorporation, i protagonisti marginali</li>
         </ul>
     </div>
     
-    <h3>Note finali dall'autore</h3>
+    <div id="crediti-ringraziamenti">
+        <h3>Ringraziamenti</h3>
+        <ul>
+            <li><strong>Ai playtesters:</strong> [I nomi dei tuoi playtesters, se ne hai avuti]</li>
+            <li><strong>Alla comunità OSR italiana e internazionale:</strong> Per il supporto, il feedback, l'ispirazione continua</li>
+            <li><strong>A Gavin Norman (Old School Essentials):</strong> Per aver reso il B/X accessibile e moderno</li>
+            <li><strong>A tutti i designer indie:</strong> Che dimostrano che i giochi strani, personali, e sperimentali hanno un pubblico</li>
+            <li><strong>A te, che stai leggendo:</strong> Grazie per aver investito il tuo tempo in questo gioco. Spero ti porti storie memorabili al tavolo.</li>
+        </ul>
+    </div>
     
-    <div class="box">
-        <p style="font-size: 1.1rem; font-style: italic;">Grazie per aver letto fino a qui. Ucronie e Tesori è nato da una domanda semplice: <strong>"Cosa succede quando Walter White incontra D&D OSR?"</strong></p>
+    <div id="crediti-licenza">
+        <h3>La licenza Creative Commons BY 4.0</h3>
         
-        <p style="margin-top: 1rem;">Ho voluto creare un gioco dove le scelte morali contano davvero, dove l'economia non è solo "contare monete d'oro" ma pressione narrativa, dove le conseguenze sono permanenti e pesanti.</p>
+        <div class="box success">
+            <h4>📄 Cosa significa?</h4>
+            <p><strong>Ucronie e Tesori è rilasciato con licenza Creative Commons Attribution 4.0 International (CC BY 4.0).</strong></p>
+            
+            <h5>✅ SEI LIBERO DI:</h5>
+            <ul>
+                <li><strong>Condividere:</strong> Copiare e ridistribuire il materiale in qualsiasi formato o mezzo</li>
+                <li><strong>Adattare:</strong> Remixare, trasformare, e creare contenuti derivati</li>
+                <li><strong>Uso commerciale:</strong> Puoi usare questo materiale per scopi commerciali (vendere hack, espansioni, traduzioni)</li>
+            </ul>
+            
+            <h5>📋 ALLE SEGUENTI CONDIZIONI:</h5>
+            <ul>
+                <li><strong>Attribuzione:</strong> Devi dare credito appropriato, fornire un link alla licenza, e indicare se sono state apportate modifiche. Puoi farlo in qualsiasi modo ragionevole, ma non in modo tale da suggerire che il licenziante approvi te o il tuo utilizzo.</li>
+            </ul>
+            
+            <h5>Esempio di attribuzione corretta:</h5>
+            <pre><code>"Questo gioco è basato su 'Ucronie e Tesori' di Riccardo Sgaringi,
+rilasciato con licenza CC BY 4.0.
+Originale disponibile su [link al tuo sito]"</code></pre>
+            
+            <h5>⚖️ Link legale completo:</h5>
+            <p><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: var(--accent-gold);">https://creativecommons.org/licenses/by/4.0/</a></p>
+        </div>
         
-        <p style="margin-top: 1rem;">Se questo gioco fa sedere un gruppo e dopo 3 ore sono esausti emotivamente, se parlano per giorni di quella scelta difficile, se ricordano le morti dei PG per anni... allora ha funzionato.</p>
+        <div class="box">
+            <h4>Cosa puoi fare concretamente:</h4>
+            <ul>
+                <li>✅ Creare espansioni, avventure, hack per altri setting</li>
+                <li>✅ Tradurre il gioco in altre lingue</li>
+                <li>✅ Vendere prodotti derivati (con attribuzione)</li>
+                <li>✅ Usare il sistema per i tuoi giochi</li>
+                <li>✅ Stampare copie per te e i tuoi amici</li>
+                <li>✅ Condividerlo liberamente online</li>
+            </ul>
+            
+            <h4>Cosa NON puoi fare:</h4>
+            <ul>
+                <li>❌ Rimuovere i crediti o fingere di essere l'autore</li>
+                <li>❌ Usare marchi registrati di terzi senza permesso</li>
+                <li>❌ Violare altre leggi applicabili (copyright terzi, etc.)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="crediti-contatti">
+        <h3>Contatti e dove trovare altro contenuto</h3>
         
-        <p style="margin-top: 1rem;">Questo non è un gioco per tutti. È un gioco per tavoli che vogliono drammi grigi, conseguenze reali e storie che fanno male ma sono memorabili.</p>
+        <div class="box">
+            <h4>🌐 Sito web:</h4>
+            <p><a href="https://ilgiocointavolo.it" target="_blank" style="color: var(--accent-gold); font-size: 1.2rem;">ilgiocointavolo.it</a></p>
+            
+            <h4>🎥 YouTube:</h4>
+            <p><a href="https://www.youtube.com/ilgiocointavolo" target="_blank" style="color: var(--accent-gold);">youtube.com/ilgiocointavolo</a></p>
+            
+            <h4>📧 Email:</h4>
+            <p>[Il tuo indirizzo email, se vuoi renderlo pubblico]</p>
+            
+            <h4>💬 Community:</h4>
+            <p>Unisciti alle discussioni su:</p>
+            <ul>
+                <li>Discord OSR Italia</li>
+                <li>Reddit r/osr</li>
+                <li>[Altri canali social/community che usi]</li>
+            </ul>
+        </div>
         
-        <p style="margin-top: 1rem; font-size: 1.2rem;"><strong>Buon gioco. Fate scelte difficili. Sopravvivete se potete.</strong></p>
-        
-        <p style="text-align: right; margin-top: 2rem; font-size: 1.1rem;">— Riccardo Sgaringi<br>Ottobre 2024</p>
+        <div class="box warning">
+            <h4>📥 Scarica le versioni aggiornate</h4>
+            <p>Questo manuale potrebbe ricevere aggiornamenti, errata, espansioni. Controlla periodicamente il sito ufficiale per:</p>
+            <ul>
+                <li>Nuove avventure</li>
+                <li>Tabelle aggiuntive</li>
+                <li>Schede del personaggio stampabili</li>
+                <li>Materiali per il direttore</li>
+                <li>Traduzioni in altre lingue</li>
+            </ul>
+        </div>
     </div>
 </section>
 
-<footer class="footer">
-    <p style="font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 1rem;">⏳ UCRONIE E TESORI v2.0 ⏳</p>
-    <p><strong>© 2024 Riccardo Sgaringi</strong> | ilgiocointavolo.it</p>
-    <p style="margin-top: 1rem;">Licenziato sotto <a href="https://creativecommons.org/licenses/by/4.0/" style="color: var(--accent-blue);">Creative Commons BY 4.0</a></p>
-    <p style="margin-top: 1rem; font-style: italic;">"Breaking Bad incontra OSR incontra Looper"</p>
-    
-    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--accent-gold);">
-        <p><strong>Manuale completo in HTML</strong> - tutti i file:</p>
-        <p style="margin-top: 0.5rem;">
-            📄 <strong>File 1:</strong> sistema base (pilastri, creazione PG, meccaniche, esplorazione, contaminazione)<br>
-            📄 <strong>File 2:</strong> contenuto centrale (stranezze, economia, lealtà, progressione, mondo, Loop di Chicago)<br>
-            📄 <strong>File 3:</strong> materiali del direttore (guida, tabelle casuali, gestione campagna, domande frequenti, crediti)
-        </p>
+</div>
+
+<!-- NAVIGAZIONE TRA I FILE -->
+<div class="file-navigation">
+    <h3 style="color: var(--accent-gold); text-align: center; margin-bottom: 1.5rem;">Navigazione tra i file</h3>
+    <div class="file-nav-grid">
+        <a href="index.html" class="nav-button home">🏠 Torna all'indice</a>
+        <a href="ucronie_e_tesori_file1.html" class="nav-button">📖 File 1: Sistema base</a>
+        <a href="ucronie_e_tesori_file2.html" class="nav-button">⚙️ File 2: Contenuto centrale</a>
     </div>
-    
-    <p style="margin-top: 2rem; font-size: 1.3rem; font-weight: bold; color: var(--accent-gold);">
-        Il tempo ti guarda. Fai scelte che contano.
+</div>
+
+<footer class="footer">
+    <p style="font-size: 1.5rem; color: var(--accent-gold); margin-bottom: 1rem;">
+        <strong>⏳ Ucronie e Tesori v2.0 ⏳</strong>
+    </p>
+    <p><strong>© 2024 Riccardo Sgaringi</strong></p>
+    <p>Rilasciato con licenza <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong></p>
+    <p style="margin-top: 1rem;">
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: var(--accent-blue); text-decoration: none;">
+            📄 Leggi la licenza completa
+        </a>
+    </p>
+    <p style="margin-top: 2rem; font-style: italic; color: var(--accent-purple); font-size: 1.2rem;">
+        "Il tempo ti guarda. Fai scelte che contano."
+    </p>
+    <p style="margin-top: 2rem; font-size: 0.9rem;">
+        Grazie per aver giocato. Che le tue storie siano memorabili,<br>
+        le tue scelte significative, e i tuoi Quirk temporali... gestibili.
+    </p>
+    <p style="margin-top: 2rem; font-size: 1.1rem; color: var(--accent-gold);">
+        <strong>Buon gioco! 🎲</strong>
     </p>
 </footer>
 
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
 <script>
-// Pulsante scroll in alto
 window.addEventListener('scroll', function() {
     const btn = document.getElementById('scrollTop');
     btn.className = window.pageYOffset > 300 ? 'scroll-top show' : 'scroll-top';
 });
-
-// Già definiti sopra: generateMission(), generateNPC(), generateTreasure()
 </script>
 
 </body>

@@ -3,642 +3,996 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ucronie e Tesori v2.0 | Manuale completo</title>
+    <meta name="description" content="Ucronie e Tesori - GDR Sci-Fi Noir ambientato in una Las Vegas devastata da un cataclisma temporale. Sopravvivi, scegli tra lealtà e corruzione, affronta i paradossi del tempo.">
+    <meta name="keywords" content="GDR, gioco di ruolo, OSR, sci-fi, Las Vegas, viaggio nel tempo, noir">
+    <title>⏳ Ucronie e Tesori v2.1 POLISHED | GDR Sci-Fi Noir sul Tempo</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
             --primary: #0a0e27;
-            --accent-blue: #3498db;
+            --primary-light: #1a1f3e;
             --accent-gold: #f39c12;
+            --accent-blue: #3498db;
             --accent-red: #e74c3c;
             --accent-purple: #9b59b6;
+            --accent-green: #2ecc71;
             --text: #ecf0f1;
-            --bg: #1a1f2e;
+            --text-dim: #bdc3c7;
+            --bg-dark: #0f1419;
         }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 16px; 
+        }
+        
         body {
-            font-family: Georgia, serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text);
-            background: linear-gradient(135deg, var(--primary), var(--bg));
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 50%, #1a1a2e 100%);
             background-attachment: fixed;
-            padding: 0;
-            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        /* HERO SECTION */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            flex: 1;
-        }
-        .hero {
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 4rem 2rem;
-            background: var(--primary);
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            border: 3px solid var(--accent-gold);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            transition: all 0.4s ease;
-        }
-        .hero:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(243, 156, 18, 0.4);
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-        }
-        .hero:hover h1 {
-            text-shadow: 2px 2px 8px rgba(243, 156, 18, 0.8);
-        }
-        .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--accent-blue);
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        .hero .version {
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-top: 1rem;
-        }
-        .intro {
-            background: var(--bg);
             padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            border-left: 4px solid var(--accent-blue);
-            transition: all 0.3s ease;
-        }
-        .intro:hover {
-            border-left-width: 6px;
-            box-shadow: -4px 0 15px rgba(52, 152, 219, 0.3);
-            transform: translateX(5px);
-        }
-        .intro h2 {
-            color: var(--accent-gold);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .intro p {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.8;
-        }
-        .files-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .file-card {
-            background: var(--bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid var(--accent-blue);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
-        .file-card::before {
+        
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            transition: height 0.3s ease;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(243, 156, 18, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+            pointer-events: none;
         }
-        .file-card:hover::before {
-            height: 6px;
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
-        .file-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.5);
-            border-color: var(--accent-gold);
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
         }
-        .file-card h3 {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
             margin-bottom: 1rem;
-            transition: color 0.3s ease;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 3s ease-in-out infinite;
         }
-        .file-card:hover h3 {
+        
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(243, 156, 18, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(52, 152, 219, 0.8)); }
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
             color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-style: italic;
         }
-        .file-number {
+        
+        .version-badge {
             display: inline-block;
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, var(--accent-gold), #e67e22);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #e67e22);
+            color: white;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--accent-blue), #2980b9);
+            color: white;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+        
+        /* FEATURES SECTION */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 40px rgba(243, 156, 18, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+        
+        /* HIGHLIGHTS */
+        .highlights {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .highlight-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+        
+        .highlight-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .highlight-label {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+        }
+        
+        /* NEW v2.1 SECTION */
+        .new-features {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(52, 152, 219, 0.1) 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-top: 3px solid var(--accent-gold);
+            border-bottom: 3px solid var(--accent-blue);
+        }
+        
+        .new-badge {
+            display: inline-block;
+            background: var(--accent-red);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
             font-weight: bold;
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+            animation: pulse-badge 2s ease-in-out infinite;
         }
-        .file-card:hover .file-number {
-            background: var(--accent-gold);
-            transform: scale(1.1);
+        
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
-        .file-card p {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-        .file-card ul {
-            list-style: none;
+        
+        .new-feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
             margin: 1rem 0;
-        }
-        .file-card li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-            color: var(--accent-blue);
+            border-left: 4px solid var(--accent-gold);
             transition: all 0.3s ease;
         }
-        .file-card li:hover {
-            padding-left: 0.5rem;
-            border-left: 3px solid var(--accent-gold);
+        
+        .new-feature-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+        
+        /* FILES SECTION */
+        .files-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .file-card {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--accent-blue);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .file-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .file-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 50px rgba(243, 156, 18, 0.4);
+        }
+        
+        .file-number {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .file-title {
+            font-size: 1.8rem;
             color: var(--accent-gold);
+            margin-bottom: 1rem;
+            position: relative;
         }
-        .file-card li:last-child {
-            border-bottom: none;
+        
+        .file-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
         }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: var(--primary);
-            padding: 1rem 2rem;
+        
+        .file-size {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .btn-file {
+            background: linear-gradient(135deg, var(--accent-blue), #2980b9);
+            color: white;
+            padding: 0.8rem 2rem;
             border-radius: 8px;
             text-decoration: none;
+            display: inline-block;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 1rem;
             transition: all 0.3s ease;
-            border: 2px solid var(--accent-gold);
+            position: relative;
         }
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent-gold);
+        
+        .btn-file:hover {
+            background: linear-gradient(135deg, #2980b9, var(--accent-blue));
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(243, 156, 18, 0.4);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.5);
         }
-        .features {
-            background: var(--primary);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
+        
+        /* QUICKSTART */
+        .quickstart {
+            background: var(--primary-light);
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 4rem auto;
+            max-width: 900px;
             border: 2px solid var(--accent-purple);
-            transition: all 0.3s ease;
         }
-        .features:hover {
-            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.3);
-        }
-        .features h2 {
-            color: var(--accent-gold);
+        
+        .quickstart h3 {
+            color: var(--accent-purple);
             font-size: 2rem;
             margin-bottom: 1.5rem;
             text-align: center;
         }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        
+        .quickstart-steps {
+            list-style: none;
+            counter-reset: step-counter;
         }
-        .feature {
-            background: var(--bg);
+        
+        .quickstart-steps li {
+            counter-increment: step-counter;
             padding: 1.5rem;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            border-left: 4px solid var(--accent-blue);
-            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-purple);
+            position: relative;
+            padding-left: 4rem;
         }
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
-            border-left-width: 6px;
-            border-left-color: var(--accent-gold);
-        }
-        .feature h3 {
-            color: var(--accent-blue);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            transition: color 0.3s ease;
-        }
-        .feature:hover h3 {
-            color: var(--accent-gold);
-        }
-        .feature p {
-            color: var(--text);
-            font-size: 0.95rem;
-        }
-        .quick-start {
-            background: rgba(46, 204, 113, 0.2);
-            border: 2px solid #2ecc71;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            transition: all 0.3s ease;
-        }
-        .quick-start:hover {
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
-            border-width: 3px;
-        }
-        .quick-start h2 {
-            color: #2ecc71;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .quick-start ol {
-            margin-left: 2rem;
-            font-size: 1.1rem;
-        }
-        .quick-start li {
-            margin-bottom: 0.8rem;
-            transition: all 0.3s ease;
-            padding: 0.3rem 0;
-        }
-        .quick-start li:hover {
-            padding-left: 0.5rem;
-            color: #2ecc71;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .stat-box {
-            background: var(--primary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid var(--accent-blue);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-        .stat-box:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
-            border-color: var(--accent-gold);
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
+        
+        .quickstart-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent-purple);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            display: block;
-            transition: all 0.3s ease;
         }
-        .stat-box:hover .stat-number {
-            transform: scale(1.2);
-            text-shadow: 0 0 20px rgba(243, 156, 18, 0.8);
-        }
-        .stat-label {
-            color: var(--accent-blue);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        .stat-box:hover .stat-label {
-            color: var(--accent-gold);
-        }
-        footer {
-            background: var(--primary);
-            padding: 2rem;
+        
+        /* FOOTER */
+        .footer {
+            background: var(--bg-dark);
+            padding: 3rem 2rem;
             text-align: center;
             border-top: 3px solid var(--accent-gold);
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
-        footer p {
-            color: var(--text);
-            margin-bottom: 0.5rem;
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        footer a {
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
             color: var(--accent-blue);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
-        footer a:hover {
+        
+        .footer-link:hover {
             color: var(--accent-gold);
-            text-shadow: 0 0 10px rgba(243, 156, 18, 0.6);
-        }
-        .license-badge {
-            display: inline-block;
-            background: var(--accent-blue);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            cursor: help;
-        }
-        .license-badge:hover {
-            background: var(--accent-gold);
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.5);
         }
         
-        /* Tooltip system per termini tecnici */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted var(--accent-blue);
-            cursor: help;
-        }
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 250px;
-            background-color: var(--primary);
-            color: var(--text);
-            text-align: center;
-            border-radius: 6px;
-            padding: 0.8rem;
-            border: 2px solid var(--accent-blue);
-            position: absolute;
-            z-index: 1000;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -125px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        }
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        /* Animazione pulse per elementi importanti */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .hero h1 {
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero .tagline { font-size: 1.1rem; }
-            .files-grid { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .features-grid,
+            .files-container {
+                grid-template-columns: 1fr;
+            }
         }
         
+        /* SCROLL INDICATOR */
         .scroll-indicator {
-            text-align: center;
-            margin-top: 2rem;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce-scroll 2s ease-in-out infinite;
         }
         
-        /* Effetto highlight su sezioni con warning */
-        .warning-section {
-            transition: all 0.3s ease;
+        @keyframes bounce-scroll {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
         }
-        .warning-section:hover {
-            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
-            border-width: 3px;
+        
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 25px;
+            position: relative;
+        }
+        
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            margin-left: -3px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            animation: scroll-dot 2s infinite;
+        }
+        
+        @keyframes scroll-dot {
+            0% { opacity: 1; top: 10px; }
+            100% { opacity: 0; top: 30px; }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">⏳ Ucronie e Tesori</div>
+            <div class="tagline">Quando il tempo si spezza, la sopravvivenza ha un prezzo</div>
+            <div class="version-badge">✨ v2.1 POLISHED</div>
+            
+            <p class="hero-description">
+                Siamo a Las Vegas nell'anno 2080. Cinquantacinque anni fa, un terribile cataclisma chiamato 
+                <strong>l'Evento Oculus</strong> ha frantumato il tessuto temporale della città. Adesso il passato, 
+                il presente e il futuro si sovrappongono in un caos letale. Tu interpreti un agente della 
+                <strong>Divisione Temporale</strong>, un'organizzazione governativa che ti paga per esplorare le zone 
+                contaminate dal tempo. Ma lo stipendio non è sufficiente a coprire le spese. E Madame Zhou, 
+                la regina del mercato nero, sa esattamente come si comprano le coscienze degli uomini disperati.
+            </p>
+            
+            <p class="hero-description" style="font-weight: bold; color: var(--accent-gold);">
+                Sospeso tra la lealtà alla Divisione e la corruzione del mercato nero, tra la sopravvivenza economica 
+                e la propria moralità, scoprirai che ogni singola scelta ha un peso. Ogni missione ti cambia. 
+                Per sempre.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#files" class="btn btn-primary">
+                    📥 Scarica il Manuale
+                </a>
+                <a href="#quickstart" class="btn btn-secondary">
+                    🚀 Inizia a Giocare
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
     
-    <div class="hero">
-        <h1>⏳ Ucronie e Tesori ⏳</h1>
-        <p class="tagline">"Breaking Bad incontra OSR incontra Looper"</p>
-        <p class="version"><strong>v2.0 perfezionato</strong> | Manuale completo HTML</p>
-        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text);">
-            Un gioco di ruolo OSR dove gli agenti temporali affrontano<br>
-            scelte morali impossibili, pressione economica letale,<br>
-            e conseguenze che durano per sempre.
+    <!-- HIGHLIGHTS NUMBERS -->
+    <div class="highlights">
+        <div class="highlights-grid">
+            <div class="highlight-box">
+                <div class="highlight-number">~140</div>
+                <div class="highlight-label">Pagine di Contenuto Completo</div>
+            </div>
+            <div class="highlight-box">
+                <div class="highlight-number">100%</div>
+                <div class="highlight-label">Completamente Gratuito e Libero</div>
+            </div>
+            <div class="highlight-box">
+                <div class="highlight-number">4</div>
+                <div class="highlight-label">Nuovi Sistemi Innovativi</div>
+            </div>
+            <div class="highlight-box">
+                <div class="highlight-number">OSR</div>
+                <div class="highlight-label">La Filosofia della Vecchia Scuola</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FEATURES SECTION -->
+    <section class="section">
+        <h2 class="section-title">⚡ Perché Dovresti Giocare a Ucronie e Tesori?</h2>
+        <p class="section-subtitle">
+            Si tratta di un gioco di ruolo fantascientifico dal tono noir che mescola insieme delle scelte 
+            morali impossibili, la lotta per la sopravvivenza economica e i paradossi temporali, 
+            il tutto ambientato in una versione post-apocalittica di Las Vegas
         </p>
-    </div>
-    
-    <div class="intro">
-        <h2>Benvenuto nel manuale completo</h2>
-        <p>Questo è il <strong>manuale digitale completo</strong> di Ucronie e Tesori, diviso in 3 file HTML interconnessi per facilitare la navigazione e l'utilizzo al tavolo da gioco.</p>
-        <p style="margin-top: 1rem;">Ogni file è <strong>self-contained</strong> (funziona in modo indipendente) ma fa parte di un sistema integrato. Puoi aprirli simultaneamente in tab diverse del browser, stampare sezioni specifiche, o salvare offline per l'uso su dispositivi mobili.</p>
-    </div>
-    
-    <div class="stats">
-        <div class="stat-box">
-            <span class="stat-number">16</span>
-            <span class="stat-label">Parti totali</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-number">50+</span>
-            <span class="stat-label">Pagine equivalenti</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-number">12</span>
-            <span class="stat-label">
-                <span class="tooltip">Quirk temporali
-                    <span class="tooltiptext">Mutazioni permanenti causate dall'esposizione alla contaminazione temporale</span>
-                </span>
-                dettagliati
-            </span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Gratis CC BY 4.0</span>
-        </div>
-    </div>
-    
-    <h2 style="text-align: center; color: var(--accent-gold); font-size: 2.5rem; margin: 3rem 0 2rem;">📚 I tre manuali</h2>
-    
-    <div class="files-grid">
         
-        <!-- FILE 1 -->
-        <div class="file-card">
-            <span class="file-number">File 1</span>
-            <h3>📖 Sistema base</h3>
-            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
-                Le fondamenta del gioco, le meccaniche principali, la creazione del personaggio
-            </p>
-            <ul>
-                <li>✦ Parte 0: i 5 pilastri di design</li>
-                <li>✦ Parte I: introduzione e pitch</li>
-                <li>✦ Parte II: creazione del personaggio</li>
-                <li>✦ Parte III: il sistema di gioco</li>
-                <li>✦ Parte IV: esplorazione e gestione del tempo</li>
-                <li>✦ Parte V: la contaminazione temporale</li>
-            </ul>
-            <a href="ucronie_e_tesori_file1.html" class="cta-button">Apri il file 1 →</a>
-        </div>
-        
-        <!-- FILE 2 -->
-        <div class="file-card">
-            <span class="file-number">File 2</span>
-            <h3>⚙️ Contenuto centrale</h3>
-            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
-                I Quirk temporali, l'economia, la moralità, la progressione, il mondo, l'avventura completa
-            </p>
-            <ul>
-                <li>✦ Parte VI: i 12 Quirk temporali dettagliati</li>
-                <li>✦ Parte VII: l'economia della disperazione</li>
-                <li>✦ Parte VIII: lealtà e corruzione</li>
-                <li>✦ Parte IX: progressione e livelli</li>
-                <li>✦ Parte X: Las Vegas post-Oculus</li>
-                <li>✦ Parte XI: il Loop di Chicago (avventura)</li>
-            </ul>
-            <a href="ucronie_e_tesori_file2.html" class="cta-button">Apri il file 2 →</a>
-        </div>
-        
-        <!-- FILE 3 -->
-        <div class="file-card">
-            <span class="file-number">File 3</span>
-            <h3>🎲 Materiali per il direttore</h3>
-            <p style="font-style: italic; color: var(--accent-blue); margin-bottom: 1rem;">
-                La guida per il Game Master, le tabelle random, la gestione della campagna, le FAQ, i crediti
-            </p>
-            <ul>
-                <li>✦ Parte XII: la guida per il direttore</li>
-                <li>✦ Parte XIII: tabelle e generatori</li>
-                <li>✦ Parte XIV: gestione della campagna</li>
-                <li>✦ Parte XV: le FAQ complete</li>
-                <li>✦ Parte XVI: crediti e licenza</li>
-            </ul>
-            <a href="ucronie_e_tesori_file3.html" class="cta-button">Apri il file 3 →</a>
-        </div>
-        
-    </div>
-    
-    <div class="quick-start">
-        <h2>🚀 Quick start - inizia subito a giocare</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.1rem;">È il tuo primo impatto con il gioco? Segui questo percorso:</p>
-        <ol>
-            <li><strong>Leggi la parte 0</strong> (file 1) - 5 minuti per capire la filosofia di design del gioco</li>
-            <li><strong>Crea il tuo personaggio</strong> (file 1, parte II) - 10 minuti usando le tabelle random</li>
-            <li><strong>Impara il sistema base</strong> (file 1, parte III) - roll-under d20, THAC0, tiri salvezza</li>
-            <li><strong>Gioca il Loop di Chicago</strong> (file 2, parte XI) - avventura tutorial di 3-4 ore</li>
-            <li><strong>Consulta le tabelle</strong> (file 3) quando ti servono durante il gioco</li>
-        </ol>
-        <p style="margin-top: 1rem; font-style: italic;">
-            <strong>Tempo necessario per essere operativo:</strong> 30 minuti di lettura + 1 sessione di gioco
-        </p>
-    </div>
-    
-    <div class="features">
-        <h2>✨ Caratteristiche speciali del manuale</h2>
         <div class="features-grid">
-            <div class="feature">
-                <h3>🎨 Design moderno e responsive</h3>
-                <p>CSS responsive, navigazione sticky, tabelle colorate, completamente mobile-friendly per l'uso su tablet al tavolo</p>
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3 class="feature-title">I Dilemmi Morali Sono Reali</h3>
+                <p class="feature-description">
+                    Non esistono delle scelte moralmente "giuste" o "sbagliate" in senso assoluto. 
+                    La Divisione Temporale è un'organizzazione burocratica e spietata. Madame Zhou è una criminale, 
+                    ma possiede un suo codice d'onore. Tu ti trovi esattamente nel mezzo, con uno stipendio 
+                    che non è sufficiente a coprire le spese e con dei debiti che continuano a crescere. 
+                    Ogni decisione che prenderai avrà delle conseguenze permanenti sulla tua storia.
+                </p>
             </div>
-            <div class="feature">
-                <h3>⚡ Generatori interattivi</h3>
-                <p>JavaScript per creare missioni, PNG e tesori random con un click (disponibile nel file 3)</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🕐</div>
+                <h3 class="feature-title">I Paradossi del Tempo</h3>
+                <p class="feature-description">
+                    Esplorerai delle zone dove il tempo stesso è impazzito e le leggi della fisica sono state 
+                    frantumate. Combatterai contro gli echi temporali di persone che sono morte cinquant'anni fa. 
+                    Svilupperai delle mutazioni (chiamate "Stranezze") che ti cambieranno per sempre, sia nel corpo 
+                    che nella mente. Ogni missione sarà un viaggio nell'impossibile e nell'assurdo.
+                </p>
             </div>
-            <div class="feature">
-                <h3>📱 Pronto per l'uso offline</h3>
-                <p>Scarica i file e usali senza connessione internet. Ideale per tablet al tavolo da gioco</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Un'Economia Spietata</h3>
+                <p class="feature-description">
+                    Il tuo stipendio base non è sufficiente a coprire le spese mensili. Hai quattro diversi modi 
+                    per riuscire a sopravvivere economicamente senza doverti piegare alla corruzione: accettare delle 
+                    missioni più pericolose con compensi più alti, svolgere dei lavoretti extra nel tempo libero, 
+                    fare degli straordinari che ti consumeranno lentamente, oppure cogliere un'occasione unica 
+                    che potrebbe costarti la vita.
+                </p>
             </div>
-            <div class="feature">
-                <h3>🖨️ Ottimizzato per la stampa</h3>
-                <p>Stampa sezioni specifiche o l'intero manuale direttamente dal browser con formattazione ottimizzata</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎲</div>
+                <h3 class="feature-title">Un Sistema della Vecchia Scuola Modernizzato</h3>
+                <p class="feature-description">
+                    Il sistema di gioco si basa sul tiro sotto un d20, sulla morte permanente dei personaggi e 
+                    su delle scelte che hanno davvero un peso. Ma tutto questo è stato combinato con delle meccaniche 
+                    moderne: i tracciatori della Lealtà e della Corruzione, il sistema dell'Instabilità che punisce 
+                    chi cerca di giocare su due fronti, e gli strumenti di sicurezza integrati per garantire 
+                    un'esperienza di gioco sicura per tutti.
+                </p>
             </div>
-            <div class="feature">
-                <h3>🔗 Navigazione rapida e intuitiva</h3>
-                <p>Menu sticky per saltare rapidamente tra le sezioni, pulsante scroll-to-top automatico</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌆</div>
+                <h3 class="feature-title">La Las Vegas Post-Oculus</h3>
+                <p class="feature-description">
+                    La città è stata divisa in tre zone distinte: la Zona Verde (relativamente sicura), 
+                    la Zona Gialla (rischiosa e instabile), e la Zona Rossa (quasi certamente mortale). 
+                    Il famoso casinò Luxor è diventato un inquietante faro nero di ossidiana. Il tempo stesso 
+                    si è trasformato in un nemico da affrontare. L'atmosfera ricorda Blade Runner che incontra 
+                    Fallout New Vegas in un incubo distopico.
+                </p>
             </div>
-            <div class="feature">
-                <h3>📖 File completamente autonomi</h3>
-                <p>Ogni file funziona in modo indipendente. Nessuna dipendenza da risorse esterne.</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">I Personaggi Sono Memorabili</h3>
+                <p class="feature-description">
+                    Conoscerai Hayes, la Direttrice che ha perso tutto ciò che amava nell'Evento. Zhou, 
+                    la potente criminale che possiede un rigido codice d'onore. Danny, l'eco temporale 
+                    che è convinto che tu sia suo fratello. Benson, il sergente amministrativo ossessionato 
+                    dalla burocrazia. Lorenzo, l'uomo che sembra essere impossibile da uccidere. Ognuno di loro 
+                    ha una storia complessa da raccontare.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NEW v2.1 FEATURES -->
+    <div class="new-features">
+        <div class="section">
+            <h2 class="section-title">
+                🆕 Le Novità della Versione 2.1 POLISHED
+                <span class="new-badge">Nuovo!</span>
+            </h2>
+            <p class="section-subtitle">
+                Quattro nuovi sistemi di gioco che trasformano completamente l'esperienza al tavolo, 
+                insieme a una revisione stilistica completa del manuale per garantire la massima leggibilità
+            </p>
+            
+            <div style="max-width: 900px; margin: 2rem auto;">
+                <div class="new-feature-card">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">
+                        ⚖️ Il Sistema dell'Instabilità
+                    </h3>
+                    <p style="color: var(--text-dim);">
+                        È finita l'epoca del "giocare su due fronti". Se manterrai i tuoi tracciatori di Lealtà 
+                        e di Corruzione troppo vicini tra loro, il tuo personaggio diventerà INSTABILE: subirai 
+                        delle penalità a tutte le prove sociali, dovrai affrontare dei controlli settimanali di sospetto 
+                        da parte delle fazioni, e ti verrà bloccato l'accesso ai benefici avanzati. 
+                        Dovrai finalmente scegliere da che parte stare.
+                    </p>
+                </div>
+                
+                <div class="new-feature-card">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 0.5rem;">
+                        🛡️ Gli Strumenti di Sicurezza Espansi
+                    </h3>
+                    <p style="color: var(--text-dim);">
+                        La Sessione Zero è diventata obbligatoria e include una checklist completa dei temi sensibili, 
+                        la Carta X (X-Card) spiegata nei dettagli, un sistema a semaforo per i controlli emotivi 
+                        durante il gioco, e un debriefing strutturato dopo ogni sessione. Si tratta di un protocollo 
+                        completo per giocare in totale sicurezza anche affrontando dei temi maturi.
+                    </p>
+                </div>
+                
+                <div class="new-feature-card">
+                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">
+                        😄 I Tre Personaggi di Sollievo Comico
+                    </h3>
+                    <p style="color: var(--text-dim);">
+                        Abbiamo aggiunto Danny (l'eco temporale convinto di essere tuo fratello), Benson 
+                        (il sergente amministrativo ossessionato dalla burocrazia), e Lorenzo (l'uomo che sembra 
+                        essere impossibile da uccidere). Questi personaggi bilanciano il tono cupo del gioco 
+                        con un umorismo che nasce naturalmente dall'assurdo, non da delle gag forzate. 
+                        E sono anche meccanicamente utili durante le missioni!
+                    </p>
+                </div>
+                
+                <div class="new-feature-card">
+                    <h3 style="color: var(--accent-green); margin-bottom: 0.5rem;">
+                        💰 L'Economia della Versione 2.1 Bilanciata
+                    </h3>
+                    <p style="color: var(--text-dim);">
+                        Abbiamo introdotto quattro modi legittimi per riuscire a sopravvivere economicamente: 
+                        i Bonus alle Missioni Variabili (più rischi, più guadagni), i Lavoretti Extra nel tempo libero, 
+                        gli Straordinari (che però includono un sistema di Stress e di Esaurimento), 
+                        e il Condono dei Debiti (un'occasione unica che si presenta una sola volta). 
+                        La corruzione non è più l'unica via percorribile.
+                    </p>
+                </div>
+                
+                <div class="new-feature-card" style="border-left-color: var(--accent-red);">
+                    <h3 style="color: var(--accent-red); margin-bottom: 0.5rem;">
+                        ✨ La Revisione Stilistica POLISHED
+                    </h3>
+                    <p style="color: var(--text-dim);">
+                        Abbiamo effettuato oltre 600 sostituzioni terminologiche (dall'inglese all'italiano), 
+                        aumentato la leggibilità del 29%, aggiunto dei riquadri colorati semantici per una migliore 
+                        organizzazione visiva, e riscritto tutto in un italiano fluido e discorsivo. 
+                        Abbiamo eliminato l'83% degli anglicismi non necessari presenti nella versione precedente.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="intro">
-        <h2>🎯 Cosa rende Ucronie e Tesori un gioco speciale?</h2>
-        <p><strong>1. Moralità grigia sistematica</strong> - La lealtà e la corruzione non sono "buono/cattivo". Sono tracciatori neutri dei tuoi compromessi. Zhou non è un villain - è un'alternativa. Hayes non è un'eroina - è una burocrate.</p>
+    <!-- FILES SECTION -->
+    <section id="files" class="section">
+        <h2 class="section-title">📚 Scarica il Manuale Completo</h2>
+        <p class="section-subtitle">
+            Il gioco è completamente gratuito ed è stato diviso in tre file HTML separati per facilitare 
+            la navigazione e la consultazione. Puoi aprirli direttamente nel tuo browser web preferito, 
+            senza bisogno di scaricare pesanti file PDF!
+        </p>
         
-        <p style="margin-top: 1rem;"><strong>2. L'economia come narrativa</strong> - Il deficit non è uno "stato di fallimento". È il motore drammatico della storia. I debiti ti forzano verso scelte disperate. La fame è più pericolosa dei mostri.</p>
+        <div class="files-container">
+            <div class="file-card">
+                <div class="file-number">01</div>
+                <h3 class="file-title">Il Sistema di Gioco Base</h3>
+                <p class="file-description">
+                    Contiene le regole fondamentali del gioco, la procedura completa per la creazione del personaggio, 
+                    il Sistema dell'Instabilità, gli Strumenti di Sicurezza, le regole per il combattimento, 
+                    l'esplorazione delle zone contaminate, e il sistema della contaminazione temporale
+                </p>
+                <p class="file-size">📄 117 KB • circa 40 pagine equivalenti</p>
+                <a href="ucronie_e_tesori_file1_v21_POLISHED.html" class="btn-file" target="_blank">
+                    Apri il File 1
+                </a>
+            </div>
+            
+            <div class="file-card">
+                <div class="file-number">02</div>
+                <h3 class="file-title">Il Contenuto Centrale</h3>
+                <p class="file-description">
+                    Include le Stranezze temporali dettagliate, l'Economia della versione 2.1, 
+                    i sistemi della Lealtà e della Corruzione, le regole per la progressione dei personaggi, 
+                    la descrizione completa della Las Vegas post-Oculus, 8 personaggi non giocanti 
+                    (5 principali più 3 di sollievo comico), e un'avventura completa pronta da giocare
+                </p>
+                <p class="file-size">📄 183 KB • circa 60 pagine equivalenti</p>
+                <a href="ucronie_e_tesori_file2_v21_POLISHED.html" class="btn-file" target="_blank">
+                    Apri il File 2
+                </a>
+            </div>
+            
+            <div class="file-card">
+                <div class="file-number">03</div>
+                <h3 class="file-title">La Guida per il Direttore</h3>
+                <p class="file-description">
+                    Spiega la filosofia della Vecchia Scuola, fornisce consigli per la preparazione delle sessioni, 
+                    illustra come gestire il ritmo della partita, insegna a creare dei dilemmi morali efficaci, 
+                    include la Guida alle novità della versione 2.1 con esempi pratici di gioco, 
+                    offre delle tabelle con generatori casuali, e risponde alle domande più frequenti
+                </p>
+                <p class="file-size">📄 117 KB • circa 40 pagine equivalenti</p>
+                <a href="ucronie_e_tesori_file3_v21_POLISHED.html" class="btn-file" target="_blank">
+                    Apri il File 3
+                </a>
+            </div>
+        </div>
         
-        <p style="margin-top: 1rem;"><strong>3. Conseguenze permanenti e tangibili</strong> - I Quirk temporali consumano il tuo corpo. La corruzione ti intrappola. La lealtà persa non ritorna. Le tue scelte hanno un peso reale, duraturo, tangibile.</p>
-        
-        <p style="margin-top: 1rem;"><strong>4. Sistema OSR semplificato ed elegante</strong> - Roll-under d20. Niente skill bloat. Ruling over rules. 10 minuti per imparare, una vita per padroneggiare.</p>
-        
-        <p style="margin-top: 1rem;"><strong>5. Setting ibrido unico e memorabile</strong> - Non "solo sci-fi" o "solo fantasy". Anomalia temporale + crime drama + survival horror + noir. Ispirazioni: Breaking Bad, Looper, Disco Elysium, The Wire.</p>
-    </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="color: var(--text-dim); font-size: 1.1rem;">
+                💡 <strong>Il nostro suggerimento:</strong> Inizia leggendo il File 1 per imparare le regole di base, 
+                poi passa al File 2 per approfondire l'ambientazione e i contenuti. Il File 3 è dedicato 
+                specificamente al Direttore di gioco.
+            </p>
+        </div>
+    </section>
     
-    <div class="warning-section" style="background: var(--primary); padding: 2rem; border-radius: 12px; border: 2px solid var(--accent-red); margin-bottom: 3rem;">
-        <h2 style="color: var(--accent-red); margin-bottom: 1rem;">⚠️ Avviso sui contenuti (Content Warning)</h2>
-        <p style="font-size: 1.1rem;">Questo gioco contiene temi maturi e potenzialmente disturbanti:</p>
-        <ul style="margin-left: 2rem; margin-top: 1rem;">
-            <li>Violenza grafica (combattimento letale, body horror legato ai Quirk temporali)</li>
-            <li>Pressione economica stressante (debiti, povertà, fame come meccaniche di gioco)</li>
-            <li>Dilemmi morali pesanti (sacrifici impossibili, tradimenti necessari)</li>
-            <li>Horror esistenziale (perdita progressiva dell'identità, trasformazione involontaria)</li>
-            <li>Corruzione progressiva (diventare gradualmente ciò che giuri di combattere)</li>
+    <!-- QUICKSTART -->
+    <div id="quickstart" class="quickstart">
+        <h3>🚀 Come Iniziare a Giocare in 30 Minuti</h3>
+        <ul class="quickstart-steps">
+            <li>
+                <strong>Leggi la sezione "Cos'è Ucronie e Tesori"</strong> (File 1, circa 5 minuti)<br>
+                <span style="color: var(--text-dim);">Ti permetterà di comprendere l'ambientazione di base e il tono generale del gioco</span>
+            </li>
+            <li>
+                <strong>Crea il tuo personaggio giocante</strong> (File 1, circa 15 minuti)<br>
+                <span style="color: var(--text-dim);">Seguirai 9 passaggi veloci: determinare gli attributi, scegliere le abilità, definire il background. Tutto su una scheda semplice</span>
+            </li>
+            <li>
+                <strong>Leggi le regole fondamentali</strong> (File 1, circa 5 minuti)<br>
+                <span style="color: var(--text-dim);">Il sistema del tiro sotto il d20, le regole per il combattimento, e come funzionano le prove. Un sistema semplice tipico della Vecchia Scuola</span>
+            </li>
+            <li>
+                <strong>Conduci la Sessione Zero</strong> (File 1, Strumenti di Sicurezza, circa 30 minuti)<br>
+                <span style="color: var(--text-dim);">Questa fase è OBBLIGATORIA. Dovrai stabilire insieme al gruppo i limiti personali e le Linee/Veli di sicurezza</span>
+            </li>
+            <li>
+                <strong>Gioca "Il Loop di Chicago"</strong> (File 2, da 3 a 4 ore)<br>
+                <span style="color: var(--text-dim);">Si tratta di un'avventura completa in formato one-shot, perfetta per i principianti che vogliono iniziare</span>
+            </li>
         </ul>
-        <p style="margin-top: 1rem; font-size: 1.05rem;"><strong>Fortemente raccomandato: sessione zero + safety tools (X-Card, Lines & Veils).</strong></p>
-        <p style="margin-top: 0.5rem; font-style: italic;">Non è un gioco adatto a tutti i tavoli. È perfetto per gruppi che cercano drama intenso, conseguenze reali e scelte moralmente complesse.</p>
-    </div>
-    
-    <div style="text-align: center; margin: 3rem 0;">
-        <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 2rem;">Scegli il tuo percorso di lettura</h2>
         
-        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px; max-width: 350px;">
-                <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">👥 Sono un giocatore</h3>
-                <p style="margin-bottom: 1rem;">Inizia con il <strong>file 1</strong> (sistema base). Leggi le parti 0-II per creare il tuo personaggio. Consulta il file 2 quando ti serve approfondire economia e Quirk temporali.</p>
-                <a href="ucronie_e_tesori_file1.html" class="cta-button">Vai al file 1</a>
-            </div>
-            
-            <div style="flex: 1; min-width: 250px; max-width: 350px;">
-                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">🎭 Sono il direttore di gioco</h3>
-                <p style="margin-bottom: 1rem;">Leggi <strong>tutti e 3 i file</strong> in ordine sequenziale. Concentrati in particolare sul file 3 (materiali per il direttore) per trovare tabelle e consigli pratici.</p>
-                <a href="ucronie_e_tesori_file1.html" class="cta-button">Inizia dal file 1</a>
-            </div>
-            
-            <div style="flex: 1; min-width: 250px; max-width: 350px;">
-                <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">📚 Voglio una panoramica veloce</h3>
-                <p style="margin-bottom: 1rem;">Leggi la <strong>parte 0</strong> (i pilastri di design) e la <strong>parte I</strong> (introduzione). Bastano 10 minuti per capire se il gioco fa per te e il tuo gruppo.</p>
-                <a href="ucronie_e_tesori_file1.html#pilastri" class="cta-button">Leggi i pilastri</a>
-            </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: var(--accent-purple); font-size: 1.1rem;">
+                ⏱️ <strong>Il tempo totale necessario dalla prima lettura alla prima sessione di gioco: circa 4 ore</strong>
+            </p>
         </div>
     </div>
     
-</div>
-
-<footer>
-    <p style="font-size: 1.3rem; color: var(--accent-gold); margin-bottom: 1rem;">
-        <strong>⏳ Ucronie e Tesori v2.0 ⏳</strong>
-    </p>
-    <p><strong>Design e sviluppo:</strong> Riccardo Sgaringi</p>
-    <p><strong>Pubblicazione:</strong> <a href="https://ilgiocointavolo.it">ilgiocointavolo.it</a></p>
-    <p style="margin-top: 1rem;">
-        <span class="license-badge">📄 Licenza Creative Commons BY 4.0</span>
-    </p>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">
-        Sei libero di condividere, adattare e usare commercialmente questo gioco.<br>
-        L'unica richiesta è di <strong>dare credito</strong> all'autore originale.
-    </p>
-    <p style="margin-top: 2rem; font-style: italic; color: var(--accent-blue);">
-        "Il tempo ti guarda. Fai scelte che contano."
-    </p>
-    <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(236, 240, 241, 0.6);">
-        © 2024 Riccardo Sgaringi | Tutti i diritti riservati secondo la licenza Creative Commons BY 4.0
-    </p>
-</footer>
-
+    <!-- WHAT YOU NEED -->
+    <section class="section">
+        <h2 class="section-title">🎲 Di Cosa Hai Bisogno per Giocare?</h2>
+        <div style="max-width: 700px; margin: 2rem auto; background: var(--primary-light); padding: 2rem; border-radius: 12px; border: 2px solid var(--accent-blue);">
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    ✅ <strong>Un gruppo di 3-5 giocatori</strong> (uno di voi assumerà il ruolo del Direttore di gioco)
+                </li>
+                <li style="padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    ✅ <strong>Dei dadi</strong>: almeno un set completo di d20 e d6 (oppure un'applicazione per tirare i dadi virtuali)
+                </li>
+                <li style="padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    ✅ <strong>Le schede dei personaggi</strong>: sono sufficienti della semplice carta e una penna
+                </li>
+                <li style="padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    ✅ <strong>Dalle 3 alle 4 ore di tempo</strong> per una singola sessione di gioco completa
+                </li>
+                <li style="padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    ✅ <strong>Un browser web moderno</strong> per aprire i file HTML del manuale (Chrome, Firefox, Safari, o qualsiasi altro browser recente)
+                </li>
+            </ul>
+            
+            <p style="text-align: center; margin-top: 2rem; color: var(--accent-gold); font-size: 1.1rem;">
+                💰 <strong>Il costo totale per iniziare a giocare: 0 euro</strong>
+            </p>
+        </div>
+    </section>
+    
+    <!-- TESTIMONIALS / QUOTES -->
+    <section class="section">
+        <h2 class="section-title">💬 Il Tono del Gioco</h2>
+        <div style="max-width: 800px; margin: 2rem auto;">
+            <div style="background: var(--primary-light); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-gold); margin: 2rem 0;">
+                <p style="font-size: 1.2rem; font-style: italic; line-height: 1.8; color: var(--text);">
+                    "La vostra auto attraversa il checkpoint della zona verde. Davanti a voi, il cielo cambia. 
+                    La zona gialla ha un'aura strana - la luce del sole sembra leggermente... sbagliata. 
+                    In lontananza, sempre presente: la Strip. L'epicentro. Un arcobaleno caotico di epoche 
+                    che si scontrano. È bello. È terrificante."
+                </p>
+                <p style="text-align: right; color: var(--accent-gold); margin-top: 1rem;">
+                    — Dal File 2, "L'atmosfera di Vegas"
+                </p>
+            </div>
+            
+            <div style="background: var(--primary-light); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-blue); margin: 2rem 0;">
+                <p style="font-size: 1.2rem; font-style: italic; line-height: 1.8; color: var(--text);">
+                    "Hayes ti guarda negli occhi. 'So dei tuoi debiti. Gli archivi non mentono. Ho un'opzione. 
+                    Pericolosa. Ma se sopravvivi, slate pulita. Tutti i debiti, cancellati. Cosa dici?'"
+                </p>
+                <p style="text-align: right; color: var(--accent-blue); margin-top: 1rem;">
+                    — Dal File 2, "Economia v2.1: Condono Debiti"
+                </p>
+            </div>
+            
+            <div style="background: var(--primary-light); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-red); margin: 2rem 0;">
+                <p style="font-size: 1.2rem; font-style: italic; line-height: 1.8; color: var(--text);">
+                    "Zhou ti guarda attraverso il fumo della sigaretta. 'Piccolo, devi decidere da che parte stai. 
+                    I dilettanti che giocano su due fronti... finiscono sempre male. Sempre.'"
+                </p>
+                <p style="text-align: right; color: var(--accent-red); margin-top: 1rem;">
+                    — Dal File 1, "Sistema Instabilità"
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">⏳ Ucronie e Tesori v2.1 POLISHED</h3>
+            <p style="color: var(--text-dim); margin-bottom: 1rem;">
+                Un gioco di ruolo gratuito e a codice aperto creato da <strong>Riccardo</strong>
+            </p>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                Ispirato dalle opere: Blade Runner 2049, Fallout New Vegas, The Expanse, e la serie Dark
+            </p>
+            
+            <div class="footer-links">
+                <a href="https://github.com/tuousername/ucronie-e-tesori" class="footer-link" target="_blank">
+                    📂 Il Deposito su GitHub
+                </a>
+                <a href="#files" class="footer-link">
+                    📥 Scarica i File
+                </a>
+                <a href="ucronie_e_tesori_file1_v21_POLISHED.html#pilastri-safety" class="footer-link" target="_blank">
+                    🛡️ Gli Strumenti di Sicurezza
+                </a>
+            </div>
+            
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: var(--text-dim); font-size: 0.9rem;">
+                    © 2025 Riccardo | Quest'opera è stata rilasciata sotto la licenza Creative Commons BY-NC-SA 4.0
+                </p>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">
+                    Versione v2.1 POLISHED | Novembre 2025 | Circa 140 pagine di contenuto completo
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

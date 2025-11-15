@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ucronie e Tesori v2.0 | File 1: Sistema Base</title>
+    <title>Ucronie e Tesori v2.1 POLISHED | File 1: Sistema Base</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -288,7 +288,7 @@
 <header class="header">
     <h1>⏳ Ucronie e Tesori ⏳</h1>
     <p class="tagline">"Breaking Bad incontra OSR incontra Looper"</p>
-    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.0 perfezionato | File 1: Sistema Base</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue); font-weight: bold;">v2.1 POLISHED | File 1: Sistema Base</p>
 </header>
 
 <nav class="nav">
@@ -344,6 +344,7 @@
                 <li><a href="#pg-abilita">→ 4-5. Abilità</a></li>
                 <li><a href="#pg-equipaggiamento">→ 7. Equipaggiamento</a></li>
                 <li><a href="#pg-tracciatori">→ 8. Tracciatori iniziali</a></li>
+                <li><a href="#sistema-instabilita" style="color: var(--accent-gold);">→ 8b. Sistema Instabilità (v2.1 NUOVO) ⚖️</a></li>
                 <li><a href="#pg-narrativa">→ 9. Dettagli narrativi</a></li>
             </ul>
         </div>
@@ -554,38 +555,152 @@ Deficit garantito: -$100 a settimana</code></pre>
             </ul>
         </div>
         
-        <h4>Safety tools raccomandati:</h4>
+        <h4>🛡️ Protocollo Sessione Sicura (v2.1 AGGIORNATO)</h4>
         
-        <h5>1. La sessione zero</h5>
-        <p>Una prima sessione dedicata non al gioco ma a discutere:</p>
-        <ul>
-            <li>Le aspettative del gruppo (tono, serietà, umorismo?)</li>
-            <li>I temi sensibili per qualcuno?</li>
-            <li>I limiti hard (cosa non vogliamo al tavolo)</li>
-            <li>Il contratto sociale (orari, pause, telefoni)</li>
-        </ul>
+        <div class="box danger">
+            <h5>⚠️ Session Zero OBBLIGATORIA</h5>
+            <p>Prima della prima sessione, il Direttore DEVE condurre una Session Zero (30-45 minuti).</p>
+        </div>
+        
+        <h5>1. Checklist Consenso Temi</h5>
+        <p>Il Direttore legge questa lista, il gruppo decide per ogni tema:</p>
+        
+        <table style="margin: 1rem 0;">
+            <thead>
+                <tr>
+                    <th>Tema</th>
+                    <th>✅ OK</th>
+                    <th>⚠️ Fade-to-Black</th>
+                    <th>❌ Off-Limits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Violenza fisica grafica</strong></td>
+                    <td>Descrizioni dettagliate</td>
+                    <td>Risultati senza dettagli</td>
+                    <td>Astratto/narrato</td>
+                </tr>
+                <tr>
+                    <td><strong>Body horror</strong></td>
+                    <td>Mutazioni descritte</td>
+                    <td>Generico "sviluppi mutazione"</td>
+                    <td>Solo meccanici</td>
+                </tr>
+                <tr>
+                    <td><strong>Pressione economica</strong></td>
+                    <td>Debiti/sfratto espliciti</td>
+                    <td>Menzionati non enfatizzati</td>
+                    <td>Sistema rimosso</td>
+                </tr>
+                <tr>
+                    <td><strong>Corruzione morale</strong></td>
+                    <td>Scelte grigie, sensi colpa</td>
+                    <td>Conseguenze implicite</td>
+                    <td>Moralità chiara</td>
+                </tr>
+                <tr>
+                    <td><strong>Disperazione</strong></td>
+                    <td>Situazioni senza via d'uscita</td>
+                    <td>Sempre esiste speranza</td>
+                    <td>Tono ottimista</td>
+                </tr>
+                <tr>
+                    <td><strong>Morte PG</strong></td>
+                    <td>Permanente</td>
+                    <td>Permanente ma nuovo PG subito</td>
+                    <td>Incoscienza</td>
+                </tr>
+                <tr>
+                    <td><strong>Tradimento tra PG</strong></td>
+                    <td>Permesso se consensuale</td>
+                    <td>Solo PNG tradiscono</td>
+                    <td>Vietato</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="box warning">
+            <p><strong>⚠️ Nota Critica:</strong> Se ≥2 temi sono "Off-Limits", considerate un gioco diverso. Ucronie e Tesori richiede questi temi per funzionare.</p>
+        </div>
         
         <h5>2. L'X-Card (di John Stavropoulos)</h5>
         <p>Una carta fisica sul tavolo con una "X" grande. Chiunque, in qualsiasi momento, per qualsiasi ragione, può:</p>
         <ul>
             <li>Toccare la carta (silenziosamente)</li>
             <li>Dire "X-Card" (verbalmente)</li>
+            <li>Online: Comando "/xcard" in chat oppure emoji ❌</li>
         </ul>
-        <p>Risultato: il direttore salta o cambia immediatamente il contenuto. <strong>Nessuna domanda, nessuna spiegazione richiesta.</strong> Si continua come se niente fosse.</p>
+        
+        <div class="box success">
+            <p><strong>Cosa succede:</strong></p>
+            <ol>
+                <li>Scena si interrompe IMMEDIATAMENTE</li>
+                <li>ZERO domande, ZERO spiegazioni richieste</li>
+                <li>Gruppo rewind: "Ok, quella scena non è avvenuta, partiamo da prima"</li>
+                <li>Si continua come se niente fosse</li>
+            </ol>
+        </div>
+        
+        <p><strong>Esempi Uso:</strong></p>
+        <ul>
+            <li>Direttore descrive mutazione troppo grafica → X-Card → "Ok, ricominciamo: sviluppi un Quirk ma saltiamo i dettagli"</li>
+            <li>Scena negoziazione Zhou diventa pressante → X-Card → "Zhou accetta, passiamo oltre"</li>
+        </ul>
         
         <h5>3. Lines & Veils (di Ron Edwards)</h5>
-        <p><strong>Lines</strong> = contenuto assolutamente non presente (mai menzionato, non accade mai)<br>
-        <strong>Veils</strong> = contenuto che accade ma "off-screen" (fade to black, lo accenniamo ma non lo descriviamo)</p>
-        <p><em>Esempio di lines:</em> "Niente violenza su bambini", "Niente violenza sessuale"<br>
-        <em>Esempio di veils:</em> "Le torture possono essere menzionate ma non descritte nei dettagli", "La morte dei PG va bene ma non in modo grafico"</p>
+        <p><strong>LINE</strong> = Contenuto completamente off-limits, non appare al tavolo</p>
+        <p><em>Esempio:</em> "Non voglio scene che riguardino [argomento specifico]"</p>
         
-        <h5>4. I check-in periodici</h5>
-        <p>Il direttore, circa ogni ora, chiede velocemente: <em>"Tutti ok? Qualcuno ha bisogno di una pausa o vuole moderare l'intensità?"</em></p>
+        <p><strong>VEIL</strong> = Contenuto permesso ma non descritto esplicitamente</p>
+        <p><em>Esempio:</em> "Va bene che PG abbiano debiti, ma non voglio scene dettagliate di sfratto" → Direttore: "Il padrone minaccia sfratto" → Fade to black → "Hai 2 settimane"</p>
         
         <div class="box">
-            <p style="font-weight: bold; font-size: 1.1rem;">Ricorda: l'obiettivo è il divertimento condiviso e sicuro per tutti.</p>
-            <p>Nessun contenuto di gioco, nessuna "fedeltà al tono", nessuna "coerenza narrativa" vale più del benessere delle persone reali sedute al tavolo.</p>
+            <p><strong>Processo Session Zero:</strong></p>
+            <ol>
+                <li>Direttore chiede: "Qualcuno ha Lines da stabilire?"</li>
+                <li>Giocatori dichiarano (anche anonimamente se necessario)</li>
+                <li>Direttore chiede: "Qualcuno ha Veils?"</li>
+                <li>Gruppo conferma comprensione</li>
+            </ol>
+        </div>
+        
+        <h5>4. Check-in Emotivo (Ogni Ora)</h5>
+        <p>Il Direttore, circa ogni ora, chiede velocemente:</p>
+        <p style="font-style: italic; padding-left: 1rem;">"Come state? Tutti ok? Qualcuno ha bisogno di una pausa o vuole moderare l'intensità?"</p>
+        
+        <p><strong>Sistema Semaforo (opzionale):</strong></p>
+        <ul>
+            <li>👍 = Tutto ok</li>
+            <li>👌 = Ok ma al limite</li>
+            <li>👎 = Serve pausa/cambio tono</li>
+        </ul>
+        
+        <h5>5. Debriefing Post-Sessione</h5>
+        <p>Fine sessione, Direttore chiede:</p>
+        <ul>
+            <li>"Come vi siete sentiti?"</li>
+            <li>"Qualcosa che non ha funzionato?"</li>
+            <li>"Dovremmo aggiustare qualcosa per prossima volta?"</li>
+        </ul>
+        
+        <p><strong>IMPORTANTE:</strong> Non obbligatorio rispondere, ma Direttore deve sempre chiedere.</p>
+        
+        <div class="box success" style="margin-top: 1.5rem;">
+            <p style="font-weight: bold; font-size: 1.1rem;">🛡️ Regola d'Oro della Sicurezza</p>
+            <p><strong>"Nessun gioco vale più del benessere dei giocatori"</strong></p>
+            <p>L'obiettivo è il divertimento condiviso e sicuro per tutti. Nessun contenuto di gioco, nessuna "fedeltà al tono", nessuna "coerenza narrativa" vale più del benessere delle persone reali sedute al tavolo.</p>
             <p>Se qualcuno è a disagio, il gioco si adatta. Sempre. Senza discussione.</p>
+        </div>
+        
+        <div class="box" style="margin-top: 1rem; background: rgba(52, 152, 219, 0.15);">
+            <p><strong>📚 Risorse Esterne:</strong></p>
+            <ul>
+                <li><a href="http://tinyurl.com/x-card-rpg" target="_blank" style="color: var(--accent-blue);">X-Card di John Stavropoulos</a></li>
+                <li><a href="http://tinyurl.com/script-change-rpg" target="_blank" style="color: var(--accent-blue);">Script Change di Brie Sheldon</a></li>
+                <li><a href="https://drive.google.com/drive/folders/114jRmhzBpdqkAlhmveis0nmW73qkAZCj" target="_blank" style="color: var(--accent-blue);">TTRPG Safety Toolkit</a></li>
+                <li><a href="http://www.montecookgames.com/consent-in-gaming/" target="_blank" style="color: var(--accent-blue);">Consent in Gaming PDF</a></li>
+            </ul>
         </div>
     </div>
 </section>
@@ -1031,6 +1146,197 @@ Deficit garantito: -$100 a settimana</code></pre>
             </tbody>
         </table>
     </div>
+    
+    <!-- ============================================ -->
+    <!-- SEZIONE NUOVA v2.1: SISTEMA INSTABILITÀ -->
+    <!-- ============================================ -->
+    <div id="sistema-instabilita" style="margin-top: 2rem;">
+        <h3>⚖️ Sistema Instabilità (v2.1 NUOVO)</h3>
+        
+        <div class="box warning">
+            <h4>Il Problema del "Build Grigio"</h4>
+            <p>Alcuni giocatori potrebbero tentare di mantenere <strong>Lealtà e Corruzione entrambi a livelli medi (5-6)</strong>, godendo di benefici parziali da entrambe le fazioni senza mai impegnarsi veramente. Questo bypassa il dilemma morale centrale del gioco.</p>
+            <p><strong>Soluzione:</strong> Il Sistema Instabilità punisce chi gioca su due fronti.</p>
+        </div>
+        
+        <h4>Come Funziona</h4>
+        <p>Quando la <strong>differenza assoluta</strong> tra i tuoi tracciatori Lealtà e Corruzione è <strong>≤ 2</strong>, entri in stato di <strong>INSTABILITÀ</strong>.</p>
+        
+        <div class="box">
+            <p><strong>Formula:</strong> |Lealtà - Corruzione| ≤ 2</p>
+            
+            <p><strong>Esempi:</strong></p>
+            <ul>
+                <li>Lealtà 5, Corruzione 5 → Differenza 0 → <span style="color: #f1c40f; font-weight: bold;">INSTABILE ⚠️</span></li>
+                <li>Lealtà 6, Corruzione 4 → Differenza 2 → <span style="color: #f1c40f; font-weight: bold;">INSTABILE ⚠️</span></li>
+                <li>Lealtà 7, Corruzione 3 → Differenza 4 → <span style="color: #2ecc71; font-weight: bold;">STABILE ✓</span></li>
+                <li>Lealtà 8, Corruzione 2 → Differenza 6 → <span style="color: #2ecc71; font-weight: bold;">STABILE ✓</span></li>
+            </ul>
+        </div>
+        
+        <h4>Conseguenze dello Stato INSTABILE</h4>
+        
+        <h5>1. Penalità Sociale (-2)</h5>
+        <p>Subisci <strong>-2 a TUTTI i check sociali</strong>:</p>
+        <ul>
+            <li>Persuasione</li>
+            <li>Intimidazione</li>
+            <li>Raggirare</li>
+            <li>Comandare</li>
+            <li>Negoziare</li>
+        </ul>
+        
+        <p><strong>Razionale narrativo:</strong> <em>"Nessuno si fida completamente di te. Hayes sospetta che tu possa essere corrotto. Zhou pensa che tu sia ancora troppo legato alla Divisione. Sei costantemente sotto scrutinio da entrambe le parti."</em></p>
+        
+        <h5>2. Check Settimanale "Sospetto"</h5>
+        <p>Ogni <strong>Downtime</strong> (fine settimana), se sei INSTABILE, tira <strong>1d20</strong>:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Risultato d20</th>
+                    <th>Effetto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1-5</strong></td>
+                    <td><strong>Hayes Sospetta</strong> - Convocazione urgente. Devi giustificarti (check CAR TN 15). <br>Fallimento → <strong>-2 Lealtà</strong> immediato</td>
+                </tr>
+                <tr>
+                    <td><strong>6-10</strong></td>
+                    <td><strong>Zhou Dubita</strong> - Suoi uomini ti seguono. Check SAG TN 15 per accorgertene. <br>Fallimento → Prossima missione Zhou diventa "test di fedeltà" (rischio doppio)</td>
+                </tr>
+                <tr>
+                    <td><strong>11-15</strong></td>
+                    <td><strong>Tensione Crescente</strong> - Prossima settimana, check Sospetto con <strong>-2</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>16-20</strong></td>
+                    <td><strong>Scampato Pericolo</strong> - Nessuna conseguenza questa settimana</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h5>3. Blocco Benefici Alti</h5>
+        <p>Mentre sei INSTABILE:</p>
+        <ul>
+            <li><strong>Non puoi ricevere</strong> benefici di Lealtà 8+ (promozioni Hayes, caveau segreti)</li>
+            <li><strong>Non puoi ricevere</strong> benefici di Corruzione 8+ (offerte premium Zhou, protezione totale)</li>
+        </ul>
+        
+        <div class="box warning">
+            <p><strong>Esempio:</strong> Hai Lealtà 6, Corruzione 5 (INSTABILE). Anche se Lealtà sale a 8, non ottieni la promozione finché Corruzione non scende a ≤5 (differenza >2).</p>
+        </div>
+        
+        <h4>Come Uscire dall'Instabilità</h4>
+        
+        <h5>Opzione A: Commitment Totale</h5>
+        <p>Fai una scelta drastica che tradisce apertamente una fazione:</p>
+        <ul>
+            <li><strong>Esempio Pro-Hayes:</strong> Consegni un informatore di Zhou a Hayes → <strong>-3 Corruzione, +2 Lealtà</strong></li>
+            <li><strong>Esempio Pro-Zhou:</strong> Rubi un artefatto dalla Divisione per Zhou → <strong>-3 Lealtà, +2 Corruzione</strong></li>
+        </ul>
+        
+        <h5>Opzione B: Pazienza</h5>
+        <p>Aspetta che eventi esterni (missioni, conseguenze) spostino naturalmente i tracciatori. Intanto sopporti le penalità.</p>
+        
+        <h5>Opzione C: Missione "Scelta Finale"</h5>
+        <p>Il Direttore può offrire missioni che forzano il commitment:</p>
+        <ul>
+            <li><em>"Hayes ti ordina di arrestare un contatto Zhou che hai protetto finora"</em></li>
+            <li><em>"Zhou chiede l'eliminazione di un informatore della Divisione"</em></li>
+        </ul>
+        <p>È impossibile soddisfare entrambi. Devi scegliere.</p>
+        
+        <h4>Tabella Riferimento Rapido: Stati Personaggio</h4>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Lealtà</th>
+                    <th>Corruzione</th>
+                    <th>Differenza</th>
+                    <th>Stato</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8</td>
+                    <td>2</td>
+                    <td>6</td>
+                    <td><span style="color: #2ecc71;">✅ STABILE</span></td>
+                    <td>Agente fidato Hayes</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td><span style="color: #2ecc71;">✅ STABILE</span></td>
+                    <td>Leale ma occasionali compromessi</td>
+                </tr>
+                <tr style="background: rgba(241, 196, 15, 0.2);">
+                    <td>6</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td><span style="color: #f1c40f;">⚠️ INSTABILE</span></td>
+                    <td>Build Grigio - Penalità attiva</td>
+                </tr>
+                <tr style="background: rgba(241, 196, 15, 0.2);">
+                    <td>5</td>
+                    <td>5</td>
+                    <td>0</td>
+                    <td><span style="color: #f1c40f;">⚠️ INSTABILE</span></td>
+                    <td>Massima instabilità</td>
+                </tr>
+                <tr style="background: rgba(241, 196, 15, 0.2);">
+                    <td>4</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td><span style="color: #f1c40f;">⚠️ INSTABILE</span></td>
+                    <td>Sbilanciato verso Zhou</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>7</td>
+                    <td>4</td>
+                    <td><span style="color: #2ecc71;">✅ STABILE</span></td>
+                    <td>Corrotto ma committato</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>9</td>
+                    <td>7</td>
+                    <td><span style="color: #2ecc71;">✅ STABILE</span></td>
+                    <td>Proprietà di Zhou</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="box danger">
+            <h4>⚔️ Integrazione Narrativa</h4>
+            
+            <p><strong>Dialoghi Hayes (quando INSTABILE):</strong></p>
+            <p style="font-style: italic;">"Sento che mi nascondi qualcosa. I tuoi rapporti sono... vaghi. Spero di sbagliarmi, ma se scopro che lavori anche per Zhou, non ci sarà pietà."</p>
+            
+            <p><strong>Dialoghi Zhou (quando INSTABILE):</strong></p>
+            <p style="font-style: italic;">"Piccolo, devi decidere da che parte stai. Ai miei collaboratori chiedo lealtà. I dilettanti che giocano su due fronti... finiscono sempre male. Sempre."</p>
+            
+            <p><strong>Reazioni PNG:</strong></p>
+            <ul>
+                <li><strong>Colleghi Divisione:</strong> Evitano collaborazioni, non condividono intel</li>
+                <li><strong>Contatti Zhou:</strong> Prezzi più alti, informazioni parziali</li>
+                <li><strong>Civili:</strong> Percepiscono "qualcosa di sbagliato", ti evitano</li>
+            </ul>
+        </div>
+        
+        <div class="box success" style="margin-top: 1.5rem;">
+            <p><strong>💡 Regola d'Oro:</strong> "Vuoi giocare su due fronti? Entrambi ti guarderanno con sospetto."</p>
+            <p>Il sistema Instabilità non impedisce il "build grigio" - lo rende costoso e rischioso, come dovrebbe essere.</p>
+        </div>
+    </div>
+    <!-- FINE SEZIONE INSTABILITÀ -->
     
     <div id="pg-narrativa">
         <h3>9. I dettagli narrativi</h3>

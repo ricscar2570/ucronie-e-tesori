@@ -1,6 +1,6 @@
 # Repository Status — Historical Public HTML Edition
 
-This repository preserves an earlier **Ucronie e Tesori public HTML/manual edition**, including the v2.1 DOCX/ICML production material and the older Las Vegas 2045-era presentation.
+This repository preserves an earlier **CHRONOCAIRN public HTML/manual edition**, including the v2.1 DOCX/ICML production material and the older Las Vegas 2045-era presentation.
 
 It is **not the current Cairn-hack development source**.
 

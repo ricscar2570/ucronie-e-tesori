@@ -1,7 +1,7 @@
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Header1">
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
     <HyperlinkTextDestination Self="HyperlinkTextDestination/#ucronie-e-tesori" Name="Destination" DestinationUniqueKey="1" />
-    <Content>⏳ Ucronie e Tesori ⏳</Content>
+    <Content>⏳ CHRONOCAIRN ⏳</Content>
   </CharacterStyleRange>
 </ParagraphStyleRange>
 <Br />
@@ -797,7 +797,7 @@ Deficit garantito: -$100 a settimana</Content>
 <Br />
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Paragraph">
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
-    <Content>Dopo una sessione di Ucronie e Tesori, i giocatori dovrebbero sentirsi:</Content>
+    <Content>Dopo una sessione di CHRONOCAIRN, i giocatori dovrebbero sentirsi:</Content>
   </CharacterStyleRange>
 </ParagraphStyleRange>
 <Br />
@@ -858,7 +858,7 @@ Deficit garantito: -$100 a settimana</Content>
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Header2">
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
     <HyperlinkTextDestination Self="HyperlinkTextDestination/#parte-i-cosè-ucronie-e-tesori" Name="Destination" DestinationUniqueKey="1" />
-    <Content>Parte I: Cos'è Ucronie e Tesori</Content>
+    <Content>Parte I: Cos'è CHRONOCAIRN</Content>
   </CharacterStyleRange>
 </ParagraphStyleRange>
 <Br />
@@ -985,7 +985,7 @@ Deficit garantito: -$100 a settimana</Content>
 <Br />
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Paragraph">
   <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Bold">
-    <Content>Ucronie e Tesori è progettato per:</Content>
+    <Content>CHRONOCAIRN è progettato per:</Content>
   </CharacterStyleRange>
 </ParagraphStyleRange>
 <Br />
@@ -1123,7 +1123,7 @@ Deficit garantito: -$100 a settimana</Content>
 <Br />
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Paragraph">
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
-    <Content>Prima di giocare, il gruppo dovrebbe essere consapevole che Ucronie e Tesori include i seguenti temi:</Content>
+    <Content>Prima di giocare, il gruppo dovrebbe essere consapevole che CHRONOCAIRN include i seguenti temi:</Content>
   </CharacterStyleRange>
 </ParagraphStyleRange>
 <Br />
@@ -1452,7 +1452,7 @@ Deficit garantito: -$100 a settimana</Content>
     <Content>⚠️ Nota Critica:</Content>
   </CharacterStyleRange>
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
-    <Content> Se ≥2 temi sono &quot;Off-Limits&quot;, considerate un gioco diverso. Ucronie e Tesori richiede questi temi per funzionare.</Content>
+    <Content> Se ≥2 temi sono &quot;Off-Limits&quot;, considerate un gioco diverso. CHRONOCAIRN richiede questi temi per funzionare.</Content>
   </CharacterStyleRange>
 </ParagraphStyleRange>
 <Br />
@@ -6578,7 +6578,7 @@ Il bersaglio aveva 6 PF → ora ha 2 PF (ferito ma vivo)</Content>
 <Br />
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Paragraph">
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
-    <Content>In Ucronie e Tesori, </Content>
+    <Content>In CHRONOCAIRN, </Content>
   </CharacterStyleRange>
   <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Bold">
     <Content>il tempo non è solo narrativa - è una meccanica critica:</Content>
@@ -8428,7 +8428,7 @@ Il doppelganger: &quot;No. No. Sei uno di loro. Sei un trucco! Muori!&quot; [Est
 <Br />
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Paragraph">
   <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Bold">
-    <Content>© 2024 Riccardo Sgaringi</Content>
+    <Content>© 2024 Riccardo Scaringi</Content>
   </CharacterStyleRange>
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
     <Content> | Creative Commons BY 4.0</Content>
@@ -8437,7 +8437,7 @@ Il doppelganger: &quot;No. No. Sei uno di loro. Sei un trucco! Muori!&quot; [Est
 <Br />
 <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Paragraph">
   <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Bold">
-    <Content>Ucronie e Tesori v2.0</Content>
+    <Content>CHRONOCAIRN v2.0</Content>
   </CharacterStyleRange>
   <CharacterStyleRange AppliedCharacterStyle="$ID/NormalCharacterStyle">
     <Content> | File 1: Sistema base</Content>

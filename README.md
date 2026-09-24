@@ -1,8 +1,13 @@
+# CHRONOCAIRN
+
+**Time-Crime Horror Roleplaying**
+Riccardo Scaringi
+
 <div align="center">
 
 
 
-\# ⏳ UCRONIE E TESORI ⏳
+\# ⏳ CHRONOCAIRN ⏳
 
 
 
@@ -66,11 +71,11 @@ Il 40% della città è \*\*Zona Rossa\*\*: pericolosa, instabile, mortale. Ma pi
 
 
 
-\*\*Tu sei un agente della Divisione Temporale.\*\* Il tuo lavoro: recuperare questi tesori, contenere le anomalie, salvare civili intrappolati. Il tuo stipendio: \*\*$800 a settimana\*\*. 
+\*\*Tu sei un agente della Divisione Temporale.\*\* Il tuo lavoro: recuperare questi tesori, contenere le anomalie, salvare civili intrappolati. Il tuo stipendio: \*\*$800 a settimana\*\*.
 
 
 
-L'affitto? $500. Il cibo? $200. Le medicine anti-contaminazione? $150. 
+L'affitto? $500. Il cibo? $200. Le medicine anti-contaminazione? $150.
 
 
 
@@ -110,23 +115,23 @@ E \*\*Madame Zhou\*\* - regina del mercato nero - paga \*\*20 volte tanto\*\* pe
 
 
 
-✅ Stipendio stabile  
+✅ Stipendio stabile
 
-✅ Backup nelle missioni  
+✅ Backup nelle missioni
 
-✅ Pensione dopo 10 anni  
+✅ Pensione dopo 10 anni
 
-✅ Coscienza pulita  
+✅ Coscienza pulita
 
 
 
-❌ Povero perpetuo  
+❌ Povero perpetuo
 
-❌ Nessun lusso  
+❌ Nessun lusso
 
-❌ Regole rigide  
+❌ Regole rigide
 
-❌ Burocrazia infinita  
+❌ Burocrazia infinita
 
 
 
@@ -144,23 +149,23 @@ E \*\*Madame Zhou\*\* - regina del mercato nero - paga \*\*20 volte tanto\*\* pe
 
 
 
-✅ Ricchezza istantanea  
+✅ Ricchezza istantanea
 
-✅ Accessi privilegiati  
+✅ Accessi privilegiati
 
-✅ Protezione sua rete  
+✅ Protezione sua rete
 
-✅ Libertà operativa  
+✅ Libertà operativa
 
 
 
-❌ Lei ti \*\*possiede\*\*  
+❌ Lei ti \*\*possiede\*\*
 
-❌ Ricercato dalla Divisione  
+❌ Ricercato dalla Divisione
 
-❌ Debiti che non finiscono mai  
+❌ Debiti che non finiscono mai
 
-❌ Tradimenti inevitabili  
+❌ Tradimenti inevitabili
 
 
 
@@ -172,9 +177,9 @@ E \*\*Madame Zhou\*\* - regina del mercato nero - paga \*\*20 volte tanto\*\* pe
 
 
 
-\*\*Non puoi servire entrambi.\*\*  
+\*\*Non puoi servire entrambi.\*\*
 
-\*\*Non puoi evitare di scegliere.\*\*  
+\*\*Non puoi evitare di scegliere.\*\*
 
 \*\*Ogni scelta ha conseguenze permanenti.\*\*
 
@@ -184,7 +189,7 @@ E \*\*Madame Zhou\*\* - regina del mercato nero - paga \*\*20 volte tanto\*\* pe
 
 
 
-\## ⚙️ \*\*Cosa Rende Ucronie e Tesori Unico?\*\*
+\## ⚙️ \*\*Cosa Rende CHRONOCAIRN Unico?\*\*
 
 
 
@@ -274,13 +279,13 @@ CORRUZIONE  ███░░░░░░░  3/10  →  Zhou ti considera "potenz
 
 
 
-\*\*Lealtà 10\*\* = Hayes ti offre promozione, pensione anticipata, accesso caveau segreti  
+\*\*Lealtà 10\*\* = Hayes ti offre promozione, pensione anticipata, accesso caveau segreti
 
 \*\*Lealtà 0\*\* = Ricercato, squadre Sigma ti cacciano, nessun backup
 
 
 
-\*\*Corruzione 10\*\* = Proprietà totale Zhou, ricco ma schiavo  
+\*\*Corruzione 10\*\* = Proprietà totale Zhou, ricco ma schiavo
 
 \*\*Corruzione 0\*\* = Zhou ti ignora, nessun accesso mercato nero
 
@@ -332,11 +337,11 @@ Fallisci? Guadagni un \*\*Quirk\*\* - mutazione temporale permanente.
 
 
 
-\*\*0-1 Quirk:\*\* Gestibile, "ferita di guerra"  
+\*\*0-1 Quirk:\*\* Gestibile, "ferita di guerra"
 
-\*\*2-3 Quirk:\*\* Stigma sociale, civili evitano  
+\*\*2-3 Quirk:\*\* Stigma sociale, civili evitano
 
-\*\*4-5 Quirk:\*\* Corpo sta cedendo, dolore costante  
+\*\*4-5 Quirk:\*\* Corpo sta cedendo, dolore costante
 
 \*\*6+ Quirk:\*\* Trasformazione in \*\*Eco\*\* (non più umano)
 
@@ -470,7 +475,7 @@ Non solo regole - \*\*avventura one-shot giocabile subito (3-4 ore):\*\*
 
 
 
-> \*"Se vuoi salvare il mondo, gioca D\&D. Se vuoi capire quanto costerebbe, gioca Ucronie e Tesori."\*
+> \*"Se vuoi salvare il mondo, gioca D\&D. Se vuoi capire quanto costerebbe, gioca CHRONOCAIRN."\*
 
 
 
@@ -654,15 +659,15 @@ Non solo regole - \*\*avventura one-shot giocabile subito (3-4 ore):\*\*
 
 
 
-✅ \*\*HTML5 puro\*\* - No framework, no dipendenze  
+✅ \*\*HTML5 puro\*\* - No framework, no dipendenze
 
-✅ \*\*CSS Responsive\*\* - Perfetto su smartphone/tablet/desktop  
+✅ \*\*CSS Responsive\*\* - Perfetto su smartphone/tablet/desktop
 
-✅ \*\*JavaScript Vanilla\*\* - Generatori funzionano ovunque  
+✅ \*\*JavaScript Vanilla\*\* - Generatori funzionano ovunque
 
-✅ \*\*Offline-first\*\* - Download e usa senza internet  
+✅ \*\*Offline-first\*\* - Download e usa senza internet
 
-✅ \*\*Print-optimized\*\* - Stampa direttamente da browser  
+✅ \*\*Print-optimized\*\* - Stampa direttamente da browser
 
 
 
@@ -702,7 +707,7 @@ Non solo regole - \*\*avventura one-shot giocabile subito (3-4 ore):\*\*
 
 
 
-\### \*\*Dove Parlare di Ucronie e Tesori\*\*
+\### \*\*Dove Parlare di CHRONOCAIRN\*\*
 
 
 
@@ -738,7 +743,7 @@ Non solo regole - \*\*avventura one-shot giocabile subito (3-4 ore):\*\*
 
 
 
-\*\*Feedback è oro.\*\* Se giochi Ucronie e Tesori:
+\*\*Feedback è oro.\*\* Se giochi CHRONOCAIRN:
 
 
 
@@ -822,7 +827,7 @@ Non solo regole - \*\*avventura one-shot giocabile subito (3-4 ore):\*\*
 
 ```
 
-Basato su "Ucronie e Tesori" di Riccardo Sgaringi
+Basato su "CHRONOCAIRN" di Riccardo Scaringi
 
 (https://github.com/TUO\_USERNAME/ucronie-e-tesori)
 
@@ -1280,9 +1285,9 @@ Grazie alla community OSR italiana per aver mantenuto vivo il design philosophy 
 
 
 
-\*Ucronie e Tesori v2.0 REFINED\*  
+\*CHRONOCAIRN v2.0 REFINED\*
 
-\*© 2024 Riccardo Sgaringi\*  
+\*© 2024 Riccardo Scaringi\*
 
 \*Licensed under CC BY 4.0\*
 
